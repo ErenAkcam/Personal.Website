@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title id="page-title">Eren Akçam</title>
+<meta name="description" id="meta-desc" content="Portfolio of Eren Akçam"/>
+<meta name="keywords" id="meta-keys" content="portfolio, design, engineering"/>
+<link rel="icon" id="site-favicon" href="assets/favicon.png" type="image/png"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Barlow+Condensed:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --nh:56px;
+  --bej:#e9e5d6;--bl:#f2efe3;--bm:#d4cdb8;--bd:#b8b09a;
+  --g:#7a9e6a;--gl:#b8ceac;--gp:#d6e4cc;--gd:#4d7040;
+  --blk:#1a1a14;--txt:#2c2c1e;--tm:#5c5c40;--mu:#8c8c6c;
+}
+html,body{min-height:100%}
+body{font-family:'Raleway',sans-serif;background:var(--bej);color:var(--txt);overflow-x:hidden;padding-top:calc(var(--nh)+18px)}
+/* NAV */
+.nw{position:fixed;top:0;left:0;right:0;z-index:999;padding:8px 16px;background:var(--bej)}
+nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align-items:center;padding:0 18px;gap:10px;box-shadow:0 2px 12px rgba(0,0,0,.2)}
+.nb{font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:1.05rem;color:var(--bl);background:none;border:none;cursor:pointer;white-space:nowrap;flex-shrink:0;padding:0}
+.nm{display:flex;align-items:center;list-style:none;gap:1px;flex:1;justify-content:center}
+.nm a{padding:5px 9px;border-radius:6px;font-size:.56rem;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--bd);text-decoration:none;cursor:pointer;white-space:nowrap;transition:color .15s}
+.nm a:hover,.nm a.on{color:var(--gl)}
+.nr{display:flex;align-items:center;gap:6px;flex-shrink:0}
+.lsw{position:relative}
+.lbtn{display:flex;align-items:center;gap:4px;padding:5px 9px;border-radius:7px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);cursor:pointer;font-size:.56rem;font-weight:700;color:var(--gl);white-space:nowrap}
+.lbtn svg{width:10px;height:10px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.ldd{display:none;position:absolute;top:calc(100% + 5px);right:0;background:var(--blk);border:1px solid rgba(255,255,255,.12);border-radius:9px;overflow:hidden;min-width:120px;box-shadow:0 8px 20px rgba(0,0,0,.4);z-index:300}
+.ldd.open{display:block}
+.lo{padding:9px 13px;font-size:.65rem;font-weight:600;color:var(--bd);cursor:pointer;display:flex;align-items:center;gap:8px;white-space:nowrap}
+.lo:hover{background:rgba(255,255,255,.07);color:var(--bl)}
+.lo.on{color:var(--gl)}
+/* PAGES */
+.pg{display:none}
+#pp.on{display:flex;flex-direction:column}
+.ip.on{display:flex;flex-direction:column}
+/* PROFILE */
+.hero{margin:0 16px 16px;border-radius:18px;overflow:hidden;display:flex;align-items:stretch;min-height:calc(100vh - var(--nh) - 50px);position:relative;flex-shrink:0}
+.hero::before{content:'';position:absolute;inset:0;background:linear-gradient(108deg,var(--gl) 47%,var(--gp) 47%);pointer-events:none}
+.hc{position:relative;z-index:2;background:var(--blk);border-radius:14px;margin:26px 0 26px 26px;width:295px;flex-shrink:0;padding:38px 34px 34px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 8px 36px rgba(0,0,0,.3)}
+.ht{font-size:.55rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--g);margin-bottom:16px}
+.hn{font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:clamp(2.1rem,2.8vw,3.2rem);line-height:1.06;color:var(--bl);margin-bottom:11px}
+.hr2{font-size:.74rem;color:var(--bd);font-weight:300;line-height:1.65;margin-bottom:30px}
+.hb{display:flex;flex-direction:column;gap:10px}
+.bg{display:inline-flex;align-items:center;justify-content:center;padding:10px 22px;border-radius:50px;font-size:.63rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;background:var(--g);color:var(--blk);border:none;cursor:pointer;text-decoration:none;width:fit-content;transition:background .2s}
+.bg:hover{background:var(--gd)}
+.bo{display:inline-flex;align-items:center;justify-content:center;padding:10px 22px;border-radius:50px;font-size:.63rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;background:transparent;color:var(--bl);border:1.5px solid rgba(255,255,255,.2);cursor:pointer;text-decoration:none;width:fit-content;transition:border-color .2s}
+.bo:hover{border-color:rgba(255,255,255,.5)}
+.hp{flex:1;position:relative;z-index:1;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hp::before{content:'';position:absolute;width:360px;height:360px;border-radius:50%;background:rgba(255,255,255,.11);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+.hp::after{content:'';position:absolute;width:460px;height:460px;border-radius:50%;border:1.5px solid rgba(255,255,255,.15);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+.hpf{position:relative;width:290px;height:290px;border-radius:50%;flex-shrink:0;z-index:2}
+.hpf::before{content:'';position:absolute;inset:-8px;border-radius:50%;border:2px solid rgba(255,255,255,.22)}
+.hpf::after{content:'';position:absolute;inset:-3px;border-radius:50%;border:2px solid var(--g);opacity:.55}
+.hpf img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;border-radius:50%;border:4px solid var(--bl);box-shadow:0 6px 28px rgba(0,0,0,.22)}
+.hpl{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);z-index:3;background:var(--blk);border-radius:26px;padding:7px 18px;display:flex;flex-direction:column;align-items:center;border:1px solid rgba(255,255,255,.1);white-space:nowrap}
+.hpln{font-family:'Barlow Condensed',sans-serif;font-size:.8rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--bl);line-height:1.2}
+.hplr{font-size:.56rem;font-weight:600;letter-spacing:.19em;text-transform:uppercase;color:var(--g)}
+.hs{position:absolute;bottom:24px;right:24px;display:flex;gap:8px;z-index:5}
+.sb{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.26);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:background .2s}
+.sb:hover{background:rgba(255,255,255,.28)}
+.sb img{width:17px;height:17px;object-fit:contain}
+.as{margin:0 16px 16px;background:var(--bl);border-radius:18px;border:1px solid var(--bm);padding:42px 48px;display:grid;grid-template-columns:1fr 1px 1.5fr 1px 1fr;gap:0 36px;align-items:start}
+.asp{background:var(--bm);align-self:stretch}
+.asl{font-size:.56rem;font-weight:700;letter-spacing:.23em;text-transform:uppercase;color:var(--gd);margin-bottom:8px}
+.ash{font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:1.15rem;color:var(--txt);margin-bottom:8px;line-height:1.2}
+.asb{font-size:.8rem;line-height:1.82;color:var(--tm);font-weight:300}
+.asli{display:flex;flex-direction:column;gap:6px;margin-top:3px}
+.asli a{font-size:.79rem;color:var(--gd);font-weight:500;text-decoration:none}
+.asli a:hover{text-decoration:underline}
+/* INNER PAGES */
+.ip{background:var(--bej)}
+.pb{margin:0 16px 0;background:var(--gd);border-radius:18px 18px 0 0;padding:44px 52px 32px;position:relative;overflow:hidden;flex-shrink:0}
+.pb::after{content:'';position:absolute;right:-60px;top:-60px;width:260px;height:260px;border-radius:50%;background:var(--g);opacity:.12}
+.pb h1{font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:clamp(2.6rem,4.5vw,4.8rem);color:var(--bl);line-height:1;position:relative;z-index:1}
+.pbs{font-size:.62rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gl);margin-top:8px;position:relative;z-index:1}
+.pbd{margin:0 16px 16px;background:var(--bl);border-radius:0 0 18px 18px;border:1px solid var(--bm);border-top:none;padding:48px 52px 68px}
+.pf{margin:0 16px 5px;background:var(--blk);border-radius:12px;padding:16px 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;flex-shrink:0}
+.pfl{font-size:.56rem;letter-spacing:.17em;text-transform:uppercase;color:#555}
+.pfe{font-size:.76rem;color:var(--gl);text-decoration:none;font-weight:500}
+.pft{text-align:center;padding:9px;font-size:.55rem;letter-spacing:.11em;text-transform:uppercase;color:var(--bd)}
+/* MEMORY */
+.tlh{font-family:'Playfair Display',serif;font-style:italic;font-size:1.35rem;font-weight:700;color:var(--gd);padding-bottom:10px;border-bottom:2px solid var(--g);margin-top:44px;margin-bottom:0}
+.tlh:first-child{margin-top:0}
+.tli{display:flex;gap:32px;padding:28px 0;border-bottom:1px solid var(--bm);align-items:flex-start}
+.tli:last-child{border-bottom:none}
+.tll{min-width:136px}
+.tld{font-family:'Barlow Condensed',sans-serif;font-size:.86rem;font-weight:700;color:var(--g);letter-spacing:.09em;text-transform:uppercase;margin-bottom:11px}
+.tlg{max-width:106px;max-height:68px;object-fit:contain;display:block;opacity:.87}
+.tlr{flex:1}
+.tlt{font-family:'Barlow Condensed',sans-serif;font-size:1.15rem;font-weight:700;color:var(--txt);letter-spacing:.04em;text-transform:uppercase;margin-bottom:3px}
+.tls{font-size:.73rem;color:var(--gd);letter-spacing:.05em;font-weight:600;margin-bottom:3px}
+.tlc{font-size:.68rem;color:var(--mu);margin-bottom:11px}
+.tlp{font-size:.82rem;line-height:1.88;color:var(--tm);font-weight:300}
+/* SKILLS */
+.skh{font-family:'Playfair Display',serif;font-style:italic;font-size:1.35rem;font-weight:700;color:var(--gd);padding-bottom:10px;border-bottom:2px solid var(--g);margin-bottom:18px;margin-top:44px}
+.skh:first-child{margin-top:0}
+.skg{display:grid;grid-template-columns:repeat(auto-fill,minmax(246px,1fr));gap:10px;margin-bottom:4px}
+.skc{background:var(--bej);border:1.5px solid var(--bm);border-radius:11px;padding:13px 17px 11px;display:flex;flex-direction:column;gap:8px;transition:transform .15s,border-color .15s}
+.skc:hover{transform:translateY(-2px);border-color:var(--g)}
+.skt{display:flex;align-items:center;justify-content:space-between;gap:7px}
+.skn{font-family:'Barlow Condensed',sans-serif;font-size:.9rem;font-weight:600;color:var(--txt);letter-spacing:.04em;text-transform:uppercase}
+.skb{font-size:.54rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:20px;white-space:nowrap;flex-shrink:0}
+.ba{background:#c6d9b8;color:#2a5020;border:1px solid #a8c49a}
+.bi{background:#d4dfc8;color:#3a5030;border:1px solid #b8ceaa}
+.bb{background:#ddd8c4;color:#5a4e30;border:1px solid #c8c0a0}
+.bn{background:#b8d0a8;color:#1e3d14;border:1px solid #8ab87a}
+.sbt{width:100%;height:5px;background:var(--bm);border-radius:3px;overflow:hidden}
+.sbf{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--gd),var(--g));transition:width 1s cubic-bezier(.4,0,.2,1)}
+/* CERTS */
+.crt{display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:22px;align-items:start}
+.cs{background:var(--bl);border:1.5px solid var(--bm);border-radius:15px;overflow:hidden;box-shadow:0 3px 16px rgba(0,0,0,.07)}
+.csh{font-family:'Playfair Display',serif;font-style:italic;font-size:.92rem;font-weight:700;color:var(--bl);padding:10px 16px;background:var(--gd);display:flex;align-items:center;gap:7px}
+.csh::before{content:'';display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--gl);flex-shrink:0}
+.csv{margin:10px 10px 0;border-radius:9px;overflow:hidden;border:1.5px solid var(--bm);background:var(--blk);position:relative}
+.cia{position:relative;width:100%;aspect-ratio:522/368;background:#111;overflow:hidden}
+.cia img{width:100%;height:100%;object-fit:cover;display:block;cursor:zoom-in}
+.ca{position:absolute;top:50%;transform:translateY(-50%);width:30px;height:30px;border-radius:50%;background:rgba(10,10,6,.65);border:1px solid rgba(255,255,255,.17);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:4;color:#fff;transition:background .15s}
+.ca:hover{background:var(--gd);transform:translateY(-50%) scale(1.1)}
+.ca.pv{left:9px}.ca.nx{right:9px}
+.ca svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.cnp{margin:7px 10px 10px;background:var(--bej);border:1px solid var(--bm);border-radius:8px;padding:7px 11px;display:flex;align-items:center;gap:8px}
+.cna{font-family:'Barlow Condensed',sans-serif;font-size:.69rem;font-weight:700;color:var(--tm);letter-spacing:.07em;text-transform:uppercase;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cco{font-size:.58rem;font-weight:700;color:var(--gd);background:#c6d9b8;border:1px solid #a8c49a;padding:2px 8px;border-radius:20px;white-space:nowrap;flex-shrink:0}
+.cds{display:flex;gap:5px;align-items:center;justify-content:center;padding:0 10px 9px}
+.cd{width:6px;height:6px;border-radius:50%;background:var(--bm);cursor:pointer;transition:background .2s,transform .15s;border:none;padding:0}
+.cd.on{background:var(--gd);transform:scale(1.4)}
+/* PORTFOLIO */
+.pgrd{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
+.cc{border-radius:14px;overflow:hidden;cursor:pointer;background:var(--bl);border:1.5px solid var(--bm);box-shadow:0 3px 14px rgba(0,0,0,.07);transition:transform .18s,box-shadow .18s}
+.cc:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(0,0,0,.11)}
+.ccv{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
+.ccp{width:100%;aspect-ratio:16/9;background:linear-gradient(135deg,var(--gl),var(--gp));display:flex;align-items:center;justify-content:center}
+.ccp svg{width:42px;height:42px;opacity:.38}
+.cci{padding:15px 17px}
+.cctg{font-size:.54rem;font-weight:700;letter-spacing:.19em;text-transform:uppercase;color:var(--g);margin-bottom:5px}
+.cct{font-family:'Barlow Condensed',sans-serif;font-size:1.18rem;font-weight:700;color:var(--txt);letter-spacing:.04em;text-transform:uppercase;margin-bottom:6px}
+.ccc{display:inline-flex;align-items:center;gap:4px;font-size:.6rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gd);background:#c6d9b8;border:1px solid #a8c49a;padding:2px 8px;border-radius:20px}
+.bb2{display:inline-flex;align-items:center;gap:6px;font-size:.64rem;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--gd);cursor:pointer;margin-bottom:24px;background:none;border:none;padding:0}
+.bb2 svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.pjgrd{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:13px}
+.pj{border-radius:12px;overflow:hidden;cursor:pointer;background:var(--bl);border:1.5px solid var(--bm);transition:transform .16s}
+.pj:hover{transform:translateY(-2px)}
+.pjv{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+.pjp{width:100%;aspect-ratio:4/3;background:linear-gradient(135deg,var(--gp),var(--bej));display:flex;align-items:center;justify-content:center}
+.pji{padding:11px 13px}
+.pjt{font-family:'Barlow Condensed',sans-serif;font-size:.97rem;font-weight:700;color:var(--txt);letter-spacing:.03em;text-transform:uppercase;margin-bottom:2px}
+.pjs{font-size:.66rem;color:var(--mu)}
+/* PROJECT DETAIL */
+.pd-wrap{max-width:760px}
+.pd-head{margin-bottom:28px;padding-bottom:22px;border-bottom:2px solid var(--g)}
+.pd-badges{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:10px}
+.pd-badge{font-size:.56rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:3px 9px;border-radius:20px}
+.pd-badge.featured{background:var(--g);color:var(--bl)}
+.pd-badge.status-ongoing{background:#d6e4cc;color:var(--gd);border:1px solid #b8ceac}
+.pd-badge.status-done{background:#c6d9b8;color:#2a5020;border:1px solid #a8c49a}
+.pd-badge.tag{background:var(--bej);color:var(--tm);border:1px solid var(--bm)}
+.pd-title{font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:2rem;color:var(--txt);line-height:1.1;margin-bottom:6px}
+.pd-cat{font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--g);margin-bottom:4px}
+.pd-meta{display:flex;gap:16px;flex-wrap:wrap;font-size:.72rem;color:var(--mu);margin-top:8px}
+.pd-meta span{display:flex;align-items:center;gap:5px}
+.pd-meta svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+/* BLOCKS */
+.blk{margin-bottom:24px}
+.blbl{font-size:.55rem;font-weight:700;letter-spacing:.17em;text-transform:uppercase;color:var(--mu);margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.blbl svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.bdsc{font-size:.86rem;line-height:1.85;color:var(--tm);font-weight:300}
+.bimg{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px}
+.bimg img{width:100%;border-radius:8px;object-fit:cover;cursor:zoom-in;aspect-ratio:4/3}
+.bvid{width:100%;border-radius:9px;max-height:360px;background:#000;display:block}
+.baud{width:100%;border-radius:7px;margin-bottom:6px}
+.embed-wrap{position:relative;width:100%;padding-bottom:56.25%;border-radius:10px;overflow:hidden;background:#000}
+.embed-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
+.blnk{display:inline-flex;align-items:center;gap:5px;padding:7px 14px;border-radius:7px;background:var(--bej);border:1.5px solid var(--bm);font-size:.7rem;font-weight:600;color:var(--gd);text-decoration:none;margin-right:6px;margin-bottom:6px}
+.blnk:hover{border-color:var(--g);background:var(--gp)}
+.blnk svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.bdoc{display:flex;align-items:center;gap:8px;padding:10px 13px;border-radius:9px;background:var(--bej);border:1.5px solid var(--bm);margin-bottom:7px;text-decoration:none}
+.bdoc:hover{border-color:var(--g)}
+.bdoc-i{width:28px;height:28px;border-radius:6px;background:var(--gp);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.bdoc-i svg{width:14px;height:14px;fill:none;stroke:var(--gd);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.bdoc-n{font-size:.73rem;font-weight:600;color:var(--txt)}
+.bdoc-s{font-size:.6rem;color:var(--mu)}
+/* CONTACT */
+.ctl{display:grid;grid-template-columns:1fr 1.1fr;gap:26px;align-items:start}
+.ci{background:var(--blk);border-radius:15px;padding:30px 26px}
+.citt{font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:1.42rem;color:var(--bl);margin-bottom:6px}
+.cisb{font-size:.68rem;color:var(--bd);font-weight:300;line-height:1.7;margin-bottom:24px}
+.cit{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.cit:last-child{border-bottom:none}
+.cit-i{width:36px;height:36px;border-radius:8px;background:rgba(122,158,106,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cit-i svg{width:16px;height:16px;fill:none;stroke:var(--gl);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.cit-l{font-size:.55rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--bd);margin-bottom:2px}
+.cit-v{font-size:.8rem;color:var(--bl);font-weight:400;text-decoration:none}
+.cit-v:hover{opacity:.65}
+.cf{background:var(--bl);border:1.5px solid var(--bm);border-radius:15px;padding:30px 26px}
+.cft{font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:1.2rem;color:var(--txt);margin-bottom:5px}
+.cfs{font-size:.7rem;color:var(--mu);margin-bottom:20px;line-height:1.6}
+.fld{margin-bottom:13px}
+.flbl{display:block;font-size:.56rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gd);margin-bottom:4px}
+.finp{width:100%;padding:9px 12px;border-radius:8px;border:1.5px solid var(--bm);background:var(--bej);font-family:'Raleway',sans-serif;font-size:.8rem;color:var(--txt);outline:none;resize:none;transition:border-color .18s}
+.finp:focus{border-color:var(--g)}
+.finp::placeholder{color:var(--bd)}
+.fr2{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.fsub{width:100%;padding:11px;border-radius:9px;background:var(--gd);color:var(--bl);border:none;font-family:'Raleway',sans-serif;font-size:.69rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;margin-top:4px;transition:background .2s}
+.fsub:hover{background:var(--blk)}
+.fsucc{display:none;text-align:center;padding:20px}
+.fsucc-i{width:46px;height:46px;border-radius:50%;background:#c6d9b8;display:flex;align-items:center;justify-content:center;margin:0 auto 11px}
+.fsucc-i svg{width:20px;height:20px;fill:none;stroke:var(--gd);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.fsucc-m{font-size:.86rem;color:var(--gd);font-weight:600;margin-bottom:3px}
+.fsucc-s{font-size:.72rem;color:var(--mu)}
+/* LIGHTBOX */
+.lb{display:none;position:fixed;inset:0;background:rgba(3,6,2,.93);z-index:9999;align-items:center;justify-content:center}
+.lb.on{display:flex}
+.lb img{max-width:90vw;max-height:88vh;border-radius:9px}
+.lbx{position:absolute;top:16px;right:22px;font-size:2rem;color:var(--bl);cursor:pointer;background:none;border:none;opacity:.7;line-height:1}
+@media(max-width:860px){.nm a{padding:4px 7px;font-size:.52rem}}
+@media(max-width:720px){
+  .hero{flex-direction:column;margin:0 10px 10px}
+  .hero::before{background:linear-gradient(175deg,var(--gl) 52%,var(--gp) 52%)}
+  .hc{width:auto;margin:20px 14px 14px}
+  .hp{min-height:250px}
+  .hpf{width:200px;height:200px}
+  .as{grid-template-columns:1fr;padding:30px 24px;margin:0 10px 10px}
+  .asp{display:none}
+  .pb,.pbd{margin-left:10px;margin-right:10px}
+  .pb{padding:32px 24px 24px}
+  .pbd{padding:30px 24px 56px}
+  .tli{flex-direction:column;gap:13px}
+  .tll{min-width:auto}
+  .pf{margin:0 10px 5px;padding:14px 20px}
+  .crt{grid-template-columns:1fr}
+  .ctl{grid-template-columns:1fr}
+  .fr2{grid-template-columns:1fr}
+  .nm{flex-wrap:wrap;justify-content:center}
+}
+</style>
+</head>
+<body>
+<div class="nw">
+  <nav>
+    <button class="nb" id="site-nav-brand" onclick="go('pp')">Eren Akçam</button>
+    <ul class="nm">
+      <li><a id="n-pp"  class="on" onclick="go('pp')"  data-key="nav_profile">PROFILE</a></li>
+      <li><a id="n-mem"            onclick="go('mem')" data-key="nav_memory">MEMORY</a></li>
+      <li><a id="n-sk"             onclick="go('sk')"  data-key="nav_skills">SKILLS</a></li>
+      <li><a id="n-prt"            onclick="go('prt')" data-key="nav_portfolio">PORTFOLIO</a></li>
+      <li><a id="n-cer"            onclick="go('cer')" data-key="nav_certs">CERTIFICATES</a></li>
+      <li><a id="n-con"            onclick="go('con')" data-key="nav_contact">CONTACT</a></li>
+    </ul>
+    <div class="nr">
+      <div class="lsw">
+        <div class="lbtn" onclick="toggleLD()">
+          <span id="ll">EN</span>
+          <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="ldd" id="ldd">
+          <div class="lo on" onclick="setLang('en',this)">🇬🇧 English</div>
+          <div class="lo"    onclick="setLang('tr',this)">🇹🇷 Türkçe</div>
+          <div class="lo"    onclick="setLang('de',this)">🇩🇪 Deutsch</div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
+<!-- PROFILE -->
+<div id="pp" class="pg on">
+  <div class="hero">
+    <div class="hc">
+      <div>
+        <div class="ht" id="hero-tag" data-key="hero_tag">Portfolio · Design &amp; Engineering</div>
+        <h1 class="hn" id="s-name">Eren<br>Akçam</h1>
+        <p class="hr2" id="hero-desc" data-key="hero_role">Computer-Aided Machine Drawing student &amp; freelance graphic designer since 2022.</p>
+      </div>
+      <div class="hb">
+        <a class="bg" onclick="go('mem')" data-key="btn_story">My Story</a>
+        <a class="bo" onclick="go('sk')"  data-key="btn_skills">View Skills</a>
+      </div>
+    </div>
+    <div class="hp">
+      <div class="hpf">
+        <img id="s-photo" src="assets/profile.png" alt="Eren Akçam"
+             onerror="this.onerror=null;this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2240%22 r=%2228%22 fill=%22%23b8ceac%22/><ellipse cx=%2250%22 cy=%2285%22 rx=%2235%22 ry=%2225%22 fill=%22%23b8ceac%22/></svg>'"/>
+      </div>
+      <div class="hpl">
+        <span class="hpln" id="s-namelab">Eren Akçam</span>
+        <span class="hplr" id="s-rolelab">Student · Designer</span>
+      </div>
+      <div class="hs">
+        <a class="sb" id="s-li" href="#" target="_blank">
+          <img src="https://static.wixstatic.com/media/76d601_a7d6ec97d1b043d1a36abd08cd983189~mv2.png/v1/fill/w_22,h_22,al_c,q_85,enc_avif,quality_auto/76d601_a7d6ec97d1b043d1a36abd08cd983189~mv2.png" alt="LI"/>
+        </a>
+        <a class="sb" id="s-em" href="#">
+          <img src="https://static.wixstatic.com/media/76d601_8d3582ec54ca4430b1433f0e68bde98b~mv2.png/v1/fill/w_22,h_22,al_c,q_85,enc_avif,quality_auto/76d601_8d3582ec54ca4430b1433f0e68bde98b~mv2.png" alt="Email"/>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="as">
+    <div>
+      <div class="asl" data-key="strip_about_label">About Me</div>
+      <div class="ash" data-key="strip_about_title">Student &amp; Designer</div>
+      <p class="asb" id="about-text" data-key="strip_about_body">Studying Computer-Aided Machine Drawing, combining technical precision with creative design.</p>
+    </div>
+    <div class="asp"></div>
+    <div>
+      <div class="asl" data-key="strip_bio_label">Bio</div>
+      <p class="asb" id="bio-text" data-key="strip_bio_body">A young professional combining technical knowledge with creative design. Freelance graphic designer since 2022.</p>
+    </div>
+    <div class="asp"></div>
+    <div>
+      <div class="asl" data-key="strip_contact_label">Contact</div>
+      <div class="ash" data-key="strip_contact_title">Get in Touch</div>
+      <div class="asli">
+        <a id="s-eml" href="#">eren.akcamm@gmail.com</a>
+        <a id="s-lil" href="#" target="_blank">LinkedIn →</a>
+      </div>
+    </div>
+  </div>
+  <div class="pf"><span class="pfl" data-key="footer_email_label">E-Mail</span><a class="pfe site-email" id="f-em0" href="#">eren.akcamm@gmail.com</a></div>
+  <div class="pft" id="site-footer-text">bottom of page</div>
+</div>
+<!-- MEMORY -->
+<div id="mem" class="pg ip">
+  <div class="pb"><h1 data-key="nav_memory">Memory</h1><div class="pbs" data-key="mem_sub">Experience &amp; Education</div></div>
+  <div class="pbd" id="memory-body"></div>
+  <div class="pf"><span class="pfl" data-key="footer_email_label">E-Mail</span><a class="pfe site-email" href="#">eren.akcamm@gmail.com</a></div>
+  <div class="pft">bottom of page</div>
+</div>
+<!-- SKILLS -->
+<div id="sk" class="pg ip">
+  <div class="pb"><h1 data-key="nav_skills">Skills</h1><div class="pbs" data-key="sk_sub">Technical &amp; Creative Expertise</div></div>
+  <div class="pbd">
+    <div class="skh" data-key="sk_mechanical">Mechanical</div><div class="skg" id="sk-mechanical"></div>
+    <div class="skh" data-key="sk_graphic">Graphic Design</div><div class="skg" id="sk-graphic"></div>
+    <div class="skh" data-key="sk_software">Software</div><div class="skg" id="sk-software"></div>
+    <div class="skh" data-key="sk_language">Language</div><div class="skg" id="sk-language"></div>
+  </div>
+  <div class="pf"><span class="pfl" data-key="footer_email_label">E-Mail</span><a class="pfe site-email" href="#">eren.akcamm@gmail.com</a></div>
+  <div class="pft">bottom of page</div>
+</div>
+<!-- PORTFOLIO -->
+<div id="prt" class="pg ip">
+  <div class="pb"><h1 id="prt-h" data-key="nav_portfolio">Portfolio</h1><div class="pbs" id="prt-s" data-key="prt_sub">Creative &amp; Technical Projects</div></div>
+  <div class="pbd">
+    <div id="v-cats"><div class="pgrd" id="cat-grid"></div></div>
+    <div id="v-projs" style="display:none">
+      <button class="bb2" onclick="showCats()"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg><span data-key="btn_back">Back</span></button>
+      <div class="pjgrd" id="proj-grid"></div>
+    </div>
+    <div id="v-detail" style="display:none">
+      <button class="bb2" id="d-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg><span id="d-back-lbl">Back</span></button>
+      <div id="d-content" class="pd-wrap"></div>
+    </div>
+  </div>
+  <div class="pf"><span class="pfl" data-key="footer_email_label">E-Mail</span><a class="pfe site-email" href="#">eren.akcamm@gmail.com</a></div>
+  <div class="pft">bottom of page</div>
+</div>
+<!-- CERTIFICATES -->
+<div id="cer" class="pg ip">
+  <div class="pb"><h1 data-key="nav_certs">Certificates</h1><div class="pbs" data-key="cer_sub">Achievements &amp; Credentials</div></div>
+  <div class="pbd" style="padding-top:42px">
+    <div class="crt">
+      <div class="cs">
+        <div class="csh" data-key="cer_edu">Education</div>
+        <div class="csv"><div class="cia">
+          <button class="ca pv" onclick="cPrev('edu')"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+          <img id="cv-edu-img" src="" alt="" onclick="openLb(this.src)"/>
+          <button class="ca nx" onclick="cNext('edu')"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+        </div></div>
+        <div class="cnp"><span class="cna" id="cv-edu-nm">—</span><span class="cco" id="cv-edu-co">1/10</span></div>
+        <div class="cds" id="cv-edu-dots"></div>
+      </div>
+      <div class="cs">
+        <div class="csh" data-key="cer_lang">Language</div>
+        <div class="csv"><div class="cia">
+          <button class="ca pv" onclick="cPrev('lang')"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+          <img id="cv-lang-img" src="" alt="" onclick="openLb(this.src)"/>
+          <button class="ca nx" onclick="cNext('lang')"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+        </div></div>
+        <div class="cnp"><span class="cna" id="cv-lang-nm">—</span><span class="cco" id="cv-lang-co">1/2</span></div>
+        <div class="cds" id="cv-lang-dots"></div>
+      </div>
+    </div>
+  </div>
+  <div class="pf"><span class="pfl" data-key="footer_email_label">E-Mail</span><a class="pfe site-email" href="#">eren.akcamm@gmail.com</a></div>
+  <div class="pft">bottom of page</div>
+</div>
+<!-- CONTACT -->
+<div id="con" class="pg ip">
+  <div class="pb"><h1 data-key="nav_contact">Contact</h1><div class="pbs" data-key="con_sub">Get in Touch</div></div>
+  <div class="pbd">
+    <div class="ctl">
+      <div class="ci">
+        <div class="citt" data-key="con_title">Let's Talk</div>
+        <p class="cisb" data-key="con_subtitle">Feel free to reach out for collaborations, freelance projects or just a friendly hello.</p>
+        <div class="cit"><div class="cit-i"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div><div class="cit-l" data-key="con_email_label">E-Mail</div><a class="cit-v site-email" id="c-email" href="#">—</a></div></div>
+        <div class="cit"><div class="cit-i"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .82h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+          <div><div class="cit-l" data-key="con_phone_label">Phone</div><a class="cit-v" id="c-phone" href="#">—</a></div></div>
+        <div class="cit"><div class="cit-i"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>
+          <div><div class="cit-l" data-key="con_linkedin_label">LinkedIn</div><a class="cit-v" id="c-li2" href="#" target="_blank">—</a></div></div>
+        <div class="cit"><div class="cit-i"><svg viewBox="0 0 24 24"><path d="M21 2H3v16h5v4l4-4h5l4-4V2zM11 11V7m4 4V7"/></svg></div>
+          <div><div class="cit-l" data-key="con_freelance_label">Freelance</div><a class="cit-v" id="c-fr" href="#" target="_blank">Bionluk</a></div></div>
+      </div>
+      <div class="cf">
+        <div class="cft" data-key="con_form_title">Send a Message</div>
+        <p class="cfs" data-key="con_form_sub">Your message will be sent directly to my email inbox.</p>
+        <div id="cf-wrap">
+          <div class="fr2">
+            <div class="fld"><label class="flbl" data-key="con_form_name">Full Name</label><input class="finp" id="f-name" type="text" placeholder="Your name"/></div>
+            <div class="fld"><label class="flbl" data-key="con_form_email">Email</label><input class="finp" id="f-email" type="email" placeholder="your@email.com"/></div>
+          </div>
+          <div class="fld"><label class="flbl" data-key="con_form_subject">Subject</label><input class="finp" id="f-subj" type="text" placeholder="What's this about?"/></div>
+          <div class="fld"><label class="flbl" data-key="con_form_message">Message</label><textarea class="finp" id="f-msg" rows="5" placeholder="Write your message here..."></textarea></div>
+          <div id="f-err" style="font-size:.71rem;color:#c0392b;margin-bottom:8px;display:none"></div>
+          <button class="fsub" onclick="sendMsg()" data-key="con_form_btn">Send Message</button>
+        </div>
+        <div class="fsucc" id="f-succ">
+          <div class="fsucc-i"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div class="fsucc-m" data-key="con_success_msg">Message Sent!</div>
+          <div class="fsucc-s" data-key="con_success_sub">Thank you, I'll get back to you soon.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pf"><span class="pfl" data-key="footer_email_label">E-Mail</span><a class="pfe site-email" href="#">eren.akcamm@gmail.com</a></div>
+  <div class="pft">bottom of page</div>
+</div>
+<div class="lb" id="lb" onclick="closeLb()"><button class="lbx" onclick="closeLb()">×</button><img id="lb-img" src="" alt=""/></div>
+<script>
+var SK='erensite_data',TK='erensite_trans';
+/* DEFAULTS */
+var DEF={
+  siteName:"Eren Akçam",siteTitle:"Eren Akçam | Portfolio",
+  seoDesc:"Portfolio of Eren Akçam — Computer-Aided Machine Drawing student and freelance graphic designer.",
+  seoKeys:"portfolio, design, engineering, graphic design, CAD, SolidWorks",
+  favicon:"assets/favicon.png",
+  name:"Eren Akçam",role:"Student · Designer",
+  tag:"Portfolio · Design & Engineering",
+  herodesc:"Computer-Aided Machine Drawing student & freelance graphic designer since 2022.",
+  about:"Studying Computer-Aided Machine Drawing, combining technical precision with creative design.",
+  bio:"A young professional combining technical knowledge with creative design. Freelance graphic designer since 2022.",
+  email:"eren.akcamm@gmail.com",phone:"+90 500 000 00 00",
+  linkedin:"http://www.linkedin.com/in/eren-akcam-532108399",
+  freelance:"https://bionluk.com",
+  profilePhoto:"assets/profile.png",
+  colorGreen:"#7a9e6a",colorGreenDeep:"#4d7040",colorGreenLight:"#b8ceac",
+  colorBej:"#e9e5d6",colorBlack:"#1a1a14",
+  memory:{
+    experience:[
+      {title:"Freelance — Graphic Designer",company:"Bionluk Platform",location:"",date:"2022 — Today",logo:"https://static.wixstatic.com/media/76d601_e0294aa4c7e64d4db146dc241b3ed562~mv2.png/v1/fill/w_136,h_136,al_c,q_85,enc_avif,quality_auto/76d601_e0294aa4c7e64d4db146dc241b3ed562~mv2.png",desc:"Working as a freelance graphic designer on Bionluk since 2022, completing countless projects and gaining solid experience in customer communication and professional design."},
+      {title:"Erasmus+ Internship",company:"Weg Group — Machinery Department",location:"Germany / Balingen",date:"2025",logo:"https://static.wixstatic.com/media/76d601_015301348f584a19bf8261a04349e245~mv2.png/v1/fill/w_182,h_136,al_c,q_85,enc_avif,quality_auto/76d601_015301348f584a19bf8261a04349e245~mv2.png",desc:"Gained practical experience in manual and CNC lathe machining, surface grinding, drilling and precision measuring instruments. Observed German work discipline and improved intercultural communication skills."}
+    ],
+    education:[
+      {title:"KOSBİ Zülfü-Mevlüt Çelik Vocational High School",company:"Computer-Aided Machine Drawing — 11th Grade",location:"Türkiye — İzmir / Kemalpaşa",date:"2023 — 2027",logo:"https://static.wixstatic.com/media/76d601_aebd5e9f6c0f4f998f44ec51e680b9c7~mv2.png/v1/fill/w_334,h_251,al_c,q_85,enc_avif,quality_auto/76d601_aebd5e9f6c0f4f998f44ec51e680b9c7~mv2.png",desc:"Advanced skills in SolidWorks, AutoCAD, technical drawing and CNC machines form the technical foundation of all projects."}
+    ]
+  },
+  skills:{
+    mechanical:[{n:"Manual Lathe",l:"Advanced",w:92},{n:"Manual Milling Machine",l:"Advanced",w:92},{n:"CNC Milling Machine",l:"Intermediate",w:60},{n:"CNC Lathe",l:"Intermediate",w:60},{n:"Manufacturing Methods",l:"Advanced",w:90},{n:"Technical Drawing",l:"Advanced",w:95},{n:"AutoCAD 2D",l:"Advanced",w:90},{n:"SolidWorks",l:"Advanced",w:88}],
+    graphic:[{n:"Adobe Illustrator",l:"Intermediate",w:62},{n:"Canva",l:"Advanced",w:94},{n:"Adobe Photoshop",l:"Basic",w:28},{n:"Office Programmes",l:"Intermediate",w:58},{n:"Adobe Animate",l:"Basic",w:25}],
+    software:[{n:"Unity",l:"Intermediate",w:55},{n:"C# — Unity",l:"Intermediate",w:55},{n:"Python",l:"Basic",w:26}],
+    language:[{n:"Turkish",l:"Native",w:100},{n:"English",l:"B1",w:52},{n:"German",l:"A2",w:22}]
+  },
+  portfolio:[
+    {id:"graphic",tag:"Graphic Design",title:"Graphic Design",cover:"",projects:[
+      {id:"g1",title:"Logo Design Collection",cover:"",subtitle:"2022–2024 · Bionluk",featured:false,status:"done",client:"Various Clients",date:"2022-2024",tags:["logo","branding","identity"],blocks:[{type:"desc",content:"A collection of logo design projects completed for various clients on Bionluk."}]},
+      {id:"g2",title:"Social Media Visuals",cover:"",subtitle:"2023 · Canva / Illustrator",featured:false,status:"done",client:"",date:"2023",tags:["social","canva"],blocks:[{type:"desc",content:"Social media content creation for multiple brands."}]}
+    ]},
+    {id:"cad",tag:"CAD & Engineering",title:"CAD & Engineering",cover:"",projects:[
+      {id:"c1",title:"SolidWorks 3D Models",cover:"",subtitle:"2023–2024 · SolidWorks",featured:false,status:"done",client:"",date:"2023-2024",tags:["CAD","3D","solidworks"],blocks:[{type:"desc",content:"3D mechanical part models created in SolidWorks."}]},
+      {id:"c2",title:"AutoCAD Technical Drawings",cover:"",subtitle:"2023–2024 · AutoCAD 2D",featured:false,status:"done",client:"",date:"2023-2024",tags:["CAD","2D","autocad"],blocks:[{type:"desc",content:"2D technical drawings following industry-standard conventions."}]}
+    ]},
+    {id:"dev",tag:"Software & Game Dev",title:"Game Development",cover:"",projects:[
+      {id:"d1",title:"Unity Game Project",cover:"",subtitle:"2024 · Unity / C#",featured:false,status:"done",client:"",date:"2024",tags:["unity","game","C#"],blocks:[{type:"desc",content:"A small game developed in Unity using C#."}]}
+    ]}
+  ],
+  certs:{
+    edu:[
+      {src:"https://static.wixstatic.com/media/76d601_b4395b6673bf4265afb7c3d59d95fc38~mv2.jpg/v1/fill/w_522,h_368,q_75,enc_avif,quality_auto/76d601_b4395b6673bf4265afb7c3d59d95fc38~mv2.jpg",name:"Education Certificate 1"},
+      {src:"https://static.wixstatic.com/media/76d601_b93d17d898464826ba5c8d2807177c3f~mv2.jpg/v1/fill/w_522,h_368,q_75,enc_avif,quality_auto/76d601_b93d17d898464826ba5c8d2807177c3f~mv2.jpg",name:"Education Certificate 2"},
+      {src:"https://static.wixstatic.com/media/76d601_6f68cf326b0b4e72ae99df1e8861920a~mv2.jpg/v1/fill/w_522,h_368,q_75,enc_avif,quality_auto/76d601_6f68cf326b0b4e72ae99df1e8861920a~mv2.jpg",name:"Education Certificate 3"},
+      {src:"https://static.wixstatic.com/media/76d601_f8666bb5f2bb4d6abe907d1fdf7a02aa~mv2.jpg/v1/fill/w_522,h_368,q_75,enc_avif,quality_auto/76d601_f8666bb5f2bb4d6abe907d1fdf7a02aa~mv2.jpg",name:"Education Certificate 4"},
+      {src:"https://static.wixstatic.com/media/76d601_295e7914fbad4b99b7e6d6064d370fa5~mv2.jpg/v1/fill/w_522,h_368,q_75,enc_avif,quality_auto/76d601_295e7914fbad4b99b7e6d6064d370fa5~mv2.jpg",name:"Education Certificate 5"},
+      {src:"https://static.wixstatic.com/media/76d601_27514a571b6749c1bbea4dd5adb4f8ad~mv2.png/v1/fill/w_522,h_368,q_75,enc_avif,quality_auto/76d601_27514a571b6749c1bbea4dd5adb4f8ad~mv2.png",name:"Education Certificate 6"},
+      {src:"https://static.wixstatic.com/media/76d601_0e556969989745b3bdf3e0ebe089c483~mv2.png/v1/fill/w_522,h_368,q_75,enc_avif,quality_auto/76d601_0e556969989745b3bdf3e0ebe089c483~mv2.png",name:"Education Certificate 7"},
+      {src:"https://static.wixstatic.com/media/76d601_41be7b61767b409e8da811d04c51497f~mv2.jpg/v1/fill/w_522,h_368,q_75,enc_avif,quality_auto/76d601_41be7b61767b409e8da811d04c51497f~mv2.jpg",name:"Education Certificate 8"},
+      {src:"https://static.wixstatic.com/media/76d601_be5d43074b2b426596db8c50dea88249~mv2.jpg/v1/fill/w_522,h_368,q_75,enc_avif,quality_auto/76d601_be5d43074b2b426596db8c50dea88249~mv2.jpg",name:"Education Certificate 9"},
+      {src:"https://static.wixstatic.com/media/76d601_16f8d188e8b64462bad00a141abe065e~mv2.jpg/v1/fill/w_522,h_368,q_75,enc_avif,quality_auto/76d601_16f8d188e8b64462bad00a141abe065e~mv2.jpg",name:"Education Certificate 10"}
+    ],
+    lang:[
+      {src:"https://static.wixstatic.com/media/76d601_7700bd82090049d8bbf8b2188f8ee43b~mv2.jpg/v1/fill/w_522,h_368,q_75,enc_avif,quality_auto/76d601_7700bd82090049d8bbf8b2188f8ee43b~mv2.jpg",name:"Language Certificate 1"},
+      {src:"https://static.wixstatic.com/media/76d601_8881d3d8807c40a38fca73222be0eb7a~mv2.jpg/v1/fill/w_522,h_368,q_75,enc_avif,quality_auto/76d601_8881d3d8807c40a38fca73222be0eb7a~mv2.jpg",name:"Language Certificate 2"}
+    ]
+  }
+};
+var TDF={en:{nav_profile:"PROFILE",nav_memory:"MEMORY",nav_skills:"SKILLS",nav_portfolio:"PORTFOLIO",nav_certs:"CERTIFICATES",nav_contact:"CONTACT",hero_tag:"Portfolio · Design & Engineering",hero_role:"Computer-Aided Machine Drawing student & freelance graphic designer since 2022.",btn_story:"My Story",btn_skills:"View Skills",strip_about_label:"About Me",strip_about_title:"Student & Designer",strip_about_body:"Studying Computer-Aided Machine Drawing.",strip_bio_label:"Bio",strip_bio_body:"A young professional combining technical knowledge with creative design.",strip_contact_label:"Contact",strip_contact_title:"Get in Touch",footer_email_label:"E-Mail",mem_sub:"Experience & Education",mem_exp:"Experience",mem_edu:"Education",sk_sub:"Technical & Creative Expertise",sk_mechanical:"Mechanical",sk_graphic:"Graphic Design",sk_software:"Software",sk_language:"Language",prt_sub:"Creative & Technical Projects",btn_back:"Back",cer_sub:"Achievements & Credentials",cer_edu:"Education",cer_lang:"Language",con_sub:"Get in Touch",con_title:"Let's Talk",con_subtitle:"Feel free to reach out for collaborations.",con_email_label:"E-Mail",con_phone_label:"Phone",con_linkedin_label:"LinkedIn",con_freelance_label:"Freelance",con_form_title:"Send a Message",con_form_sub:"Your message will be sent directly to my inbox.",con_form_name:"Full Name",con_form_email:"Email",con_form_subject:"Subject",con_form_message:"Message",con_form_btn:"Send Message",con_success_msg:"Message Sent!",con_success_sub:"Thank you, I'll get back to you soon."},tr:{nav_profile:"PROFİL",nav_memory:"DENEYİM",nav_skills:"YETENEKLERİM",nav_portfolio:"PORTFÖY",nav_certs:"SERTİFİKALAR",nav_contact:"İLETİŞİM",hero_tag:"Portföy · Tasarım & Mühendislik",hero_role:"Bilgisayar Destekli Makine Çizimi öğrencisi ve 2022'den bu yana serbest grafik tasarımcı.",btn_story:"Hikayem",btn_skills:"Yeteneklerimi Gör",strip_about_label:"Hakkımda",strip_about_title:"Öğrenci & Tasarımcı",strip_about_body:"Teknik hassasiyeti yaratıcı tasarımla buluşturarak Bilgisayar Destekli Makine Çizimi okuyorum.",strip_bio_label:"Biyografi",strip_bio_body:"Teknik bilgiyi yaratıcı tasarımla birleştiren genç bir profesyonelin portföyü.",strip_contact_label:"İletişim",strip_contact_title:"İletişime Geç",footer_email_label:"E-Posta",mem_sub:"Deneyim & Eğitim",mem_exp:"Deneyim",mem_edu:"Eğitim",sk_sub:"Teknik & Yaratıcı Uzmanlık",sk_mechanical:"Mekanik",sk_graphic:"Grafik Tasarım",sk_software:"Yazılım",sk_language:"Dil",prt_sub:"Yaratıcı & Teknik Projeler",btn_back:"Geri",cer_sub:"Başarılar & Belgeler",cer_edu:"Eğitim",cer_lang:"Dil",con_sub:"İletişime Geç",con_title:"Konuşalım",con_subtitle:"İş birlikleri veya merhaba demek için yazabilirsin.",con_email_label:"E-Posta",con_phone_label:"Telefon",con_linkedin_label:"LinkedIn",con_freelance_label:"Serbest Çalışma",con_form_title:"Mesaj Gönder",con_form_sub:"Mesajın doğrudan e-posta kutuma iletilecek.",con_form_name:"Ad Soyad",con_form_email:"E-Posta",con_form_subject:"Konu",con_form_message:"Mesaj",con_form_btn:"Mesaj Gönder",con_success_msg:"Mesaj Gönderildi!",con_success_sub:"Teşekkürler, en kısa sürede döneceğim."},de:{nav_profile:"PROFIL",nav_memory:"ERFAHRUNG",nav_skills:"FÄHIGKEITEN",nav_portfolio:"PORTFOLIO",nav_certs:"ZERTIFIKATE",nav_contact:"KONTAKT",hero_tag:"Portfolio · Design & Ingenieurwesen",hero_role:"Student für CAD-Maschinenzeichnung und freiberuflicher Grafikdesigner seit 2022.",btn_story:"Meine Geschichte",btn_skills:"Fähigkeiten",strip_about_label:"Über mich",strip_about_title:"Student & Designer",strip_about_body:"Ich studiere CAD-Maschinenzeichnung.",strip_bio_label:"Biografie",strip_bio_body:"Ein junger Fachmann, der technisches Wissen mit kreativem Design verbindet.",strip_contact_label:"Kontakt",strip_contact_title:"In Kontakt treten",footer_email_label:"E-Mail",mem_sub:"Erfahrung & Ausbildung",mem_exp:"Erfahrung",mem_edu:"Ausbildung",sk_sub:"Technische & kreative Expertise",sk_mechanical:"Mechanisch",sk_graphic:"Grafikdesign",sk_software:"Software",sk_language:"Sprache",prt_sub:"Kreative & technische Projekte",btn_back:"Zurück",cer_sub:"Leistungen & Nachweise",cer_edu:"Ausbildung",cer_lang:"Sprache",con_sub:"In Kontakt treten",con_title:"Lass uns reden",con_subtitle:"Schreib mir für Zusammenarbeit oder ein Hallo.",con_email_label:"E-Mail",con_phone_label:"Telefon",con_linkedin_label:"LinkedIn",con_freelance_label:"Freiberuflich",con_form_title:"Nachricht senden",con_form_sub:"Deine Nachricht wird direkt an mich gesendet.",con_form_name:"Vollständiger Name",con_form_email:"E-Mail",con_form_subject:"Betreff",con_form_message:"Nachricht",con_form_btn:"Nachricht senden",con_success_msg:"Nachricht gesendet!",con_success_sub:"Danke, ich melde mich bald."}};
+
+/* ── Load/Save ── */
+function lSD(){
+  try{
+    var s=localStorage.getItem(SK);
+    if(!s)return clone(DEF);
+    if(s.length>300000){localStorage.removeItem(SK);return clone(DEF);}
+    var d=JSON.parse(s);
+    stripB64(d);
+    mergeDefaults(d,DEF);
+    return d;
+  }catch(e){localStorage.removeItem(SK);return clone(DEF);}
+}
+function lST(){try{var s=localStorage.getItem(TK);return s?JSON.parse(s):clone(TDF);}catch(e){return clone(TDF);}}
+function clone(o){return JSON.parse(JSON.stringify(o));}
+function stripB64(obj){if(!obj||typeof obj!=='object')return;Object.keys(obj).forEach(function(k){if(typeof obj[k]==='string'&&obj[k].startsWith('data:'))obj[k]='';else stripB64(obj[k]);});}
+function mergeDefaults(d,def){Object.keys(def).forEach(function(k){if(d[k]===undefined||d[k]===null)d[k]=clone(def[k]);});}
+
+var SD=lSD(),ST=lST(),cLang='en',cIdx={edu:0,lang:0};
+
+/* ── Apply theme colors ── */
+function applyTheme(){
+  try{
+    var m={'--g':'colorGreen','--gd':'colorGreenDeep','--gl':'colorGreenLight','--bej':'colorBej','--blk':'colorBlack'};
+    Object.keys(m).forEach(function(v){if(SD[m[v]])document.documentElement.style.setProperty(v,SD[m[v]]);});
+  }catch(e){}
+}
+
+/* ── Apply data to DOM ── */
+function applyData(){
+  try{
+    applyTheme();
+    var d=SD;
+    // SEO & title
+    try{document.getElementById('page-title').textContent=d.siteTitle||d.siteName+' | Portfolio';}catch(e){}
+    try{document.getElementById('meta-desc').content=d.seoDesc||'';}catch(e){}
+    try{document.getElementById('meta-keys').content=d.seoKeys||'';}catch(e){}
+    // Nav brand
+    var nb=document.getElementById('site-nav-brand');
+    if(nb)nb.textContent=d.siteName||d.name||'Eren Akçam';
+    // Name & role
+    var sn=document.getElementById('s-name');
+    if(sn){var nm=d.name||'Eren Akçam';sn.innerHTML=nm.indexOf(' ')>-1?nm.replace(' ','<br>'):nm;}
+    document.getElementById('s-namelab').textContent=d.name||'Eren Akçam';
+    document.getElementById('s-rolelab').textContent=d.role||'Student · Designer';
+    // Profile photo
+    var ph=document.getElementById('s-photo');
+    if(ph&&d.profilePhoto&&d.profilePhoto!==ph.getAttribute('src')){
+      ph.src=d.profilePhoto+'?v='+Date.now(); // cache-bust
+    }
+    // Hero texts
+    var ht=document.getElementById('hero-tag');if(ht)ht.textContent=d.tag||'';
+    var hd=document.getElementById('hero-desc');if(hd)hd.textContent=d.herodesc||'';
+    var at=document.getElementById('about-text');if(at)at.textContent=d.about||'';
+    var bt=document.getElementById('bio-text');if(bt)bt.textContent=d.bio||'';
+    // Email everywhere
+    var em=d.email||'eren.akcamm@gmail.com';
+    document.querySelectorAll('.site-email').forEach(function(el){el.textContent=em;el.href='mailto:'+em;});
+    // Social links
+    document.getElementById('s-li').href=d.linkedin||'#';
+    document.getElementById('s-lil').href=d.linkedin||'#';
+    document.getElementById('s-lil').textContent='LinkedIn →';
+    document.getElementById('s-eml').textContent=em;
+    document.getElementById('s-eml').href='mailto:'+em;
+    document.getElementById('s-em').href='mailto:'+em;
+    // Contact page
+    var ce=document.getElementById('c-email');if(ce){ce.textContent=em;ce.href='mailto:'+em;}
+    var cp=document.getElementById('c-phone');if(cp){cp.textContent=d.phone||'';cp.href='tel:'+(d.phone||'').replace(/\s/g,'');}
+    var cl=document.getElementById('c-li2');if(cl){cl.textContent=(d.linkedin||'').replace(/https?:\/\//,'');cl.href=d.linkedin||'#';}
+    var cf=document.getElementById('c-fr');if(cf)cf.href=d.freelance||'#';
+    // Render dynamic sections
+    renderMemory();
+    renderSkills();
+    renderSlider('edu');
+    renderSlider('lang');
+    showCats();
+  }catch(ex){console.warn('applyData:',ex);}
+}
+
+/* ── Memory ── */
+function renderMemory(){
+  var el=document.getElementById('memory-body');if(!el)return;
+  var mem=SD.memory||DEF.memory;var h='';
+  if(mem.experience&&mem.experience.length){
+    h+='<div class="tlh" data-key="mem_exp">Experience</div>';
+    mem.experience.forEach(function(e){h+=memItem(e);});
+  }
+  if(mem.education&&mem.education.length){
+    h+='<div class="tlh" data-key="mem_edu">Education</div>';
+    mem.education.forEach(function(e){h+=memItem(e);});
+  }
+  el.innerHTML=h;
+  // re-apply lang
+  var T=ST[cLang]||TDF[cLang]||TDF.en;
+  el.querySelectorAll('[data-key]').forEach(function(x){var k=x.getAttribute('data-key');if(T[k])x.innerHTML=T[k];});
+}
+function memItem(e){
+  return '<div class="tli">'+
+    '<div class="tll"><div class="tld">'+esc(e.date)+'</div>'+
+    (e.logo?'<img class="tlg" src="'+esc(e.logo)+'" alt="" onerror="this.style.display=\'none\'"/>':'')+
+    '</div><div class="tlr">'+
+    '<div class="tlt">'+esc(e.title)+'</div>'+
+    (e.company?'<div class="tls">'+esc(e.company)+'</div>':'')+
+    (e.location?'<div class="tlc">'+esc(e.location)+'</div>':'')+
+    '<p class="tlp">'+esc(e.desc)+'</p>'+
+    '</div></div>';
+}
+
+/* ── Skills ── */
+var BM={Advanced:'ba',Intermediate:'bi',Basic:'bb',Native:'bn',B1:'bi',B2:'bi',A1:'bb',A2:'bb',C1:'ba',C2:'bn'};
+function renderSkills(){
+  ['mechanical','graphic','software','language'].forEach(function(c){
+    var el=document.getElementById('sk-'+c);if(!el)return;el.innerHTML='';
+    (SD.skills[c]||[]).forEach(function(s){
+      var d=document.createElement('div');d.className='skc';
+      d.innerHTML='<div class="skt"><span class="skn">'+esc(s.n)+'</span><span class="skb '+(BM[s.l]||'bi')+'">'+s.l+'</span></div>'+
+        '<div class="sbt"><div class="sbf" data-w="'+s.w+'" style="width:0%"></div></div>';
+      el.appendChild(d);
+    });
+  });
+}
+
+/* ── Certs ── */
+function renderSlider(k){
+  var items=(SD.certs&&SD.certs[k])||[];if(!items.length)return;
+  var idx=cIdx[k]||0;if(idx>=items.length)idx=0;cIdx[k]=idx;
+  var cur=items[idx];
+  var img=document.getElementById('cv-'+k+'-img');if(img){img.src=cur.src;img.alt=cur.name;}
+  var nm=document.getElementById('cv-'+k+'-nm');if(nm)nm.textContent=cur.name;
+  var co=document.getElementById('cv-'+k+'-co');if(co)co.textContent=(idx+1)+'/'+items.length;
+  var el=document.getElementById('cv-'+k+'-dots');if(!el)return;el.innerHTML='';
+  items.forEach(function(it,i){var b=document.createElement('button');b.className='cd'+(i===idx?' on':'');b.setAttribute('dk',k);b.setAttribute('di',i);b.onclick=function(){cIdx[this.getAttribute('dk')]=parseInt(this.getAttribute('di'));renderSlider(this.getAttribute('dk'));};el.appendChild(b);});
+}
+function cPrev(k){var l=(SD.certs[k]||[]).length;if(!l)return;cIdx[k]=(cIdx[k]-1+l)%l;renderSlider(k);}
+function cNext(k){var l=(SD.certs[k]||[]).length;if(!l)return;cIdx[k]=(cIdx[k]+1)%l;renderSlider(k);}
+
+/* ── Portfolio ── */
+var FSVG='<svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="var(--gd)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6a2 2 0 012-2h4l2 3h10a2 2 0 012 2v9a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"/></svg>';
+function showCats(){
+  document.getElementById('v-cats').style.display='';document.getElementById('v-projs').style.display='none';document.getElementById('v-detail').style.display='none';
+  var g=document.getElementById('cat-grid');g.innerHTML='';
+  (SD.portfolio||[]).forEach(function(cat){
+    var c=document.createElement('div');c.className='cc';c.onclick=function(){showProjs(cat.id);};
+    var cov=cat.cover?'<img class="ccv" src="'+esc(cat.cover)+'" alt=""/>':'<div class="ccp">'+FSVG+'</div>';
+    c.innerHTML=cov+'<div class="cci"><div class="cctg">'+esc(cat.tag)+'</div><div class="cct">'+esc(cat.title)+'</div>'+
+      '<span class="ccc"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 6a2 2 0 012-2h4l2 3h10a2 2 0 012 2v9a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"/></svg> '+cat.projects.length+' Project'+(cat.projects.length!==1?'s':'')+'</span></div>';
+    g.appendChild(c);
+  });
+}
+function showProjs(catId){
+  var cat=(SD.portfolio||[]).find(function(c){return c.id===catId;});if(!cat)return;
+  document.getElementById('v-cats').style.display='none';document.getElementById('v-projs').style.display='';document.getElementById('v-detail').style.display='none';
+  document.getElementById('prt-h').textContent=cat.title;
+  var g=document.getElementById('proj-grid');g.innerHTML='';
+  cat.projects.forEach(function(p){
+    var c=document.createElement('div');c.className='pj';c.onclick=function(){showDetail(catId,p.id);};
+    var cov=p.cover?'<img class="pjv" src="'+esc(p.cover)+'" alt=""/>':'<div class="pjp"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="var(--gd)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 21V9"/></svg></div>';
+    var feat=p.featured?'<span style="position:absolute;top:8px;left:8px;background:var(--g);color:var(--bl);font-size:.5rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;border-radius:20px">★ Featured</span>':'';
+    c.innerHTML='<div style="position:relative">'+cov+feat+'</div><div class="pji"><div class="pjt">'+esc(p.title)+'</div><div class="pjs">'+esc(p.subtitle)+'</div></div>';
+    g.appendChild(c);
+  });
+  window.scrollTo(0,0);
+}
+function showDetail(catId,projId){
+  var cat=(SD.portfolio||[]).find(function(c){return c.id===catId;});
+  var proj=cat&&cat.projects.find(function(p){return p.id===projId;});if(!proj)return;
+  document.getElementById('v-cats').style.display='none';document.getElementById('v-projs').style.display='none';document.getElementById('v-detail').style.display='';
+  document.getElementById('d-back-lbl').textContent='Back to '+cat.title;
+  document.getElementById('d-back').onclick=function(){showProjs(catId);};
+  // Build detail header
+  var badges='';
+  if(proj.featured)badges+='<span class="pd-badge featured">★ Featured</span>';
+  if(proj.status)badges+='<span class="pd-badge status-'+proj.status+'">'+proj.status+'</span>';
+  (proj.tags||[]).forEach(function(t){badges+='<span class="pd-badge tag">'+esc(t)+'</span>';});
+  var meta='';
+  if(proj.date)meta+='<span><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>'+esc(proj.date)+'</span>';
+  if(proj.client)meta+='<span><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>'+esc(proj.client)+'</span>';
+  meta+='<span><svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>'+esc(cat.tag)+'</span>';
+  var h='<div class="pd-head">'+
+    (badges?'<div class="pd-badges">'+badges+'</div>':'')+
+    '<div class="pd-title">'+esc(proj.title)+'</div>'+
+    '<div style="font-size:.73rem;color:var(--mu)">'+esc(proj.subtitle)+'</div>'+
+    (meta?'<div class="pd-meta">'+meta+'</div>':'')+
+  '</div>';
+  // Blocks
+  (proj.blocks||[]).forEach(function(b){
+    var icon='',label='';
+    if(b.type==='desc'){icon='<svg viewBox="0 0 24 24"><line x1="17" y1="10" x2="3" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/><line x1="17" y1="18" x2="3" y2="18"/></svg>';label='Description';
+      h+='<div class="blk"><div class="blbl">'+icon+' '+label+'</div><p class="bdsc">'+esc(b.content)+'</p></div>';}
+    else if(b.type==='images'&&b.items&&b.items.length){icon='<svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>';label='Images';
+      h+='<div class="blk"><div class="blbl">'+icon+' '+label+'</div><div class="bimg">';
+      b.items.forEach(function(u){h+='<img src="'+esc(u)+'" alt="" onclick="openLb(this.src)" onerror="this.style.opacity=.3"/>';});
+      h+='</div></div>';}
+    else if(b.type==='video'&&b.url){icon='<svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>';label='Video';
+      h+='<div class="blk"><div class="blbl">'+icon+' '+label+'</div><video class="bvid" controls src="'+esc(b.url)+'"></video></div>';}
+    else if(b.type==='embed'&&b.url){icon='<svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>';label='Embed (YouTube/Vimeo)';
+      var embedSrc=b.url.replace('watch?v=','embed/').replace('youtu.be/','youtube.com/embed/').replace('vimeo.com/','player.vimeo.com/video/');
+      h+='<div class="blk"><div class="blbl">'+icon+' '+label+'</div><div class="embed-wrap"><iframe src="'+esc(embedSrc)+'" allowfullscreen></iframe></div></div>';}
+    else if(b.type==='audio'&&b.items&&b.items.length){icon='<svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>';label='Audio';
+      h+='<div class="blk"><div class="blbl">'+icon+' '+label+'</div>';
+      b.items.forEach(function(u){h+='<audio class="baud" controls src="'+esc(u)+'"></audio>';});
+      h+='</div>';}
+    else if(b.type==='links'&&b.items&&b.items.length){icon='<svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>';label='Links';
+      h+='<div class="blk"><div class="blbl">'+icon+' '+label+'</div>';
+      b.items.forEach(function(l){h+='<a class="blnk" href="'+esc(l.url)+'" target="_blank"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>'+esc(l.label)+'</a>';});
+      h+='</div>';}
+    else if(b.type==='docs'&&b.items&&b.items.length){icon='<svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>';label='Files & Documents';
+      h+='<div class="blk"><div class="blbl">'+icon+' '+label+'</div>';
+      b.items.forEach(function(d){h+='<a class="bdoc" href="'+esc(d.url||'#')+'" target="_blank">'+
+        '<div class="bdoc-i"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>'+
+        '<div><div class="bdoc-n">'+esc(d.name)+'</div><div class="bdoc-s">'+(d.size?esc(d.size):'')+'</div></div></a>';});
+      h+='</div>';}
+  });
+  document.getElementById('d-content').innerHTML=h;window.scrollTo(0,0);
+}
+
+/* ── Language ── */
+function toggleLD(){document.getElementById('ldd').classList.toggle('open');}
+document.addEventListener('click',function(e){if(!e.target.closest('.lsw'))document.getElementById('ldd').classList.remove('open');});
+function setLang(lang,el){
+  cLang=lang;
+  document.getElementById('ll').textContent=lang.toUpperCase();
+  document.querySelectorAll('.lo').forEach(function(o){o.classList.remove('on');});if(el)el.classList.add('on');
+  document.getElementById('ldd').classList.remove('open');
+  var T=ST[lang]||TDF[lang]||TDF.en;
+  document.querySelectorAll('[data-key]').forEach(function(e){var k=e.getAttribute('data-key');if(T[k]!==undefined)e.innerHTML=T[k];});
+  // Re-render dynamic memory (it has data-key elements)
+  renderMemory();
+}
+
+/* ── Page nav ── */
+var PAGES=['pp','mem','sk','prt','cer','con'];
+function go(id){
+  PAGES.forEach(function(p){var e=document.getElementById(p);if(e)e.classList.remove('on');});
+  document.querySelectorAll('.nm a').forEach(function(a){a.classList.remove('on');});
+  var pg=document.getElementById(id);if(pg)pg.classList.add('on');
+  var nv=document.getElementById('n-'+id);if(nv)nv.classList.add('on');
+  window.scrollTo(0,0);
+  if(id==='cer'){renderSlider('edu');renderSlider('lang');}
+  if(id==='sk')setTimeout(animateBars,80);
+  if(id==='prt')showCats();
+}
+function animateBars(){document.querySelectorAll('.sbf').forEach(function(b){var w=b.getAttribute('data-w')+'%';b.style.width='0%';setTimeout(function(){b.style.width=w;},60);});}
+
+/* ── Contact form ── */
+function sendMsg(){
+  var name=document.getElementById('f-name').value.trim(),email=document.getElementById('f-email').value.trim(),subj=document.getElementById('f-subj').value.trim(),msg=document.getElementById('f-msg').value.trim(),err=document.getElementById('f-err');
+  if(!name||!email||!msg){err.textContent='Please fill Name, Email and Message.';err.style.display='block';return;}
+  if(!/^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/.test(email)){err.textContent='Invalid email.';err.style.display='block';return;}
+  err.style.display='none';
+  window.location.href='mailto:'+(SD.email||'eren.akcamm@gmail.com')+'?subject='+encodeURIComponent((subj||'Portfolio Message')+' — from '+name)+'&body='+encodeURIComponent('Name: '+name+'\nEmail: '+email+'\n\n'+msg);
+  setTimeout(function(){document.getElementById('cf-wrap').style.display='none';document.getElementById('f-succ').style.display='block';},500);
+}
+
+/* ── Lightbox ── */
+function openLb(src){document.getElementById('lb-img').src=src;document.getElementById('lb').classList.add('on');}
+function closeLb(){document.getElementById('lb').classList.remove('on');}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLb();});
+
+/* ── Helper ── */
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+/* ── Storage event (admin changes) ── */
+window.addEventListener('storage',function(e){
+  if(e.key===SK){SD=lSD();applyData();setLang(cLang,document.querySelector('.lo.on'));}
+  if(e.key===TK){ST=lST();setLang(cLang,document.querySelector('.lo.on'));}
+});
+
+/* ── Init ── */
+applyData();
+</script>
+</body>
+</html>
