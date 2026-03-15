@@ -1,0 +1,1469 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Admin Paneli | Eren Akçam</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Barlow+Condensed:wght@300;400;600;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0d100b;--s1:rgba(255,255,255,.04);--br:rgba(255,255,255,.1);--bl:#f2efe3;--bd:#b8b09a;--mu:#606050;--g:#7a9e6a;--gl:#b8ceac;--gd:#4d7040;--red:#e74c3c;}
+html,body{min-height:100%;background:var(--bg);color:var(--bl);font-family:'Raleway',sans-serif;font-size:14px}
+/* HEADER */
+.hdr{background:rgba(255,255,255,.03);border-bottom:1px solid var(--br);padding:11px 22px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.logo{font-family:'Playfair Display',serif;font-style:italic;font-size:1rem;color:var(--gl)}
+.logo small{font-size:.56rem;font-style:normal;font-family:'Raleway',sans-serif;color:var(--mu);margin-left:8px;letter-spacing:.08em;text-transform:uppercase}
+.dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#2ecc71;margin-right:4px;animation:pu 2s infinite}
+@keyframes pu{0%,100%{opacity:1}50%{opacity:.3}}
+.hdr-r{display:flex;gap:6px}
+.hbtn{padding:6px 13px;border-radius:7px;font-size:.6rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;cursor:pointer;border:1px solid rgba(122,158,106,.3);background:rgba(122,158,106,.1);color:var(--gl);text-decoration:none;display:inline-flex;align-items:center}
+.hbtn:hover{background:rgba(122,158,106,.18)}
+.hbtn.red{border-color:rgba(231,76,60,.3);color:var(--red);background:rgba(231,76,60,.07)}
+/* TOAST */
+.toast{position:fixed;bottom:18px;right:18px;padding:10px 18px;border-radius:9px;font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;z-index:9999;display:none;box-shadow:0 4px 20px rgba(0,0,0,.4)}
+.toast.on{display:block;animation:tf .22s ease}
+@keyframes tf{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+.toast.ok{background:var(--gd);color:var(--bl)}
+.toast.err{background:var(--red);color:#fff}
+.toast.info{background:#1a2a3a;color:#7ec8e3;border:1px solid rgba(126,200,227,.2)}
+/* LAYOUT */
+.wrap{display:flex;min-height:calc(100vh - 50px)}
+.side{width:196px;flex-shrink:0;border-right:1px solid var(--br);padding:12px 0;overflow-y:auto}
+.sg{font-size:.45rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--mu);padding:14px 15px 4px;opacity:.7}
+.sn{display:flex;align-items:center;gap:7px;padding:8px 15px;font-size:.58rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--mu);cursor:pointer;transition:all .13s;border-left:3px solid transparent}
+.sn:hover{color:var(--bl);background:rgba(255,255,255,.04)}
+.sn.on{color:var(--gl);border-left-color:var(--gl);background:rgba(122,158,106,.06)}
+.sn svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.main{flex:1;padding:22px 26px;overflow-y:auto}
+/* SECTIONS — THE KEY FIX */
+.sec{display:none !important}
+.sec.on{display:block !important}
+.sec-t{font-family:'Playfair Display',serif;font-style:italic;font-size:1.2rem;color:var(--bl);margin-bottom:4px}
+.sec-s{font-size:.68rem;color:var(--mu);margin-bottom:16px;line-height:1.6}
+/* CARDS */
+.card{background:var(--s1);border:1px solid var(--br);border-radius:11px;padding:18px;margin-bottom:13px}
+.card-h{font-size:.54rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gl);margin-bottom:13px;display:flex;align-items:center;gap:6px}
+.card-h::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--gl);flex-shrink:0}
+.card-d{font-size:.68rem;color:var(--mu);margin-bottom:11px;line-height:1.6}
+/* FIELDS */
+.fl{margin-bottom:10px}
+.lb{display:block;font-size:.54rem;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--bd);margin-bottom:3px}
+.inp{width:100%;padding:7px 10px;border-radius:7px;border:1px solid var(--br);background:rgba(255,255,255,.06);font-family:'Raleway',sans-serif;font-size:.77rem;color:var(--bl);outline:none;resize:vertical;transition:border-color .13s}
+.inp:focus{border-color:var(--g)}
+.inp::placeholder{color:#252520}
+select.inp{cursor:pointer}
+.inp[type=color]{padding:2px 4px;height:32px;cursor:pointer}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px}
+/* BUTTONS */
+.sbtn{padding:8px 18px;border-radius:8px;background:var(--gd);color:var(--bl);border:none;font-family:'Raleway',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:background .17s,transform .12s}
+.sbtn:hover{background:var(--g);transform:translateY(-1px)}
+.sbtn.red{background:var(--red)}.sbtn.red:hover{background:#c0392b}
+.addbtn{display:inline-flex;align-items:center;gap:4px;padding:6px 11px;border-radius:6px;background:rgba(122,158,106,.1);border:1px solid rgba(122,158,106,.2);color:var(--gl);font-size:.56rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;margin-bottom:9px}
+.addbtn:hover{background:rgba(122,158,106,.17)}
+.delbtn{padding:4px 10px;border-radius:6px;background:rgba(231,76,60,.1);color:var(--red);border:1px solid rgba(231,76,60,.2);font-size:.55rem;font-weight:700;cursor:pointer}
+.delbtn:hover{background:rgba(231,76,60,.17)}
+.upbtn{cursor:pointer;padding:6px 10px;border-radius:6px;background:rgba(122,158,106,.1);border:1px solid rgba(122,158,106,.2);color:var(--gl);font-size:.54rem;font-weight:700;white-space:nowrap;letter-spacing:.07em;text-transform:uppercase}
+.upbtn:hover{background:rgba(122,158,106,.18)}
+.srow{display:flex;align-items:center;gap:10px;margin-top:5px;flex-wrap:wrap}
+/* COLLAPSIBLE BLOCKS */
+.ib{background:rgba(255,255,255,.03);border:1px solid var(--br);border-radius:9px;margin-bottom:6px;overflow:hidden}
+.ib-h{display:flex;align-items:center;justify-content:space-between;padding:9px 12px;cursor:pointer;user-select:none}
+.ib-h:hover{background:rgba(255,255,255,.03)}
+.ib-t{font-size:.73rem;font-weight:600;color:var(--bl);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.chev{font-size:.62rem;color:var(--mu);transition:transform .15s;flex-shrink:0;margin-left:6px}
+.chev.open{transform:rotate(180deg)}
+.ib-body{display:none;padding:12px;border-top:1px solid var(--br)}
+.ib-body.open{display:block}
+/* DROP ZONE */
+.drop{position:relative;padding:16px;border:2px dashed rgba(255,255,255,.13);border-radius:9px;text-align:center;cursor:pointer;transition:border-color .15s,background .15s;background:rgba(255,255,255,.02)}
+.drop:hover,.drop.drag{border-color:var(--g);background:rgba(122,158,106,.05)}
+.drop input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.drop-t{font-size:.67rem;color:var(--mu);line-height:1.6;pointer-events:none}
+.drop-t span{color:var(--gl);font-weight:700}
+/* ASSETS */
+.asset-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:7px;margin-top:5px}
+.aitem{background:rgba(255,255,255,.04);border:1px solid var(--br);border-radius:7px;overflow:hidden;position:relative;cursor:pointer;transition:border-color .14s}
+.aitem:hover{border-color:var(--g)}
+.aitem img{width:100%;aspect-ratio:1;object-fit:cover;display:block}
+.aitem-icon{width:100%;aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;background:rgba(255,255,255,.03)}
+.aitem-icon svg{width:22px;height:22px;fill:none;stroke:var(--mu);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.aitem-ext{font-size:.48rem;font-weight:700;color:var(--mu);letter-spacing:.06em;text-transform:uppercase}
+.aitem-name{font-size:.5rem;padding:3px 5px;color:var(--bd);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;background:rgba(0,0,0,.22)}
+.aitem-actions{position:absolute;top:0;left:0;right:0;background:rgba(8,10,6,.88);display:none;padding:4px;flex-direction:column;gap:3px}
+.aitem:hover .aitem-actions{display:flex}
+.aact{width:100%;padding:3px;border-radius:4px;font-size:.5rem;font-weight:700;text-align:center;cursor:pointer;border:none}
+.aact.copy{background:rgba(122,158,106,.3);color:var(--gl)}
+.aact.del{background:rgba(231,76,60,.3);color:var(--red)}
+/* COLORS */
+.colgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.colitem{display:flex;align-items:center;gap:7px}
+.colitem input[type=color]{width:34px;height:30px;border-radius:5px;padding:2px;cursor:pointer;border:1px solid var(--br);background:rgba(255,255,255,.06)}
+.colitem label{font-size:.62rem;color:var(--bd)}
+/* LANG TABS */
+.lt{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:12px}
+.ltb{padding:5px 11px;border-radius:6px;background:var(--s1);border:1px solid var(--br);color:var(--bd);cursor:pointer;font-size:.57rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase}
+.ltb.on{background:var(--gd);border-color:var(--gd);color:var(--bl)}
+/* TRANSLATE STATUS */
+.tr-st{font-size:.67rem;padding:7px 11px;border-radius:7px;margin-bottom:8px;display:none}
+.tr-st.on{display:block}
+.tr-st.run{background:rgba(44,62,80,.7);color:#3498db}
+.tr-st.done{background:rgba(46,204,113,.08);color:#2ecc71;border:1px solid rgba(46,204,113,.2)}
+.tr-st.fail{background:rgba(231,76,60,.08);color:var(--red)}
+/* STORAGE BAR */
+.stor-bar{width:100%;height:6px;background:rgba(255,255,255,.07);border-radius:3px;overflow:hidden;margin:5px 0}
+.stor-fill{height:100%;border-radius:3px;background:var(--gd);transition:width .35s,background .25s}
+/* DANGER */
+.danger-card{background:rgba(231,76,60,.06);border:1px solid rgba(231,76,60,.18);border-radius:11px;padding:18px;margin-bottom:13px}
+.danger-card .card-h{color:var(--red)}.danger-card .card-h::before{background:var(--red)}
+@media(max-width:700px){.side{display:none}.main{padding:15px 12px}.row2,.row3{grid-template-columns:1fr}.colgrid{grid-template-columns:1fr 1fr}}
+/* FONT THEME CARDS */
+.font-theme-card{background:rgba(255,255,255,.04);border:1.5px solid var(--br);border-radius:10px;padding:13px 15px;cursor:pointer;transition:border-color .15s,background .15s}
+.font-theme-card:hover{background:rgba(255,255,255,.07);border-color:rgba(122,158,106,.4)}
+.font-theme-card.on{border-color:var(--g);background:rgba(122,158,106,.08)}
+.ftheme-name{font-size:.52rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gl);margin-bottom:5px}
+.ftheme-preview{font-size:1.1rem;color:var(--bl);font-weight:700;margin-bottom:3px;line-height:1.2}
+.ftheme-body{font-size:.63rem;color:var(--mu)}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div class="logo">Admin Panel<small><span class="dot"></span>Eren Akçam Portfolio</small></div>
+  <div class="hdr-r">
+    <a class="hbtn" href="eren-akcam-portfoy.html" target="_blank">← View Site</a>
+    <button class="hbtn red" onclick="emergencyClear()">🗑 Clear Storage</button>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<div class="wrap">
+<!-- SIDEBAR -->
+<div class="side">
+  <div class="sg">Profile</div>
+  <div class="sn on" data-sec="general" onclick="sw('general')"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>General Info</div>
+  <div class="sn" data-sec="photo" onclick="sw('photo')"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Profile Photo</div>
+  <div class="sn" data-sec="contact" onclick="sw('contact')"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.4 1.18 2 2 0 012 .82h3a2 2 0 012 1.72 12.05 12.05 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.05 12.05 0 002.81.7A2 2 0 0122 16.92z"/></svg>Contact</div>
+  <div class="sg">Content</div>
+  <div class="sn" data-sec="memory" onclick="sw('memory')"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>Memory / CV</div>
+  <div class="sn" data-sec="skills" onclick="sw('skills')"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Skills</div>
+  <div class="sn" data-sec="portfolio" onclick="sw('portfolio')"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>Portfolio</div>
+  <div class="sn" data-sec="certs" onclick="sw('certs')"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>Certificates</div>
+  <div class="sg">Files</div>
+  <div class="sn" data-sec="assets" onclick="sw('assets')"><svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>Assets Folder</div>
+  <div class="sg">Appearance</div>
+  <div class="sn" data-sec="colors" onclick="sw('colors')"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a5 5 0 015 5c0 2.76-5 7-5 7S7 9.76 7 7a5 5 0 015-5z"/></svg>Colors &amp; Theme</div>
+  <div class="sn" data-sec="typography" onclick="sw('typography')"><svg viewBox="0 0 24 24"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>Typography</div>
+  <div class="sg">Site Settings</div>
+  <div class="sn" data-sec="texts" onclick="sw('texts')"><svg viewBox="0 0 24 24"><line x1="17" y1="10" x2="3" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/><line x1="17" y1="18" x2="3" y2="18"/></svg>Page Texts</div>
+  <div class="sn" data-sec="seo" onclick="sw('seo')"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>SEO &amp; Title</div>
+  <div class="sn" data-sec="backup" onclick="sw('backup')"><svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>Backup &amp; Reset</div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+<!-- GENERAL INFO -->
+<div class="sec on" id="sec-general">
+  <div class="sec-t">General Info</div><p class="sec-s">Name, title, hero texts and about section.</p>
+  <div class="card">
+    <div class="card-h">Identity</div>
+    <div class="row2">
+      <div class="fl"><label class="lb">Full Name</label><input class="inp" id="a-name" placeholder="Eren Akçam"/></div>
+      <div class="fl"><label class="lb">Title / Role</label><input class="inp" id="a-role" placeholder="Student · Designer"/></div>
+    </div>
+    <div class="fl"><label class="lb">Navbar Brand Name</label><input class="inp" id="a-sitename"/></div>
+    <div class="fl"><label class="lb">Hero Tag Text</label><input class="inp" id="a-tag"/></div>
+    <div class="fl"><label class="lb">Hero Description</label><textarea class="inp" id="a-herodesc" rows="2"></textarea></div>
+  </div>
+  <div class="card">
+    <div class="card-h">About Strip</div>
+    <div class="fl"><label class="lb">About Text</label><textarea class="inp" id="a-about" rows="2"></textarea></div>
+    <div class="fl"><label class="lb">Bio Text</label><textarea class="inp" id="a-bio" rows="3"></textarea></div>
+  </div>
+  <div class="srow"><button class="sbtn" onclick="saveGeneral()">Save General Info</button></div>
+</div>
+
+<!-- PROFILE PHOTO -->
+<div class="sec" id="sec-photo">
+  <div class="sec-t">Profile Photo</div>
+  <p class="sec-s">When you select a photo it is <strong>automatically saved to the assets/ folder</strong> (File System Access API). If not supported, a download starts — move the file to the assets/ folder.</p>
+  <div class="card">
+    <div class="card-h">Upload Photo</div>
+    <div style="display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:12px">
+      <div style="text-align:center">
+        <div style="width:80px;height:80px;border-radius:50%;overflow:hidden;border:2px solid var(--br);background:rgba(255,255,255,.05)">
+          <img id="photo-prev" src="assets/profile.png" style="width:100%;height:100%;object-fit:cover;object-position:top" onerror="this.style.opacity=.2"/>
+        </div>
+      </div>
+      <div style="flex:1;min-width:160px">
+        <div class="drop">
+          <input type="file" accept="image/*" onchange="handlePhotoUpload(this)"/>
+          <div class="drop-t">Drop photo or <span>browse</span><br/><span style="font-size:.55rem;color:#333">Saved as assets/profile.png</span></div>
+        </div>
+        <div id="photo-save-status" style="display:none;margin-top:7px;font-size:.64rem;padding:6px 9px;border-radius:6px;background:rgba(46,204,113,.08);color:#2ecc71;border:1px solid rgba(46,204,113,.2)"></div>
+      </div>
+    </div>
+    <div class="fl"><label class="lb">Or enter path/URL</label><input class="inp" id="a-photo-url" placeholder="assets/profile.png or https://..."/></div>
+  </div>
+  <div class="srow"><button class="sbtn" onclick="savePhoto()">Save &amp; Apply Photo</button></div>
+</div>
+
+<!-- CONTACT -->
+<div class="sec" id="sec-contact">
+  <div class="sec-t">Contact Info</div><p class="sec-s">Shown on the contact page and footer.</p>
+  <div class="card">
+    <div class="card-h">Contact Details</div>
+    <div class="row2">
+      <div class="fl"><label class="lb">E-Mail</label><input class="inp" id="a-email" type="email"/></div>
+      <div class="fl"><label class="lb">Phone</label><input class="inp" id="a-phone" placeholder="+90 500 000 00 00"/></div>
+    </div>
+    <div class="row2">
+      <div class="fl"><label class="lb">LinkedIn URL</label><input class="inp" id="a-linkedin"/></div>
+      <div class="fl"><label class="lb">Freelance URL</label><input class="inp" id="a-freelance"/></div>
+    </div>
+  </div>
+  <div class="srow"><button class="sbtn" onclick="saveContact()">Save Contact Info</button></div>
+</div>
+
+<!-- MEMORY / CV -->
+<div class="sec" id="sec-memory">
+  <div class="sec-t">Memory / CV</div><p class="sec-s">Edit experience and education entries here.</p>
+  <div class="card"><div class="card-h">Experience</div><div id="mem-exp-list"></div><button class="addbtn" onclick="addMemItem('experience')">+ Add Experience</button></div>
+  <div class="card"><div class="card-h">Education</div><div id="mem-edu-list"></div><button class="addbtn" onclick="addMemItem('education')">+ Add Education</button></div>
+  <div class="srow"><button class="sbtn" onclick="saveMemory()">Save Memory</button></div>
+</div>
+
+<!-- SKILLS -->
+<div class="sec" id="sec-skills">
+  <div class="sec-t">Skills</div><p class="sec-s">Manage skill categories and items. You can add new categories.</p>
+  <div class="card"><div class="card-h">Skill Categories</div><div id="skill-cats"></div><button class="addbtn" onclick="addSkillCat()">+ Add Category</button></div>
+  <div class="srow"><button class="sbtn" onclick="saveSkills()">Save Skills</button></div>
+</div>
+
+<!-- PORTFOLIO -->
+<div class="sec" id="sec-portfolio">
+  <div class="sec-t">Portfolio</div>
+  <p class="sec-s">Manage categories and projects. Add content blocks for each project: Description, Gallery, Video, Embed, Audio, Links, Files.</p>
+  <div class="card"><div class="card-h">Categories &amp; Projects</div><div id="port-cats"></div><button class="addbtn" onclick="addCat()">+ Add Category</button></div>
+  <div class="srow"><button class="sbtn" onclick="savePortfolio()">Save Portfolio</button></div>
+</div>
+
+<!-- CERTIFICATES -->
+<div class="sec" id="sec-certs">
+  <div class="sec-t">Certificates</div><p class="sec-s">Manage certificate categories and content. You can add new categories.</p>
+  <div class="card"><div class="card-h">Certificate Categories</div><div id="cert-cats"></div><button class="addbtn" onclick="addCertCat()">+ Add Category</button></div>
+  <div class="srow"><button class="sbtn" onclick="saveCerts()">Save Certificates</button></div>
+</div>
+
+<!-- ASSETS FOLDER -->
+<div class="sec" id="sec-assets">
+  <div class="sec-t">Assets Folder</div>
+  <p class="sec-s">Files are <strong>automatically saved to the assets/ folder</strong> when selected. If unsupported, they download — move them to the assets/ folder.</p>
+  <div class="card">
+    <div class="card-h">Upload Files</div>
+    <div class="drop">
+      <input type="file" multiple accept="image/*,video/*,audio/*,.pdf,.doc,.docx,.zip" onchange="handleAssetsUpload(this.files)"/>
+      <div class="drop-t">Drop files or <span>click to browse</span><br/><span style="font-size:.55rem;color:#333">Images, Video, Audio, PDF, Documents</span></div>
+    </div>
+    <div id="upload-prog" style="margin-top:7px;font-size:.65rem;display:none"></div>
+  </div>
+  <div class="card">
+    <div class="card-h">Saved Files <span id="assets-cnt" style="font-weight:300;color:var(--mu);font-size:.6rem;margin-left:6px"></span></div>
+    <div id="asset-grid"></div>
+  </div>
+</div>
+
+<!-- COLORS -->
+<div class="sec" id="sec-colors">
+  <div class="sec-t">Colors &amp; Theme</div><p class="sec-s">Customize the color palette.</p>
+  <div class="card"><div class="card-h">Color Palette</div><div class="colgrid" id="color-grid"></div></div>
+  <div class="card">
+    <div class="card-h">Preset Themes</div>
+    <div style="display:flex;gap:7px;flex-wrap:wrap">
+      <button class="addbtn" onclick="applyPreset('green')">🌿 Forest Green</button>
+      <button class="addbtn" onclick="applyPreset('ocean')">🌊 Ocean Blue</button>
+      <button class="addbtn" onclick="applyPreset('earth')">🏜 Earth Brown</button>
+      <button class="addbtn" onclick="applyPreset('night')">🌙 Deep Night</button>
+      <button class="addbtn" onclick="applyPreset('rose')">🌸 Rose Pink</button>
+      <button class="addbtn" onclick="applyPreset('slate')">🪨 Slate Blue</button>
+    </div>
+  </div>
+  <div class="srow"><button class="sbtn" onclick="saveColors()">Save Colors</button></div>
+</div>
+
+<!-- TYPOGRAPHY -->
+<div class="sec" id="sec-typography">
+  <div class="sec-t">Typography</div>
+  <p class="sec-s">Choose a font theme or fine-tune fonts, colors, and sizes individually. Changes apply to the live site instantly.</p>
+
+  <div class="card">
+    <div class="card-h">Font Themes</div>
+    <p class="card-d">Select a preset theme — all fonts on the site will update automatically.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px;margin-bottom:12px" id="font-theme-grid">
+      <div class="font-theme-card" data-theme="classic" onclick="selectFontTheme('classic')">
+        <div class="ftheme-name">Classic</div>
+        <div class="ftheme-preview" style="font-family:'Playfair Display',serif;font-style:italic">Heading</div>
+        <div class="ftheme-body">Raleway body text</div>
+      </div>
+      <div class="font-theme-card" data-theme="modern" onclick="selectFontTheme('modern')">
+        <div class="ftheme-name">Modern</div>
+        <div class="ftheme-preview" style="font-family:'Inter',sans-serif;font-weight:700">Heading</div>
+        <div class="ftheme-body">Inter body text</div>
+      </div>
+      <div class="font-theme-card" data-theme="elegant" onclick="selectFontTheme('elegant')">
+        <div class="ftheme-name">Elegant</div>
+        <div class="ftheme-preview" style="font-family:'Georgia',serif;font-style:italic">Heading</div>
+        <div class="ftheme-body">Georgia body text</div>
+      </div>
+      <div class="font-theme-card" data-theme="minimal" onclick="selectFontTheme('minimal')">
+        <div class="ftheme-name">Minimal</div>
+        <div class="ftheme-preview" style="font-family:'DM Sans',sans-serif;font-weight:700">Heading</div>
+        <div class="ftheme-body">DM Sans body text</div>
+      </div>
+      <div class="font-theme-card" data-theme="technical" onclick="selectFontTheme('technical')">
+        <div class="ftheme-name">Technical</div>
+        <div class="ftheme-preview" style="font-family:'IBM Plex Serif',serif;font-weight:700">Heading</div>
+        <div class="ftheme-body">IBM Plex Sans body</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-h">Custom Font Overrides</div>
+    <p class="card-d">Override individual fonts. Use Google Fonts names, e.g. <span style="color:var(--gl)">'Roboto', sans-serif</span></p>
+    <div class="row2">
+      <div class="fl"><label class="lb">Heading Font</label><input class="inp" id="fc-headingFont" placeholder="e.g. 'Playfair Display', serif"/></div>
+      <div class="fl"><label class="lb">Body Font</label><input class="inp" id="fc-bodyFont" placeholder="e.g. 'Raleway', sans-serif"/></div>
+    </div>
+    <div class="fl"><label class="lb">Mono / Accent Font</label><input class="inp" id="fc-monoFont" placeholder="e.g. 'Barlow Condensed', sans-serif"/></div>
+  </div>
+
+  <div class="card">
+    <div class="card-h">Colors &amp; Sizes</div>
+    <div class="row2">
+      <div class="fl"><label class="lb">Body Text Color</label>
+        <div style="display:flex;gap:6px;align-items:center">
+          <input type="color" class="inp" id="fc-bodyColor" style="width:44px;height:32px;padding:2px 4px;flex-shrink:0"/>
+          <input class="inp" id="fc-bodyColorHex" placeholder="#2c2c1e" style="font-family:monospace;font-size:.75rem"/>
+        </div>
+      </div>
+      <div class="fl"><label class="lb">Heading Color</label>
+        <div style="display:flex;gap:6px;align-items:center">
+          <input type="color" class="inp" id="fc-headingColor" style="width:44px;height:32px;padding:2px 4px;flex-shrink:0"/>
+          <input class="inp" id="fc-headingColorHex" placeholder="#f2efe3" style="font-family:monospace;font-size:.75rem"/>
+        </div>
+      </div>
+    </div>
+    <div class="row2">
+      <div class="fl"><label class="lb">Base Font Size (px)</label>
+        <input class="inp" id="fc-bodySize" type="number" min="10" max="22" placeholder="14"/>
+      </div>
+      <div class="fl"><label class="lb">Heading Scale</label>
+        <select class="inp" id="fc-headingScale">
+          <option value="">Default</option>
+          <option value="0.85">Compact (0.85x)</option>
+          <option value="1">Normal (1x)</option>
+          <option value="1.15">Large (1.15x)</option>
+          <option value="1.3">Extra Large (1.3x)</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="srow">
+    <button class="sbtn" onclick="saveTypography()">Save Typography</button>
+    <button class="sbtn" style="background:rgba(255,255,255,.07);color:var(--bd);border:1px solid var(--br)" onclick="resetTypography()">Reset to Default</button>
+  </div>
+</div>
+
+<!-- PAGE TEXTS -->
+<div class="sec" id="sec-texts">
+  <div class="sec-t">Page Texts</div>
+  <p class="sec-s">Edit all visible text labels on the site. These override the default values instantly.</p>
+  <div class="card">
+    <div class="card-h">Navigation &amp; Hero</div>
+    <div class="row3">
+      <div class="fl"><label class="lb">Nav: Profile</label><input class="inp" data-tkey="nav_profile" placeholder="PROFILE"/></div>
+      <div class="fl"><label class="lb">Nav: Memory</label><input class="inp" data-tkey="nav_memory" placeholder="MEMORY"/></div>
+      <div class="fl"><label class="lb">Nav: Skills</label><input class="inp" data-tkey="nav_skills" placeholder="SKILLS"/></div>
+      <div class="fl"><label class="lb">Nav: Portfolio</label><input class="inp" data-tkey="nav_portfolio" placeholder="PORTFOLIO"/></div>
+      <div class="fl"><label class="lb">Nav: Certificates</label><input class="inp" data-tkey="nav_certs" placeholder="CERTIFICATES"/></div>
+      <div class="fl"><label class="lb">Nav: Contact</label><input class="inp" data-tkey="nav_contact" placeholder="CONTACT"/></div>
+    </div>
+    <div class="row2">
+      <div class="fl"><label class="lb">Button: My Story</label><input class="inp" data-tkey="btn_story" placeholder="My Story"/></div>
+      <div class="fl"><label class="lb">Button: View Skills</label><input class="inp" data-tkey="btn_skills" placeholder="View Skills"/></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-h">About Strip</div>
+    <div class="row3">
+      <div class="fl"><label class="lb">About Label</label><input class="inp" data-tkey="strip_about_label" placeholder="About Me"/></div>
+      <div class="fl"><label class="lb">About Title</label><input class="inp" data-tkey="strip_about_title" placeholder="Student &amp; Designer"/></div>
+      <div class="fl"><label class="lb">Bio Label</label><input class="inp" data-tkey="strip_bio_label" placeholder="Bio"/></div>
+      <div class="fl"><label class="lb">Contact Label</label><input class="inp" data-tkey="strip_contact_label" placeholder="Contact"/></div>
+      <div class="fl"><label class="lb">Contact Title</label><input class="inp" data-tkey="strip_contact_title" placeholder="Get in Touch"/></div>
+      <div class="fl"><label class="lb">Footer Email Label</label><input class="inp" data-tkey="footer_email_label" placeholder="E-Mail"/></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-h">Page Subtitles</div>
+    <div class="row2">
+      <div class="fl"><label class="lb">Memory Subtitle</label><input class="inp" data-tkey="mem_sub" placeholder="Experience &amp; Education"/></div>
+      <div class="fl"><label class="lb">Skills Subtitle</label><input class="inp" data-tkey="sk_sub" placeholder="Technical &amp; Creative Expertise"/></div>
+      <div class="fl"><label class="lb">Portfolio Subtitle</label><input class="inp" data-tkey="prt_sub" placeholder="Creative &amp; Technical Projects"/></div>
+      <div class="fl"><label class="lb">Certs Subtitle</label><input class="inp" data-tkey="cer_sub" placeholder="Achievements &amp; Credentials"/></div>
+      <div class="fl"><label class="lb">Contact Subtitle</label><input class="inp" data-tkey="con_sub" placeholder="Get in Touch"/></div>
+      <div class="fl"><label class="lb">Back Button</label><input class="inp" data-tkey="btn_back" placeholder="Back"/></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-h">Contact Page</div>
+    <div class="row2">
+      <div class="fl"><label class="lb">Title</label><input class="inp" data-tkey="con_title" placeholder="Let's Talk"/></div>
+      <div class="fl"><label class="lb">Subtitle</label><input class="inp" data-tkey="con_subtitle" placeholder="Feel free to reach out..."/></div>
+      <div class="fl"><label class="lb">Form Title</label><input class="inp" data-tkey="con_form_title" placeholder="Send a Message"/></div>
+      <div class="fl"><label class="lb">Form Subtitle</label><input class="inp" data-tkey="con_form_sub" placeholder="Your message will be sent..."/></div>
+      <div class="fl"><label class="lb">Form: Full Name</label><input class="inp" data-tkey="con_form_name" placeholder="Full Name"/></div>
+      <div class="fl"><label class="lb">Form: Email</label><input class="inp" data-tkey="con_form_email" placeholder="Email"/></div>
+      <div class="fl"><label class="lb">Form: Subject</label><input class="inp" data-tkey="con_form_subject" placeholder="Subject"/></div>
+      <div class="fl"><label class="lb">Form: Message</label><input class="inp" data-tkey="con_form_message" placeholder="Message"/></div>
+      <div class="fl"><label class="lb">Send Button</label><input class="inp" data-tkey="con_form_btn" placeholder="Send Message"/></div>
+      <div class="fl"><label class="lb">Success Title</label><input class="inp" data-tkey="con_success_msg" placeholder="Message Sent!"/></div>
+    </div>
+  </div>
+  <div class="srow"><button class="sbtn" onclick="saveTexts()">Save Texts</button></div>
+</div>
+
+<!-- SEO -->
+<div class="sec" id="sec-seo">
+  <div class="sec-t">SEO &amp; Site Title</div><p class="sec-s">Browser title, meta description, keywords and favicon.</p>
+  <div class="card">
+    <div class="card-h">Page Settings</div>
+    <div class="fl"><label class="lb">Browser Tab Title</label><input class="inp" id="a-sitetitle" placeholder="Eren Akçam | Portfolio"/></div>
+    <div class="fl"><label class="lb">Meta Description</label><textarea class="inp" id="a-seodesc" rows="2"></textarea></div>
+    <div class="fl"><label class="lb">Keywords (comma-separated)</label><input class="inp" id="a-seokeys" placeholder="portfolio, design, engineering"/></div>
+    <div class="fl"><label class="lb">Favicon</label>
+      <div style="display:flex;gap:7px;align-items:center">
+        <input class="inp" id="a-favicon" style="flex:1" placeholder="assets/favicon.png"/>
+        <label class="upbtn">Upload<input type="file" accept="image/*" style="display:none" onchange="uploadFavicon(this)"/></label>
+      </div>
+    </div>
+  </div>
+  <div class="srow"><button class="sbtn" onclick="saveSEO()">Save SEO Settings</button></div>
+</div>
+
+<!-- BACKUP & RESET -->
+<div class="sec" id="sec-backup">
+  <div class="sec-t">Backup &amp; Reset</div><p class="sec-s">Export / import configuration.</p>
+  <div class="card">
+    <div class="card-h">Storage Status</div>
+    <div id="stor-info" style="font-size:.7rem;color:var(--mu);line-height:1.85">—</div>
+    <div class="stor-bar"><div class="stor-fill" id="stor-fill" style="width:0%"></div></div>
+  </div>
+  <div class="card">
+    <div class="card-h">Export</div>
+    <p class="card-d">Download all settings as JSON.</p>
+    <button class="sbtn" onclick="exportData()">⬇ Download Backup</button>
+  </div>
+  <div class="card">
+    <div class="card-h">Import</div>
+    <div class="drop" style="max-width:320px;position:relative">
+      <input type="file" accept=".json" onchange="importData(this)"/>
+      <div class="drop-t">Drop JSON backup or <span>browse</span></div>
+    </div>
+  </div>
+  <div class="danger-card">
+    <div class="card-h">Factory Reset</div>
+    <p class="card-d" style="color:rgba(255,100,80,.8)">ALL customizations will be deleted. Cannot be undone!</p>
+    <button class="sbtn red" onclick="resetAll()">⚠ Reset Everything</button>
+  </div>
+</div>
+
+</div><!-- /main -->
+</div><!-- /wrap -->
+
+<script>
+var SK='erensite_data', TK='erensite_trans', AK='erensite_assets';
+
+/* ── Dil listesi ── */
+var ALL_LANGS=[
+  ['en','🇬🇧','English'],['tr','🇹🇷','Türkçe'],['de','🇩🇪','Deutsch'],
+  ['fr','🇫🇷','Français'],['es','🇪🇸','Español'],['it','🇮🇹','Italiano'],
+  ['ru','🇷🇺','Русский'],['ja','🇯🇵','日本語'],['zh','🇨🇳','中文'],
+  ['ar','🇸🇦','العربية'],['pt','🇵🇹','Português'],['nl','🇳🇱','Nederlands'],
+  ['ko','🇰🇷','한국어'],['sv','🇸🇪','Svenska'],['pl','🇵🇱','Polski'],
+  ['uk','🇺🇦','Українська'],['hi','🇮🇳','हिन्दी'],['fa','🇮🇷','فارسی'],
+  ['el','🇬🇷','Ελληνικά'],['cs','🇨🇿','Čeština']
+];
+
+/* ── Çeviri anahtarları ── */
+var TEXT_KEYS={
+  nav_profile:"PROFILE",nav_memory:"MEMORY",nav_skills:"SKILLS",
+  nav_portfolio:"PORTFOLIO",nav_certs:"CERTIFICATES",nav_contact:"CONTACT",
+  hero_tag:"Portfolio · Design & Engineering",
+  hero_role:"Computer-Aided Machine Drawing student & freelance graphic designer since 2022.",
+  btn_story:"My Story",btn_skills:"View Skills",
+  strip_about_label:"About Me",strip_about_title:"Student & Designer",
+  strip_about_body:"Studying Computer-Aided Machine Drawing, combining technical precision with creative design.",
+  strip_bio_label:"Bio",strip_bio_body:"A young professional combining technical knowledge with creative design.",
+  strip_contact_label:"Contact",strip_contact_title:"Get in Touch",
+  footer_email_label:"E-Mail",mem_sub:"Experience & Education",
+  mem_exp:"Experience",mem_edu:"Education",
+  sk_sub:"Technical & Creative Expertise",
+  prt_sub:"Creative & Technical Projects",btn_back:"Back",
+  cer_sub:"Achievements & Credentials",
+  con_sub:"Get in Touch",con_title:"Let's Talk",
+  con_subtitle:"Feel free to reach out for collaborations, freelance projects or just a friendly hello.",
+  con_email_label:"E-Mail",con_phone_label:"Phone",
+  con_linkedin_label:"LinkedIn",con_freelance_label:"Freelance",
+  con_form_title:"Send a Message",
+  con_form_sub:"Your message will be sent directly to my email inbox.",
+  con_form_name:"Full Name",con_form_email:"Email",
+  con_form_subject:"Subject",con_form_message:"Message",
+  con_form_btn:"Send Message",con_success_msg:"Message Sent!",
+  con_success_sub:"Thank you, I'll get back to you soon."
+};
+
+/* ── Varsayılan veri ── */
+var DEF={
+  siteName:"Eren Akçam",siteTitle:"Eren Akçam | Portfolio",
+  seoDesc:"Portfolio of Eren Akçam — Computer-Aided Machine Drawing student and freelance graphic designer.",
+  seoKeys:"portfolio, design, engineering, graphic design, CAD",
+  favicon:"assets/favicon.png",
+  name:"Eren Akçam",role:"Student · Designer",
+  tag:"Portfolio · Design & Engineering",
+  herodesc:"Computer-Aided Machine Drawing student & freelance graphic designer since 2022.",
+  about:"Studying Computer-Aided Machine Drawing, combining technical precision with creative design.",
+  bio:"A young professional combining technical knowledge with creative design. Freelance graphic designer since 2022.",
+  email:"eren.akcamm@gmail.com",phone:"+90 500 000 00 00",
+  linkedin:"http://www.linkedin.com/in/eren-akcam-532108399",
+  freelance:"https://bionluk.com",
+  profilePhoto:"assets/profile.png",
+  colorGreen:"#7a9e6a",colorGreenDeep:"#4d7040",colorGreenLight:"#b8ceac",
+  colorBej:"#e9e5d6",colorBlack:"#1a1a14",
+  memory:{
+    experience:[
+      {title:"Freelance — Graphic Designer",company:"Bionluk",location:"",date:"2022 — Present",logo:"https://static.wixstatic.com/media/76d601_e0294aa4c7e64d4db146dc241b3ed562~mv2.png/v1/fill/w_136,h_136,al_c,q_85,enc_avif,quality_auto/76d601_e0294aa4c7e64d4db146dc241b3ed562~mv2.png",desc:"Working as a freelance graphic designer on Bionluk since 2022."},
+      {title:"Erasmus+ Internship",company:"Weg Group — Machinery Dept.",location:"Germany / Balingen",date:"2025",logo:"https://static.wixstatic.com/media/76d601_015301348f584a19bf8261a04349e245~mv2.png/v1/fill/w_182,h_136,al_c,q_85,enc_avif,quality_auto/76d601_015301348f584a19bf8261a04349e245~mv2.png",desc:"Practical experience in manual and CNC lathe, surface grinding and precision measurement."}
+    ],
+    education:[
+      {title:"KOSBİ Zülfü-Mevlüt Çelik Mesleki ve Teknik Anadolu Lisesi",company:"Computer-Aided Machine Drawing — 11th Grade",location:"Türkiye — İzmir / Kemalpaşa",date:"2023 — 2027",logo:"https://static.wixstatic.com/media/76d601_aebd5e9f6c0f4f998f44ec51e680b9c7~mv2.png/v1/fill/w_334,h_251,al_c,q_85,enc_avif,quality_auto/76d601_aebd5e9f6c0f4f998f44ec51e680b9c7~mv2.png",desc:"Advanced skills in SolidWorks, AutoCAD, technical drawing and CNC machines."}
+    ]
+  },
+  skills:{categories:[
+    {id:"mechanical",label:"Mechanical",items:[{n:"Manual Lathe",l:"Advanced",w:92},{n:"Manual Mill",l:"Advanced",w:92},{n:"CNC Mill",l:"Intermediate",w:60},{n:"CNC Lathe",l:"Intermediate",w:60},{n:"Manufacturing Methods",l:"Advanced",w:90},{n:"Technical Drawing",l:"Advanced",w:95},{n:"AutoCAD 2D",l:"Advanced",w:90},{n:"SolidWorks",l:"Advanced",w:88}]},
+    {id:"graphic",label:"Graphic Design",items:[{n:"Adobe Illustrator",l:"Intermediate",w:62},{n:"Canva",l:"Advanced",w:94},{n:"Adobe Photoshop",l:"Basic",w:28},{n:"Office Programmes",l:"Intermediate",w:58},{n:"Adobe Animate",l:"Basic",w:25}]},
+    {id:"software",label:"Software",items:[{n:"Unity",l:"Intermediate",w:55},{n:"C# — Unity",l:"Intermediate",w:55},{n:"Python",l:"Basic",w:26}]},
+    {id:"language",label:"Language",items:[{n:"Turkish",l:"Native",w:100},{n:"English",l:"B1",w:52},{n:"German",l:"A2",w:22}]}
+  ]},
+  portfolio:[
+    {id:"graphic",tag:"Graphic Design",title:"Graphic Design",cover:"",projects:[
+      {id:"g1",title:"Logo Design Collection",cover:"",subtitle:"2022–2024 · Bionluk",featured:false,status:"done",client:"Various Clients",date:"2022-2024",tags:["logo","branding"],blocks:[{type:"desc",content:"A collection of logo design projects completed for various clients on Bionluk."}]},
+      {id:"g2",title:"Social Media Visuals",cover:"",subtitle:"2023 · Canva",featured:false,status:"done",client:"",date:"2023",tags:["social media"],blocks:[{type:"desc",content:"Social media content creation for multiple brands."}]}
+    ]},
+    {id:"cad",tag:"CAD & Engineering",title:"CAD & Engineering",cover:"",projects:[
+      {id:"c1",title:"SolidWorks 3D Models",cover:"",subtitle:"2023–2024 · SolidWorks",featured:false,status:"done",client:"",date:"2023",tags:["CAD","3D"],blocks:[{type:"desc",content:"3D mechanical part models created in SolidWorks."}]},
+      {id:"c2",title:"AutoCAD Technical Drawings",cover:"",subtitle:"2023–2024 · AutoCAD",featured:false,status:"done",client:"",date:"2023",tags:["CAD","2D"],blocks:[{type:"desc",content:"Industry-standard technical drawings."}]}
+    ]},
+    {id:"dev",tag:"Software & Game Dev",title:"Game Development",cover:"",projects:[
+      {id:"d1",title:"Unity Oyun Projesi",cover:"",subtitle:"2024 · Unity / C#",featured:false,status:"done",client:"",date:"2024",tags:["unity","game"],blocks:[{type:"desc",content:"A small game developed in Unity using C#."}]}
+    ]}
+  ],
+  certs:{categories:[
+    {id:"edu",label:"Education",items:[
+      {src:"https://static.wixstatic.com/media/76d601_b4395b6673bf4265afb7c3d59d95fc38~mv2.jpg/v1/fill/w_522,h_368,q_75,enc_avif,quality_auto/76d601_b4395b6673bf4265afb7c3d59d95fc38~mv2.jpg",name:"Education Certificate 1"},
+      {src:"https://static.wixstatic.com/media/76d601_b93d17d898464826ba5c8d2807177c3f~mv2.jpg/v1/fill/w_522,h_368,q_75,enc_avif,quality_auto/76d601_b93d17d898464826ba5c8d2807177c3f~mv2.jpg",name:"Education Certificate 2"},
+      {src:"https://static.wixstatic.com/media/76d601_6f68cf326b0b4e72ae99df1e8861920a~mv2.jpg/v1/fill/w_522,h_368,q_75,enc_avif,quality_auto/76d601_6f68cf326b0b4e72ae99df1e8861920a~mv2.jpg",name:"Education Certificate 3"},
+      {src:"https://static.wixstatic.com/media/76d601_f8666bb5f2bb4d6abe907d1fdf7a02aa~mv2.jpg/v1/fill/w_522,h_368,q_75,enc_avif,quality_auto/76d601_f8666bb5f2bb4d6abe907d1fdf7a02aa~mv2.jpg",name:"Education Certificate 4"},
+      {src:"https://static.wixstatic.com/media/76d601_295e7914fbad4b99b7e6d6064d370fa5~mv2.jpg/v1/fill/w_522,h_368,q_75,enc_avif,quality_auto/76d601_295e7914fbad4b99b7e6d6064d370fa5~mv2.jpg",name:"Education Certificate 5"},
+      {src:"https://static.wixstatic.com/media/76d601_27514a571b6749c1bbea4dd5adb4f8ad~mv2.png/v1/fill/w_522,h_368,q_75,enc_avif,quality_auto/76d601_27514a571b6749c1bbea4dd5adb4f8ad~mv2.png",name:"Education Certificate 6"},
+      {src:"https://static.wixstatic.com/media/76d601_0e556969989745b3bdf3e0ebe089c483~mv2.png/v1/fill/w_522,h_368,q_75,enc_avif,quality_auto/76d601_0e556969989745b3bdf3e0ebe089c483~mv2.png",name:"Education Certificate 7"},
+      {src:"https://static.wixstatic.com/media/76d601_41be7b61767b409e8da811d04c51497f~mv2.jpg/v1/fill/w_522,h_368,q_75,enc_avif,quality_auto/76d601_41be7b61767b409e8da811d04c51497f~mv2.jpg",name:"Education Certificate 8"},
+      {src:"https://static.wixstatic.com/media/76d601_be5d43074b2b426596db8c50dea88249~mv2.jpg/v1/fill/w_522,h_368,q_75,enc_avif,quality_auto/76d601_be5d43074b2b426596db8c50dea88249~mv2.jpg",name:"Education Certificate 9"},
+      {src:"https://static.wixstatic.com/media/76d601_16f8d188e8b64462bad00a141abe065e~mv2.jpg/v1/fill/w_522,h_368,q_75,enc_avif,quality_auto/76d601_16f8d188e8b64462bad00a141abe065e~mv2.jpg",name:"Education Certificate 10"}
+    ]},
+    {id:"lang",label:"Language",items:[
+      {src:"https://static.wixstatic.com/media/76d601_7700bd82090049d8bbf8b2188f8ee43b~mv2.jpg/v1/fill/w_522,h_368,q_75,enc_avif,quality_auto/76d601_7700bd82090049d8bbf8b2188f8ee43b~mv2.jpg",name:"Language Certificate 1"},
+      {src:"https://static.wixstatic.com/media/76d601_8881d3d8807c40a38fca73222be0eb7a~mv2.jpg/v1/fill/w_522,h_368,q_75,enc_avif,quality_auto/76d601_8881d3d8807c40a38fca73222be0eb7a~mv2.jpg",name:"Language Certificate 2"}
+    ]}
+  ]}
+};
+
+/* ════════════════════════════════
+   HELPERS FONKSİYONLAR
+════════════════════════════════ */
+function clone(o){return JSON.parse(JSON.stringify(o));}
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function stripB64(obj){if(!obj||typeof obj!=='object')return;Object.keys(obj).forEach(function(k){if(typeof obj[k]==='string'&&obj[k].startsWith('data:'))obj[k]='';else stripB64(obj[k]);});}
+function gv(id){var e=document.getElementById(id);return e?e.value.trim():'';}
+
+/* ════════════════════════════════
+   DATA LOADERS
+════════════════════════════════ */
+/* Otomatik temizlik — açılışta çalışır */
+(function autoClean(){
+  try{
+    var keys=[];for(var i=0;i<localStorage.length;i++)keys.push(localStorage.key(i));
+    keys.forEach(function(k){
+      if(!k)return;
+      try{
+        var v=localStorage.getItem(k);
+        if(v&&(v.length>300000||(v.indexOf('"data:image')>=0&&v.length>8000))){
+          localStorage.removeItem(k);
+          console.log('AdminClean: removed',k,'size=',v.length);
+        }
+      }catch(e){}
+    });
+  }catch(e){}
+})();
+
+function lSD(){
+  try{
+    var s=localStorage.getItem(SK);
+    if(!s)return clone(DEF);
+    if(s.length>300000){localStorage.removeItem(SK);return clone(DEF);}
+    var d=JSON.parse(s);
+    stripB64(d);
+    Object.keys(DEF).forEach(function(k){if(d[k]===undefined||d[k]===null)d[k]=clone(DEF[k]);});
+    /* migrate old skills */
+    if(d.skills&&!d.skills.categories&&typeof d.skills==='object'){
+      var cats=[];
+      Object.keys(d.skills).forEach(function(id){
+        if(Array.isArray(d.skills[id])){
+          var dc=(DEF.skills.categories||[]).find(function(c){return c.id===id;});
+          cats.push({id:id,label:dc?dc.label:id,items:d.skills[id]});
+        }
+      });
+      d.skills={categories:cats.length?cats:clone(DEF.skills.categories)};
+    }
+    /* migrate old certs */
+    if(d.certs&&!d.certs.categories){
+      var cc=[];
+      if(d.certs.edu)cc.push({id:"edu",label:"Education",items:d.certs.edu});
+      if(d.certs.lang)cc.push({id:"lang",label:"Language",items:d.certs.lang});
+      d.certs={categories:cc.length?cc:clone(DEF.certs.categories)};
+    }
+    return d;
+  }catch(e){localStorage.removeItem(SK);return clone(DEF);}
+}
+function lAssets(){try{var s=localStorage.getItem(AK);return s?JSON.parse(s):[];}catch(e){return [];}}
+/* ── SAVE — MAIN FUNCTION ── */
+function pSD(d){
+  var safe=clone(d);
+  stripB64(safe);
+  var json=JSON.stringify(safe);
+  if(json.length>400000){
+    showToast('Data too large ('+Math.round(json.length/1024)+'KB)!','err');
+    return false;
+  }
+  try{
+    localStorage.setItem(SK,json);
+    showToast('✓ Saved! ('+Math.round(json.length/1024)+'KB)','ok');
+    return true;
+  }catch(e){
+    try{
+      var keys=[];for(var i=0;i<localStorage.length;i++)keys.push(localStorage.key(i));
+      keys.forEach(function(k){if(k&&k!==AK)localStorage.removeItem(k);});
+      localStorage.setItem(SK,json);
+      showToast('✓ Saved (old data cleared)','ok');
+      return true;
+    }catch(e2){
+      showToast('ERROR: Storage full! Go to Backup > Clear Storage.','err');
+      return false;
+    }
+  }
+}
+function pAssets(a){try{localStorage.setItem(AK,JSON.stringify(a));}catch(e){}}
+
+/* ── Data objects ── */
+var SD=lSD();
+
+/* ════════════════════════════════
+   TOAST NOTIFICATION
+════════════════════════════════ */
+function showToast(msg,type){
+  var t=document.getElementById('toast');
+  if(!t)return;
+  t.textContent=msg;
+  t.className='toast on '+(type||'ok');
+  clearTimeout(t._t);
+  t._t=setTimeout(function(){t.classList.remove('on');},3500);
+}
+
+/* ════════════════════════════════
+   SECTION SWITCH
+════════════════════════════════ */
+function sw(name){
+  document.querySelectorAll('.sec').forEach(function(s){s.classList.remove('on');});
+  document.querySelectorAll('.sn').forEach(function(n){n.classList.remove('on');});
+  var sec=document.getElementById('sec-'+name);
+  if(sec)sec.classList.add('on');
+  document.querySelectorAll('.sn[data-sec]').forEach(function(n){
+    if(n.getAttribute('data-sec')===name)n.classList.add('on');
+  });
+  /* içerik yükle */
+  if(name==='skills')      fillSkills();
+  if(name==='portfolio')   fillPortfolio();
+  if(name==='certs')       fillCerts();
+  if(name==='colors')      fillColors();
+  if(name==='assets')      fillAssets();
+  if(name==='backup')      fillStorageInfo();
+  if(name==='memory')      fillMemory();
+  if(name==='photo')       fillPhotoPreview();
+  if(name==='typography')  fillTypography();
+  if(name==='texts')       fillTexts();
+}
+
+/* ════════════════════════════════
+   FILL FIELDS
+════════════════════════════════ */
+function fillAll(){
+  var fields={
+    'a-name':SD.name,'a-role':SD.role,'a-sitename':SD.siteName||SD.name,
+    'a-tag':SD.tag,'a-herodesc':SD.herodesc,'a-about':SD.about,'a-bio':SD.bio,
+    'a-email':SD.email,'a-phone':SD.phone,'a-linkedin':SD.linkedin,'a-freelance':SD.freelance,
+    'a-sitetitle':SD.siteTitle,'a-seodesc':SD.seoDesc,'a-seokeys':SD.seoKeys,
+    'a-favicon':SD.favicon,'a-photo-url':SD.profilePhoto||'assets/profile.png'
+  };
+  Object.keys(fields).forEach(function(id){
+    var el=document.getElementById(id);
+    if(el)el.value=fields[id]||'';
+  });
+}
+
+/* ════════════════════════════════
+   SAVE FUNCTIONS
+════════════════════════════════ */
+function saveGeneral(){
+  SD.name=gv('a-name');
+  SD.role=gv('a-role');
+  SD.siteName=gv('a-sitename');
+  SD.tag=gv('a-tag');
+  SD.herodesc=gv('a-herodesc');
+  SD.about=gv('a-about');
+  SD.bio=gv('a-bio');
+  pSD(SD);
+}
+function saveContact(){
+  SD.email=gv('a-email');
+  SD.phone=gv('a-phone');
+  SD.linkedin=gv('a-linkedin');
+  SD.freelance=gv('a-freelance');
+  pSD(SD);
+}
+function saveSEO(){
+  SD.siteTitle=gv('a-sitetitle');
+  SD.seoDesc=gv('a-seodesc');
+  SD.seoKeys=gv('a-seokeys');
+  SD.favicon=gv('a-favicon');
+  pSD(SD);
+}
+function saveMemory(){pSD(SD);}
+function saveSkills(){pSD(SD);}
+function savePortfolio(){pSD(SD);}
+function saveCerts(){pSD(SD);}
+function saveColors(){pSD(SD);}
+
+/* ════════════════════════════════
+   PHOTO UPLOAD
+════════════════════════════════ */
+function fillPhotoPreview(){
+  var prev=document.getElementById('photo-prev');
+  if(prev)prev.src=(SD.profilePhoto||'assets/profile.png')+'?v='+Date.now();
+  var url=document.getElementById('a-photo-url');
+  if(url)url.value=SD.profilePhoto||'assets/profile.png';
+}
+
+var dirHandle=null;
+
+async function getDirHandle(){
+  if(dirHandle)return dirHandle;
+  try{
+    if(!window.showDirectoryPicker)return null;
+    dirHandle=await window.showDirectoryPicker({mode:'readwrite',id:'erensite-assets'});
+    showToast('✓ assets/ folder connected!','ok');
+    return dirHandle;
+  }catch(e){return null;}
+}
+
+async function saveFileToDir(file,fname){
+  var dir=await getDirHandle();
+  if(dir){
+    try{
+      try{await dir.removeEntry(fname);}catch(e){}
+      var fh=await dir.getFileHandle(fname,{create:true});
+      var w=await fh.createWritable();
+      await w.write(file);
+      await w.close();
+      var assets=lAssets();
+      var path='assets/'+fname;
+      if(assets.indexOf(path)<0)assets.push(path);
+      pAssets(assets);
+      return true;
+    }catch(e){console.warn(e);return false;}
+  }
+  return false;
+}
+
+function dlFile(file,fname){
+  var url=URL.createObjectURL(file);
+  var a=document.createElement('a');a.href=url;a.download=fname;
+  document.body.appendChild(a);a.click();document.body.removeChild(a);
+  setTimeout(function(){URL.revokeObjectURL(url);},1000);
+  var assets=lAssets();
+  var path='assets/'+fname;
+  if(assets.indexOf(path)<0)assets.push(path);
+  pAssets(assets);
+}
+
+async function handlePhotoUpload(input){
+  var file=input.files[0];if(!file)return;
+  /* önizleme */
+  var reader=new FileReader();
+  reader.onload=function(e){
+    var prev=document.getElementById('photo-prev');
+    if(prev)prev.src=e.target.result;
+  };
+  reader.readAsDataURL(file);
+  var ext=file.name.split('.').pop().toLowerCase()||'png';
+  var fname='profile.'+ext;
+  var st=document.getElementById('photo-save-status');
+  if(st){st.style.display='block';st.textContent='Kaydediliyor...';}
+  var saved=await saveFileToDir(file,fname);
+  SD.profilePhoto='assets/'+fname;
+  var urlEl=document.getElementById('a-photo-url');
+  if(urlEl)urlEl.value='assets/'+fname;
+  if(saved){
+    if(st)st.textContent='✓ assets/'+fname+' olarak kaydedildi!';
+    showToast('✓ Fotoğraf kaydedildi','ok');
+  }else{
+    dlFile(file,fname);
+    if(st){st.textContent='⬇ İndiriliyor — Move to assets/ folderyın';st.style.color='#e67e22';}
+    showToast('⬇ İndirme başladı — Move to assets/ folder','info');
+  }
+}
+
+function savePhoto(){
+  var urlVal=gv('a-photo-url');
+  if(urlVal)SD.profilePhoto=urlVal;
+  pSD(SD);
+}
+
+/* ════════════════════════════════
+   ASSETS
+════════════════════════════════ */
+var IMG_E=['.png','.jpg','.jpeg','.gif','.webp','.svg'];
+var VID_E=['.mp4','.webm','.mov'];
+var AUD_E=['.mp3','.wav','.ogg','.m4a'];
+
+async function handleAssetsUpload(files){
+  if(!files||!files.length)return;
+  var prog=document.getElementById('upload-prog');
+  if(prog){prog.style.display='block';prog.style.color='var(--gl)';}
+  var results=[];
+  for(var i=0;i<files.length;i++){
+    var file=files[i];
+    if(prog)prog.textContent='Kaydediliyor: '+file.name+' ('+(i+1)+'/'+files.length+')...';
+    var saved=await saveFileToDir(file,file.name);
+    if(!saved)dlFile(file,file.name);
+    results.push((saved?'✓ ':'⬇ ')+file.name);
+  }
+  if(prog)prog.textContent=results.join(' | ');
+  setTimeout(function(){if(prog)prog.style.display='none';fillAssets();},4000);
+}
+
+function fillAssets(){
+  var assets=lAssets();
+  var el=document.getElementById('asset-grid');
+  var cnt=document.getElementById('assets-cnt');
+  if(!el)return;
+  if(!assets.length){
+    el.innerHTML='<div style="font-size:.68rem;color:var(--mu);padding:8px 0">Henüz dosya yok. Yukarıdan yükleyin.</div>';
+    if(cnt)cnt.textContent='';
+    return;
+  }
+  if(cnt)cnt.textContent='('+assets.length+' dosya)';
+  var html='<div class="asset-grid">';
+  assets.forEach(function(p,i){
+    var name=p.split('/').pop();
+    var ext='.'+name.split('.').pop().toLowerCase();
+    var isImg=IMG_E.indexOf(ext)>=0;
+    var preview='';
+    if(isImg){
+      preview='<img src="'+esc(p)+'?v=1" onerror="this.style.opacity=.15" alt=""/>';
+    }else{
+      var ico='<path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/>';
+      if(VID_E.indexOf(ext)>=0)ico='<polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/>';
+      if(AUD_E.indexOf(ext)>=0)ico='<path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>';
+      preview='<div class="aitem-icon"><svg viewBox="0 0 24 24">'+ico+'</svg><span class="aitem-ext">'+ext.replace('.','')+'</span></div>';
+    }
+    html+='<div class="aitem" title="'+esc(p)+'">'+preview+
+      '<div class="aitem-name">'+esc(name)+'</div>'+
+      '<div class="aitem-actions">'+
+        '<button class="aact copy" onclick="copyPath(\''+esc(p)+'\')">📋 Copy</button>'+
+        '<button class="aact del" onclick="delAsset('+i+')">🗑 Çıkar</button>'+
+      '</div></div>';
+  });
+  html+='</div>';
+  el.innerHTML=html;
+}
+
+function copyPath(p){
+  try{navigator.clipboard.writeText(p);}
+  catch(e){var t=document.createElement('textarea');t.value=p;document.body.appendChild(t);t.select();document.execCommand('copy');document.body.removeChild(t);}
+  showToast('✓ Copied: '+p,'ok');
+}
+function delAsset(i){var a=lAssets();a.splice(i,1);pAssets(a);fillAssets();}
+
+async function uploadFavicon(input){
+  var file=input.files[0];if(!file)return;
+  var fname='favicon.'+file.name.split('.').pop().toLowerCase();
+  var saved=await saveFileToDir(file,fname);
+  if(!saved)dlFile(file,fname);
+  SD.favicon='assets/'+fname;
+  var el=document.getElementById('a-favicon');if(el)el.value='assets/'+fname;
+  showToast(saved?'✓ Favicon kaydedildi':'⬇ Favicon indir → Move to assets/ folder',saved?'ok':'info');
+}
+
+/* ════════════════════════════════
+   MEMORY / CV
+════════════════════════════════ */
+function fillMemory(){
+  ['experience','education'].forEach(function(type){
+    var elId=type==='experience'?'mem-exp-list':'mem-edu-list';
+    var el=document.getElementById(elId);if(!el)return;
+    el.innerHTML='';
+    var items=(SD.memory&&SD.memory[type])||[];
+    items.forEach(function(item,i){
+      var d=document.createElement('div');d.className='ib';
+      d.innerHTML=
+        '<div class="ib-h" onclick="tog(this)"><span class="ib-t">'+esc(item.title||'Entry '+(i+1))+'</span><span class="chev">▾</span></div>'+
+        '<div class="ib-body">'+
+          '<div class="row2">'+
+            '<div class="fl"><label class="lb">Title/Position</label><input class="inp" value="'+esc(item.title||'')+'" onchange="SD.memory.'+type+'['+i+'].title=this.value"/></div>'+
+            '<div class="fl"><label class="lb">Company/School</label><input class="inp" value="'+esc(item.company||'')+'" onchange="SD.memory.'+type+'['+i+'].company=this.value"/></div>'+
+          '</div>'+
+          '<div class="row2">'+
+            '<div class="fl"><label class="lb">Date/Period</label><input class="inp" value="'+esc(item.date||'')+'" placeholder="2022 — Present" onchange="SD.memory.'+type+'['+i+'].date=this.value"/></div>'+
+            '<div class="fl"><label class="lb">Location</label><input class="inp" value="'+esc(item.location||'')+'" onchange="SD.memory.'+type+'['+i+'].location=this.value"/></div>'+
+          '</div>'+
+          '<div class="fl"><label class="lb">Logo URL or assets/logo.png</label><input class="inp" value="'+esc(item.logo||'')+'" onchange="SD.memory.'+type+'['+i+'].logo=this.value"/></div>'+
+          '<div class="fl"><label class="lb">Description</label><textarea class="inp" rows="3" onchange="SD.memory.'+type+'['+i+'].desc=this.value">'+esc(item.desc||'')+'</textarea></div>'+
+          '<button class="delbtn" onclick="SD.memory.'+type+'.splice('+i+',1);fillMemory()">Remove</button>'+
+        '</div>';
+      el.appendChild(d);
+    });
+  });
+}
+function addMemItem(type){
+  if(!SD.memory)SD.memory={experience:[],education:[]};
+  if(!SD.memory[type])SD.memory[type]=[];
+  SD.memory[type].push({title:'',company:'',location:'',date:'',logo:'',desc:''});
+  fillMemory();
+}
+
+/* ════════════════════════════════
+   YETENEKLER
+════════════════════════════════ */
+var LVL=['Advanced','Intermediate','Basic','Native','A1','A2','B1','B2','C1','C2'];
+
+function fillSkills(){
+  var el=document.getElementById('skill-cats');if(!el)return;
+  el.innerHTML='';
+  var cats=(SD.skills&&SD.skills.categories)||[];
+  cats.forEach(function(cat,ci){
+    var itemsHtml=buildSkillItems(cat,ci);
+    var d=document.createElement('div');d.className='ib';
+    d.innerHTML=
+      '<div class="ib-h" onclick="tog(this)"><span class="ib-t">'+esc(cat.label)+
+        '<span style="color:var(--mu);font-size:.65rem;font-weight:400;margin-left:7px">('+cat.items.length+' yetenek)</span></span>'+
+        '<span class="chev">▾</span></div>'+
+      '<div class="ib-body">'+
+        '<div class="row2">'+
+          '<div class="fl"><label class="lb">Category Name</label><input class="inp" value="'+esc(cat.label)+'" onchange="SD.skills.categories['+ci+'].label=this.value"/></div>'+
+          '<div class="fl"><label class="lb">ID (benzersiz)</label><input class="inp" value="'+esc(cat.id)+'" onchange="SD.skills.categories['+ci+'].id=this.value"/></div>'+
+        '</div>'+
+        itemsHtml+
+        '<button class="addbtn" onclick="SD.skills.categories['+ci+'].items.push({n:\'New Skill\',l:\'Intermediate\',w:50});fillSkills()">+ Add Skill</button>'+
+        '<br/><br/><button class="delbtn" onclick="SD.skills.categories.splice('+ci+',1);fillSkills()">Delete Category</button>'+
+      '</div>';
+    el.appendChild(d);
+  });
+}
+
+function buildSkillItems(cat,ci){
+  return (cat.items||[]).map(function(s,i){
+    var opts=LVL.map(function(o){return '<option'+(o===s.l?' selected':'')+'>'+o+'</option>';}).join('');
+    return '<div class="ib" style="background:rgba(255,255,255,.02);margin-bottom:5px">'+
+      '<div class="ib-h" onclick="tog(this)" style="padding:7px 11px">'+
+        '<span class="ib-t" style="font-size:.7rem">'+esc(s.n)+'<span style="color:var(--mu);font-size:.63rem;margin-left:6px">'+s.w+'%</span></span>'+
+        '<span class="chev">▾</span>'+
+      '</div>'+
+      '<div class="ib-body">'+
+        '<div class="row2">'+
+          '<div class="fl"><label class="lb">Yetenek Adı</label><input class="inp" value="'+esc(s.n)+'" onchange="SD.skills.categories['+ci+'].items['+i+'].n=this.value"/></div>'+
+          '<div class="fl"><label class="lb">Level</label><select class="inp" onchange="SD.skills.categories['+ci+'].items['+i+'].l=this.value">'+opts+'</select></div>'+
+        '</div>'+
+        '<div class="fl"><label class="lb">İlerleme: <strong id="sv'+ci+'_'+i+'">'+s.w+'%</strong></label>'+
+          '<div style="display:flex;align-items:center;gap:8px">'+
+            '<input type="range" class="inp" style="padding:0;height:5px;cursor:pointer;flex:1" min="0" max="100" value="'+s.w+'" '+
+              'oninput="SD.skills.categories['+ci+'].items['+i+'].w=parseInt(this.value);'+
+              'document.getElementById(\'sv'+ci+'_'+i+'\').textContent=this.value+\'%\';'+
+              'document.getElementById(\'bf'+ci+'_'+i+'\').style.width=this.value+\'%\'"/>'+
+            '<div style="flex:1;height:5px;background:rgba(255,255,255,.08);border-radius:3px;overflow:hidden">'+
+              '<div id="bf'+ci+'_'+i+'" style="height:100%;width:'+s.w+'%;background:linear-gradient(90deg,var(--gd),var(--g));border-radius:3px;transition:width .2s"></div>'+
+            '</div>'+
+          '</div>'+
+        '</div>'+
+        '<button class="delbtn" onclick="SD.skills.categories['+ci+'].items.splice('+i+',1);fillSkills()">Remove</button>'+
+      '</div>'+
+    '</div>';
+  }).join('');
+}
+
+function addSkillCat(){
+  if(!SD.skills||!SD.skills.categories)SD.skills={categories:[]};
+  SD.skills.categories.push({id:'cat'+Date.now(),label:'New Category',items:[]});
+  fillSkills();
+}
+
+/* ════════════════════════════════
+   PORTFOLIO
+════════════════════════════════ */
+var BTYPES=[
+  {t:'desc',    lbl:'📝 Description'},
+  {t:'images',  lbl:'🖼 Galeri'},
+  {t:'video',   lbl:'🎬 Video'},
+  {t:'embed',   lbl:'▶️ YouTube/Vimeo'},
+  {t:'audio',   lbl:'🎵 Ses'},
+  {t:'links',   lbl:'🔗 Linkler'},
+  {t:'docs',    lbl:'📄 Dosyalar'}
+];
+
+function fillPortfolio(){
+  var el=document.getElementById('port-cats');if(!el)return;
+  el.innerHTML='';
+  (SD.portfolio||[]).forEach(function(cat,ci){
+    var projs=(cat.projects||[]).map(function(p,pi){return buildProj(ci,pi,p);}).join('');
+    var d=document.createElement('div');d.className='ib';
+    d.innerHTML=
+      '<div class="ib-h" onclick="tog(this)"><span class="ib-t">'+esc(cat.title)+
+        '<span style="color:var(--mu);font-size:.65rem;font-weight:400;margin-left:7px">('+cat.projects.length+' proje)</span></span>'+
+        '<span class="chev">▾</span></div>'+
+      '<div class="ib-body">'+
+        '<div class="row2">'+
+          '<div class="fl"><label class="lb">Title</label><input class="inp" value="'+esc(cat.title)+'" onchange="SD.portfolio['+ci+'].title=this.value"/></div>'+
+          '<div class="fl"><label class="lb">Label</label><input class="inp" value="'+esc(cat.tag)+'" onchange="SD.portfolio['+ci+'].tag=this.value"/></div>'+
+        '</div>'+
+        '<div class="fl"><label class="lb">Cover Image</label>'+
+          '<div style="display:flex;gap:6px">'+
+            '<input class="inp" style="flex:1" value="'+esc(cat.cover||'')+'" placeholder="assets/kapak.jpg" onchange="SD.portfolio['+ci+'].cover=this.value"/>'+
+            '<label class="upbtn">Yükle<input type="file" accept="image/*" style="display:none" onchange="upCatCover('+ci+',this)"/></label>'+
+          '</div>'+
+        '</div>'+
+        '<div style="margin:12px 0 7px;font-size:.56rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--gl)">Projeler</div>'+
+        projs+
+        '<button class="addbtn" onclick="addProj('+ci+')">+ Add Project</button>'+
+        '<br/><br/>'+
+        '<button class="delbtn" onclick="SD.portfolio.splice('+ci+',1);fillPortfolio()">Delete Category</button>'+
+      '</div>';
+    el.appendChild(d);
+  });
+}
+
+function buildProj(ci,pi,p){
+  var blocks=(p.blocks||[]).map(function(b,bi){return buildBlock(ci,pi,bi,b);}).join('');
+  var addBtns=BTYPES.map(function(bt){return '<button class="badd" onclick="addBlock('+ci+','+pi+',\''+bt.t+'\')">'+bt.lbl+'</button>';}).join('');
+  var sts=['done','ongoing','draft'].map(function(s){return '<option'+(s===(p.status||'done')?' selected':'')+'>'+s+'</option>';}).join('');
+  return '<div class="ib" style="background:rgba(255,255,255,.02);margin-bottom:5px">'+
+    '<div class="ib-h" onclick="tog(this)" style="padding:8px 11px">'+
+      '<span class="ib-t" style="font-size:.71rem">'+(p.featured?'★ ':'')+esc(p.title)+'</span>'+
+      '<span class="chev">▾</span>'+
+    '</div>'+
+    '<div class="ib-body">'+
+      '<div class="row2">'+
+        '<div class="fl"><label class="lb">Title</label><input class="inp" value="'+esc(p.title||'')+'" onchange="SD.portfolio['+ci+'].projects['+pi+'].title=this.value"/></div>'+
+        '<div class="fl"><label class="lb">Subtitle</label><input class="inp" value="'+esc(p.subtitle||'')+'" onchange="SD.portfolio['+ci+'].projects['+pi+'].subtitle=this.value"/></div>'+
+      '</div>'+
+      '<div class="fl"><label class="lb">Cover</label>'+
+        '<div style="display:flex;gap:6px"><input class="inp" style="flex:1" value="'+esc(p.cover||'')+'" onchange="SD.portfolio['+ci+'].projects['+pi+'].cover=this.value"/>'+
+        '<label class="upbtn">Yükle<input type="file" accept="image/*" style="display:none" onchange="upProjCover('+ci+','+pi+',this)"/></label></div>'+
+      '</div>'+
+      '<div class="row3">'+
+        '<div class="fl"><label class="lb">Tarih</label><input class="inp" value="'+esc(p.date||'')+'" onchange="SD.portfolio['+ci+'].projects['+pi+'].date=this.value"/></div>'+
+        '<div class="fl"><label class="lb">Müşteri</label><input class="inp" value="'+esc(p.client||'')+'" onchange="SD.portfolio['+ci+'].projects['+pi+'].client=this.value"/></div>'+
+        '<div class="fl"><label class="lb">Durum</label><select class="inp" onchange="SD.portfolio['+ci+'].projects['+pi+'].status=this.value">'+sts+'</select></div>'+
+      '</div>'+
+      '<div class="fl"><label class="lb">Tags (comma-separated)</label><input class="inp" value="'+esc((p.tags||[]).join(', '))+'" onchange="SD.portfolio['+ci+'].projects['+pi+'].tags=this.value.split(\',\').map(function(x){return x.trim();}).filter(Boolean)"/></div>'+
+      '<div class="fl"><label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.65rem;color:var(--bd)"><input type="checkbox"'+(p.featured?' checked':'')+' onchange="SD.portfolio['+ci+'].projects['+pi+'].featured=this.checked"/> Featured (★ badge)</label></div>'+
+      '<div style="margin:10px 0 5px;font-size:.52rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--gl)">Content Blocks</div>'+
+      blocks+
+      '<div style="margin-top:6px;font-size:.55rem;color:var(--mu);margin-bottom:4px">Add Block:</div>'+
+      '<div style="display:flex;gap:4px;flex-wrap:wrap">'+addBtns+'</div>'+
+      '<br/><button class="delbtn" onclick="SD.portfolio['+ci+'].projects.splice('+pi+',1);fillPortfolio()">Delete Project</button>'+
+    '</div></div>';
+}
+
+function buildBlock(ci,pi,bi,b){
+  var c='';
+  if(b.type==='desc'){
+    c='<div class="fl"><label class="lb">Metin</label><textarea class="inp" rows="3" onchange="SD.portfolio['+ci+'].projects['+pi+'].blocks['+bi+'].content=this.value">'+esc(b.content||'')+'</textarea></div>';
+  }else if(b.type==='images'){
+    c=(b.items||[]).map(function(u,ii){
+      return '<div style="display:flex;gap:5px;align-items:center;margin-bottom:4px">'+
+        '<input class="inp" style="flex:1" value="'+esc(u)+'" placeholder="assets/foto.jpg" onchange="SD.portfolio['+ci+'].projects['+pi+'].blocks['+bi+'].items['+ii+']=this.value"/>'+
+        '<button class="delbtn" onclick="SD.portfolio['+ci+'].projects['+pi+'].blocks['+bi+'].items.splice('+ii+',1);fillPortfolio()">✕</button>'+
+      '</div>';
+    }).join('')+
+    '<button class="addbtn" onclick="if(!SD.portfolio['+ci+'].projects['+pi+'].blocks['+bi+'].items)SD.portfolio['+ci+'].projects['+pi+'].blocks['+bi+'].items=[];SD.portfolio['+ci+'].projects['+pi+'].blocks['+bi+'].items.push(\'\');fillPortfolio()">+ Add URL</button>'+
+    ' <label class="upbtn">Upload Images<input type="file" accept="image/*" multiple style="display:none" onchange="upBlockImgs('+ci+','+pi+','+bi+',this)"/></label>';
+  }else if(b.type==='video'){
+    c='<div class="fl"><label class="lb">Video (assets/video.mp4 or URL)</label>'+
+      '<div style="display:flex;gap:5px"><input class="inp" style="flex:1" value="'+esc(b.url||'')+'" onchange="SD.portfolio['+ci+'].projects['+pi+'].blocks['+bi+'].url=this.value"/>'+
+      '<label class="upbtn">Yükle<input type="file" accept="video/*" style="display:none" onchange="upBlockFile('+ci+','+pi+','+bi+',\'url\',this)"/></label></div></div>';
+  }else if(b.type==='embed'){
+    c='<div class="fl"><label class="lb">YouTube / Vimeo URL</label><input class="inp" value="'+esc(b.url||'')+'" placeholder="https://youtube.com/watch?v=..." onchange="SD.portfolio['+ci+'].projects['+pi+'].blocks['+bi+'].url=this.value"/></div>';
+  }else if(b.type==='audio'){
+    c=(b.items||[]).map(function(u,ii){
+      return '<div style="display:flex;gap:5px;align-items:center;margin-bottom:4px">'+
+        '<input class="inp" style="flex:1" value="'+esc(u)+'" placeholder="assets/audio.mp3" onchange="SD.portfolio['+ci+'].projects['+pi+'].blocks['+bi+'].items['+ii+']=this.value"/>'+
+        '<button class="delbtn" onclick="SD.portfolio['+ci+'].projects['+pi+'].blocks['+bi+'].items.splice('+ii+',1);fillPortfolio()">✕</button>'+
+      '</div>';
+    }).join('')+
+    '<button class="addbtn" onclick="if(!SD.portfolio['+ci+'].projects['+pi+'].blocks['+bi+'].items)SD.portfolio['+ci+'].projects['+pi+'].blocks['+bi+'].items=[];SD.portfolio['+ci+'].projects['+pi+'].blocks['+bi+'].items.push(\'\');fillPortfolio()">+ Audio URL</button>'+
+    ' <label class="upbtn">Upload Audio<input type="file" accept="audio/*" multiple style="display:none" onchange="upBlockAudios('+ci+','+pi+','+bi+',this)"/></label>';
+  }else if(b.type==='links'){
+    c=(b.items||[]).map(function(l,li){
+      return '<div style="display:flex;gap:5px;align-items:center;margin-bottom:4px">'+
+        '<input class="inp" style="flex:1" value="'+esc(l.label||'')+'" placeholder="Label" onchange="SD.portfolio['+ci+'].projects['+pi+'].blocks['+bi+'].items['+li+'].label=this.value"/>'+
+        '<input class="inp" style="flex:2" value="'+esc(l.url||'')+'" placeholder="https://..." onchange="SD.portfolio['+ci+'].projects['+pi+'].blocks['+bi+'].items['+li+'].url=this.value"/>'+
+        '<button class="delbtn" onclick="SD.portfolio['+ci+'].projects['+pi+'].blocks['+bi+'].items.splice('+li+',1);fillPortfolio()">✕</button>'+
+      '</div>';
+    }).join('')+
+    '<button class="addbtn" onclick="if(!SD.portfolio['+ci+'].projects['+pi+'].blocks['+bi+'].items)SD.portfolio['+ci+'].projects['+pi+'].blocks['+bi+'].items=[];SD.portfolio['+ci+'].projects['+pi+'].blocks['+bi+'].items.push({label:\'\',url:\'\'});fillPortfolio()">+ Link</button>';
+  }else if(b.type==='docs'){
+    c=(b.items||[]).map(function(d,di){
+      return '<div style="display:flex;gap:5px;align-items:center;margin-bottom:4px;flex-wrap:wrap">'+
+        '<input class="inp" style="flex:1;min-width:80px" value="'+esc(d.name||'')+'" placeholder="File name" onchange="SD.portfolio['+ci+'].projects['+pi+'].blocks['+bi+'].items['+di+'].name=this.value"/>'+
+        '<input class="inp" style="flex:2;min-width:120px" value="'+esc(d.url||'')+'" placeholder="assets/dosya.pdf" onchange="SD.portfolio['+ci+'].projects['+pi+'].blocks['+bi+'].items['+di+'].url=this.value"/>'+
+        '<button class="delbtn" onclick="SD.portfolio['+ci+'].projects['+pi+'].blocks['+bi+'].items.splice('+di+',1);fillPortfolio()">✕</button>'+
+      '</div>';
+    }).join('')+
+    '<button class="addbtn" onclick="if(!SD.portfolio['+ci+'].projects['+pi+'].blocks['+bi+'].items)SD.portfolio['+ci+'].projects['+pi+'].blocks['+bi+'].items=[];SD.portfolio['+ci+'].projects['+pi+'].blocks['+bi+'].items.push({name:\'\',url:\'\',size:\'\'});fillPortfolio()">+ Dosya</button>'+
+    ' <label class="upbtn">Upload<input type="file" multiple style="display:none" onchange="upBlockDocs('+ci+','+pi+','+bi+',this)"/></label>';
+  }
+  var bt=BTYPES.find(function(x){return x.t===b.type;})||{lbl:b.type};
+  return '<div style="background:rgba(255,255,255,.025);border:1px solid var(--br);border-radius:8px;margin-bottom:5px;overflow:hidden">'+
+    '<div style="display:flex;align-items:center;gap:7px;padding:7px 11px;cursor:pointer;user-select:none" onclick="tog(this)">'+
+      '<span style="font-size:.5rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:20px;background:rgba(122,158,106,.13);color:var(--gl);flex-shrink:0">'+bt.lbl+'</span>'+
+      '<span style="font-size:.62rem;color:var(--mu);margin-left:auto">▾</span>'+
+      '<button class="delbtn" style="margin-left:7px" onclick="event.stopPropagation();SD.portfolio['+ci+'].projects['+pi+'].blocks.splice('+bi+',1);fillPortfolio()">✕</button>'+
+    '</div>'+
+    '<div style="display:none;padding:11px;border-top:1px solid var(--br)">'+c+'</div>'+
+  '</div>';
+}
+
+function addBlock(ci,pi,type){
+  if(!SD.portfolio[ci].projects[pi].blocks)SD.portfolio[ci].projects[pi].blocks=[];
+  var nb={type:type};
+  if(type==='desc')nb.content='';
+  else if(type==='images'||type==='audio')nb.items=[];
+  else if(type==='links')nb.items=[];
+  else if(type==='docs')nb.items=[];
+  else nb.url='';
+  SD.portfolio[ci].projects[pi].blocks.push(nb);
+  fillPortfolio();
+}
+function addCat(){
+  SD.portfolio=SD.portfolio||[];
+  SD.portfolio.push({id:'cat'+Date.now(),tag:'New Category',title:'New Category',cover:'',projects:[]});
+  fillPortfolio();
+}
+function addProj(ci){
+  SD.portfolio[ci].projects.push({id:'p'+Date.now(),title:'New Project',cover:'',subtitle:'',featured:false,status:'done',client:'',date:'',tags:[],blocks:[{type:'desc',content:''}]});
+  fillPortfolio();
+}
+
+/* Dosya yükleme yardımcıları */
+async function upCatCover(ci,input){var f=input.files[0];if(!f)return;var s=await saveFileToDir(f,f.name);if(!s)dlFile(f,f.name);SD.portfolio[ci].cover='assets/'+f.name;showToast(s?'✓ Saved':'⬇ Move to assets/ folder',s?'ok':'info');fillPortfolio();}
+async function upProjCover(ci,pi,input){var f=input.files[0];if(!f)return;var s=await saveFileToDir(f,f.name);if(!s)dlFile(f,f.name);SD.portfolio[ci].projects[pi].cover='assets/'+f.name;showToast(s?'✓ Saved':'⬇ Move to assets/ folder',s?'ok':'info');fillPortfolio();}
+async function upBlockImgs(ci,pi,bi,input){
+  if(!SD.portfolio[ci].projects[pi].blocks[bi].items)SD.portfolio[ci].projects[pi].blocks[bi].items=[];
+  for(var i=0;i<input.files.length;i++){var f=input.files[i];var s=await saveFileToDir(f,f.name);if(!s)dlFile(f,f.name);SD.portfolio[ci].projects[pi].blocks[bi].items.push('assets/'+f.name);}
+  showToast('✓ Images added','ok');fillPortfolio();
+}
+async function upBlockFile(ci,pi,bi,field,input){var f=input.files[0];if(!f)return;var s=await saveFileToDir(f,f.name);if(!s)dlFile(f,f.name);SD.portfolio[ci].projects[pi].blocks[bi][field]='assets/'+f.name;showToast('✓ File added','ok');fillPortfolio();}
+async function upBlockAudios(ci,pi,bi,input){
+  if(!SD.portfolio[ci].projects[pi].blocks[bi].items)SD.portfolio[ci].projects[pi].blocks[bi].items=[];
+  for(var i=0;i<input.files.length;i++){var f=input.files[i];var s=await saveFileToDir(f,f.name);if(!s)dlFile(f,f.name);SD.portfolio[ci].projects[pi].blocks[bi].items.push('assets/'+f.name);}
+  showToast('✓ Audio added','ok');fillPortfolio();
+}
+async function upBlockDocs(ci,pi,bi,input){
+  if(!SD.portfolio[ci].projects[pi].blocks[bi].items)SD.portfolio[ci].projects[pi].blocks[bi].items=[];
+  for(var i=0;i<input.files.length;i++){var f=input.files[i];var s=await saveFileToDir(f,f.name);if(!s)dlFile(f,f.name);SD.portfolio[ci].projects[pi].blocks[bi].items.push({name:f.name,url:'assets/'+f.name,size:''});}
+  showToast('✓ Files added','ok');fillPortfolio();
+}
+
+/* ════════════════════════════════
+   CERTIFICATES
+════════════════════════════════ */
+function fillCerts(){
+  var el=document.getElementById('cert-cats');if(!el)return;
+  el.innerHTML='';
+  var cats=(SD.certs&&SD.certs.categories)||[];
+  cats.forEach(function(cat,ci){
+    var itemsHtml=(cat.items||[]).map(function(c,i){
+      return '<div class="ib" style="background:rgba(255,255,255,.02);margin-bottom:5px">'+
+        '<div class="ib-h" onclick="tog(this)" style="padding:7px 11px"><span class="ib-t" style="font-size:.7rem">'+esc(c.name)+'</span><span class="chev">▾</span></div>'+
+        '<div class="ib-body">'+
+          '<div class="fl"><label class="lb">İsim</label><input class="inp" value="'+esc(c.name)+'" onchange="SD.certs.categories['+ci+'].items['+i+'].name=this.value"/></div>'+
+          '<div class="fl"><label class="lb">Görsel/PDF</label>'+
+            '<div style="display:flex;gap:5px">'+
+              '<input class="inp" style="flex:1" value="'+esc(c.src)+'" placeholder="https://... or assets/certificate.jpg" onchange="SD.certs.categories['+ci+'].items['+i+'].src=this.value"/>'+
+              '<label class="upbtn">Yükle<input type="file" accept="image/*,.pdf" style="display:none" onchange="upCert('+ci+','+i+',this)"/></label>'+
+            '</div>'+
+            (c.src&&!c.src.startsWith('data:')&&c.src.length<500?'<img src="'+esc(c.src)+'" style="max-height:55px;border-radius:5px;margin-top:6px;display:block;border:1px solid var(--br)" onerror="this.style.display=\'none\'"/>':'')+
+          '</div>'+
+          '<button class="delbtn" onclick="SD.certs.categories['+ci+'].items.splice('+i+',1);fillCerts()">Remove</button>'+
+        '</div>'+
+      '</div>';
+    }).join('');
+    var d=document.createElement('div');d.className='ib';
+    d.innerHTML=
+      '<div class="ib-h" onclick="tog(this)"><span class="ib-t">'+esc(cat.label)+
+        '<span style="color:var(--mu);font-size:.65rem;font-weight:400;margin-left:7px">('+cat.items.length+')</span></span>'+
+        '<span class="chev">▾</span></div>'+
+      '<div class="ib-body">'+
+        '<div class="row2">'+
+          '<div class="fl"><label class="lb">Category Name</label><input class="inp" value="'+esc(cat.label)+'" onchange="SD.certs.categories['+ci+'].label=this.value"/></div>'+
+          '<div class="fl"><label class="lb">ID</label><input class="inp" value="'+esc(cat.id)+'" onchange="SD.certs.categories['+ci+'].id=this.value"/></div>'+
+        '</div>'+
+        itemsHtml+
+        '<button class="addbtn" onclick="SD.certs.categories['+ci+'].items.push({src:\'\',name:\'New Certificate\'});fillCerts()">+ Add Certificate</button>'+
+        '<br/><br/>'+
+        '<button class="delbtn" onclick="SD.certs.categories.splice('+ci+',1);fillCerts()">Delete Category</button>'+
+      '</div>';
+    el.appendChild(d);
+  });
+}
+
+function addCertCat(){
+  if(!SD.certs||!SD.certs.categories)SD.certs={categories:[]};
+  SD.certs.categories.push({id:'cert'+Date.now(),label:'New Category',items:[]});
+  fillCerts();
+}
+async function upCert(ci,i,input){var f=input.files[0];if(!f)return;var s=await saveFileToDir(f,f.name);if(!s)dlFile(f,f.name);SD.certs.categories[ci].items[i].src='assets/'+f.name;showToast(s?'✓ Saved':'⬇ Move to assets/ folder',s?'ok':'info');fillCerts();}
+
+/* ════════════════════════════════
+   COLORS
+════════════════════════════════ */
+var CKEYS=[
+  {key:'colorGreen',      label:'Ana Yeşil'},
+  {key:'colorGreenDeep',  label:'Koyu Yeşil'},
+  {key:'colorGreenLight', label:'Açık Yeşil'},
+  {key:'colorBej',        label:'Sayfa Arkaplanı'},
+  {key:'colorBlack',      label:'Siyah (Nav/Kartlar)'}
+];
+var PRESETS={
+  green: {colorGreen:'#7a9e6a',colorGreenDeep:'#4d7040',colorGreenLight:'#b8ceac',colorBej:'#e9e5d6',colorBlack:'#1a1a14'},
+  ocean: {colorGreen:'#4a9eb5',colorGreenDeep:'#2c7a8e',colorGreenLight:'#8dd0e0',colorBej:'#e0eef2',colorBlack:'#0d1c22'},
+  earth: {colorGreen:'#b5834a',colorGreenDeep:'#7a4e22',colorGreenLight:'#dbb88a',colorBej:'#f0e8dc',colorBlack:'#1c1208'},
+  night: {colorGreen:'#7a9e6a',colorGreenDeep:'#4d7040',colorGreenLight:'#b8ceac',colorBej:'#1e2419',colorBlack:'#0a0d09'},
+  rose:  {colorGreen:'#b56a7a',colorGreenDeep:'#7a3a4d',colorGreenLight:'#dba8b2',colorBej:'#f2e8ec',colorBlack:'#1c0a10'},
+  slate: {colorGreen:'#6a88b5',colorGreenDeep:'#3a5a8e',colorGreenLight:'#a8c0e0',colorBej:'#e4e8f0',colorBlack:'#0e1420'}
+};
+
+function fillColors(){
+  var g=document.getElementById('color-grid');if(!g)return;g.innerHTML='';
+  CKEYS.forEach(function(ck){
+    var val=SD[ck.key]||'#000';
+    var item=document.createElement('div');item.className='colitem';
+    item.innerHTML='<input type="color" id="col-'+ck.key+'" value="'+val+'" oninput="SD[\''+ck.key+'\']=this.value"/>'+
+      '<label for="col-'+ck.key+'">'+ck.label+'</label>';
+    g.appendChild(item);
+  });
+}
+function applyPreset(n){
+  var p=PRESETS[n];if(!p)return;
+  Object.keys(p).forEach(function(k){SD[k]=p[k];});
+  fillColors();
+  showToast('Tema uygulandı — Kaydet\'e bas','info');
+}
+
+/* ════════════════════════════════
+   TYPOGRAPHY
+════════════════════════════════ */
+function fillTypography(){
+  var ft=SD.fontTheme||'classic';
+  var fc=SD.fontCustom||{};
+  document.querySelectorAll('.font-theme-card').forEach(function(c){
+    c.classList.toggle('on',c.getAttribute('data-theme')===ft);
+  });
+  ['headingFont','bodyFont','monoFont'].forEach(function(k){
+    var el=document.getElementById('fc-'+k);if(el)el.value=fc[k]||'';
+  });
+  var bc=fc.bodyColor||'#2c2c1e';
+  var hc=fc.headingColor||'#f2efe3';
+  var bce=document.getElementById('fc-bodyColor');if(bce)bce.value=bc;
+  var bch=document.getElementById('fc-bodyColorHex');if(bch)bch.value=bc;
+  var hce=document.getElementById('fc-headingColor');if(hce)hce.value=hc;
+  var hch=document.getElementById('fc-headingColorHex');if(hch)hch.value=hc;
+  var bs=document.getElementById('fc-bodySize');if(bs)bs.value=fc.bodySize||'';
+  var hs=document.getElementById('fc-headingScale');if(hs)hs.value=fc.headingScale||'';
+  // Sync pickers
+  ['bodyColor','headingColor'].forEach(function(k){
+    var picker=document.getElementById('fc-'+k);
+    var hex=document.getElementById('fc-'+k+'Hex');
+    if(picker&&hex){
+      picker.oninput=function(){hex.value=picker.value;};
+      hex.oninput=function(){if(/^#[0-9a-fA-F]{6}$/.test(hex.value))picker.value=hex.value;};
+    }
+  });
+}
+function selectFontTheme(theme){
+  document.querySelectorAll('.font-theme-card').forEach(function(c){
+    c.classList.toggle('on',c.getAttribute('data-theme')===theme);
+  });
+  showToast('Theme "'+theme+'" selected — save to apply.','info');
+}
+function saveTypography(){
+  var active=document.querySelector('.font-theme-card.on');
+  SD.fontTheme=active?active.getAttribute('data-theme'):'classic';
+  if(!SD.fontCustom)SD.fontCustom={};
+  ['headingFont','bodyFont','monoFont'].forEach(function(k){
+    var el=document.getElementById('fc-'+k);
+    SD.fontCustom[k]=el?el.value.trim():'';
+  });
+  var bch=document.getElementById('fc-bodyColorHex');
+  var hch=document.getElementById('fc-headingColorHex');
+  SD.fontCustom.bodyColor=bch&&bch.value.trim()?bch.value.trim():'';
+  SD.fontCustom.headingColor=hch&&hch.value.trim()?hch.value.trim():'';
+  var bs=document.getElementById('fc-bodySize');
+  SD.fontCustom.bodySize=bs&&bs.value?parseInt(bs.value):0;
+  var hs=document.getElementById('fc-headingScale');
+  SD.fontCustom.headingScale=hs?hs.value:'';
+  pSD(SD);
+  showToast('✓ Typography saved!','ok');
+}
+function resetTypography(){
+  SD.fontTheme='classic';SD.fontCustom={};
+  pSD(SD);fillTypography();
+  showToast('✓ Typography reset to default.','ok');
+}
+
+/* ════════════════════════════════
+   PAGE TEXTS
+════════════════════════════════ */
+var TEXT_DEFAULTS={
+  nav_profile:'PROFILE',nav_memory:'MEMORY',nav_skills:'SKILLS',
+  nav_portfolio:'PORTFOLIO',nav_certs:'CERTIFICATES',nav_contact:'CONTACT',
+  btn_story:'My Story',btn_skills:'View Skills',
+  strip_about_label:'About Me',strip_about_title:'Student & Designer',
+  strip_bio_label:'Bio',strip_contact_label:'Contact',strip_contact_title:'Get in Touch',
+  footer_email_label:'E-Mail',mem_sub:'Experience & Education',
+  sk_sub:'Technical & Creative Expertise',prt_sub:'Creative & Technical Projects',
+  cer_sub:'Achievements & Credentials',con_sub:'Get in Touch',btn_back:'Back',
+  con_title:"Let's Talk",
+  con_subtitle:'Feel free to reach out for collaborations, freelance projects or just a friendly hello.',
+  con_form_title:'Send a Message',con_form_sub:'Your message will be sent directly to my email inbox.',
+  con_form_name:'Full Name',con_form_email:'Email',con_form_subject:'Subject',
+  con_form_message:'Message',con_form_btn:'Send Message',con_success_msg:'Message Sent!'
+};
+function fillTexts(){
+  var texts=SD.pageTexts||{};
+  document.querySelectorAll('[data-tkey]').forEach(function(inp){
+    var k=inp.getAttribute('data-tkey');
+    inp.value=texts[k]||'';
+    inp.placeholder=TEXT_DEFAULTS[k]||k;
+  });
+}
+function saveTexts(){
+  if(!SD.pageTexts)SD.pageTexts={};
+  document.querySelectorAll('[data-tkey]').forEach(function(inp){
+    var k=inp.getAttribute('data-tkey');
+    var v=inp.value.trim();
+    if(v)SD.pageTexts[k]=v;else delete SD.pageTexts[k];
+  });
+  pSD(SD);
+  showToast('✓ Page texts saved!','ok');
+}
+
+/* ════════════════════════════════
+   STORAGE INFO
+════════════════════════════════ */
+function fillStorageInfo(){
+  var el=document.getElementById('stor-info');
+  var bar=document.getElementById('stor-fill');
+  if(!el)return;
+  try{
+    var used=0;var hasB64=false;
+    for(var k in localStorage){
+      try{var v=localStorage[k];used+=v.length*2;if(v.indexOf('"data:image')>=0&&v.length>5000)hasB64=true;}catch(e){}
+    }
+    var kb=Math.round(used/1024),max=5120,pct=Math.min(100,Math.round(kb/max*100));
+    var sdKB=Math.round((localStorage.getItem(SK)||'').length*2/1024);
+    el.innerHTML=kb+'KB / ~5,000KB ('+pct+'%)<br/>Site data: <strong>'+sdKB+'KB</strong>'+
+      (hasB64?'<br/><span style="color:var(--red);font-weight:700">⚠ Base64 detected — press Clear Storage button</span>':'<br/><span style="color:#2ecc71">✓ Storage clean, no base64</span>');
+    if(bar){bar.style.width=pct+'%';bar.style.background=pct>80?'#e74c3c':pct>60?'#e67e22':'var(--gd)';}
+  }catch(e){if(el)el.textContent='Could not read storage info.';}
+}
+
+/* ════════════════════════════════
+   YEDEK & SIFIRLAMA
+════════════════════════════════ */
+function exportData(){
+  var blob=new Blob([JSON.stringify({siteData:SD,assetList:lAssets(),date:new Date().toISOString()},null,2)],{type:'application/json'});
+  var url=URL.createObjectURL(blob);
+  var a=document.createElement('a');a.href=url;a.download='erensite-backup-'+new Date().toISOString().slice(0,10)+'.json';
+  a.click();URL.revokeObjectURL(url);
+  showToast('✓ Backup downloaded!','ok');
+}
+function importData(input){
+  var file=input.files[0];if(!file)return;
+  var reader=new FileReader();
+  reader.onload=function(e){
+    try{
+      var p=JSON.parse(e.target.result);
+      if(p.siteData){SD=p.siteData;localStorage.setItem(SK,JSON.stringify(SD));}
+      if(p.assetList)pAssets(p.assetList);
+      fillAll();
+      showToast('✓ Backup restored!','ok');
+    }catch(e2){showToast('Invalid backup file!','err');}
+  };
+  reader.readAsText(file);
+}
+function resetAll(){
+  if(!confirm('ALL data will be reset to factory defaults. This cannot be undone. Continue?'))return;
+  ['erensite_data','erensite_trans','erensite_assets'].forEach(function(k){localStorage.removeItem(k);});
+  SD=clone(DEF);
+  fillAll();
+  showToast('✓ Reset!','ok');
+}
+function emergencyClear(){
+  if(!confirm('All localStorage data will be deleted. Page will reload. Continue?'))return;
+  var keys=[];for(var i=0;i<localStorage.length;i++)keys.push(localStorage.key(i));
+  keys.forEach(function(k){if(k&&k.indexOf('erensite')>=0)localStorage.removeItem(k);});
+  showToast('Cleared! Reloading...','ok');
+  setTimeout(function(){location.reload();},1200);
+}
+
+/* ════════════════════════════════
+   HELPERS — TOG
+════════════════════════════════ */
+function tog(h){
+  var b=h.nextElementSibling;
+  var c=h.querySelector('.chev');
+  if(b)b.classList.toggle('open');
+  if(c)c.classList.toggle('open');
+}
+
+/* ════════════════════════════════
+   INIT
+════════════════════════════════ */
+SD=lSD();
+fillAll();
+
+</script>
+</body>
+</html>
