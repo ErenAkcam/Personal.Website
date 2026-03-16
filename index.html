@@ -27,11 +27,15 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
 .nm a:hover{background:var(--g);color:var(--blk)}
 .nm a.on{background:var(--g);color:var(--blk)}
 /* Mobile hamburger (hidden on desktop) */
-.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;flex-shrink:0}
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;flex-shrink:0;margin-left:auto}
 .nav-burger span{display:block;width:22px;height:2px;background:var(--gl);border-radius:2px;transition:all .25s}
 .nav-burger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
 .nav-burger.open span:nth-child(2){opacity:0}
 .nav-burger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+/* Mobile back button (hidden on desktop) */
+.mob-back{display:none;position:fixed;top:calc(var(--nh) + var(--np)*2 + 10px);right:10px;z-index:500;align-items:center;gap:6px;background:var(--blk);border:1.5px solid rgba(255,255,255,.2);border-radius:50px;cursor:pointer;font-family:'Raleway',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gl);padding:10px 16px;box-shadow:0 4px 16px rgba(0,0,0,.35);transition:background .15s}
+.mob-back:active{background:var(--gd)}
+.mob-back svg{width:14px;height:14px;fill:none;stroke:var(--gl);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
 
 /* ── PAGE SYSTEM ── */
 .pg{display:none !important}
@@ -78,15 +82,15 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
 .tlh:first-child{margin-top:0}
 .tli{display:flex;gap:32px;padding:28px 0;border-bottom:1px solid var(--bm);align-items:flex-start}
 .tli:last-child{border-bottom:none}
-.tll{min-width:136px;display:flex;flex-direction:column;align-items:center;text-align:center}
+.tll{width:120px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;text-align:center}
 .tld{font-family:'Barlow Condensed',sans-serif;font-size:.86rem;font-weight:700;color:var(--g);letter-spacing:.09em;text-transform:uppercase;margin-bottom:11px;text-align:center}
-.tlg-wrap{width:100px;height:80px;border-radius:12px;background:var(--bl);border:1.5px solid var(--bm);display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.06)}
-.tlg{max-width:76px;max-height:56px;object-fit:contain;display:block;opacity:.9}
-.tlr{flex:1}
+.tlg-wrap{width:100px;height:100px;border-radius:12px;background-color:var(--bl);border:1.5px solid var(--bm);overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.06);flex-shrink:0;background-repeat:no-repeat;background-position:center;background-size:contain}
+.tlg{display:none}
+.tlr{flex:1;min-width:0}
 .tlt{font-family:'Barlow Condensed',sans-serif;font-size:1.15rem;font-weight:700;color:var(--txt);letter-spacing:.04em;text-transform:uppercase;margin-bottom:3px}
 .tls{font-size:.73rem;color:var(--gd);font-weight:600;margin-bottom:3px}
 .tlc{font-size:.68rem;color:var(--mu);margin-bottom:11px}
-.tlp{font-size:.82rem;line-height:1.88;color:var(--tm);font-weight:300}
+.tlp{font-size:.82rem;line-height:1.88;color:#5c5c40 !important;font-weight:300;word-wrap:break-word}
 
 /* ── SKILLS ── */
 .skh{font-family:'Playfair Display',serif;font-style:italic;font-size:1.35rem;font-weight:700;color:#4d7040 !important;padding-bottom:10px;border-bottom:2px solid var(--g);margin-bottom:18px;margin-top:44px;background:transparent}
@@ -253,6 +257,7 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
   .nm a.on{background:var(--g);color:var(--blk)}
   .nm a:hover{background:rgba(184,206,172,.28);color:var(--bl)}
   .nav-burger{display:flex}
+  .mob-back{display:flex}
 
   /* ── Hero: photo top full-width, card below ── */
   .hero{
@@ -300,21 +305,21 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
   .pfe{font-size:.7rem}
 
   /* ── Memory ── */
-  .tli{flex-direction:column;gap:10px;padding:20px 0}
+  .tli{flex-direction:column;gap:12px;padding:20px 0}
   .tll{
-    min-width:auto;
+    width:auto;
     flex-direction:row;
     align-items:center;
-    gap:12px;
+    gap:14px;
     text-align:left;
     background:var(--bej);
     border-radius:10px;
-    padding:10px 12px;
+    padding:10px 14px;
     border:1px solid var(--bm);
+    flex-shrink:0;
   }
-  .tld{margin-bottom:0;font-size:.78rem;white-space:nowrap}
-  .tlg-wrap{width:60px;height:48px;flex-shrink:0;border-radius:8px}
-  .tlg{max-width:44px;max-height:34px}
+  .tld{margin-bottom:0;font-size:.8rem;white-space:nowrap;flex-shrink:0}
+  .tlg-wrap{width:56px;height:56px;flex-shrink:0;border-radius:8px}
   .tlt{font-size:1rem}
   .tlp{font-size:.8rem;line-height:1.75}
 
@@ -372,6 +377,9 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
 <div class="nw">
   <nav>
     <button class="nb" id="site-brand" onclick="go('pp')">Eren Akçam</button>
+    <button class="nav-burger" id="nav-burger" onclick="toggleMobNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
     <ul class="nm" id="nav-menu">
       <li><a id="n-pp"  class="on" onclick="go('pp');closeMobNav()"  data-key="nav_profile">PROFILE</a></li>
       <li><a id="n-mem"            onclick="go('mem');closeMobNav()" data-key="nav_memory">MEMORY</a></li>
@@ -380,9 +388,6 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
       <li><a id="n-cer"            onclick="go('cer');closeMobNav()" data-key="nav_certs">CERTIFICATES</a></li>
       <li><a id="n-con"            onclick="go('con');closeMobNav()" data-key="nav_contact">CONTACT</a></li>
     </ul>
-    <button class="nav-burger" id="nav-burger" onclick="toggleMobNav()" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
   </nav>
 </div>
 
@@ -530,13 +535,13 @@ var DEF = {
        logo:"https://static.wixstatic.com/media/76d601_e0294aa4c7e64d4db146dc241b3ed562~mv2.png/v1/fill/w_136,h_136,al_c,q_85,enc_avif,quality_auto/76d601_e0294aa4c7e64d4db146dc241b3ed562~mv2.png",
        desc:"I have been working as a freelance graphic designer on the Bionluk platform since 2022. During this time, I have completed countless projects, gaining solid experience in both customer communication and professional design skills. My graphic design talent forms the basis of the technical and creative projects you will see in my portfolio."},
       {title:"Erasmus+ Internship",company:"Weg Group — Machinery Department",location:"Germany / Balingen",date:"2025",
-       logo:"https://static.wixstatic.com/media/76d601_015301348f584a19bf8261a04349e245~mv2.png/v1/fill/w_182,h_136,al_c,q_85,enc_avif,quality_auto/76d601_015301348f584a19bf8261a04349e245~mv2.png",
-       desc:"My Erasmus+ internship at the Weg Group factory in Germany, specifically in the machine department, was a significant turning point in my career. I gained extensive practical experience in manual and CNC lathe machining, surface grinding, drilling, and using precision measuring instruments. I also improved my technical drawing reading skills and observed German work discipline and the professional working environment."}
+       logo:"https://upload.wikimedia.org/wikipedia/commons/8/81/Weg_logo_blue_vector.svg",
+       desc:"My Erasmus+ internship at the Weg Group factory in Germany, specifically in the machine department, was a significant turning point in my career. I gained extensive practical experience in manual and CNC lathe machining, surface grinding, drilling, and using precision measuring instruments (calipers, micrometers, etc.). I also improved my technical drawing reading skills. Furthermore, during this process, I observed German work discipline and the professional working environment. Culturally, working with people from different cultures and taking on responsibility within the team significantly improved my communication and adaptation skills. This experience provided me with important technical and cultural gains by transforming my professional knowledge into concrete skills."}
     ],
     education:[
       {title:"Private KOSBİ Zülfü-Mevlüt Çelik Vocational High School",company:"Computer-Aided Machine Drawing — 11th Grade",location:"Türkiye — İzmir / Kemalpaşa",date:"2023 — 2027",
-       logo:"https://static.wixstatic.com/media/76d601_aebd5e9f6c0f4f998f44ec51e680b9c7~mv2.png/v1/fill/w_334,h_251,al_c,q_85,enc_avif,quality_auto/76d601_aebd5e9f6c0f4f998f44ec51e680b9c7~mv2.png",
-       desc:"I am currently studying Computer-Aided Machine Design at KOSBİ Özel Zülfü Mevlüt Çelik Vocational and Technical Anatolian High School. This education is equipping me with advanced skills in SolidWorks, AutoCAD, technical drawing, and CNC machines."}
+       logo:"assets/kosbi-logo.png",
+       desc:"I am currently studying Computer-Aided Machine Design at KOSBİ Özel Zülfü Mevlüt Çelik Vocational and Technical Anatolian High School and taking my first steps towards a future career in engineering and manufacturing. This comprehensive education is equipping me with advanced skills in SolidWorks, AutoCAD, technical drawing, and CNC machines. The solid knowledge base I have acquired here forms the technical and 3D design foundation for all my projects."}
     ]
   },
   skills:{categories:[
@@ -714,7 +719,7 @@ function applyData(){
     // Links
     var li=SD.linkedin||'#';
     var sli=document.getElementById('s-li');if(sli)sli.href=li;
-    var cli=document.getElementById('c-li2');if(cli){cli.href=li;cli.textContent=li.replace(/https?:\/\//,'');}
+    var cli=document.getElementById('c-li2');if(cli){cli.href=li;cli.textContent='Eren Akçam';}
     // Phone
     var cp=document.getElementById('c-phone');if(cp){cp.textContent=SD.phone||'';cp.href='tel:'+(SD.phone||'').replace(/\s/g,'');}
     // Freelance
@@ -743,16 +748,22 @@ function renderMemory(){
   el.innerHTML=h||'<p style="color:var(--mu)">No entries yet.</p>';
 }
 function memRow(e){
+  var descHtml=(e.desc||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
+  var logoHtml='';
+  if(e.logo){
+    logoHtml='<div class="tlg-wrap" style="background-image:url(\''+esc(e.logo)+'\')"></div>';
+  }
   return '<div class="tli"><div class="tll"><div class="tld">'+esc(e.date||'')+'</div>'+
-    (e.logo?'<div class="tlg-wrap"><img class="tlg" src="'+esc(e.logo)+'" alt="" onerror="this.parentElement.style.display=\'none\'"/></div>':'')+
+    logoHtml+
     '</div><div class="tlr"><div class="tlt">'+esc(e.title||'')+'</div>'+
     (e.company?'<div class="tls">'+esc(e.company)+'</div>':'')+
     (e.location?'<div class="tlc">'+esc(e.location)+'</div>':'')+
-    '<p class="tlp">'+esc(e.desc||'')+'</p></div></div>';
+    '<p class="tlp">'+descHtml+'</p></div></div>';
 }
 
 /* ── Skills ── */
 var BM={Advanced:'ba',Intermediate:'bi',Basic:'bb',Native:'bn',B1:'bi',B2:'bi',A1:'bb',A2:'bb',C1:'ba',C2:'bn'};
+var BL={Advanced:'Advanced Level',Intermediate:'Intermediate Level',Basic:'Basic Level',Native:'Native Level',B1:'B1 Level',B2:'B2 Level',A1:'A1 Level',A2:'A2 Level',C1:'C1 Level',C2:'C2 Level'};
 function renderSkills(){
   var el=document.getElementById('skills-body');if(!el)return;
   var cats=(SD.skills&&SD.skills.categories)||DEF.skills.categories;
@@ -761,7 +772,7 @@ function renderSkills(){
     h+='<div class="skh">'+esc(cat.label)+'</div><div class="skg">';
     (cat.items||[]).forEach(function(s){
       h+='<div class="skc"><div class="skt"><span class="skn">'+esc(s.n)+
-        '</span><span class="skb '+(BM[s.l]||'bi')+'">'+esc(s.l)+'</span></div>'+
+        '</span><span class="skb '+(BM[s.l]||'bi')+'">'+(BL[s.l]||esc(s.l))+'</span></div>'+
         '<div class="sbt"><div class="sbf" data-w="'+s.w+'" style="width:0%"></div></div></div>';
     });
     h+='</div>';
@@ -925,29 +936,39 @@ document.addEventListener('click',function(e){
   if(!e.target.closest('nav'))closeMobNav();
 });
 
-/* ── PAGE NAVIGATION — THE CORE ── */
+/* ── PAGE NAVIGATION ── */
 var PAGES=['pp','mem','sk','prt','cer','con'];
-function go(id){
-  // Hide all pages
+var pageHistory=[];
+
+function showPage(id){
   PAGES.forEach(function(pid){
     var el=document.getElementById(pid);
     if(el)el.classList.remove('on');
   });
-  // Deactivate all nav links
   document.querySelectorAll('.nm a').forEach(function(a){a.classList.remove('on');});
-  // Show target page
   var pg=document.getElementById(id);
-  if(pg){
-    pg.classList.add('on');
-  }
-  // Activate nav link
+  if(pg)pg.classList.add('on');
   var nv=document.getElementById('n-'+id);
   if(nv)nv.classList.add('on');
-  // Scroll to top
   window.scrollTo(0,0);
-  // Page-specific actions
   if(id==='sk')setTimeout(animateBars,80);
   if(id==='prt')showCats();
+  var bb=document.getElementById('mob-back-btn');
+  if(bb)bb.style.display=(id==='pp'?'none':'');
+}
+
+function go(id){
+  var cur=PAGES.find(function(p){var el=document.getElementById(p);return el&&el.classList.contains('on');});
+  if(cur&&cur!==id)pageHistory.push(cur);
+  if(pageHistory.length>20)pageHistory.shift();
+  showPage(id);
+}
+
+function goBack(){
+  var prev=pageHistory.pop()||'pp';
+  showPage(prev);
+  var bb=document.getElementById('mob-back-btn');
+  if(bb)bb.style.display=(prev==='pp'?'none':'');
 }
 function animateBars(){
   document.querySelectorAll('.sbf').forEach(function(b){
@@ -1052,5 +1073,6 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLb();})
 applyData();
 
 </script>
+<button class="mob-back" id="mob-back-btn" onclick="goBack()"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>Back</button>
 </body>
 </html>
