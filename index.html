@@ -387,7 +387,7 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
       <li><a id="n-pp"  class="on" onclick="go('pp');closeMobNav()"  data-key="nav_profile">PROFILE</a></li>
       <li><a id="n-mem"            onclick="go('mem');closeMobNav()" data-key="nav_memory">MEMORY</a></li>
       <li><a id="n-sk"             onclick="go('sk');closeMobNav()"  data-key="nav_skills">SKILLS</a></li>
-      <li><a id="n-prt" onclick="go('prt');closeMobNav()" data-key="nav_portfolio">PORTFOLIO</a></li>
+      <li style="display:none"><a id="n-prt" onclick="go('prt');closeMobNav()" data-key="nav_portfolio">PORTFOLIO</a></li>
       <li><a id="n-cer"            onclick="go('cer');closeMobNav()" data-key="nav_certs">CERTIFICATES</a></li>
       <li><a id="n-con"            onclick="go('con');closeMobNav()" data-key="nav_contact">CONTACT</a></li>
     </ul>
@@ -511,7 +511,7 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
   <button class="lbx" onclick="closeLb()">&#215;</button>
   <button class="lb-arr lb-pv" id="lb-pv" onclick="lbSlide(-1)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
   <div id="lb-img-wrap" style="display:flex;align-items:center;justify-content:center;overflow:hidden;max-width:92vw;max-height:90vh;touch-action:none">
-    <img id="lb-img" src="" alt="" style="max-width:90vw;max-height:88vh;border-radius:9px;transform-origin:center;transition:transform .15s;user-select:none;-webkit-user-drag:none"/>
+    <img id="lb-img" src="" alt="" style="max-width:90vw;max-height:88vh;border-radius:9px;object-fit:contain;transform-origin:center center;transition:transform .2s;user-select:none;-webkit-user-drag:none;display:block"/>
   </div>
   <button class="lb-arr lb-nx" id="lb-nx" onclick="lbSlide(1)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
   <div id="lb-counter" style="position:absolute;bottom:18px;left:50%;transform:translateX(-50%);font-size:.65rem;font-weight:700;letter-spacing:.1em;color:rgba(255,255,255,.5);background:rgba(0,0,0,.4);padding:4px 12px;border-radius:20px"></div>
@@ -535,7 +535,7 @@ var DEF = {
   "freelance": "",
   "profilePhoto": "assets/profile.png",
   "colorGreen": "#7a9e6a",
-  "colorGreenDeep": "#47613d",
+  "colorGreenDeep": "#4d7040",
   "colorGreenLight": "#b8ceac",
   "colorBej": "#e9e5d6",
   "colorBlack": "#1a1a14",
@@ -664,105 +664,142 @@ var DEF = {
   },
   "portfolio": [
     {
-      "id": "graphic",
-      "tag": "Graphic Design",
-      "title": "Graphic Design",
-      "cover": "",
+      "id": "design2d",
+      "tag": "2D Design",
+      "title": "2D Design",
+      "cover": "assets/portfolio_tesla.jpg",
       "projects": [
         {
-          "id": "g1",
-          "title": "Logo Design Collection",
-          "cover": "",
-          "subtitle": "2022–2024 · Bionluk",
+          "id": "tesla",
+          "title": "Nikola Tesla — Digital Portrait",
+          "cover": "assets/portfolio_tesla.jpg",
+          "subtitle": "2022 · Adobe Illustrator",
+          "featured": true,
+          "status": "done",
+          "client": "",
+          "date": "2022",
+          "tags": ["Illustration", "Digital Art", "Illustrator"],
           "blocks": [
             {
               "type": "desc",
-              "content": "A collection of logo design projects."
-            }
-          ]
-        },
-        {
-          "id": "g2",
-          "title": "Social Media Visuals",
-          "cover": "",
-          "subtitle": "2023 · Canva / Illustrator",
-          "blocks": [
-            {
-              "type": "desc",
-              "content": "Social media content creation for multiple brands."
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "cad",
-      "tag": "CAD & Engineering",
-      "title": "CAD & Engineering",
-      "cover": "assets/Ekran görüntüsü 2026-03-16 135233.png",
-      "projects": [
-        {
-          "id": "c1",
-          "title": "SolidWorks 3D Models",
-          "cover": "",
-          "subtitle": "2023–2024 · SolidWorks",
-          "blocks": [
-            {
-              "type": "desc",
-              "content": "3D mechanical part models created in SolidWorks."
-            }
-          ]
-        },
-        {
-          "id": "c2",
-          "title": "AutoCAD Technical Drawings",
-          "cover": "",
-          "subtitle": "2023–2024 · AutoCAD 2D",
-          "blocks": [
-            {
-              "type": "desc",
-              "content": "2D technical drawings."
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "dev",
-      "tag": "Software & Game Dev",
-      "title": "Game Development",
-      "cover": "",
-      "projects": [
-        {
-          "id": "d1",
-          "title": "Unity Game Project",
-          "cover": "",
-          "subtitle": "2024 · Unity / C#",
-          "blocks": [
-            {
-              "type": "desc",
-              "content": "A small game developed in Unity using C#."
+              "content": "Nikola Tesla'nın siyah-beyaz dijital portresi. Adobe Illustrator kullanılarak vektör tabanlı çizim tekniğiyle oluşturulmuş bir sanat eseri. Işık-gölge dengeleri katman katman inşa edilerek gerçekçi bir portre elde edilmiştir."
             },
             {
               "type": "images",
-              "items": []
+              "items": ["assets/portfolio_tesla.jpg"]
+            },
+            {
+              "type": "docs",
+              "items": [
+                {"name": "Nikola Tesla — PDF", "url": "assets/portfolio_tesla_nikola.pdf", "size": ""}
+              ]
             }
           ]
         },
         {
-          "id": "p1773574540096",
-          "title": "New Project",
-          "cover": "",
-          "subtitle": "",
+          "id": "italianmafia",
+          "title": "Italian Mafia — Karakter Tasarımı",
+          "cover": "assets/portfolio_mafia_siyah.jpg",
+          "subtitle": "2023 · Adobe Illustrator",
           "featured": false,
           "status": "done",
           "client": "",
-          "date": "",
-          "tags": [],
+          "date": "2023",
+          "tags": ["Karakter Tasarımı", "İllüstrasyon", "Illustrator"],
           "blocks": [
             {
               "type": "desc",
-              "content": ""
+              "content": "Italian Mafia temalı karakter tasarım serisi. Aynı konseptin dört farklı renk ve karakter varyantı olarak sunulmuştur: Siyah takım elbiseli iri yapılı karakter, beyaz takım elbiseli kel karakter, kırmızı takım elbiseli uzun saçlı karakter ve mavi takım elbiseli keskin bakışlı karakter. Her biri Adobe Illustrator ile vektörel olarak çizilmiştir."
+            },
+            {
+              "type": "images",
+              "items": [
+                "assets/portfolio_mafia_siyah.jpg",
+                "assets/portfolio_mafia_beyaz.jpg",
+                "assets/portfolio_mafia_kirmizi.jpg",
+                "assets/portfolio_mafia_mavi.jpg"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "design3d",
+      "tag": "3D Design",
+      "title": "3D Design",
+      "cover": "assets/portfolio_asansor_1.png",
+      "projects": [
+        {
+          "id": "asansor",
+          "title": "Zincir Tahrikli Asansör Mekanizması",
+          "cover": "assets/portfolio_asansor_1.png",
+          "subtitle": "2025–2026 · SolidWorks",
+          "featured": true,
+          "status": "done",
+          "client": "",
+          "date": "2025–2026",
+          "tags": ["SolidWorks", "3D Modelleme", "Makine Tasarımı", "Montaj"],
+          "blocks": [
+            {
+              "type": "desc",
+              "content": "SolidWorks ortamında tasarlanan tam montajlı zincir tahrikli asansör mekanizması. Proje; motor, zincir-dişli sistemi, platform, kasa ve tüm bağlantı elemanlarını kapsamaktadır. Parçalar ayrı ayrı modellenerek montaj dosyasında birleştirilmiş, kinematik bütünlük sağlanmıştır. Tasarımda rulmanlar, segmanlar, cıvatalar ve somun standart kütüphane bileşenleri olarak kullanılmıştır."
+            },
+            {
+              "type": "images",
+              "items": [
+                "assets/portfolio_asansor_1.png",
+                "assets/portfolio_asansor_2.png",
+                "assets/portfolio_asansor_3.png"
+              ]
+            },
+            {
+              "type": "docs",
+              "items": [
+                {"name": "Montaj — Parasolid (.x_t)", "url": "assets/portfolio_asansor_montaj.x_t", "size": "1.3 MB"},
+                {"name": "Alt Montaj — Parasolid (.x_t)", "url": "assets/portfolio_asansor_montaj1.x_t", "size": "1.4 MB"},
+                {"name": "SolidWorks Assembly (.SLDASM)", "url": "assets/portfolio_asansor_Montaj1.SLDASM", "size": "1.2 MB"},
+                {"name": "Üst Gövde (.SLDASM)", "url": "assets/portfolio_asansor_ustgovde.SLDASM", "size": "950 KB"}
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gamedev",
+      "tag": "Game Development",
+      "title": "Game Development",
+      "cover": "assets/portfolio_degisken_1.jpg",
+      "projects": [
+        {
+          "id": "degisken",
+          "title": "Değişken — Matematik Oyunu",
+          "cover": "assets/portfolio_degisken_1.jpg",
+          "subtitle": "2024 · Unity / C#",
+          "featured": true,
+          "status": "done",
+          "client": "",
+          "date": "2024",
+          "tags": ["Unity", "C#", "Game Dev", "2D"],
+          "blocks": [
+            {
+              "type": "desc",
+              "content": "Unity ile geliştirilen 2D piksel sanat tarzı matematik bulmaca oyunu. Oyuncu, ekrana gelen matematik denklemlerinde eksik değişkeni bularak puan kazanır. Oyun; ana menü, hikaye modu, kısayollar ve çıkış ekranlarına sahiptir. Tüm görseller ve UI bileşenleri sıfırdan tasarlanmıştır. Karakter animasyonları, ses efektleri ve arkaplan müziği entegre edilmiştir."
+            },
+            {
+              "type": "images",
+              "items": [
+                "assets/portfolio_degisken_1.jpg",
+                "assets/portfolio_degisken_2.jpg"
+              ]
+            },
+            {
+              "type": "docs",
+              "items": [
+                {"name": "Değişken — Oyun Dosyası (.exe)", "url": "assets/portfolio_degisken.exe", "size": ""},
+                {"name": "Proje Dökümanı (.pdf)", "url": "assets/portfolio_degisken_dokuman.pdf", "size": ""}
+              ]
             }
           ]
         }
@@ -869,13 +906,13 @@ var DEF = {
         "company": "Computer-Aided Machine Drawing — 11th Grade",
         "location": "Türkiye — İzmir / Kemalpaşa",
         "date": "2023 — 2027",
-        "logo": "assets/kosbi-logo.png",
+        "logo": "",
         "desc": "I am currently studying Computer-Aided Machine Design at KOSBİ Özel Zülfü Mevlüt Çelik Vocational and Technical Anatolian High School and taking my first steps towards a future career in engineering and manufacturing. This comprehensive education is equipping me with advanced skills in SolidWorks, AutoCAD, technical drawing, and CNC machines. The solid knowledge base I have acquired here forms the technical and 3D design foundation for all my projects.\n\n"
       }
     ]
   },
   "pageTexts": {},
-  "fontTheme": "classic",
+  "fontTheme": "elegant",
   "fontCustom": {
     "headingFont": "",
     "bodyFont": "",
@@ -1442,32 +1479,69 @@ document.addEventListener('keydown',function(e){
   var wrap=document.getElementById('lb-img-wrap');
   var img=document.getElementById('lb-img');
   if(!wrap)return;
-  // Swipe
+
+  var _startX=0,_startY=0,_startDist=0,_startScale=1;
+  var _originX=0,_originY=0; // pinch merkezi
+  var _isPinching=false;
+
   wrap.addEventListener('touchstart',function(e){
-    if(e.touches.length===1)_lbTouchX=e.touches[0].clientX;
-    if(e.touches.length===2)_lbTouchDist=Math.hypot(e.touches[1].clientX-e.touches[0].clientX,e.touches[1].clientY-e.touches[0].clientY);
-  },{passive:true});
-  wrap.addEventListener('touchend',function(e){
-    if(e.changedTouches.length===1&&_lbTouchDist===0){
-      var dx=e.changedTouches[0].clientX-_lbTouchX;
-      if(Math.abs(dx)>50)lbSlide(dx<0?1:-1);
+    if(e.touches.length===1){
+      _startX=e.touches[0].clientX;
+      _startY=e.touches[0].clientY;
+      _isPinching=false;
     }
-    _lbTouchDist=0;
+    if(e.touches.length===2){
+      _isPinching=true;
+      _startDist=Math.hypot(
+        e.touches[1].clientX-e.touches[0].clientX,
+        e.touches[1].clientY-e.touches[0].clientY
+      );
+      _startScale=_lbScale;
+      // Pinch merkezini hesapla (resme göre)
+      var rect=img.getBoundingClientRect();
+      _originX=((e.touches[0].clientX+e.touches[1].clientX)/2-rect.left)/rect.width*100;
+      _originY=((e.touches[0].clientY+e.touches[1].clientY)/2-rect.top)/rect.height*100;
+      img.style.transformOrigin=_originX+'% '+_originY+'%';
+      img.style.transition='none';
+    }
   },{passive:true});
-  // Pinch zoom
+
   wrap.addEventListener('touchmove',function(e){
     if(e.touches.length===2){
       e.preventDefault();
-      var dist=Math.hypot(e.touches[1].clientX-e.touches[0].clientX,e.touches[1].clientY-e.touches[0].clientY);
-      if(_lbTouchDist>0){
-        _lbScale=Math.min(4,Math.max(1,_lbScale*(dist/_lbTouchDist)));
-        img.style.transform='scale('+_lbScale+')';
-        img.style.transition='none';
-      }
-      _lbTouchDist=dist;
+      var dist=Math.hypot(
+        e.touches[1].clientX-e.touches[0].clientX,
+        e.touches[1].clientY-e.touches[0].clientY
+      );
+      _lbScale=Math.min(5,Math.max(1,_startScale*(dist/_startDist)));
+      img.style.transform='scale('+_lbScale+')';
     }
   },{passive:false});
-  // Arka plana tıklayınca kapat (resme tıklamayınca)
+
+  wrap.addEventListener('touchend',function(e){
+    if(_isPinching){
+      // Pinch bitti — 1x'e yakınsa orijinal boya döndür
+      if(_lbScale<=1.05){
+        _lbScale=1;
+        img.style.transform='scale(1)';
+        img.style.transformOrigin='center center';
+        img.style.transition='transform .2s';
+      }
+      // 2 parmaktan 1 parmağa geçince pinch bitmedi say
+      if(e.touches.length===0)_isPinching=false;
+      return;
+    }
+    // Pinch değilse swipe
+    if(_lbScale<=1){
+      var dx=e.changedTouches[0].clientX-_startX;
+      var dy=e.changedTouches[0].clientY-_startY;
+      if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)){
+        lbSlide(dx<0?1:-1);
+      }
+    }
+  },{passive:true});
+
+  // Arka plana tıklayınca kapat
   document.getElementById('lb').addEventListener('click',function(e){
     if(e.target===this||e.target===wrap)closeLb();
   });
