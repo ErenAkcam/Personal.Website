@@ -114,8 +114,8 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
 .csh{font-family:'Playfair Display',serif;font-style:italic;font-size:.92rem;font-weight:700;color:var(--bl);padding:10px 16px;background:var(--gd);display:flex;align-items:center;gap:7px}
 .csh::before{content:'';display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--gl);flex-shrink:0}
 .csv{margin:10px 10px 0;border-radius:9px;overflow:hidden;border:1.5px solid var(--bm);background:var(--blk);position:relative}
-.cia{position:relative;width:100%;aspect-ratio:522/368;background:#111;overflow:hidden}
-.cia img{width:100%;height:100%;object-fit:cover;display:block;cursor:zoom-in}
+.cia{position:relative;width:100%;background:#111;overflow:hidden}
+.cia img{width:100%;height:auto;object-fit:contain;display:block;cursor:zoom-in}
 .ca{position:absolute;top:50%;transform:translateY(-50%);width:30px;height:30px;border-radius:50%;background:rgba(10,10,6,.65);border:1px solid rgba(255,255,255,.17);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:4;color:#fff;transition:background .15s}
 .ca:hover{background:var(--gd);transform:translateY(-50%) scale(1.1)}
 .ca.pv{left:9px}.ca.nx{right:9px}
@@ -510,8 +510,8 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
 <div class="lb" id="lb">
   <button class="lbx" onclick="closeLb()">&#215;</button>
   <button class="lb-arr lb-pv" id="lb-pv" onclick="lbSlide(-1)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
-  <div id="lb-img-wrap" style="display:flex;align-items:center;justify-content:center;overflow:hidden;max-width:92vw;max-height:90vh;touch-action:none">
-    <img id="lb-img" src="" alt="" style="max-width:90vw;max-height:88vh;border-radius:9px;object-fit:contain;transform-origin:center center;transition:transform .2s;user-select:none;-webkit-user-drag:none;display:block"/>
+  <div id="lb-img-wrap" style="display:flex;align-items:center;justify-content:center;overflow:visible;max-width:92vw;max-height:90vh;touch-action:none;position:relative">
+    <img id="lb-img" src="" alt="" style="max-width:90vw;max-height:88vh;width:auto;height:auto;border-radius:9px;object-fit:contain;transform-origin:center center;transition:transform .2s;user-select:none;-webkit-user-drag:none;display:block"/>
   </div>
   <button class="lb-arr lb-nx" id="lb-nx" onclick="lbSlide(1)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
   <div id="lb-counter" style="position:absolute;bottom:18px;left:50%;transform:translateX(-50%);font-size:.65rem;font-weight:700;letter-spacing:.1em;color:rgba(255,255,255,.5);background:rgba(0,0,0,.4);padding:4px 12px;border-radius:20px"></div>
@@ -1485,10 +1485,9 @@ document.addEventListener('keydown',function(e){
   var _isPinching=false;
 
   wrap.addEventListener('touchstart',function(e){
-    if(e.touches.length===1){
+    if(e.touches.length===1&&!_isPinching){
       _startX=e.touches[0].clientX;
       _startY=e.touches[0].clientY;
-      _isPinching=false;
     }
     if(e.touches.length===2){
       _isPinching=true;
@@ -1497,42 +1496,46 @@ document.addEventListener('keydown',function(e){
         e.touches[1].clientY-e.touches[0].clientY
       );
       _startScale=_lbScale;
-      // Pinch merkezini hesapla (resme göre)
+      // Pinch merkezi: iki parmağın tam ortası, resmin kendi koordinat uzayında
+      var mx=(e.touches[0].clientX+e.touches[1].clientX)/2;
+      var my=(e.touches[0].clientY+e.touches[1].clientY)/2;
       var rect=img.getBoundingClientRect();
-      _originX=((e.touches[0].clientX+e.touches[1].clientX)/2-rect.left)/rect.width*100;
-      _originY=((e.touches[0].clientY+e.touches[1].clientY)/2-rect.top)/rect.height*100;
-      img.style.transformOrigin=_originX+'% '+_originY+'%';
+      // Mevcut transform-origin'i sıfırla, sonra yeni merkezi ver
       img.style.transition='none';
+      img.style.transformOrigin=
+        ((mx-rect.left)/rect.width*100).toFixed(1)+'% '+
+        ((my-rect.top)/rect.height*100).toFixed(1)+'%';
     }
   },{passive:true});
 
   wrap.addEventListener('touchmove',function(e){
-    if(e.touches.length===2){
+    if(e.touches.length===2&&_isPinching){
       e.preventDefault();
       var dist=Math.hypot(
         e.touches[1].clientX-e.touches[0].clientX,
         e.touches[1].clientY-e.touches[0].clientY
       );
-      _lbScale=Math.min(5,Math.max(1,_startScale*(dist/_startDist)));
-      img.style.transform='scale('+_lbScale+')';
+      if(_startDist>0){
+        _lbScale=Math.min(5,Math.max(1,_startScale*(dist/_startDist)));
+        img.style.transform='scale('+_lbScale+')';
+      }
     }
   },{passive:false});
 
   wrap.addEventListener('touchend',function(e){
-    if(_isPinching){
-      // Pinch bitti — 1x'e yakınsa orijinal boya döndür
-      if(_lbScale<=1.05){
+    if(e.touches.length===0&&_isPinching){
+      _isPinching=false;
+      // 1x'e yakınsa tam sıfırla
+      if(_lbScale<=1.08){
         _lbScale=1;
+        img.style.transition='transform .25s';
         img.style.transform='scale(1)';
         img.style.transformOrigin='center center';
-        img.style.transition='transform .2s';
       }
-      // 2 parmaktan 1 parmağa geçince pinch bitmedi say
-      if(e.touches.length===0)_isPinching=false;
       return;
     }
-    // Pinch değilse swipe
-    if(_lbScale<=1){
+    // Tek parmak swipe — sadece zoom yoksa
+    if(!_isPinching&&_lbScale<=1){
       var dx=e.changedTouches[0].clientX-_startX;
       var dy=e.changedTouches[0].clientY-_startY;
       if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)){
