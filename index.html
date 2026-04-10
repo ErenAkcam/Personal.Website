@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title id="page-title">Eren AkÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ§am | Portfolio</title>
+<title id="page-title">Eren Akçam | Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Barlow+Condensed:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -18,7 +18,7 @@ html,body{min-height:100%}
 ::-moz-selection{background:var(--gl);color:var(--blk)}
 body{font-family:'Raleway',sans-serif;background:var(--bej);color:var(--txt);overflow-x:hidden;padding-top:calc(var(--nh) + var(--np)*2 + 4px)}
 
-/* ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ NAV ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ */
+/* ── NAV ── */
 .nw{position:fixed;top:0;left:0;right:0;z-index:999;padding:var(--np) 16px;background:var(--bej)}
 nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align-items:center;padding:0 14px;gap:7px;box-shadow:0 2px 12px rgba(0,0,0,.2)}
 .nb{font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:1rem;color:var(--bl);background:none;border:none;cursor:pointer;white-space:nowrap;flex-shrink:0;padding:0}
@@ -37,11 +37,11 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
 .mob-back:active{background:var(--gd)}
 .mob-back svg{width:14px;height:14px;fill:none;stroke:var(--gl);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
 
-/* ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ PAGE SYSTEM ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ */
+/* ── PAGE SYSTEM ── */
 .pg{display:none !important}
 .pg.on{display:flex !important;flex-direction:column}
 
-/* ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ HERO ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ */
+/* ── HERO ── */
 .hero{margin:0 16px 16px;border-radius:18px;overflow:hidden;display:flex;align-items:stretch;min-height:calc(100vh - var(--nh) - var(--np)*2 - 20px);position:relative;flex-shrink:0}
 .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(108deg,var(--gl) 47%,var(--gp) 47%);pointer-events:none}
 .hc{position:relative;z-index:2;background:var(--blk);border-radius:14px;margin:26px 0 26px 26px;width:380px;flex-shrink:0;padding:38px 40px 34px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 8px 36px rgba(0,0,0,.3)}
@@ -66,18 +66,18 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
 .sb:hover{background:rgba(255,255,255,.28)}
 .sb img{width:17px;height:17px;object-fit:contain}
 
-/* ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ INNER PAGE SHARED ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ */
+/* ── INNER PAGE SHARED ── */
 .pb{margin:0 16px 0;background:var(--gd);border-radius:18px 18px 0 0;padding:44px 52px 32px;position:relative;overflow:hidden;flex-shrink:0}
 .pb::after{content:'';position:absolute;right:-60px;top:-60px;width:260px;height:260px;border-radius:50%;background:var(--g);opacity:.12}
 .pb h1{font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:clamp(2.6rem,4.5vw,4.8rem);color:var(--bl);line-height:1;position:relative;z-index:1}
 .pbs{font-size:.62rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gl);margin-top:8px;position:relative;z-index:1}
 .pbd{margin:0 16px 16px;background:var(--bl);border-radius:0 0 18px 18px;border:1px solid var(--bm);border-top:none;padding:48px 52px 68px}
-/* FIXED: .pfl was #555 on dark bg ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ now readable */
+/* FIXED: .pfl was #555 on dark bg — now readable */
 .pf{margin:0 16px 5px;background:var(--blk);border-radius:12px;padding:16px 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;flex-shrink:0}
 .pfl{font-size:.56rem;letter-spacing:.17em;text-transform:uppercase;color:var(--bd)}
 .pfe{font-size:.76rem;color:var(--gl);text-decoration:none;font-weight:500}
 
-/* ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ MEMORY ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ */
+/* ── MEMORY ── */
 .tlh{font-family:'Playfair Display',serif;font-style:italic;font-size:1.35rem;font-weight:700;color:#4d7040 !important;padding-bottom:10px;border-bottom:2px solid var(--g);margin-top:44px;margin-bottom:0}
 .tlh:first-child{margin-top:0}
 .tli{display:flex;gap:32px;padding:28px 0;border-bottom:1px solid var(--bm);align-items:flex-start}
@@ -92,7 +92,7 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
 .tlc{font-size:.68rem;color:var(--mu);margin-bottom:11px}
 .tlp{font-size:.82rem;line-height:1.88;color:#5c5c40 !important;font-weight:300;word-wrap:break-word}
 
-/* ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ SKILLS ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ */
+/* ── SKILLS ── */
 .skh{font-family:'Playfair Display',serif;font-style:italic;font-size:1.35rem;font-weight:700;color:#4d7040 !important;padding-bottom:10px;border-bottom:2px solid var(--g);margin-bottom:18px;margin-top:44px;background:transparent}
 .skh:first-child{margin-top:0}
 .skg{display:grid;grid-template-columns:repeat(auto-fill,minmax(246px,1fr));gap:10px;margin-bottom:4px}
@@ -108,7 +108,7 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
 .sbt{width:100%;height:5px;background:var(--bm);border-radius:3px;overflow:hidden}
 .sbf{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--gd),var(--g));transition:width 1s cubic-bezier(.4,0,.2,1)}
 
-/* ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ CERTS ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ */
+/* ── CERTS ── */
 .crt{display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:22px;align-items:start}
 .cs{background:var(--bl);border:1.5px solid var(--bm);border-radius:15px;overflow:hidden;box-shadow:0 3px 16px rgba(0,0,0,.07)}
 .csh{font-family:'Playfair Display',serif;font-style:italic;font-size:.92rem;font-weight:700;color:var(--bl);padding:10px 16px;background:var(--gd);display:flex;align-items:center;gap:7px}
@@ -128,7 +128,7 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
 .cd{width:6px;height:6px;border-radius:50%;background:var(--bm);cursor:pointer;transition:background .2s,transform .15s;border:none;padding:0}
 .cd.on{background:var(--gd);transform:scale(1.4)}
 
-/* ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ PORTFOLIO ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ */
+/* ── PORTFOLIO ── */
 .pgrd{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
 .cc{border-radius:14px;overflow:hidden;cursor:pointer;background:var(--bl);border:1.5px solid var(--bm);box-shadow:0 3px 14px rgba(0,0,0,.07);transition:transform .18s,box-shadow .18s}
 .cc:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(0,0,0,.11)}
@@ -181,7 +181,7 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
 .bdoc-n{font-size:.73rem;font-weight:600;color:var(--txt)}
 .bdoc-s{font-size:.6rem;color:var(--mu)}
 
-/* ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ CONTACT ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ */
+/* ── CONTACT ── */
 .ctl{display:grid;grid-template-columns:1fr 1.1fr;gap:26px;align-items:start}
 .ci{background:var(--blk);border-radius:15px;padding:30px 26px}
 .citt{font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:1.42rem;color:var(--bl);margin-bottom:6px}
@@ -212,7 +212,7 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
 .fsucc-m{font-size:.92rem;color:var(--gd);font-weight:700;margin-bottom:5px}
 .fsucc-s{font-size:.74rem;color:var(--tm)}
 
-/* ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ LIGHTBOX ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ */
+/* ── LIGHTBOX ── */
 .lb{display:none;position:fixed;inset:0;background:rgba(3,6,2,.93);z-index:9999;align-items:center;justify-content:center}
 .lb.on{display:flex}
 .lbx{position:absolute;top:16px;right:22px;font-size:2rem;color:var(--bl);cursor:pointer;background:none;border:none;opacity:.7;line-height:1}
@@ -222,13 +222,13 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
 .lb-pv{left:10px}
 .lb-nx{right:10px}
 
-/* ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ
-   MOBILE RESPONSIVE ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ max-width:768px
+/* ══════════════════════════════════════
+   MOBILE RESPONSIVE — max-width:768px
    PC layout is untouched above this point
-ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ */
+══════════════════════════════════════ */
 @media(max-width:768px){
 
-  /* ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ Nav ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ */
+  /* ── Nav ── */
   .nw{padding:6px 10px}
   nav{padding:0 12px;gap:6px;border-radius:14px}
   .nb{font-size:.88rem}
@@ -264,7 +264,7 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
   .nav-burger{display:flex}
   .mob-back{display:flex}
 
-  /* ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ Hero: photo top full-width, card below ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ */
+  /* ── Hero: photo top full-width, card below ── */
   .hero{
     flex-direction:column;
     margin:0 8px 10px;
@@ -300,7 +300,7 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
   .hb{flex-direction:row;flex-wrap:wrap;gap:8px}
   .bg,.bo{padding:10px 20px;font-size:.62rem}
 
-  /* ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ Page banner ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ */
+  /* ── Page banner ── */
   .pb{margin:0 8px 0;padding:24px 20px 20px;border-radius:14px 14px 0 0}
   .pb h1{font-size:clamp(1.8rem,8vw,3rem)}
   .pbs{font-size:.58rem}
@@ -309,7 +309,7 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
   .pfl{font-size:.52rem}
   .pfe{font-size:.7rem}
 
-  /* ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ Memory ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ */
+  /* ── Memory ── */
   .tli{flex-direction:column;gap:12px;padding:20px 0}
   .tll{
     width:auto;
@@ -328,11 +328,11 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
   .tlt{font-size:1rem}
   .tlp{font-size:.8rem;line-height:1.75}
 
-  /* ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ Skills ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ */
+  /* ── Skills ── */
   .skg{grid-template-columns:1fr 1fr;gap:8px}
   .skn{font-size:.82rem}
 
-  /* ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ Portfolio ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ */
+  /* ── Portfolio ── */
   .pgrd{grid-template-columns:1fr 1fr;gap:10px}
   .pjgrd{grid-template-columns:1fr 1fr;gap:8px}
   .pd-wrap{max-width:100%}
@@ -347,10 +347,10 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
   .cft{color:#1a1a14 !important;font-size:1.1rem}
   .cfs{color:#4a4a30 !important}
 
-  /* ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ Certs ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ */
+  /* ── Certs ── */
   .crt{grid-template-columns:1fr}
 
-  /* ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ Contact ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ */
+  /* ── Contact ── */
   .ctl{
     grid-template-columns:1fr;
     gap:16px;
@@ -362,7 +362,7 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
   .finp{font-size:.84rem;padding:11px 13px}
   .fsub{padding:14px;font-size:.72rem}
 
-  /* ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ Lightbox ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ */
+  /* ── Lightbox ── */
   .lb img{max-width:96vw;max-height:80vh}
 }
 
@@ -381,7 +381,7 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
 <!-- NAV -->
 <div class="nw">
   <nav>
-    <button class="nb" id="site-brand" onclick="go('pp')">Eren AkÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ§am</button>
+    <button class="nb" id="site-brand" onclick="go('pp')">Eren Akçam</button>
     <button class="nav-burger" id="nav-burger" onclick="toggleMobNav()" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -523,7 +523,6 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
 var SK='erensite_data';
 
 
-/* ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ Defaults ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ tÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¼m iÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ§erik buraya gÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¶mÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¼lÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¼ ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ */
 /* ── Defaults — tüm içerik buraya gömülü ── */
 var DEF = {
   "name": "Eren Akçam",
@@ -546,7 +545,7 @@ var DEF = {
     "categories": [
       {
         "id": "mechanical",
-        "label": "Mechanical",
+        "label": "Mekanik",
         "items": [
           {
             "n": "Manual Lathe",
@@ -592,7 +591,7 @@ var DEF = {
       },
       {
         "id": "graphic",
-        "label": "Graphic Design",
+        "label": "Grafik Tasarım",
         "items": [
           {
             "n": "Adobe Illustrator",
@@ -623,7 +622,7 @@ var DEF = {
       },
       {
         "id": "software",
-        "label": "Software",
+        "label": "Yazılım",
         "items": [
           {
             "n": "Unity",
@@ -644,7 +643,7 @@ var DEF = {
       },
       {
         "id": "language",
-        "label": "Language",
+        "label": "Dil",
         "items": [
           {
             "n": "Turkish",
@@ -662,141 +661,147 @@ var DEF = {
             "w": 22
           }
         ]
-      },
-      {
-        "id": "cat1775849761481",
-        "label": "New-Gen Skillset",
-        "items": [
-          {
-            "n": "AI Prompt Engineering",
-            "l": "Intermediate",
-            "w": 76
-          },
-          {
-            "n": "Reverse Engineering",
-            "l": "Advanced",
-            "w": 100
-          },
-          {
-            "n": "AI-Assisted CAD & Generative Design",
-            "l": "Intermediate",
-            "w": 50
-          },
-          {
-            "n": "Rapid Prototyping",
-            "l": "Intermediate",
-            "w": 50
-          },
-          {
-            "n": "Technical Prompt Engineering for Mechanical Systems",
-            "l": "Advanced",
-            "w": 100
-          }
-        ]
       }
     ]
   },
   "portfolio": [
     {
-      "id": "graphic",
-      "tag": "Graphic Design",
-      "title": "Graphic Design",
-      "cover": "",
+      "id": "design2d",
+      "tag": "2D Design",
+      "title": "2D Design",
+      "cover": "assets/portfolio_tesla.jpg",
       "projects": [
         {
-          "id": "g1",
-          "title": "Logo Design Collection",
-          "cover": "",
-          "subtitle": "2022–2024 · Bionluk",
+          "id": "tesla",
+          "title": "Nikola Tesla — Digital Portrait",
+          "cover": "assets/portfolio_tesla.jpg",
+          "subtitle": "2022 · Adobe Illustrator",
+          "featured": true,
+          "status": "done",
+          "client": "",
+          "date": "2022",
+          "tags": ["Illustration", "Digital Art", "Illustrator"],
           "blocks": [
             {
               "type": "desc",
-              "content": "A collection of logo design projects."
-            }
-          ]
-        },
-        {
-          "id": "g2",
-          "title": "Social Media Visuals",
-          "cover": "",
-          "subtitle": "2023 · Canva / Illustrator",
-          "blocks": [
-            {
-              "type": "desc",
-              "content": "Social media content creation for multiple brands."
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "cad",
-      "tag": "CAD & Engineering",
-      "title": "CAD & Engineering",
-      "cover": "assets/Ekran görüntüsü 2026-03-16 135233.png",
-      "projects": [
-        {
-          "id": "c1",
-          "title": "SolidWorks 3D Models",
-          "cover": "",
-          "subtitle": "2023–2024 · SolidWorks",
-          "blocks": [
-            {
-              "type": "desc",
-              "content": "3D mechanical part models created in SolidWorks."
-            }
-          ]
-        },
-        {
-          "id": "c2",
-          "title": "AutoCAD Technical Drawings",
-          "cover": "",
-          "subtitle": "2023–2024 · AutoCAD 2D",
-          "blocks": [
-            {
-              "type": "desc",
-              "content": "2D technical drawings."
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "dev",
-      "tag": "Software & Game Dev",
-      "title": "Game Development",
-      "cover": "",
-      "projects": [
-        {
-          "id": "d1",
-          "title": "Unity Game Project",
-          "cover": "",
-          "subtitle": "2024 · Unity / C#",
-          "blocks": [
-            {
-              "type": "desc",
-              "content": "A small game developed in Unity using C#."
+              "content": "Nikola Tesla'nın siyah-beyaz dijital portresi. Adobe Illustrator kullanılarak vektör tabanlı çizim tekniğiyle oluşturulmuş bir sanat eseri. Işık-gölge dengeleri katman katman inşa edilerek gerçekçi bir portre elde edilmiştir."
             },
             {
               "type": "images",
-              "items": []
+              "items": ["assets/portfolio_tesla.jpg"]
+            },
+            {
+              "type": "docs",
+              "items": [
+                {"name": "Nikola Tesla — PDF", "url": "assets/portfolio_tesla_nikola.pdf", "size": ""}
+              ]
             }
           ]
         },
         {
-          "id": "p1773574540096",
-          "title": "New Project",
-          "cover": "",
-          "subtitle": "",
+          "id": "italianmafia",
+          "title": "Italian Mafia — Karakter Tasarımı",
+          "cover": "assets/portfolio_mafia_siyah.jpg",
+          "subtitle": "2023 · Adobe Illustrator",
           "featured": false,
           "status": "done",
           "client": "",
-          "date": "",
-          "tags": [],
+          "date": "2023",
+          "tags": ["Karakter Tasarımı", "İllüstrasyon", "Illustrator"],
           "blocks": [
             {
               "type": "desc",
-              "content": ""
+              "content": "Italian Mafia temalı karakter tasarım serisi. Aynı konseptin dört farklı renk ve karakter varyantı olarak sunulmuştur: Siyah takım elbiseli iri yapılı karakter, beyaz takım elbiseli kel karakter, kırmızı takım elbiseli uzun saçlı karakter ve mavi takım elbiseli keskin bakışlı karakter. Her biri Adobe Illustrator ile vektörel olarak çizilmiştir."
+            },
+            {
+              "type": "images",
+              "items": [
+                "assets/portfolio_mafia_siyah.jpg",
+                "assets/portfolio_mafia_beyaz.jpg",
+                "assets/portfolio_mafia_kirmizi.jpg",
+                "assets/portfolio_mafia_mavi.jpg"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "design3d",
+      "tag": "3D Design",
+      "title": "3D Design",
+      "cover": "assets/portfolio_asansor_1.png",
+      "projects": [
+        {
+          "id": "asansor",
+          "title": "Zincir Tahrikli Asansör Mekanizması",
+          "cover": "assets/portfolio_asansor_1.png",
+          "subtitle": "2025–2026 · SolidWorks",
+          "featured": true,
+          "status": "done",
+          "client": "",
+          "date": "2025–2026",
+          "tags": ["SolidWorks", "3D Modelleme", "Makine Tasarımı", "Montaj"],
+          "blocks": [
+            {
+              "type": "desc",
+              "content": "SolidWorks ortamında tasarlanan tam montajlı zincir tahrikli asansör mekanizması. Proje; motor, zincir-dişli sistemi, platform, kasa ve tüm bağlantı elemanlarını kapsamaktadır. Parçalar ayrı ayrı modellenerek montaj dosyasında birleştirilmiş, kinematik bütünlük sağlanmıştır. Tasarımda rulmanlar, segmanlar, cıvatalar ve somun standart kütüphane bileşenleri olarak kullanılmıştır."
+            },
+            {
+              "type": "images",
+              "items": [
+                "assets/portfolio_asansor_1.png",
+                "assets/portfolio_asansor_2.png",
+                "assets/portfolio_asansor_3.png"
+              ]
+            },
+            {
+              "type": "docs",
+              "items": [
+                {"name": "Montaj — Parasolid (.x_t)", "url": "assets/portfolio_asansor_montaj.x_t", "size": "1.3 MB"},
+                {"name": "Alt Montaj — Parasolid (.x_t)", "url": "assets/portfolio_asansor_montaj1.x_t", "size": "1.4 MB"},
+                {"name": "SolidWorks Assembly (.SLDASM)", "url": "assets/portfolio_asansor_Montaj1.SLDASM", "size": "1.2 MB"},
+                {"name": "Üst Gövde (.SLDASM)", "url": "assets/portfolio_asansor_ustgovde.SLDASM", "size": "950 KB"}
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gamedev",
+      "tag": "Game Development",
+      "title": "Game Development",
+      "cover": "assets/portfolio_degisken_1.jpg",
+      "projects": [
+        {
+          "id": "degisken",
+          "title": "Değişken — Matematik Oyunu",
+          "cover": "assets/portfolio_degisken_1.jpg",
+          "subtitle": "2024 · Unity / C#",
+          "featured": true,
+          "status": "done",
+          "client": "",
+          "date": "2024",
+          "tags": ["Unity", "C#", "Game Dev", "2D"],
+          "blocks": [
+            {
+              "type": "desc",
+              "content": "Unity ile geliştirilen 2D piksel sanat tarzı matematik bulmaca oyunu. Oyuncu, ekrana gelen matematik denklemlerinde eksik değişkeni bularak puan kazanır. Oyun; ana menü, hikaye modu, kısayollar ve çıkış ekranlarına sahiptir. Tüm görseller ve UI bileşenleri sıfırdan tasarlanmıştır. Karakter animasyonları, ses efektleri ve arkaplan müziği entegre edilmiştir."
+            },
+            {
+              "type": "images",
+              "items": [
+                "assets/portfolio_degisken_1.jpg",
+                "assets/portfolio_degisken_2.jpg"
+              ]
+            },
+            {
+              "type": "docs",
+              "items": [
+                {"name": "Değişken — Oyun Dosyası (.exe)", "url": "assets/portfolio_degisken.exe", "size": ""},
+                {"name": "Proje Dökümanı (.pdf)", "url": "assets/portfolio_degisken_dokuman.pdf", "size": ""}
+              ]
             }
           ]
         }
@@ -863,7 +868,7 @@ var DEF = {
         "items": [
           {
             "src": "assets/B1_Seviye_İngilizce_Sertifika_page-0001.jpg",
-            "name": "Englısh B1 Certificate"
+            "name": "B1 Certificate"
           },
           {
             "src": "assets/9_page-0001.jpg",
@@ -903,13 +908,13 @@ var DEF = {
         "company": "Computer-Aided Machine Drawing — 11th Grade",
         "location": "Türkiye — İzmir / Kemalpaşa",
         "date": "2023 — 2027",
-        "logo": "assets/kosbi-logo.png",
-        "desc": "I am currently continuing my education in the Computer-Aided Machine Design program at KOSBİ Özel Zülfü Mevlüt Çelik Vocational and Technical Anatolian High School, where I am building a solid foundation for my career in engineering and manufacturing. Throughout my education, I have acquired advanced skills in SolidWorks, AutoCAD, technical drawing, and CNC machines.\nIn addition to my academic development, I have taken on an active leadership role by serving as Vice President of the Student Council. This responsibility has provided me with the opportunity to develop my skills in event and project management, team coordination, and organizational planning. By combining my technical expertise with these social and managerial skills, I manage my projects with a holistic perspective throughout both the design and implementation phases."
+        "logo": "",
+        "desc": "I am currently studying Computer-Aided Machine Design at KOSBİ Özel Zülfü Mevlüt Çelik Vocational and Technical Anatolian High School and taking my first steps towards a future career in engineering and manufacturing. This comprehensive education is equipping me with advanced skills in SolidWorks, AutoCAD, technical drawing, and CNC machines. The solid knowledge base I have acquired here forms the technical and 3D design foundation for all my projects.\n\n"
       }
     ]
   },
   "pageTexts": {},
-  "fontTheme": "classic",
+  "fontTheme": "elegant",
   "fontCustom": {
     "headingFont": "",
     "bodyFont": "",
@@ -920,11 +925,274 @@ var DEF = {
     "headingScale": ""
   }
 };
+
+/* ── Helpers ── */
+function clone(o){return JSON.parse(JSON.stringify(o));}
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function stripB64(obj){if(!obj||typeof obj!=='object')return;Object.keys(obj).forEach(function(k){if(typeof obj[k]==='string'&&obj[k].startsWith('data:'))obj[k]='';else stripB64(obj[k]);});}
+
+/* ── Load data — her zaman DEF kullan (admin deploy eder) ── */
+function lSD(){
+  return clone(DEF);
+}
+var SD=lSD(), certSliders={};
+
+/* ── Theme ── */
+function applyTheme(){
+  try{
+    var m={'--g':'colorGreen','--gd':'colorGreenDeep','--gl':'colorGreenLight','--bej':'colorBej','--blk':'colorBlack'};
+    Object.keys(m).forEach(function(v){if(SD[m[v]])document.documentElement.style.setProperty(v,SD[m[v]]);});
+    // Apply font theme
+    applyFontTheme();
+  }catch(e){}
+}
+
+var FONT_THEMES={
+  'classic':{
+    body:"'Raleway',sans-serif",
+    heading:"'Playfair Display',serif",
+    mono:"'Barlow Condensed',sans-serif",
+    bodyColor:'',bodySize:'',headingColor:'',headingSize:''
+  },
+  'modern':{
+    body:"'Inter','Segoe UI',sans-serif",
+    heading:"'Inter','Segoe UI',sans-serif",
+    mono:"'JetBrains Mono','Courier New',monospace",
+    bodyColor:'',bodySize:'',headingColor:'',headingSize:''
+  },
+  'elegant':{
+    body:"'Georgia','Times New Roman',serif",
+    heading:"'Cormorant Garamond','Georgia',serif",
+    mono:"'Barlow Condensed',sans-serif",
+    bodyColor:'',bodySize:'',headingColor:'',headingSize:''
+  },
+  'minimal':{
+    body:"'DM Sans','Helvetica Neue',sans-serif",
+    heading:"'DM Serif Display','Georgia',serif",
+    mono:"'Space Mono','Courier New',monospace",
+    bodyColor:'',bodySize:'',headingColor:'',headingSize:''
+  },
+  'technical':{
+    body:"'IBM Plex Sans','Arial',sans-serif",
+    heading:"'IBM Plex Serif','Georgia',serif",
+    mono:"'IBM Plex Mono','Courier New',monospace",
+    bodyColor:'',bodySize:'',headingColor:'',headingSize:''
+  }
+};
+
+function applyFontTheme(){
+  try{
+    var ft=SD.fontTheme||'classic';
+    var custom=SD.fontCustom||{};
+    var theme=FONT_THEMES[ft]||FONT_THEMES['classic'];
+    // Body font
+    document.body.style.fontFamily=custom.bodyFont||theme.body;
+    // Heading font override via CSS variable
+    document.documentElement.style.setProperty('--font-heading',custom.headingFont||theme.heading);
+    document.documentElement.style.setProperty('--font-mono',custom.monoFont||theme.mono);
+    // Colors
+    if(custom.bodyColor)document.documentElement.style.setProperty('--txt',custom.bodyColor);
+    if(custom.headingColor)document.documentElement.style.setProperty('--heading-color',custom.headingColor||'var(--bl)');
+    // Sizes
+    if(custom.bodySize)document.documentElement.style.setProperty('--body-size',custom.bodySize+'px');
+    if(custom.headingScale)document.documentElement.style.setProperty('--heading-scale',custom.headingScale);
+    // Apply heading font to all heading elements
+    var hStyle=document.getElementById('dyn-font-style');
+    if(!hStyle){hStyle=document.createElement('style');hStyle.id='dyn-font-style';document.head.appendChild(hStyle);}
+    var hFont=custom.headingFont||theme.heading;
+    var bSize=custom.bodySize?custom.bodySize+'px':'';
+    var hColor=custom.headingColor||'';
+    hStyle.textContent=
+      '.hn,.ash,.pd-title,.pb h1{font-family:'+hFont+' !important;'+(hColor?'color:'+hColor+' !important;':'')+'}'+
+      '.tlh{font-family:'+hFont+' !important;color:#4d7040 !important}'+
+      '.skh{font-family:'+hFont+' !important;color:#4d7040 !important}'+
+      '.csh{font-family:'+hFont+' !important;color:var(--bl) !important}'+
+      '.cft{font-family:'+hFont+' !important;color:#1a1a14 !important}'+
+      '.citt{font-family:'+hFont+' !important;color:var(--bl) !important}'+
+      '.hpln,.tlt,.skn,.cna{font-family:'+(custom.monoFont||theme.mono)+' !important;}'+
+      (bSize?'body{font-size:'+bSize+' !important;}':'');
+  }catch(e){}
+}
+
+/* ── Apply data to page ── */
+function applyData(){
+  applyTheme();
+  try{
+    // Apply page texts overrides
+    var PT=SD.pageTexts||{};
+    document.querySelectorAll('[data-key]').forEach(function(el){
+      var k=el.getAttribute('data-key');
+      if(PT[k])el.innerHTML=PT[k];
+    });
+    // Title - update both the title element and document.title
+    document.title = SD.siteTitle||SD.name+' | Portfolio';
+    var pt=document.getElementById('page-title');
+    if(pt)pt.textContent=SD.siteTitle||SD.name+' | Portfolio';
+    // Nav brand
+    var br=document.getElementById('site-brand');if(br)br.textContent=SD.siteName||SD.name;
+    // Name
+    var sn=document.getElementById('s-name');
+    if(sn){var nm=SD.name||'Eren Akçam';sn.innerHTML=nm.indexOf(' ')>-1?nm.replace(' ','<br>'):nm;}
+    // Profile photo
+    var ph=document.getElementById('s-photo');
+    if(ph&&SD.profilePhoto)ph.src=SD.profilePhoto+'?v='+Math.floor(Date.now()/10000);
+    // Texts
+    var ht=document.getElementById('hero-tag');if(ht)ht.textContent=SD.tag||'';
+    var hd=document.getElementById('hero-desc');if(hd)hd.textContent=SD.herodesc||'';
+    // Email
+    var em=SD.email||'eren.akcamm@gmail.com';
+    document.querySelectorAll('.site-email').forEach(function(el){el.textContent=em;el.href='mailto:'+em;});
+    var sem=document.getElementById('s-em');if(sem)sem.href='mailto:'+em;
+    // Links
+    var li=SD.linkedin||'#';
+    var sli=document.getElementById('s-li');if(sli)sli.href=li;
+    var cli=document.getElementById('c-li2');if(cli){cli.href=li;cli.textContent='erenakcam';}
+    // Phone
+    var cp=document.getElementById('c-phone');if(cp){cp.textContent=SD.phone||'';cp.href='tel:'+(SD.phone||'').replace(/\s/g,'');}
+    // Freelance
+    var cf=document.getElementById('c-fr');if(cf)cf.href=SD.freelance||'#';
+    // Render sections
+    renderMemory();
+    renderSkills();
+    renderCerts();
+    preloadCertImages();
+    showCats();
+  }catch(e){console.warn('applyData error:',e);}
+}
+
+/* ── Memory ── */
+function renderMemory(){
+  var el=document.getElementById('memory-body');if(!el)return;
+  var mem=SD.memory||DEF.memory;
+  var h='';
+  if(mem.experience&&mem.experience.length){
+    h+='<div class="tlh">Experience</div>';
+    mem.experience.forEach(function(e){h+=memRow(e);});
+  }
+  if(mem.education&&mem.education.length){
+    h+='<div class="tlh">Education</div>';
+    mem.education.forEach(function(e){h+=memRow(e);});
+  }
+  el.innerHTML=h||'<p style="color:var(--mu)">No entries yet.</p>';
+}
+function memRow(e){
+  var descHtml=(e.desc||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
+  var logoHtml='';
+  if(e.logo){
+    logoHtml='<div class="tlg-wrap" style="background-image:url(\''+esc(e.logo)+'\')"></div>';
+  }
+  return '<div class="tli"><div class="tll"><div class="tld">'+esc(e.date||'')+'</div>'+
+    logoHtml+
+    '</div><div class="tlr"><div class="tlt">'+esc(e.title||'')+'</div>'+
+    (e.company?'<div class="tls">'+esc(e.company)+'</div>':'')+
+    (e.location?'<div class="tlc">'+esc(e.location)+'</div>':'')+
+    '<p class="tlp">'+descHtml+'</p></div></div>';
+}
+
+/* ── Skills ── */
+var BM={Advanced:'ba',Intermediate:'bi',Basic:'bb',Native:'bn',B1:'bi',B2:'bi',A1:'bb',A2:'bb',C1:'ba',C2:'bn'};
+var BL={Advanced:'Advanced Level',Intermediate:'Intermediate Level',Basic:'Basic Level',Native:'Native Level',B1:'B1 Level',B2:'B2 Level',A1:'A1 Level',A2:'A2 Level',C1:'C1 Level',C2:'C2 Level'};
+function renderSkills(){
+  var el=document.getElementById('skills-body');if(!el)return;
+  var cats=(SD.skills&&SD.skills.categories)||DEF.skills.categories;
+  var h='';
+  cats.forEach(function(cat){
+    h+='<div class="skh">'+esc(cat.label)+'</div><div class="skg">';
+    (cat.items||[]).forEach(function(s){
+      h+='<div class="skc"><div class="skt"><span class="skn">'+esc(s.n)+
+        '</span><span class="skb '+(BM[s.l]||'bi')+'">'+(BL[s.l]||esc(s.l))+'</span></div>'+
+        '<div class="sbt"><div class="sbf" data-w="'+s.w+'" style="width:0%"></div></div></div>';
+    });
+    h+='</div>';
+  });
+  el.innerHTML=h;
+}
+
+/* ── Certs ── */
+function renderCerts(){
+  var el=document.getElementById('certs-body');if(!el)return;
+  var cats=(SD.certs&&SD.certs.categories)||DEF.certs.categories;
+  var h='<div class="crt">';
+  cats.forEach(function(cat){
+    if(!certSliders[cat.id])certSliders[cat.id]=0;
+    var idx=certSliders[cat.id];
+    var items=cat.items||[];
+    if(!items.length)return;
+    if(idx>=items.length)idx=0;
+    certSliders[cat.id]=idx;
+    var cur=items[idx];
+    h+='<div class="cs">'+
+      '<div class="csh">'+esc(cat.label)+'</div>'+
+      '<div class="csv"><div class="cia" data-cid="'+esc(cat.id)+'">'+
+        '<button class="ca pv" onclick="slideCert(\''+cat.id+'\',-1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>'+
+        '<img id="cimg-'+esc(cat.id)+'" src="'+esc(cur.src)+'" alt="'+esc(cur.name)+'" onclick="openLb(this.src,\''+cat.id+'\')" style="cursor:zoom-in"/>'+
+        '<button class="ca nx" onclick="slideCert(\''+cat.id+'\',1)"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>'+
+      '</div></div>'+
+      '<div class="cnp"><span class="cna" id="cnm-'+esc(cat.id)+'">'+esc(cur.name)+'</span>'+
+      '<span class="cco" id="cco-'+esc(cat.id)+'">'+(idx+1)+'/'+items.length+'</span></div>'+
+      '<div class="cds" id="cdots-'+esc(cat.id)+'"></div>'+
+    '</div>';
+  });
+  h+='</div>';
+  el.innerHTML=h;
+  cats.forEach(function(cat){buildCertDots(cat.id);});
+  addSwipeToCerts();
+}
+/* ── Cert swipe (mobile) ── */
+var _certTouchX={};
+function addSwipeToCerts(){
+  document.querySelectorAll('.cia[data-cid]').forEach(function(el){
+    var id=el.getAttribute('data-cid');
+    el.addEventListener('touchstart',function(e){_certTouchX[id]=e.changedTouches[0].clientX;},{passive:true});
+    el.addEventListener('touchend',function(e){
+      var dx=e.changedTouches[0].clientX-(_certTouchX[id]||0);
+      if(Math.abs(dx)>40)slideCert(id,dx<0?1:-1);
+    },{passive:true});
+  });
+}
+function slideCert(id,dir){
+  var cats=(SD.certs&&SD.certs.categories)||[];
+  var cat=cats.find(function(c){return c.id===id;});if(!cat)return;
+  var items=cat.items||[];var len=items.length;if(!len)return;
+  certSliders[id]=((certSliders[id]||0)+dir+len)%len;
+  var cur=items[certSliders[id]];
+  var img=document.getElementById('cimg-'+id);
+  if(img){
+    img.style.opacity='0';
+    img.style.transition='opacity .15s';
+    setTimeout(function(){
+      img.src=cur.src;
+      img.onload=function(){img.style.opacity='1';};
+      // if already cached, onload may not fire
+      if(img.complete)img.style.opacity='1';
+    },120);
+  }
+  var nm=document.getElementById('cnm-'+id);if(nm)nm.textContent=cur.name;
+  var co=document.getElementById('cco-'+id);if(co)co.textContent=(certSliders[id]+1)+'/'+len;
+  buildCertDots(id);
+}
+
+function preloadCertImages(){
+  var cats=(SD.certs&&SD.certs.categories)||[];
+  cats.forEach(function(cat){
+    (cat.items||[]).forEach(function(item){
+      if(item.src){var i=new Image();i.src=item.src;}
+    });
+  });
+}
+function buildCertDots(id){
+  var el=document.getElementById('cdots-'+id);if(!el)return;el.innerHTML='';
+  var cats=(SD.certs&&SD.certs.categories)||[];
+  var cat=cats.find(function(c){return c.id===id;});if(!cat)return;
+  (cat.items||[]).forEach(function(it,i){
+    var b=document.createElement('button');
+    b.className='cd'+(i===(certSliders[id]||0)?' on':'');
+    b.onclick=function(){certSliders[id]=i;slideCert(id,0);};
     el.appendChild(b);
   });
 }
 
-/* ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ Portfolio ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ */
+/* ── Portfolio ── */
 var FSVG='<svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="var(--gd)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6a2 2 0 012-2h4l2 3h10a2 2 0 012 2v9a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"/></svg>';
 function showCats(){
   document.getElementById('v-cats').style.display='';
@@ -951,7 +1219,7 @@ function showProjs(catId){
     var c=document.createElement('div');c.className='pj';
     c.onclick=(function(cid,pid){return function(){showDetail(cid,pid);};})(catId,p.id);
     var cov=p.cover?'<img class="pjv" src="'+esc(p.cover)+'" alt=""/>':'<div class="pjp"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="var(--gd)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 21V9"/></svg></div>';
-    var feat=p.featured?'<span style="position:absolute;top:8px;left:8px;background:var(--g);color:var(--bl);font-size:.5rem;font-weight:700;padding:2px 7px;border-radius:20px">ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ Featured</span>':'';
+    var feat=p.featured?'<span style="position:absolute;top:8px;left:8px;background:var(--g);color:var(--bl);font-size:.5rem;font-weight:700;padding:2px 7px;border-radius:20px">★ Featured</span>':'';
     c.innerHTML='<div style="position:relative">'+cov+feat+'</div><div class="pji"><div class="pjt">'+esc(p.title)+'</div><div class="pjs">'+esc(p.subtitle)+'</div></div>';
     g.appendChild(c);
   });
@@ -964,10 +1232,10 @@ function showDetail(catId,projId){
   document.getElementById('v-cats').style.display='none';
   document.getElementById('v-projs').style.display='none';
   document.getElementById('v-detail').style.display='';
-  document.getElementById('d-back-lbl').textContent='ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ '+cat.title;
+  document.getElementById('d-back-lbl').textContent='← '+cat.title;
   document.getElementById('d-back').onclick=function(){showProjs(catId);};
   var badges='';
-  if(proj.featured)badges+='<span class="pd-badge featured">ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ Featured</span>';
+  if(proj.featured)badges+='<span class="pd-badge featured">★ Featured</span>';
   if(proj.status)badges+='<span class="pd-badge status-'+proj.status+'">'+esc(proj.status)+'</span>';
   (proj.tags||[]).forEach(function(t){badges+='<span class="pd-badge tag">'+esc(t)+'</span>';});
   var meta='';
@@ -979,9 +1247,9 @@ function showDetail(catId,projId){
     (meta?'<div class="pd-meta">'+meta+'</div>':'')+'</div>';
   (proj.blocks||[]).forEach(function(b){
     if(b.type==='desc')
-      h+='<div class="blk2"><div class="blbl">AÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ§ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ±klama</div><p class="bdsc">'+esc(b.content||'')+'</p></div>';
+      h+='<div class="blk2"><div class="blbl">Açıklama</div><p class="bdsc">'+esc(b.content||'')+'</p></div>';
     else if(b.type==='images'&&b.items&&b.items.length){
-      h+='<div class="blk2"><div class="blbl">GÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¶rseller</div><div class="bimg">';
+      h+='<div class="blk2"><div class="blbl">Görseller</div><div class="bimg">';
       b.items.forEach(function(u){h+='<img src="'+esc(u)+'" alt="" onclick="openLb(this.src)"/>';});
       h+='</div></div>';
     }else if(b.type==='video'&&b.url)
@@ -1009,10 +1277,10 @@ function showDetail(catId,projId){
   window.scrollTo(0,0);
 }
 
-/* ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ Language dropdown (English only) ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ */
-/* ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ Language dropdown (English only - dead code removed) ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ */
+/* ── Language dropdown (English only) ── */
+/* ── Language dropdown (English only - dead code removed) ── */
 
-/* ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ Mobile nav ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ */
+/* ── Mobile nav ── */
 function toggleMobNav(){
   var m=document.getElementById('nav-menu');
   var b=document.getElementById('nav-burger');
@@ -1028,7 +1296,7 @@ document.addEventListener('click',function(e){
   if(!e.target.closest('nav'))closeMobNav();
 });
 
-/* ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ PAGE NAVIGATION ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ */
+/* ── PAGE NAVIGATION ── */
 var PAGES=['pp','mem','sk','prt','cer','con'];
 var pageHistory=[];
 
@@ -1070,8 +1338,8 @@ function animateBars(){
   });
 }
 
-/* ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ Contact form ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ */
-/* Formspree entegrasyonu ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ formspree.io'dan ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¼cretsiz form ID alÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ±n */
+/* ── Contact form ── */
+/* Formspree entegrasyonu — formspree.io'dan ücretsiz form ID alın */
 var FORMSPREE_ID = 'mwvrnjzl';
 
 function sendMsg(){
@@ -1102,11 +1370,11 @@ function sendMsg(){
   }
   err.style.display='none';
 
-  // Formspree ID girilmemiÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂse mailto fallback
+  // Formspree ID girilmemişse mailto fallback
   if(!FORMSPREE_ID||FORMSPREE_ID==='YOUR_FORM_ID'){
     var recipient=SD.email||'eren.akcamm@gmail.com';
     var mailtoLink='mailto:'+recipient+
-      '?subject='+encodeURIComponent((subj||'Portfolio Contact')+' ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ from '+name)+
+      '?subject='+encodeURIComponent((subj||'Portfolio Contact')+' — from '+name)+
       '&body='+encodeURIComponent('Name: '+name+'\nEmail: '+email+'\n\n'+msg);
     var a=document.createElement('a');a.href=mailtoLink;a.style.display='none';
     document.body.appendChild(a);a.click();document.body.removeChild(a);
@@ -1119,7 +1387,7 @@ function sendMsg(){
     return;
   }
 
-  // Formspree ile gerÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ§ek mail gÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¶nder
+  // Formspree ile gerçek mail gönder
   if(btn){btn.disabled=true;btn.textContent='Sending...';}
 
   fetch('https://formspree.io/f/'+FORMSPREE_ID,{
@@ -1131,7 +1399,7 @@ function sendMsg(){
       subject:subj||'Portfolio Contact',
       message:msg,
       _replyto:email,
-      _subject:(subj||'Portfolio Contact')+' ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ from '+name
+      _subject:(subj||'Portfolio Contact')+' — from '+name
     })
   })
   .then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d};});})
@@ -1154,8 +1422,8 @@ function sendMsg(){
   });
 }
 
-/* ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ Lightbox ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ */
-/* ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ Lightbox state ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ */
+/* ── Lightbox ── */
+/* ── Lightbox state ── */
 var _lbCatId=null, _lbScale=1, _lbTouchDist=0, _lbTouchX=0;
 
 function openLb(src, catId){
@@ -1164,7 +1432,7 @@ function openLb(src, catId){
   img.style.transform='scale(1)';
   _lbScale=1;
   _lbCatId=catId||null;
-  // ok butonlarÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ±nÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ± gÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¶ster/gizle
+  // ok butonlarını göster/gizle
   var cats=(SD.certs&&SD.certs.categories)||[];
   var cat=catId?cats.find(function(c){return c.id===catId;}):null;
   var showArrows=cat&&cat.items&&cat.items.length>1;
@@ -1183,7 +1451,7 @@ function closeLb(){
 function lbSlide(dir){
   if(!_lbCatId)return;
   slideCert(_lbCatId,dir);
-  // gÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¼ncel resmi lightbox'a yansÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ±t
+  // güncel resmi lightbox'a yansıt
   setTimeout(function(){
     var img=document.getElementById('cimg-'+_lbCatId);
     if(img){
@@ -1270,7 +1538,7 @@ document.addEventListener('keydown',function(e){
         img.style.transform='translate('+_panX+'px,'+_panY+'px) scale('+_lbScale+')';
       }
     } else if(e.touches.length===1&&_lbScale>1){
-      // Pan ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ zoom varken sÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¼rÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¼kle
+      // Pan — zoom varken sürükle
       var dx=e.touches[0].clientX-_panStartX;
       var dy=e.touches[0].clientY-_panStartY;
       _panX+=dx; _panY+=dy;
@@ -1301,15 +1569,15 @@ document.addEventListener('keydown',function(e){
     }
   },{passive:true});
 
-  // Arka plana tÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ±klayÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ±nca kapat
+  // Arka plana tıklayınca kapat
   document.getElementById('lb').addEventListener('click',function(e){
     if(e.target===this||e.target===wrap)closeLb();
   });
 })();
 
-/* ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ Storage sync ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ devre dÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ±ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ± ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ */
+/* ── Storage sync — devre dışı ── */
 
-/* ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ INIT ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ */
+/* ── INIT ── */
 applyData();
 
 </script>
