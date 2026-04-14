@@ -4,6 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title id="page-title">Eren Akçam | Portfolio</title>
+<link rel="icon" id="site-favicon" type="image/png" href="favicon.png"/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Barlow+Condensed:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -885,7 +886,7 @@ var DEF = {
   "siteTitle": "Eren Akçam | Portfolio",
   "seoDesc": "Portfolio of Eren Akçam — Computer-Aided Machine Drawing student and freelance graphic designer.",
   "seoKeys": "portfolio, design, engineering, graphic design, CAD",
-  "favicon": "assets/faicon.png",
+  "favicon": "favicon.png",
   "memory": {
     "experience": [
       {
@@ -1038,6 +1039,9 @@ function applyData(){
     document.title = SD.siteTitle||SD.name+' | Portfolio';
     var pt=document.getElementById('page-title');
     if(pt)pt.textContent=SD.siteTitle||SD.name+' | Portfolio';
+    // Favicon
+    var fv=document.getElementById('site-favicon');
+    if(fv&&SD.favicon)fv.href=SD.favicon;
     // Nav brand
     var br=document.getElementById('site-brand');if(br)br.textContent=SD.siteName||SD.name;
     // Name
