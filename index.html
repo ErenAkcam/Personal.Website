@@ -1591,7 +1591,25 @@ document.addEventListener('keydown',function(e){
 function handleMailClick(e){
   e.preventDefault();
   var email=SD.email||'eren.akcamm@gmail.com';
-  window.open('https://mail.google.com/mail/?view=cm&to='+encodeURIComponent(email),'_blank');
+  var gmailUrl='https://mail.google.com/mail/?view=cm&to='+encodeURIComponent(email);
+  var appOpened=false;
+
+  function onBlur(){ appOpened=true; }
+  window.addEventListener('blur', onBlur, {once:true});
+
+  // iframe üzerinden mailto dene (mobilde de çalışır, sayfa navigate etmez)
+  var ifr=document.createElement('iframe');
+  ifr.style.cssText='position:fixed;top:-9999px;left:-9999px;width:1px;height:1px;opacity:0;border:none;';
+  ifr.src='mailto:'+email;
+  document.body.appendChild(ifr);
+
+  setTimeout(function(){
+    window.removeEventListener('blur', onBlur);
+    document.body.removeChild(ifr);
+    if(!appOpened){
+      window.open(gmailUrl,'_blank');
+    }
+  }, 500);
 }
 
 function attachMailHandlers(){
