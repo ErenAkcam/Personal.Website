@@ -1587,8 +1587,26 @@ document.addEventListener('keydown',function(e){
 
 /* ── Storage sync — devre dışı ── */
 
+/* ── Smart email handler ── */
+function handleMailClick(e){
+  e.preventDefault();
+  var email=SD.email||'eren.akcamm@gmail.com';
+  window.open('https://mail.google.com/mail/?view=cm&to='+encodeURIComponent(email),'_blank');
+}
+
+function attachMailHandlers(){
+  // Footer + hero email linkleri
+  document.querySelectorAll('.site-email, #s-em').forEach(function(el){
+    el.addEventListener('click',handleMailClick);
+  });
+  // Contact sayfası email linki
+  var cem=document.getElementById('c-email');
+  if(cem)cem.addEventListener('click',handleMailClick);
+}
+
 /* ── INIT ── */
 applyData();
+attachMailHandlers();
 
 </script>
 <button class="mob-back" id="mob-back-btn" onclick="goBack()"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>Back</button>
