@@ -222,6 +222,28 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
 .fsucc-m{font-size:.92rem;color:var(--gd);font-weight:700;margin-bottom:5px}
 .fsucc-s{font-size:.74rem;color:var(--tm)}
 
+/* ── REFERENCES ── */
+.ref-empty{text-align:center;padding:52px 20px;color:var(--mu);font-size:.82rem}
+.ref-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;margin-bottom:8px}
+.ref-card{background:var(--bej);border:1.5px solid var(--bm);border-radius:14px;padding:22px 24px;display:flex;flex-direction:column;gap:12px;transition:transform .15s,border-color .15s}
+.ref-card:hover{transform:translateY(-2px);border-color:var(--g)}
+.ref-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.ref-meta{flex:1}
+.ref-name{font-family:'Barlow Condensed',sans-serif;font-size:1.05rem;font-weight:700;color:var(--txt);letter-spacing:.04em;text-transform:uppercase;margin-bottom:2px}
+.ref-role{font-size:.66rem;color:var(--gd);font-weight:600;margin-bottom:1px}
+.ref-ctx{font-size:.6rem;color:var(--mu);font-style:italic}
+.ref-stars{display:flex;gap:3px;flex-shrink:0}
+.ref-stars svg{width:14px;height:14px}
+.ref-comment{font-size:.81rem;line-height:1.82;color:var(--tm);font-weight:300;position:relative}
+.ref-comment::before{content:'"';font-family:'Playfair Display',serif;font-size:2.5rem;color:var(--gl);line-height:1;display:block;margin-bottom:-8px}
+.ref-footer{display:flex;align-items:center;justify-content:space-between;padding-top:10px;border-top:1px solid var(--bm)}
+.ref-phone{font-size:.62rem;color:var(--mu);display:flex;align-items:center;gap:4px;text-decoration:none}
+.ref-phone:hover{color:var(--gd)}
+.ref-phone svg{width:11px;height:11px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ref-date-block{display:flex;flex-direction:column;align-items:flex-end;gap:1px}
+.ref-date{font-size:.6rem;color:var(--tm);letter-spacing:.03em;font-weight:500}
+.ref-time{font-size:.55rem;color:var(--bd);letter-spacing:.04em}
+
 /* ── LIGHTBOX ── */
 .lb{display:none;position:fixed;inset:0;background:rgba(3,6,2,.93);z-index:9999;align-items:center;justify-content:center}
 .lb.on{display:flex}
@@ -517,6 +539,15 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
     </div>
   </div>
   <div class="pf"><span class="pfl" data-key="footer_email_label">E-Mail</span><a class="pfe site-email" href="#">eren.akcamm@gmail.com</a></div>
+</div>
+
+<!-- REFERENCES PAGE -->
+<div id="ref" class="pg">
+  <div class="pb"><h1>References</h1><div class="pbs">Gözlemler &amp; Değerlendirmeler</div></div>
+  <div class="pbd" id="refs-body">
+    <div id="refs-list"><p style="color:var(--mu);font-size:.8rem">Yükleniyor...</p></div>
+  </div>
+  <div class="pf"><span class="pfl">E-Mail</span><a class="pfe site-email" href="#">eren.akcamm@gmail.com</a></div>
 </div>
 
 <div class="lb" id="lb">
@@ -937,22 +968,7 @@ var DEF = {
   "colorText": "#1e2e28",
   "colorTextMid": "#4a6a58",
   "colorTextMuted": "#6b7a6e",
-  "references": [
-    {
-      "id": "ref_1776503105478",
-      "date": "2026-04-18T09:05:05.478Z",
-      "name": "dfzf",
-      "title": "cv",
-      "company": "vc",
-      "phone": "+90 551 628 62 62",
-      "ctx": "Staj",
-      "ctxDetail": "sdzv nb",
-      "star": 5,
-      "comment": "xc bfxHGfvczgdcvhzbgfxhxgfxgchzzxghfzhfxhjcgmchxghmxhx",
-      "status": "approved",
-      "approvedDate": "2026-04-18T09:05:27.488Z"
-    }
-  ]
+  "references": []
 };
 
 /* ── Helpers ── */
@@ -1087,6 +1103,7 @@ function applyData(){
     renderMemory();
     renderSkills();
     renderCerts();
+    renderRefs();
     preloadCertImages();
     showCats();
   }catch(e){console.warn('applyData error:',e);}
@@ -1608,6 +1625,55 @@ document.addEventListener('keydown',function(e){
 })();
 
 /* ── Storage sync — devre dışı ── */
+
+/* ── References ── */
+function renderRefs(){
+  var el=document.getElementById('refs-list');if(!el)return;
+  var refs=SD.references||[];
+  if(!refs.length){
+    el.innerHTML='<div class="ref-empty">Henüz onaylanmış referans yok.<br><span style="font-size:.7rem">İlk referansı bırakmak ister misiniz?</span></div>';
+    return;
+  }
+  var stars=['','★','★★','★★★','★★★★','★★★★★'];
+  var starColors=['','#d94f3d','#e8a020','#c8a020','#8aab40','#4d9040'];
+  var h='<div class="ref-grid">';
+  refs.forEach(function(r){
+    var starHtml='<div class="ref-stars" title="'+r.star+'/5">';
+    for(var i=1;i<=5;i++){
+      var filled=i<=r.star;
+      starHtml+='<svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" style="fill:'+(filled?'#f4c542':'var(--bm)')+';stroke:'+(filled?'#c8980a':'var(--bd)')+';stroke-width:1.5"/></svg>';
+    }
+    starHtml+='</div>';
+    var ctxStr=r.ctx+(r.ctxDetail?' · '+esc(r.ctxDetail):'');
+    var dateStr='';
+    try{
+      var d=new Date(r.date);
+      dateStr=d.toLocaleDateString('tr-TR',{day:'numeric',month:'long',year:'numeric'});
+    }catch(e){}
+    var timeStr='';
+    try{
+      var d2=new Date(r.date);
+      timeStr=d2.toLocaleTimeString('tr-TR',{hour:'2-digit',minute:'2-digit'});
+    }catch(e){}
+    var phoneHtml='';
+    if(r.phone){
+      phoneHtml='<a class="ref-phone" href="tel:'+esc(r.phone.replace(/\s/g,''))+'"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2A19.79 19.79 0 0112.19 18a19.5 19.5 0 01-5-5 19.79 19.79 0 01-3.07-8.63A2 2 0 016 2.82h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L10.09 10.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>'+esc(r.phone)+'</a>';
+    }else{
+      phoneHtml='<span></span>';
+    }
+    h+='<div class="ref-card">';
+    h+='<div class="ref-top"><div class="ref-meta"><div class="ref-name">'+esc(r.name)+'</div>';
+    h+='<div class="ref-role">'+esc(r.title)+(r.company?' · '+esc(r.company):'')+'</div>';
+    h+='<div class="ref-ctx">'+esc(ctxStr)+'</div></div>'+starHtml+'</div>';
+    h+='<div class="ref-comment">'+esc(r.comment)+'</div>';
+    h+='<div class="ref-footer">'+phoneHtml;
+    if(dateStr) h+='<div class="ref-date-block"><span class="ref-date">'+dateStr+'</span>'+(timeStr?'<span class="ref-time">'+timeStr+'</span>':'')+'</div>';
+    h+='</div>';
+    h+='</div>';
+  });
+  h+='</div>';
+  el.innerHTML=h;
+}
 
 /* ── Smart email handler ── */
 function handleMailClick(e){
