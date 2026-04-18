@@ -553,7 +553,7 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
       </div>
       <span style="display:inline-flex;align-items:center;gap:7px;padding:11px 22px;border-radius:50px;background:rgba(255,255,255,.15);color:var(--gl);font-size:.63rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;flex-shrink:0;cursor:default">Sadece davetli kişiler</span>
     </div>
-    <div id="refs-list"><p style="color:var(--mu);font-size:.8rem;text-align:center;padding:32px 0">Yükleniyor...</p></div>
+    <div id="refs-list"><p style="color:var(--mu);font-size:.8rem;text-align:center;padding:32px 0">Loading...</p></div>
   </div>
   <div class="pf"><span class="pfl">E-Mail</span><a class="pfe site-email" href="#">eren.akcamm@gmail.com</a></div>
 </div>
@@ -575,11 +575,11 @@ var SK='erensite_data';
 /* ── Defaults — tüm içerik buraya gömülü ── */
 var DEF = {
   "name": "Eren Akçam",
-  "role": "Student · Designerss",
+  "role": "Student · Designer",
   "tag": "Design & Engineering",
-  "herodesc": "This is the portfolio of a young professional who combines technical knowledge with creative design. I am currently a student of Computer-Aided Machine Drawing, and alongside my education, I been working as a freelance graphic designer since 2022. In addition to my technical drawing skills such as SolidWorks and AutoCAD, I have a strong interest in areas like game development and artificial intelligence. By browsing through my portfolio, you can discover how I apply my technical and digital skills!",
-  "about": "Studying Computer-Aided Machine Drawing, combining technical precision with creative design.ss",
-  "bio": "A young professional combining technical knowledge with creative design. Freelance graphic designer since 2022.ss",
+  "herodesc": "This is the portfolio of a young professional who combines technical knowledge with creative design. I am currently a student of Computer-Aided Machine Drawing, and alongside my education, I have been working as a freelance graphic designer since 2022. In addition to my technical drawing skills such as SolidWorks and AutoCAD, I have a strong interest in areas like game development and artificial intelligence. By browsing through my portfolio, you can discover how I apply my technical and digital skills!",
+  "about": "Studying Computer-Aided Machine Drawing, combining technical precision with creative design.",
+  "bio": "A young professional combining technical knowledge with creative design. Freelance graphic designer since 2022.",
   "email": "eren.akcamm@gmail.com",
   "phone": "+90 551 628 62 62",
   "linkedin": "http://www.linkedin.com/in/erenakcam",
@@ -830,23 +830,6 @@ var DEF = {
               "items": []
             }
           ]
-        },
-        {
-          "id": "p1773574540096",
-          "title": "New Project",
-          "cover": "",
-          "subtitle": "",
-          "featured": false,
-          "status": "done",
-          "client": "",
-          "date": "",
-          "tags": [],
-          "blocks": [
-            {
-              "type": "desc",
-              "content": ""
-            }
-          ]
         }
       ]
     }
@@ -993,9 +976,13 @@ var SD=lSD(), certSliders={};
 /* ── Theme ── */
 function applyTheme(){
   try{
-    var m={'--g':'colorGreen','--gd':'colorGreenDeep','--gl':'colorGreenLight','--bej':'colorBej','--blk':'colorBlack'};
+    var m={
+      '--g':'colorGreen','--gd':'colorGreenDeep','--gl':'colorGreenLight',
+      '--gp':'colorGreenPale','--bej':'colorBej','--bl':'colorBejLight',
+      '--bm':'colorBejMid','--bd':'colorBejDark','--blk':'colorBlack',
+      '--txt':'colorText','--tm':'colorTextMid','--mu':'colorTextMuted'
+    };
     Object.keys(m).forEach(function(v){if(SD[m[v]])document.documentElement.style.setProperty(v,SD[m[v]]);});
-    // Apply font theme
     applyFontTheme();
   }catch(e){}
 }
@@ -1261,7 +1248,7 @@ function showCats(){
     c.onclick=(function(id){return function(){showProjs(id);};})(cat.id);
     var cov=cat.cover?'<img class="ccv" src="'+esc(cat.cover)+'" alt=""/>':'<div class="ccp">'+FSVG+'</div>';
     c.innerHTML=cov+'<div class="cci"><div class="cctg">'+esc(cat.tag)+'</div><div class="cct">'+esc(cat.title)+'</div>'+
-      '<span class="ccc">'+cat.projects.length+' Proje</span></div>';
+      '<span class="ccc">'+cat.projects.length+' Project'+(cat.projects.length!==1?'s':'')+'</span></div>';
     g.appendChild(c);
   });
 }
@@ -1304,9 +1291,9 @@ function showDetail(catId,projId){
     (meta?'<div class="pd-meta">'+meta+'</div>':'')+'</div>';
   (proj.blocks||[]).forEach(function(b){
     if(b.type==='desc')
-      h+='<div class="blk2"><div class="blbl">Açıklama</div><p class="bdsc">'+esc(b.content||'')+'</p></div>';
+      h+='<div class="blk2"><div class="blbl">Description</div><p class="bdsc">'+esc(b.content||'')+'</p></div>';
     else if(b.type==='images'&&b.items&&b.items.length){
-      h+='<div class="blk2"><div class="blbl">Görseller</div><div class="bimg">';
+      h+='<div class="blk2"><div class="blbl">Images</div><div class="bimg">';
       b.items.forEach(function(u){h+='<img src="'+esc(u)+'" alt="" onclick="openLb(this.src)"/>';});
       h+='</div></div>';
     }else if(b.type==='video'&&b.url)
