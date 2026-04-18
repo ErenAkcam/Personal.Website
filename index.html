@@ -423,6 +423,7 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
       <li><a id="n-sk"             onclick="go('sk');closeMobNav()"  data-key="nav_skills">SKILLS</a></li>
       <li style="display:none"><a id="n-prt" onclick="go('prt');closeMobNav()" data-key="nav_portfolio">PORTFOLIO</a></li>
       <li><a id="n-cer"            onclick="go('cer');closeMobNav()" data-key="nav_certs">CERTIFICATES</a></li>
+      <li><a id="n-ref"            onclick="go('ref');closeMobNav()">REFERANSLAR</a></li>
       <li><a id="n-con"            onclick="go('con');closeMobNav()" data-key="nav_contact">CONTACT</a></li>
     </ul>
   </nav>
@@ -543,9 +544,16 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
 
 <!-- REFERENCES PAGE -->
 <div id="ref" class="pg">
-  <div class="pb"><h1>References</h1><div class="pbs">Gözlemler &amp; Değerlendirmeler</div></div>
+  <div class="pb"><h1>Referanslar</h1><div class="pbs">Gözlemler &amp; Değerlendirmeler</div></div>
   <div class="pbd" id="refs-body">
-    <div id="refs-list"><p style="color:var(--mu);font-size:.8rem">Yükleniyor...</p></div>
+    <div style="background:var(--gd);border-radius:14px;padding:22px 26px;margin-bottom:36px;display:flex;gap:18px;align-items:center;flex-wrap:wrap">
+      <div style="flex:1;min-width:200px">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;color:var(--bl);letter-spacing:.05em;text-transform:uppercase;margin-bottom:5px">Benimle çalıştınız mı?</div>
+        <div style="font-size:.78rem;color:var(--gl);line-height:1.65">Beni gözlemlediyseniz, bir değerlendirme bırakabilirsiniz. Yorumunuz incelendikten sonra bu sayfada yayımlanır.</div>
+      </div>
+      <span style="display:inline-flex;align-items:center;gap:7px;padding:11px 22px;border-radius:50px;background:rgba(255,255,255,.15);color:var(--gl);font-size:.63rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;flex-shrink:0;cursor:default">Sadece davetli kişiler</span>
+    </div>
+    <div id="refs-list"><p style="color:var(--mu);font-size:.8rem;text-align:center;padding:32px 0">Yükleniyor...</p></div>
   </div>
   <div class="pf"><span class="pfl">E-Mail</span><a class="pfe site-email" href="#">eren.akcamm@gmail.com</a></div>
 </div>
@@ -1346,7 +1354,7 @@ document.addEventListener('click',function(e){
 });
 
 /* ── PAGE NAVIGATION ── */
-var PAGES=['pp','mem','sk','prt','cer','con'];
+var PAGES=['pp','mem','sk','prt','cer','con','ref'];
 var pageHistory=[];
 
 function showPage(id){
@@ -1362,6 +1370,7 @@ function showPage(id){
   window.scrollTo(0,0);
   if(id==='sk')setTimeout(animateBars,80);
   if(id==='prt')showCats();
+  if(id==='ref')loadAndRenderRefs();
   var bb=document.getElementById('mob-back-btn');
   if(bb)bb.style.display=(id==='pp'?'none':'');
 }
@@ -1627,6 +1636,26 @@ document.addEventListener('keydown',function(e){
 /* ── Storage sync — devre dışı ── */
 
 /* ── References ── */
+async function loadAndRenderRefs(){
+  /* Önce local'i göster */
+  renderRefs();
+  /* GitHub'dan güncel veriyi çek */
+  try{
+    var g=lGH&&lGH();
+    if(g&&g.user&&g.repo){
+      var url='https://raw.githubusercontent.com/'+g.user+'/'+g.repo+'/main/site_data.json';
+      var r=await fetch(url+'?_='+Date.now());
+      if(r.ok){
+        var d=await r.json();
+        if(d.references&&Array.isArray(d.references)){
+          SD.references=d.references;
+          renderRefs();
+        }
+      }
+    }
+  }catch(e){}
+}
+
 function renderRefs(){
   var el=document.getElementById('refs-list');if(!el)return;
   var refs=SD.references||[];
@@ -1713,6 +1742,11 @@ function attachMailHandlers(){
 /* ── INIT ── */
 applyData();
 attachMailHandlers();
+
+/* ── GitHub ayarı yoksa lGH fallback ── */
+if(typeof lGH==='undefined'){
+  function lGH(){ try{ return JSON.parse(localStorage.getItem('erengh')||'{}'); }catch(e){ return {}; } }
+}
 
 </script>
 <button class="mob-back" id="mob-back-btn" onclick="goBack()"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>Back</button>
