@@ -1637,18 +1637,35 @@ document.addEventListener('keydown',function(e){
 
 /* ── References ── */
 async function loadAndRenderRefs(){
-  /* Önce local'i göster */
+  /* Önce mevcut local veriyi göster */
   renderRefs();
-  /* GitHub'dan güncel veriyi çek */
+  /* __References__ reposundan onaylı referansları çek */
   try{
-    var g=lGH&&lGH();
-    if(g&&g.user&&g.repo){
-      var url='https://raw.githubusercontent.com/'+g.user+'/'+g.repo+'/main/site_data.json';
-      var r=await fetch(url+'?_='+Date.now());
-      if(r.ok){
-        var d=await r.json();
-        if(d.references&&Array.isArray(d.references)){
-          SD.references=d.references;
+    /* Repo bilgisi: kullanıcı adı DEF içinden veya hardcoded */
+    var ghUser = (typeof DEF !== 'undefined' && DEF._refGHUser) ? DEF._refGHUser : 'ErenAkcam';
+    var ghRepo = '__References__';
+    /* approved_refs.json dosyasını oku (admin tarafından oraya yazılır) */
+    var url = 'https://raw.githubusercontent.com/'+ghUser+'/'+ghRepo+'/main/approved_refs.json?_='+Date.now();
+    var r = await fetch(url);
+    if(r.ok){
+      var refs = await r.json();
+      if(Array.isArray(refs)){
+        SD.references = refs;
+        renderRefs();
+        return;
+      }
+    }
+  }catch(e){}
+  /* Fallback: site_data.json'dan dene (eski sistem) */
+  try{
+    var g = (typeof lGH==='function') ? lGH() : null;
+    if(g && g.user && g.repo){
+      var url2 = 'https://raw.githubusercontent.com/'+g.user+'/'+g.repo+'/main/site_data.json?_='+Date.now();
+      var r2 = await fetch(url2);
+      if(r2.ok){
+        var d = await r2.json();
+        if(d.references && Array.isArray(d.references)){
+          SD.references = d.references;
           renderRefs();
         }
       }
@@ -1743,9 +1760,9 @@ function attachMailHandlers(){
 applyData();
 attachMailHandlers();
 
-/* ── GitHub ayarı yoksa lGH fallback ── */
+/* ── lGH: admin panelinin kaydettiği key'i oku ── */
 if(typeof lGH==='undefined'){
-  function lGH(){ try{ return JSON.parse(localStorage.getItem('erengh')||'{}'); }catch(e){ return {}; } }
+  function lGH(){ try{ return JSON.parse(localStorage.getItem('erensite_gh')||localStorage.getItem('erengh')||'{}'); }catch(e){ return {}; } }
 }
 
 </script>
