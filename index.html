@@ -191,6 +191,33 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
 .bdoc-n{font-size:.73rem;font-weight:600;color:var(--txt)}
 .bdoc-s{font-size:.6rem;color:var(--mu)}
 
+/* ── REFERENCES ── */
+.ref-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;margin-top:4px}
+.ref-card{background:var(--bl);border:1.5px solid var(--bm);border-radius:14px;padding:24px 22px;display:flex;flex-direction:column;gap:10px;transition:transform .15s,box-shadow .15s}
+.ref-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.ref-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.ref-avatar{width:44px;height:44px;border-radius:50%;background:var(--gd);display:flex;align-items:center;justify-content:center;font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:1rem;color:var(--bl);flex-shrink:0}
+.ref-stars{display:flex;gap:2px}
+.ref-star-on{color:var(--gd);font-size:.9rem}
+.ref-star-off{color:var(--bm);font-size:.9rem}
+.ref-name{font-family:"Barlow Condensed",sans-serif;font-size:1rem;font-weight:700;color:var(--txt);letter-spacing:.04em;text-transform:uppercase}
+.ref-title{font-size:.65rem;color:var(--g);font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.ref-source{display:inline-flex;align-items:center;font-size:.58rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--tm);background:var(--gp);border:1px solid var(--bm);padding:2px 9px;border-radius:20px;width:fit-content}
+.ref-comment{font-size:.82rem;line-height:1.82;color:var(--tm);font-weight:300;flex:1}
+.ref-date{font-size:.56rem;color:var(--bd);letter-spacing:.08em;text-transform:uppercase;margin-top:4px}
+.ref-empty{padding:48px 24px;text-align:center;color:var(--mu);font-size:.82rem}
+.ref-empty a{color:var(--g);font-weight:600;text-decoration:none}
+.ref-cta{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:16px 22px;background:var(--blk);border-radius:12px;margin-bottom:28px}
+.ref-cta-t{font-size:.72rem;color:var(--bd);line-height:1.5}
+.ref-cta-t strong{color:var(--gl);font-weight:700}
+.ref-link{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:8px;background:var(--g);color:var(--blk);font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:background .15s;flex-shrink:0}
+.ref-link:hover{background:var(--gl)}
+.ref-link svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.ref-loading{display:flex;align-items:center;gap:10px;padding:32px;color:var(--mu);font-size:.78rem}
+.ref-spin{width:16px;height:16px;border:2px solid var(--bm);border-top-color:var(--g);border-radius:50%;animation:refspn .7s linear infinite}
+@keyframes refspn{to{transform:rotate(360deg)}}
+@media(max-width:768px){.ref-grid{grid-template-columns:1fr}.ref-cta{flex-direction:column;align-items:flex-start}}
+
 /* ── CONTACT ── */
 .ctl{display:grid;grid-template-columns:1fr 1.1fr;gap:26px;align-items:start}
 .ci{background:var(--blk);border-radius:15px;padding:30px 26px}
@@ -401,6 +428,7 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
       <li><a id="n-sk"             onclick="go('sk');closeMobNav()"  data-key="nav_skills">SKILLS</a></li>
       <li style="display:none"><a id="n-prt" onclick="go('prt');closeMobNav()" data-key="nav_portfolio">PORTFOLIO</a></li>
       <li><a id="n-cer"            onclick="go('cer');closeMobNav()" data-key="nav_certs">CERTIFICATES</a></li>
+      <li><a id="n-ref"            onclick="go('ref');closeMobNav()">REFERENCES</a></li>
       <li><a id="n-con"            onclick="go('con');closeMobNav()" data-key="nav_contact">CONTACT</a></li>
     </ul>
   </nav>
@@ -478,6 +506,26 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
   <div class="pb"><h1 data-key="nav_certs">Certificates</h1><div class="pbs" data-key="cer_sub">Achievements &amp; Credentials</div></div>
   <div class="pbd" style="padding-top:42px" id="certs-body"><p style="color:var(--mu);font-size:.8rem">Loading...</p></div>
   <div class="pf"><span class="pfl" data-key="footer_email_label">E-Mail</span><a class="pfe site-email" href="#">eren.akcamm@gmail.com</a></div>
+</div>
+
+<!-- REFERENCES PAGE -->
+<div id="ref" class="pg">
+  <div class="pb"><h1>References</h1><div class="pbs">Community Feedback</div></div>
+  <div class="pbd">
+    <!-- CTA — referans formu linki -->
+    <div class="ref-cta">
+      <div class="ref-cta-t"><strong>Birlikte çalıştınız mı?</strong><br>Deneyiminizi paylaşmak için referans formunu doldurun.</div>
+      <a class="ref-link" id="ref-form-link" href="https://erenakcam.github.io/References" target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        Referans Bırak
+      </a>
+    </div>
+    <!-- Referanslar listesi -->
+    <div id="ref-body">
+      <div class="ref-loading"><div class="ref-spin"></div><span>Referanslar yükleniyor...</span></div>
+    </div>
+  </div>
+  <div class="pf"><span class="pfl">E-Mail</span><a class="pfe site-email" href="#">eren.akcamm@gmail.com</a></div>
 </div>
 
 <!-- CONTACT PAGE -->
@@ -936,7 +984,8 @@ var DEF = {
   "colorBejDark": "#9ab8a8",
   "colorText": "#1e2e28",
   "colorTextMid": "#4a6a58",
-  "colorTextMuted": "#6b7a6e"
+  "colorTextMuted": "#6b7a6e",
+  "references": []
 };
 
 /* ── Helpers ── */
@@ -1073,6 +1122,7 @@ function applyData(){
     renderCerts();
     preloadCertImages();
     showCats();
+    renderReferences();
   }catch(e){console.warn('applyData error:',e);}
 }
 
@@ -1295,6 +1345,50 @@ function showDetail(catId,projId){
 
 /* ── Language dropdown (English only) ── */
 /* ── Language dropdown (English only - dead code removed) ── */
+
+/* ══════════════════════════════════════
+   REFERENCES
+   ══════════════════════════════════════ */
+var REF_GITHUB_USER = 'erenakcam';
+var REF_GITHUB_REPO = 'References';
+
+/* Onaylanmış referanslar DEF içinde saklanır */
+/* DEF.references = [{id,name,title,source,rating,comment,date},...]  */
+
+function renderReferences(){
+  var el = document.getElementById('ref-body');
+  if(!el) return;
+  var refs = (SD.references && SD.references.length) ? SD.references : [];
+
+  if(!refs.length){
+    el.innerHTML = '<div class="ref-empty">Henüz referans yok.<br>İlk referansı bırakan sen ol! <a href="https://'+REF_GITHUB_USER+'.github.io/'+REF_GITHUB_REPO+'" target="_blank">Referans Formu →</a></div>';
+    return;
+  }
+
+  var h = '<div class="ref-grid">';
+  refs.forEach(function(r){
+    var initials = (r.name||'?').split(' ').map(function(w){return w[0]||'';}).join('').slice(0,2).toUpperCase();
+    var stars = '';
+    for(var i=1;i<=5;i++) stars += '<span class="'+(i<=r.rating?'ref-star-on':'ref-star-off')+'">★</span>';
+    h += '<div class="ref-card">' +
+      '<div class="ref-top">' +
+        '<div style="display:flex;align-items:center;gap:12px">' +
+          '<div class="ref-avatar">'+esc(initials)+'</div>' +
+          '<div>' +
+            '<div class="ref-name">'+esc(r.name)+'</div>' +
+            '<div class="ref-title">'+esc(r.title)+'</div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="ref-stars">'+stars+'</div>' +
+      '</div>' +
+      (r.source ? '<div class="ref-source">'+esc(r.source)+'</div>' : '') +
+      '<div class="ref-comment">"'+esc(r.comment)+'"</div>' +
+      '<div class="ref-date">'+esc(r.date||'')+'</div>' +
+    '</div>';
+  });
+  h += '</div>';
+  el.innerHTML = h;
+}
 
 /* ── Mobile nav ── */
 function toggleMobNav(){
