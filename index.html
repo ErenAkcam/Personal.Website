@@ -555,7 +555,6 @@ var SK='erensite_data';
  * DO NOT change the variable name `DEF` or the exact comment string above it, as the 
  * deployment parser relies on it.
  */
-/* ── Defaults — tüm içerik buraya gömülü ── */
 var DEF = {
   "name": "Eren Akçam",
   "role": "Student · Designerss",
@@ -961,6 +960,328 @@ var DEF = {
   "colorTextMuted": "#6b7a6e",
   "references": []
 };
+
+/* ── Helpers ── */
+function clone(o){return JSON.parse(JSON.stringify(o));}
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function stripB64(obj){if(!obj||typeof obj!=='object')return;Object.keys(obj).forEach(function(k){if(typeof obj[k]==='string'&&obj[k].startsWith('data:'))obj[k]='';else stripB64(obj[k]);});}
+
+/* ── Load data — her zaman DEF kullan (admin deploy eder) ── */
+function lSD(){
+  return clone(DEF);
+}
+var SD=lSD(), certSliders={};
+
+/* ── Theme ── */
+function applyTheme(){
+  try{
+    var m={'--g':'colorGreen','--gd':'colorGreenDeep','--gl':'colorGreenLight','--bej':'colorBej','--blk':'colorBlack'};
+    Object.keys(m).forEach(function(v){if(SD[m[v]])document.documentElement.style.setProperty(v,SD[m[v]]);});
+    // Apply font theme
+    applyFontTheme();
+  }catch(e){}
+}
+
+var FONT_THEMES={
+  'classic':{
+    body:"'Raleway',sans-serif",
+    heading:"'Playfair Display',serif",
+    mono:"'Barlow Condensed',sans-serif",
+    bodyColor:'',bodySize:'',headingColor:'',headingSize:''
+  },
+  'modern':{
+    body:"'Inter','Segoe UI',sans-serif",
+    heading:"'Inter','Segoe UI',sans-serif",
+    mono:"'JetBrains Mono','Courier New',monospace",
+    bodyColor:'',bodySize:'',headingColor:'',headingSize:''
+  },
+  'elegant':{
+    body:"'Georgia','Times New Roman',serif",
+    heading:"'Cormorant Garamond','Georgia',serif",
+    mono:"'Barlow Condensed',sans-serif",
+    bodyColor:'',bodySize:'',headingColor:'',headingSize:''
+  },
+  'minimal':{
+    body:"'DM Sans','Helvetica Neue',sans-serif",
+    heading:"'DM Serif Display','Georgia',serif",
+    mono:"'Space Mono','Courier New',monospace",
+    bodyColor:'',bodySize:'',headingColor:'',headingSize:''
+  },
+  'technical':{
+    body:"'IBM Plex Sans','Arial',sans-serif",
+    heading:"'IBM Plex Serif','Georgia',serif",
+    mono:"'IBM Plex Mono','Courier New',monospace",
+    bodyColor:'',bodySize:'',headingColor:'',headingSize:''
+  }
+};
+
+function applyFontTheme(){
+  try{
+    var ft=SD.fontTheme||'classic';
+    var custom=SD.fontCustom||{};
+    var theme=FONT_THEMES[ft]||FONT_THEMES['classic'];
+    // Body font
+    document.body.style.fontFamily=custom.bodyFont||theme.body;
+    // Heading font override via CSS variable
+    document.documentElement.style.setProperty('--font-heading',custom.headingFont||theme.heading);
+    document.documentElement.style.setProperty('--font-mono',custom.monoFont||theme.mono);
+    // Colors
+    if(custom.bodyColor)document.documentElement.style.setProperty('--txt',custom.bodyColor);
+    if(custom.headingColor)document.documentElement.style.setProperty('--heading-color',custom.headingColor||'var(--bl)');
+    // Sizes
+    if(custom.bodySize)document.documentElement.style.setProperty('--body-size',custom.bodySize+'px');
+    if(custom.headingScale)document.documentElement.style.setProperty('--heading-scale',custom.headingScale);
+    // Apply heading font to all heading elements
+    var hStyle=document.getElementById('dyn-font-style');
+    if(!hStyle){hStyle=document.createElement('style');hStyle.id='dyn-font-style';document.head.appendChild(hStyle);}
+    var hFont=custom.headingFont||theme.heading;
+    var bSize=custom.bodySize?custom.bodySize+'px':'';
+    var hColor=custom.headingColor||'';
+    hStyle.textContent=
+      '.hn,.ash,.pd-title,.pb h1{font-family:'+hFont+' !important;'+(hColor?'color:'+hColor+' !important;':'')+'}'+
+      '.tlh{font-family:'+hFont+' !important;color:#4d7040 !important}'+
+      '.skh{font-family:'+hFont+' !important;color:#4d7040 !important}'+
+      '.csh{font-family:'+hFont+' !important;color:var(--bl) !important}'+
+      '.cft{font-family:'+hFont+' !important;color:#1a1a14 !important}'+
+      '.citt{font-family:'+hFont+' !important;color:var(--bl) !important}'+
+      '.hpln,.tlt,.skn,.cna{font-family:'+(custom.monoFont||theme.mono)+' !important;}'+
+      (bSize?'body{font-size:'+bSize+' !important;}':'');
+  }catch(e){}
+}
+
+/**
+ * ── Apply data to page ──
+ * CORE RENDER FUNCTION
+ * This function is the bridge between the `DEF` database object and the HTML DOM.
+ * Upon initialization, it reads values from the global `SD` (which points to `DEF`)
+ * and injects text, images, tags, and links directly into the respective HTML elements.
+ * 
+ * If you add a new field to the admin panel, you must update this function (or the specific 
+ * render functions like `renderMemory`, `renderSkills`) to display that new data on the UI.
+ */
+function applyData(){
+  applyTheme();
+  try{
+    // Apply page texts overrides
+    var PT=SD.pageTexts||{};
+    document.querySelectorAll('[data-key]').forEach(function(el){
+      var k=el.getAttribute('data-key');
+      if(PT[k])el.innerHTML=PT[k];
+    });
+    // Title - update both the title element and document.title
+    document.title = SD.siteTitle||SD.name+' | Portfolio';
+    var pt=document.getElementById('page-title');
+    if(pt)pt.textContent=SD.siteTitle||SD.name+' | Portfolio';
+    // Favicon
+    var fv=document.getElementById('site-favicon');
+    if(fv&&SD.favicon)fv.href=SD.favicon;
+    // Nav brand
+    var br=document.getElementById('site-brand');if(br)br.textContent=SD.siteName||SD.name;
+    // Name
+    var sn=document.getElementById('s-name');
+    if(sn){var nm=SD.name||'Eren Akçam';sn.innerHTML=nm.indexOf(' ')>-1?nm.replace(' ','<br>'):nm;}
+    // Profile photo
+    var ph=document.getElementById('s-photo');
+    if(ph&&SD.profilePhoto)ph.src=SD.profilePhoto+'?v='+Math.floor(Date.now()/10000);
+    // Texts
+    var ht=document.getElementById('hero-tag');if(ht)ht.textContent=SD.tag||'';
+    var hd=document.getElementById('hero-desc');if(hd)hd.textContent=SD.herodesc||'';
+    // Email
+    var em=SD.email||'eren.akcamm@gmail.com';
+    document.querySelectorAll('.site-email').forEach(function(el){el.textContent=em;el.href='mailto:'+em;});
+    var sem=document.getElementById('s-em');if(sem)sem.href='mailto:'+em;
+    // Links
+    var li=SD.linkedin||'#';
+    var sli=document.getElementById('s-li');if(sli)sli.href=li;
+    var cli=document.getElementById('c-li2');if(cli){cli.href=li;cli.textContent='erenakcam';}
+    // Phone
+    var cp=document.getElementById('c-phone');if(cp){cp.textContent=SD.phone||'';cp.href='tel:'+(SD.phone||'').replace(/\s/g,'');}
+    // Freelance
+    var cf=document.getElementById('c-fr');if(cf)cf.href=SD.freelance||'#';
+    // Render sections
+    renderMemory();
+    renderSkills();
+    renderCerts();
+    renderReferences();
+    preloadCertImages();
+    showCats();
+  }catch(e){console.warn('applyData error:',e);}
+}
+
+/* ── Memory ── */
+function renderMemory(){
+  var el=document.getElementById('memory-body');if(!el)return;
+  var mem=SD.memory||DEF.memory;
+  var h='';
+  if(mem.experience&&mem.experience.length){
+    h+='<div class="tlh">Experience</div>';
+    mem.experience.forEach(function(e){h+=memRow(e);});
+  }
+  if(mem.education&&mem.education.length){
+    h+='<div class="tlh">Education</div>';
+    mem.education.forEach(function(e){h+=memRow(e);});
+  }
+  el.innerHTML=h||'<p style="color:var(--mu)">No entries yet.</p>';
+}
+function memRow(e){
+  var descHtml=(e.desc||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
+  var logoHtml='';
+  if(e.logo){
+    logoHtml='<div class="tlg-wrap" style="background-image:url(\''+esc(e.logo)+'\')"></div>';
+  }
+  return '<div class="tli"><div class="tll"><div class="tld">'+esc(e.date||'')+'</div>'+
+    logoHtml+
+    '</div><div class="tlr"><div class="tlt">'+esc(e.title||'')+'</div>'+
+    (e.company?'<div class="tls">'+esc(e.company)+'</div>':'')+
+    (e.location?'<div class="tlc">'+esc(e.location)+'</div>':'')+
+    '<p class="tlp">'+descHtml+'</p></div></div>';
+}
+
+/* ── Skills ── */
+var BM={Advanced:'ba',Intermediate:'bi',Basic:'bb',Native:'bn',B1:'bi',B2:'bi',A1:'bb',A2:'bb',C1:'ba',C2:'bn'};
+var BL={Advanced:'Advanced Level',Intermediate:'Intermediate Level',Basic:'Basic Level',Native:'Native Level',B1:'B1 Level',B2:'B2 Level',A1:'A1 Level',A2:'A2 Level',C1:'C1 Level',C2:'C2 Level'};
+function renderSkills(){
+  var el=document.getElementById('skills-body');if(!el)return;
+  var cats=(SD.skills&&SD.skills.categories)||DEF.skills.categories;
+  var h='';
+  cats.forEach(function(cat){
+    h+='<div class="skh">'+esc(cat.label)+'</div><div class="skg">';
+    (cat.items||[]).forEach(function(s){
+      h+='<div class="skc"><div class="skt"><span class="skn">'+esc(s.n)+
+        '</span><span class="skb '+(BM[s.l]||'bi')+'">'+(BL[s.l]||esc(s.l))+'</span></div>'+
+        '<div class="sbt"><div class="sbf" data-w="'+s.w+'" style="width:0%"></div></div></div>';
+    });
+    h+='</div>';
+  });
+  el.innerHTML=h;
+}
+
+/* ── Certs ── */
+function renderCerts(){
+  var el=document.getElementById('certs-body');if(!el)return;
+  var cats=(SD.certs&&SD.certs.categories)||DEF.certs.categories;
+  var h='<div class="crt">';
+  cats.forEach(function(cat){
+    if(!certSliders[cat.id])certSliders[cat.id]=0;
+    var idx=certSliders[cat.id];
+    var items=cat.items||[];
+    if(!items.length)return;
+    if(idx>=items.length)idx=0;
+    certSliders[cat.id]=idx;
+    var cur=items[idx];
+    h+='<div class="cs">'+
+      '<div class="csh">'+esc(cat.label)+'</div>'+
+      '<div class="csv"><div class="cia" data-cid="'+esc(cat.id)+'">'+
+        '<button class="ca pv" onclick="slideCert(\''+cat.id+'\',-1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>'+
+        '<img id="cimg-'+esc(cat.id)+'" src="'+esc(cur.src)+'" alt="'+esc(cur.name)+'" onclick="openLb(this.src,\''+cat.id+'\')" style="cursor:zoom-in"/>'+
+        '<button class="ca nx" onclick="slideCert(\''+cat.id+'\',1)"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>'+
+      '</div></div>'+
+      '<div class="cnp"><span class="cna" id="cnm-'+esc(cat.id)+'">'+esc(cur.name)+'</span>'+
+      '<span class="cco" id="cco-'+esc(cat.id)+'">'+(idx+1)+'/'+items.length+'</span></div>'+
+      '<div class="cds" id="cdots-'+esc(cat.id)+'"></div>'+
+    '</div>';
+  });
+  h+='</div>';
+  el.innerHTML=h;
+  cats.forEach(function(cat){buildCertDots(cat.id);});
+  addSwipeToCerts();
+}
+/* ── Cert swipe (mobile) ── */
+var _certTouchX={};
+function addSwipeToCerts(){
+  document.querySelectorAll('.cia[data-cid]').forEach(function(el){
+    var id=el.getAttribute('data-cid');
+    el.addEventListener('touchstart',function(e){_certTouchX[id]=e.changedTouches[0].clientX;},{passive:true});
+    el.addEventListener('touchend',function(e){
+      var dx=e.changedTouches[0].clientX-(_certTouchX[id]||0);
+      if(Math.abs(dx)>40)slideCert(id,dx<0?1:-1);
+    },{passive:true});
+  });
+}
+function slideCert(id,dir){
+  var cats=(SD.certs&&SD.certs.categories)||[];
+  var cat=cats.find(function(c){return c.id===id;});if(!cat)return;
+  var items=cat.items||[];var len=items.length;if(!len)return;
+  certSliders[id]=((certSliders[id]||0)+dir+len)%len;
+  var cur=items[certSliders[id]];
+  var img=document.getElementById('cimg-'+id);
+  if(img){
+    img.style.opacity='0';
+    img.style.transition='opacity .15s';
+    setTimeout(function(){
+      img.src=cur.src;
+      img.onload=function(){img.style.opacity='1';};
+      // if already cached, onload may not fire
+      if(img.complete)img.style.opacity='1';
+    },120);
+  }
+  var nm=document.getElementById('cnm-'+id);if(nm)nm.textContent=cur.name;
+  var co=document.getElementById('cco-'+id);if(co)co.textContent=(certSliders[id]+1)+'/'+len;
+  buildCertDots(id);
+}
+
+function preloadCertImages(){
+  var cats=(SD.certs&&SD.certs.categories)||[];
+  cats.forEach(function(cat){
+    (cat.items||[]).forEach(function(item){
+      if(item.src){var i=new Image();i.src=item.src;}
+    });
+  });
+}
+function buildCertDots(id){
+  var el=document.getElementById('cdots-'+id);if(!el)return;el.innerHTML='';
+  var cats=(SD.certs&&SD.certs.categories)||[];
+  var cat=cats.find(function(c){return c.id===id;});if(!cat)return;
+  (cat.items||[]).forEach(function(it,i){
+    var b=document.createElement('button');
+    b.className='cd'+(i===(certSliders[id]||0)?' on':'');
+    b.onclick=function(){certSliders[id]=i;slideCert(id,0);};
+    el.appendChild(b);
+  });
+}
+
+/* ── Portfolio ── */
+var FSVG='<svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="var(--gd)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6a2 2 0 012-2h4l2 3h10a2 2 0 012 2v9a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"/></svg>';
+function showCats(){
+  document.getElementById('v-cats').style.display='';
+  document.getElementById('v-projs').style.display='none';
+  document.getElementById('v-detail').style.display='none';
+  var g=document.getElementById('cat-grid');g.innerHTML='';
+  (SD.portfolio||[]).forEach(function(cat){
+    var c=document.createElement('div');c.className='cc';
+    c.onclick=(function(id){return function(){showProjs(id);};})(cat.id);
+    var cov=cat.cover?'<img class="ccv" src="'+esc(cat.cover)+'" alt=""/>':'<div class="ccp">'+FSVG+'</div>';
+    c.innerHTML=cov+'<div class="cci"><div class="cctg">'+esc(cat.tag)+'</div><div class="cct">'+esc(cat.title)+'</div>'+
+      '<span class="ccc">'+cat.projects.length+' Proje</span></div>';
+    g.appendChild(c);
+  });
+}
+function showProjs(catId){
+  var cat=(SD.portfolio||[]).find(function(c){return c.id===catId;});if(!cat)return;
+  document.getElementById('v-cats').style.display='none';
+  document.getElementById('v-projs').style.display='';
+  document.getElementById('v-detail').style.display='none';
+  document.getElementById('prt-h').textContent=cat.title;
+  var g=document.getElementById('proj-grid');g.innerHTML='';
+  cat.projects.forEach(function(p){
+    var c=document.createElement('div');c.className='pj';
+    c.onclick=(function(cid,pid){return function(){showDetail(cid,pid);};})(catId,p.id);
+    var cov=p.cover?'<img class="pjv" src="'+esc(p.cover)+'" alt=""/>':'<div class="pjp"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="var(--gd)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 21V9"/></svg></div>';
+    var feat=p.featured?'<span style="position:absolute;top:8px;left:8px;background:var(--g);color:var(--bl);font-size:.5rem;font-weight:700;padding:2px 7px;border-radius:20px">★ Featured</span>':'';
+    c.innerHTML='<div style="position:relative">'+cov+feat+'</div><div class="pji"><div class="pjt">'+esc(p.title)+'</div><div class="pjs">'+esc(p.subtitle)+'</div></div>';
+    g.appendChild(c);
+  });
+  window.scrollTo(0,0);
+}
+function showDetail(catId,projId){
+  var cat=(SD.portfolio||[]).find(function(c){return c.id===catId;});
+  var proj=cat&&cat.projects.find(function(p){return p.id===projId;});
+  if(!proj)return;
+  document.getElementById('v-cats').style.display='none';
+  document.getElementById('v-projs').style.display='none';
+  document.getElementById('v-detail').style.display='';
+  document.getElementById('d-back-lbl').textContent='← '+cat.title;
+  document.getElementById('d-back').onclick=function(){showProjs(catId);};
   var badges='';
   if(proj.featured)badges+='<span class="pd-badge featured">★ Featured</span>';
   if(proj.status)badges+='<span class="pd-badge status-'+proj.status+'">'+esc(proj.status)+'</span>';
@@ -1024,7 +1345,7 @@ document.addEventListener('click',function(e){
 });
 
 /* ── PAGE NAVIGATION ── */
-var PAGES=['pp','mem','sk','prt','cer','con'];
+var PAGES=['pp','mem','sk','prt','cer','ref','con'];
 var pageHistory=[];
 
 function showPage(id){
