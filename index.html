@@ -401,6 +401,7 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
       <li><a id="n-sk"             onclick="go('sk');closeMobNav()"  data-key="nav_skills">SKILLS</a></li>
       <li style="display:none"><a id="n-prt" onclick="go('prt');closeMobNav()" data-key="nav_portfolio">PORTFOLIO</a></li>
       <li><a id="n-cer"            onclick="go('cer');closeMobNav()" data-key="nav_certs">CERTIFICATES</a></li>
+      <li><a id="n-ref"            onclick="go('ref');closeMobNav()" data-key="nav_references">REFERENCES</a></li>
       <li><a id="n-con"            onclick="go('con');closeMobNav()" data-key="nav_contact">CONTACT</a></li>
     </ul>
   </nav>
@@ -477,6 +478,13 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
 <div id="cer" class="pg">
   <div class="pb"><h1 data-key="nav_certs">Certificates</h1><div class="pbs" data-key="cer_sub">Achievements &amp; Credentials</div></div>
   <div class="pbd" style="padding-top:42px" id="certs-body"><p style="color:var(--mu);font-size:.8rem">Loading...</p></div>
+  <div class="pf"><span class="pfl" data-key="footer_email_label">E-Mail</span><a class="pfe site-email" href="#">eren.akcamm@gmail.com</a></div>
+</div>
+
+<!-- REFERENCES PAGE -->
+<div id="ref" class="pg">
+  <div class="pb"><h1 data-key="nav_references">References</h1><div class="pbs" data-key="ref_sub">Testimonials &amp; Recommendations</div></div>
+  <div class="pbd" style="padding-top:32px" id="refs-body"><p style="color:var(--mu);font-size:.8rem">Loading...</p></div>
   <div class="pf"><span class="pfl" data-key="footer_email_label">E-Mail</span><a class="pfe site-email" href="#">eren.akcamm@gmail.com</a></div>
 </div>
 
@@ -1071,6 +1079,7 @@ function applyData(){
     renderMemory();
     renderSkills();
     renderCerts();
+    renderReferences();
     preloadCertImages();
     showCats();
   }catch(e){console.warn('applyData error:',e);}
@@ -1208,6 +1217,46 @@ function buildCertDots(id){
   });
 }
 
+/* ── References ── */
+function renderReferences(){
+  var el=document.getElementById('refs-body');if(!el)return;
+  var refs=SD.references||[];
+  if(!refs.length){
+    el.innerHTML='<p style="color:var(--mu);font-size:.8rem">No references yet.</p>';
+    return;
+  }
+  var h='<div style="display:flex;flex-direction:column;gap:16px;">';
+  refs.forEach(function(r){
+    var photoHtml = r.photo ? '<img src="'+r.photo+'" style="width:42px;height:42px;border-radius:50%;object-fit:cover;flex-shrink:0;box-shadow:0 2px 6px rgba(0,0,0,.15);border:2px solid var(--g);"/>' : '<div style="width:42px;height:42px;border-radius:50%;background:var(--gp);display:flex;align-items:center;justify-content:center;color:var(--gd);font-weight:700;font-size:1.1rem;flex-shrink:0;">'+(esc(r.name).charAt(0).toUpperCase())+'</div>';
+    
+    var stars = parseInt(r.star) || 5;
+    var starHtml = '<div style="display:flex;gap:2px;margin-bottom:12px;">';
+    for(var i=0;i<5;i++){
+      starHtml += '<svg width="14" height="14" viewBox="0 0 24 24" fill="'+(i<stars?'#f4c542':'var(--bm)')+'" stroke="'+(i<stars?'#c8980a':'var(--bd)')+'" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>';
+    }
+    starHtml += '</div>';
+
+    var contactHtml = '<div style="display:flex;gap:8px;margin-top:6px;">';
+    if(r.linkedin) contactHtml += '<a href="'+esc(r.linkedin)+'" target="_blank" style="color:var(--mu);transition:color .2s" onmouseover="this.style.color=\'var(--gd)\'" onmouseout="this.style.color=\'var(--mu)\'"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>';
+    if(r.email) contactHtml += '<a href="mailto:'+esc(r.email)+'" style="color:var(--mu);transition:color .2s" onmouseover="this.style.color=\'var(--gd)\'" onmouseout="this.style.color=\'var(--mu)\'"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a>';
+    contactHtml += '</div>';
+
+    h+='<div style="background:var(--bl);border:1.5px solid var(--bm);border-radius:15px;padding:28px 32px;box-shadow:0 3px 16px rgba(0,0,0,.04); position:relative; overflow:hidden;">'+
+      '<div style="font-size:5rem;color:var(--g);opacity:0.1;position:absolute;top:-10px;right:20px;line-height:1;font-family:serif;">&ldquo;</div>'+
+      starHtml+
+      '<p style="font-size:.85rem;line-height:1.75;color:var(--tm);margin-bottom:20px;font-style:italic;position:relative;z-index:1;">"'+esc(r.comment)+'"</p>'+
+      '<div style="display:flex;gap:12px;align-items:center;">'+
+        photoHtml+
+        '<div><div style="font-family:\'Barlow Condensed\',sans-serif;font-size:1.05rem;font-weight:700;color:var(--txt);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:3px;">'+esc(r.name)+'</div>'+
+        '<div style="font-size:.68rem;color:var(--mu);"><strong style="color:var(--gd)">'+esc(r.title)+'</strong>'+(r.relation?' &middot; '+esc(r.relation):'')+(r.date?' &middot; '+esc(r.date):'')+'</div>'+
+        ((r.email||r.linkedin) ? contactHtml : '')+
+        '</div>'+
+      '</div></div>';
+  });
+  h+='</div>';
+  el.innerHTML=h;
+}
+
 /* ── Portfolio ── */
 var FSVG='<svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="var(--gd)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6a2 2 0 012-2h4l2 3h10a2 2 0 012 2v9a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"/></svg>';
 function showCats(){
@@ -1313,7 +1362,7 @@ document.addEventListener('click',function(e){
 });
 
 /* ── PAGE NAVIGATION ── */
-var PAGES=['pp','mem','sk','prt','cer','con'];
+var PAGES=['pp','mem','sk','prt','cer','ref','con'];
 var pageHistory=[];
 
 function showPage(id){
