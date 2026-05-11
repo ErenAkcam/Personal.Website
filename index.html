@@ -402,7 +402,6 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
       <li style="display:none"><a id="n-prt" onclick="go('prt');closeMobNav()" data-key="nav_portfolio">PORTFOLIO</a></li>
       <li><a id="n-cer"            onclick="go('cer');closeMobNav()" data-key="nav_certs">CERTIFICATES</a></li>
       <li><a id="n-con"            onclick="go('con');closeMobNav()" data-key="nav_contact">CONTACT</a></li>
-      <li><a id="n-ref"            onclick="go('ref');closeMobNav()">REFERENCES</a></li>
     </ul>
   </nav>
 </div>
@@ -518,145 +517,6 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
     </div>
   </div>
   <div class="pf"><span class="pfl" data-key="footer_email_label">E-Mail</span><a class="pfe site-email" href="#">eren.akcamm@gmail.com</a></div>
-</div>
-
-<!-- REFERENCES PAGE -->
-<div id="ref" class="pg">
-  <div class="pb"><h1>References</h1><div class="pbs">Recommendations &amp; Testimonials</div></div>
-  <div class="pbd" id="ref-body"><p style="color:var(--mu);font-size:.8rem">Loading...</p></div>
-  <div class="pf"><span class="pfl">E-Mail</span><a class="pfe site-email" href="#">eren.akcamm@gmail.com</a></div>
-</div>
-
-<!-- REFERENCE FORM PAGE (hidden, accessed via secret button) -->
-<div id="ref-form-pg" class="pg">
-  <div class="pb" style="background:var(--blk)">
-    <h1 style="color:var(--bl)">Write a Reference</h1>
-    <div class="pbs" style="color:var(--gl)">Share your experience working with Eren</div>
-  </div>
-  <div class="pbd" id="ref-form-wrap">
-
-    <!-- Context selector modal overlay -->
-    <div id="ctx-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:8000;align-items:center;justify-content:center;backdrop-filter:blur(4px)">
-      <div style="background:var(--bl);border-radius:18px;padding:32px 28px;max-width:520px;width:92vw;max-height:80vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.4)">
-        <div style="font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:1.3rem;color:var(--blk);margin-bottom:6px">How do you know Eren?</div>
-        <p style="font-size:.72rem;color:var(--mu);margin-bottom:20px;line-height:1.7">Select the experience or education context that best describes your relationship, or choose "Other" to describe it yourself.</p>
-        <div id="ctx-list" style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px"></div>
-        <div style="border-top:1px solid var(--bm);padding-top:14px;margin-top:6px">
-          <div id="ctx-other-item" onclick="ctxSelect('other','Other / Custom')" style="display:flex;align-items:center;gap:12px;padding:12px 14px;border:1.5px solid var(--bm);border-radius:10px;cursor:pointer;transition:border-color .15s;background:var(--bej)">
-            <div style="width:38px;height:38px;border-radius:8px;background:var(--bm);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--mu)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
-            </div>
-            <div>
-              <div style="font-size:.82rem;font-weight:700;color:var(--txt)">Other / Custom</div>
-              <div style="font-size:.65rem;color:var(--mu)">Describe your own context</div>
-            </div>
-          </div>
-        </div>
-        <button onclick="document.getElementById('ctx-modal').style.display='none'" style="margin-top:14px;width:100%;padding:10px;border-radius:8px;background:var(--bm);border:none;font-family:'Raleway',sans-serif;font-size:.65rem;font-weight:700;color:var(--txt);cursor:pointer;letter-spacing:.08em;text-transform:uppercase">Cancel</button>
-      </div>
-    </div>
-
-    <div style="max-width:720px;margin:0 auto">
-      <div style="margin-bottom:28px;padding-bottom:20px;border-bottom:2px solid var(--g)">
-        <div style="font-size:.55rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--g);margin-bottom:8px">Voluntary Reference Form</div>
-        <p style="font-size:.8rem;line-height:1.75;color:var(--mu)">All fields are optional. Fill in as much or as little as you're comfortable with. Your reference will be reviewed before being published.</p>
-      </div>
-
-      <!-- Photo + Name row -->
-      <div style="display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:start;margin-bottom:18px">
-        <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
-          <div id="rf-photo-preview" style="width:80px;height:80px;border-radius:50%;background:var(--bm);border:2.5px solid var(--g);overflow:hidden;display:flex;align-items:center;justify-content:center">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--mu)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-          </div>
-          <label style="font-size:.56rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gd);cursor:pointer;background:var(--gp);padding:5px 10px;border-radius:20px;border:1px solid var(--g)">
-            Photo
-            <input type="file" accept="image/*" style="display:none" onchange="rfPhotoChange(this)"/>
-          </label>
-          <div style="font-size:.52rem;color:var(--mu);text-align:center">Optional</div>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:10px">
-          <div>
-            <label style="display:block;font-size:.52rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gd);margin-bottom:4px">Full Name <span style="color:var(--mu);font-weight:400">(optional)</span></label>
-            <input class="finp" id="rf-name" type="text" placeholder="Your full name"/>
-          </div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-            <div>
-              <label style="display:block;font-size:.52rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gd);margin-bottom:4px">Title / Position <span style="color:var(--mu);font-weight:400">(optional)</span></label>
-              <input class="finp" id="rf-title" type="text" placeholder="e.g. Department Head"/>
-            </div>
-            <div>
-              <label style="display:block;font-size:.52rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gd);margin-bottom:4px">Institution / Company <span style="color:var(--mu);font-weight:400">(optional)</span></label>
-              <input class="finp" id="rf-org" type="text" placeholder="e.g. Weg Group"/>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Relationship context -->
-      <div style="margin-bottom:18px">
-        <label style="display:block;font-size:.52rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gd);margin-bottom:6px">Relationship Context <span style="color:var(--mu);font-weight:400">(optional)</span></label>
-        <div id="ctx-selected-display" onclick="openCtxModal()" style="display:flex;align-items:center;justify-content:space-between;padding:11px 14px;border:1.5px solid var(--bm);border-radius:9px;background:var(--bej);cursor:pointer;transition:border-color .15s;min-height:48px">
-          <span id="ctx-display-text" style="font-size:.8rem;color:var(--mu)">Click to select context...</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--mu)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
-        <!-- Custom context input (shown when "other" selected) -->
-        <div id="ctx-custom-wrap" style="display:none;margin-top:8px">
-          <input class="finp" id="rf-ctx-custom" type="text" placeholder="Describe how you know Eren..."/>
-        </div>
-        <input type="hidden" id="rf-ctx-id" value=""/>
-        <input type="hidden" id="rf-ctx-label" value=""/>
-      </div>
-
-      <!-- Period -->
-      <div style="margin-bottom:18px">
-        <label style="display:block;font-size:.52rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gd);margin-bottom:4px">Period Worked Together <span style="color:var(--mu);font-weight:400">(optional)</span></label>
-        <input class="finp" id="rf-period" type="text" placeholder="e.g. 2024 – 2025 or Summer 2025"/>
-      </div>
-
-      <!-- Rating -->
-      <div style="margin-bottom:22px">
-        <label style="display:block;font-size:.52rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gd);margin-bottom:8px">Overall Rating <span style="color:var(--mu);font-weight:400">(optional)</span></label>
-        <div style="display:flex;gap:6px;align-items:center" id="rf-stars">
-          <span onclick="setRfRating(1)" data-v="1" style="font-size:1.6rem;cursor:pointer;color:var(--bm);transition:color .1s">★</span>
-          <span onclick="setRfRating(2)" data-v="2" style="font-size:1.6rem;cursor:pointer;color:var(--bm);transition:color .1s">★</span>
-          <span onclick="setRfRating(3)" data-v="3" style="font-size:1.6rem;cursor:pointer;color:var(--bm);transition:color .1s">★</span>
-          <span onclick="setRfRating(4)" data-v="4" style="font-size:1.6rem;cursor:pointer;color:var(--bm);transition:color .1s">★</span>
-          <span onclick="setRfRating(5)" data-v="5" style="font-size:1.6rem;cursor:pointer;color:var(--bm);transition:color .1s">★</span>
-          <span id="rf-rating-label" style="font-size:.68rem;color:var(--mu);margin-left:6px"></span>
-        </div>
-        <input type="hidden" id="rf-rating" value="0"/>
-      </div>
-
-      <!-- Reference text -->
-      <div style="margin-bottom:18px">
-        <label style="display:block;font-size:.52rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gd);margin-bottom:4px">Reference / Recommendation Text <span style="color:var(--mu);font-weight:400">(optional)</span></label>
-        <textarea class="finp" id="rf-text" rows="6" placeholder="Share your experience working with Eren, his skills, character, work ethic..."></textarea>
-      </div>
-
-      <!-- Contact info -->
-      <div style="margin-bottom:28px">
-        <label style="display:block;font-size:.52rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gd);margin-bottom:4px">Contact Information <span style="color:var(--mu);font-weight:400">(optional)</span></label>
-        <input class="finp" id="rf-contact" type="text" placeholder="e.g. LinkedIn profile or email address"/>
-        <div style="font-size:.57rem;color:var(--mu);margin-top:4px">This will be shown publicly if you provide it.</div>
-      </div>
-
-      <!-- Error / submit -->
-      <div id="rf-err" style="font-size:.71rem;color:#c0392b;margin-bottom:10px;display:none"></div>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
-        <button class="fsub" onclick="submitRef()" style="width:auto;padding:13px 32px">Submit Reference</button>
-        <button onclick="go('ref')" style="padding:12px 24px;border-radius:9px;background:none;border:1.5px solid var(--bm);font-family:'Raleway',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);cursor:pointer">Cancel</button>
-      </div>
-      <div id="rf-succ" style="display:none;text-align:center;padding:40px 20px">
-        <div style="width:56px;height:56px;border-radius:50%;background:var(--gp);display:flex;align-items:center;justify-content:center;margin:0 auto 16px">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gd)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-        <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:1.2rem;font-weight:700;color:var(--gd);margin-bottom:6px">Thank you!</div>
-        <div style="font-size:.78rem;color:var(--mu);line-height:1.7">Your reference has been submitted and will be reviewed before publishing.</div>
-        <button onclick="go('ref')" style="margin-top:20px;padding:10px 24px;border-radius:9px;background:var(--gd);color:var(--bl);border:none;font-family:'Raleway',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer">Back to References</button>
-      </div>
-    </div>
-  </div>
-  <div class="pf"><span class="pfl">E-Mail</span><a class="pfe site-email" href="#">eren.akcamm@gmail.com</a></div>
 </div>
 
 <div class="lb" id="lb">
@@ -1212,7 +1072,6 @@ function applyData(){
     renderSkills();
     renderCerts();
     preloadCertImages();
-    renderRefs();
     showCats();
   }catch(e){console.warn('applyData error:',e);}
 }
@@ -1454,7 +1313,7 @@ document.addEventListener('click',function(e){
 });
 
 /* ── PAGE NAVIGATION ── */
-var PAGES=['pp','mem','sk','prt','cer','con','ref','ref-form-pg'];
+var PAGES=['pp','mem','sk','prt','cer','con'];
 var pageHistory=[];
 
 function showPage(id){
@@ -1469,7 +1328,6 @@ function showPage(id){
   if(nv)nv.classList.add('on');
   window.scrollTo(0,0);
   if(id==='sk')setTimeout(animateBars,80);
-  if(id==='ref')renderRefs();
   if(id==='prt')showCats();
   var bb=document.getElementById('mob-back-btn');
   if(bb)bb.style.display=(id==='pp'?'none':'');
@@ -1768,186 +1626,6 @@ function attachMailHandlers(){
   // Contact sayfası email linki
   var cem=document.getElementById('c-email');
   if(cem)cem.addEventListener('click',handleMailClick);
-}
-
-
-/* ══════════════════════════════════════
-   REFERENCES SYSTEM
-══════════════════════════════════════ */
-var RF_KEY = 'erensite_refs';
-
-function lRefs(){
-  try{var s=localStorage.getItem(RF_KEY);return s?JSON.parse(s):[];}
-  catch(e){return [];}
-}
-function pRefs(arr){
-  try{localStorage.setItem(RF_KEY,JSON.stringify(arr));}
-  catch(e){}
-}
-
-/* ── Render approved references on public page ── */
-function renderRefs(){
-  var el=document.getElementById('ref-body');
-  if(!el)return;
-  var refs=lRefs().filter(function(r){return r.approved;});
-  if(!refs.length){
-    el.innerHTML='<div style="text-align:center;padding:60px 20px">' +
-      '<div style="font-size:2rem;margin-bottom:12px;opacity:.3">✦</div>' +
-      '<div style="font-family:\'Playfair Display\',serif;font-style:italic;font-size:1.1rem;color:var(--mu);margin-bottom:8px">No references yet</div>' +
-      '<div style="font-size:.72rem;color:var(--mu);margin-bottom:28px">Be the first to recommend Eren.</div>' +
-      '<button onclick="go(\'ref-form-pg\');initRefForm()" style="display:inline-flex;align-items:center;gap:7px;padding:11px 24px;border-radius:50px;background:var(--g);color:var(--blk);border:none;font-family:\'Raleway\',sans-serif;font-size:.63rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer">Write a Reference</button>' +
-    '</div>';
-    return;
-  }
-  var h='';
-  refs.forEach(function(r){
-    var stars='';
-    if(r.rating){for(var i=1;i<=5;i++)stars+='<span style="color:'+(i<=r.rating?'#f0a500':'var(--bm)')+'">★</span>';}
-    var avatar='';
-    if(r.photo){
-      avatar='<img src="'+esc(r.photo)+'" style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:3px solid var(--gp);flex-shrink:0"/>';
-    }else{
-      var initials=((r.name||'?').split(' ').map(function(w){return w[0]||'';}).join('').slice(0,2)).toUpperCase()||'?';
-      avatar='<div style="width:64px;height:64px;border-radius:50%;background:var(--gp);border:3px solid var(--g);display:flex;align-items:center;justify-content:center;font-family:\'Playfair Display\',serif;font-style:italic;font-weight:700;font-size:1.1rem;color:var(--gd);flex-shrink:0">'+esc(initials)+'</div>';
-    }
-    h+='<div style="display:flex;gap:20px;padding:28px 0;border-bottom:1px solid var(--bm);align-items:flex-start">' +
-      '<div style="flex-shrink:0">'+avatar+'</div>' +
-      '<div style="flex:1;min-width:0">' +
-        (r.name?'<div style="font-family:\'Barlow Condensed\',sans-serif;font-size:1.05rem;font-weight:700;color:var(--txt);letter-spacing:.03em;text-transform:uppercase;margin-bottom:2px">'+esc(r.name)+'</div>':'')+
-        (r.title||r.org?'<div style="font-size:.7rem;color:var(--gd);font-weight:600;margin-bottom:2px">'+(r.title?esc(r.title):'')+(r.title&&r.org?' · ':'')+( r.org?esc(r.org):'')+'</div>':'')+
-        (r.context?'<div style="font-size:.63rem;color:var(--mu);margin-bottom:6px">'+esc(r.context)+'</div>':'')+
-        ((r.period||stars)?'<div style="display:flex;gap:12px;align-items:center;margin-bottom:10px;flex-wrap:wrap">'+(r.period?'<span style="font-size:.62rem;color:var(--mu);background:var(--gp);padding:3px 9px;border-radius:20px;border:1px solid var(--bm)">'+esc(r.period)+'</span>':'')+(stars?'<span style="font-size:.85rem;letter-spacing:1px">'+stars+'</span>':'')+'</div>':'')+
-        (r.text?'<p style="font-size:.82rem;line-height:1.88;color:var(--tm);font-weight:300;margin-bottom:10px;font-style:italic">&ldquo;'+esc(r.text)+'&rdquo;</p>':'')+
-        (r.contact?'<div style="font-size:.62rem;color:var(--g)">'+esc(r.contact)+'</div>':'')+
-      '</div>' +
-    '</div>';
-  });
-  h+='<div style="padding:32px 0 8px;text-align:center">' +
-    '<button onclick="go(\'ref-form-pg\');initRefForm()" style="display:inline-flex;align-items:center;gap:7px;padding:11px 28px;border-radius:50px;background:var(--blk);color:var(--gl);border:none;font-family:\'Raleway\',sans-serif;font-size:.63rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer">Write a Reference ✦</button>' +
-  '</div>';
-  el.innerHTML=h;
-}
-
-/* ── Context modal (relationship picker) ── */
-function openCtxModal(){
-  var modal=document.getElementById('ctx-modal');
-  if(!modal)return;
-  var list=document.getElementById('ctx-list');
-  if(!list)return;
-  list.innerHTML='';
-  var items=[];
-  (SD.memory&&SD.memory.experience||[]).forEach(function(e,i){
-    items.push({id:'exp_'+i,label:e.title,sub:e.company+(e.date?' · '+e.date:''),logo:e.logo||''});
-  });
-  (SD.memory&&SD.memory.education||[]).forEach(function(e,i){
-    items.push({id:'edu_'+i,label:e.title,sub:e.company+(e.date?' · '+e.date:''),logo:e.logo||''});
-  });
-  items.forEach(function(item){
-    var logoHtml=item.logo
-      ?'<img src="'+esc(item.logo)+'" style="width:38px;height:38px;border-radius:8px;object-fit:contain;background:var(--bl);border:1px solid var(--bm)"/>'
-      :'<div style="width:38px;height:38px;border-radius:8px;background:var(--gp);border:1px solid var(--bm);display:flex;align-items:center;justify-content:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--mu)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg></div>';
-    var div=document.createElement('div');
-    div.style.cssText='display:flex;align-items:center;gap:12px;padding:12px 14px;border:1.5px solid var(--bm);border-radius:10px;cursor:pointer;transition:border-color .15s;background:var(--bl)';
-    div.innerHTML=logoHtml+'<div><div style="font-size:.82rem;font-weight:700;color:var(--txt)">'+esc(item.label)+'</div><div style="font-size:.63rem;color:var(--mu)">'+esc(item.sub)+'</div></div>';
-    div.onmouseenter=function(){this.style.borderColor='var(--g)';};
-    div.onmouseleave=function(){this.style.borderColor='var(--bm)';};
-    div.onclick=(function(id,label){return function(){ctxSelect(id,label);};})(item.id,item.label+(item.sub?' — '+item.sub:''));
-    list.appendChild(div);
-  });
-  modal.style.display='flex';
-}
-function ctxSelect(id,label){
-  document.getElementById('rf-ctx-id').value=id;
-  document.getElementById('rf-ctx-label').value=label;
-  var disp=document.getElementById('ctx-display-text');
-  if(disp){disp.textContent=label;disp.style.color='var(--txt)';}
-  var customWrap=document.getElementById('ctx-custom-wrap');
-  if(customWrap)customWrap.style.display=(id==='other'?'block':'none');
-  document.getElementById('ctx-modal').style.display='none';
-}
-
-/* ── Rating ── */
-var _rfRating=0;
-function setRfRating(v){
-  _rfRating=v;
-  document.getElementById('rf-rating').value=v;
-  var labels=['','Fair','Good','Great','Excellent','Outstanding'];
-  document.getElementById('rf-rating-label').textContent=labels[v]||'';
-  document.querySelectorAll('#rf-stars span').forEach(function(s){
-    s.style.color=parseInt(s.getAttribute('data-v'))<=v?'#f0a500':'var(--bm)';
-  });
-}
-
-/* ── Photo preview ── */
-function rfPhotoChange(inp){
-  if(!inp.files||!inp.files[0])return;
-  var reader=new FileReader();
-  reader.onload=function(e){
-    var prev=document.getElementById('rf-photo-preview');
-    if(prev)prev.innerHTML='<img src="'+e.target.result+'" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/>';
-    window._rfPhotoData=e.target.result;
-  };
-  reader.readAsDataURL(inp.files[0]);
-}
-
-/* ── Init form (reset) ── */
-function initRefForm(){
-  _rfRating=0;
-  window._rfPhotoData=null;
-  ['rf-name','rf-title','rf-org','rf-period','rf-text','rf-contact','rf-ctx-id','rf-ctx-label','rf-ctx-custom'].forEach(function(id){
-    var el=document.getElementById(id);if(el)el.value='';
-  });
-  var disp=document.getElementById('ctx-display-text');
-  if(disp){disp.textContent='Click to select context...';disp.style.color='var(--mu)';}
-  var prev=document.getElementById('rf-photo-preview');
-  if(prev)prev.innerHTML='<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--mu)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>';
-  var customWrap=document.getElementById('ctx-custom-wrap');
-  if(customWrap)customWrap.style.display='none';
-  setRfRating(0);
-  var err=document.getElementById('rf-err');if(err)err.style.display='none';
-  var succ=document.getElementById('rf-succ');if(succ)succ.style.display='none';
-  var wrap=document.getElementById('ref-form-wrap');if(wrap)wrap.style.display='';
-}
-
-/* ── Submit ── */
-function submitRef(){
-  var ctxId=document.getElementById('rf-ctx-id').value;
-  var ctxLabel=document.getElementById('rf-ctx-label').value;
-  var ctxCustom=(document.getElementById('rf-ctx-custom')||{}).value||'';
-  var context=ctxId==='other'?(ctxCustom||'Other'):ctxLabel;
-
-  var entry={
-    id:'ref_'+Date.now(),
-    savedAt:new Date().toISOString(),
-    approved:false,
-    name:(document.getElementById('rf-name').value||'').trim(),
-    title:(document.getElementById('rf-title').value||'').trim(),
-    org:(document.getElementById('rf-org').value||'').trim(),
-    context:context,
-    period:(document.getElementById('rf-period').value||'').trim(),
-    rating:parseInt(document.getElementById('rf-rating').value||'0')||0,
-    text:(document.getElementById('rf-text').value||'').trim(),
-    contact:(document.getElementById('rf-contact').value||'').trim(),
-    photo:window._rfPhotoData||''
-  };
-
-  // At least something must be filled
-  if(!entry.name&&!entry.text&&!entry.contact&&!entry.org){
-    var err=document.getElementById('rf-err');
-    if(err){err.textContent='Please fill in at least your name or reference text.';err.style.display='block';}
-    return;
-  }
-
-  var refs=lRefs();
-  refs.unshift(entry);
-  pRefs(refs);
-
-  // Show success
-  var wrap=document.getElementById('ref-form-wrap');
-  var succ=document.getElementById('rf-succ');
-  if(wrap)wrap.style.display='none';
-  if(succ)succ.style.display='block';
-  window.scrollTo(0,0);
 }
 
 /* ── INIT ── */
