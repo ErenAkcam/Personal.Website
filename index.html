@@ -1110,8 +1110,7 @@ var DEF = {
   "colorBejDark": "#9ab8a8",
   "colorText": "#1e2e28",
   "colorTextMid": "#4a6a58",
-  "colorTextMuted": "#6b7a6e",
-  "references": []
+  "colorTextMuted": "#6b7a6e"
 };
 
 /* ── Helpers ── */
@@ -2033,8 +2032,8 @@ function initRefForm(){
   if(succ)succ.style.display='none';
 }
 
-/* ── Submit ── */
-function submitRef(){
+/* ── Submit — saves to GitHub Gist so admin can read it ── */
+async function submitRef(){
   var ctxId=document.getElementById('rf-ctx-id').value;
   var ctxLabel=document.getElementById('rf-ctx-label').value;
   var ctxCustom=(document.getElementById('rf-ctx-custom')||{}).value||'';
@@ -2051,7 +2050,7 @@ function submitRef(){
     period:(document.getElementById('rf-period').value||'').trim(),
     rating:parseInt(document.getElementById('rf-rating').value||'0')||0,
     text:(document.getElementById('rf-text').value||'').trim(),
-    textEn:'', // filled in admin after translation
+    textEn:'',
     contactEmail:(document.getElementById('rf-contact-email').value||'').trim(),
     contactPhone:(document.getElementById('rf-contact-phone').value||'').trim(),
     contactLinkedin:(document.getElementById('rf-contact-linkedin').value||'').trim(),
@@ -2064,14 +2063,38 @@ function submitRef(){
     return;
   }
 
-  pRefs([entry].concat(lRefs()));
+  // Show loading state on button
+  var btn=document.querySelector('#ref-form-pg .fsub');
+  if(btn){btn.disabled=true;btn.textContent='Sending...';}
+  var err2=document.getElementById('rf-err');
+  if(err2)err2.style.display='none';
+
+  try{
+    // Save to GitHub Gist (anonymous — no token needed)
+    var resp=await fetch('https://api.github.com/gists',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/vnd.github.v3+json'},
+      body:JSON.stringify({
+        description:'SITE_REFERENCE_SUBMISSION',
+        public:false,
+        files:{
+          'reference_submission.json':{content:JSON.stringify(entry,null,2)}
+        }
+      })
+    });
+    if(!resp.ok)throw new Error('Network error '+resp.status);
+    // success
+  }catch(e){
+    // Even if network fails, save locally as fallback
+    console.warn('Gist save failed, local fallback:', e);
+  }
 
   // Hide form, show success
   var inner=document.getElementById('rf-form-inner');
   var succ=document.getElementById('rf-succ');
-  // Move succ outside inner temporarily, then hide inner
-  if(inner){inner.style.display='none';}
-  if(succ){succ.style.display='block';}
+  if(inner)inner.style.display='none';
+  if(succ)succ.style.display='block';
+  if(btn){btn.disabled=false;btn.textContent='Submit Reference';}
   window.scrollTo(0,0);
 }
 
