@@ -720,6 +720,8 @@ var DEF = {
   "linkedin": "http://www.linkedin.com/in/erenakcam",
   "freelance": "",
   "profilePhoto": "assets/profile.png",
+  "pendingRefs": [],
+  "refs": [],
   "colorGreen": "#7ab898",
   "colorGreenDeep": "#2d5a3d",
   "colorGreenLight": "#a8c9b8",
@@ -1111,8 +1113,11 @@ var DEF = {
   "colorText": "#1e2e28",
   "colorTextMid": "#4a6a58",
   "colorTextMuted": "#6b7a6e",
-  "references": [],
-  "pendingRefs": [],
+  "refsToken": "",
+  "refsUser": "ErenAkcam",
+  "refsRepo": "Personal.Website",
+  "refsPath": "refs.json",
+  "refsBranch": "main",
   "refs": []
 };
 
@@ -2073,7 +2078,7 @@ async function submitRef(){
   var errEl=document.getElementById('rf-err');
   if(errEl)errEl.style.display='none';
 
-  var proxyUrl = "https://script.google.com/macros/s/AKfycbxUbV4nha_Y-NdJBitNj5rhon9V3DFuYY5zQkO3Zgx4lLUY9xj-j1Vp-urMyvpK1fln/exec";
+  var proxyUrl = "https://script.google.com/macros/s/AKfycbw7hmPGWvpgfQMewS9irCjoqW__arSkUgRlmQW9ftlchH-dg8G1hc9HwXMjnX6J0qnR/exec";
 
   try{
     var resp = await fetch(proxyUrl, {
