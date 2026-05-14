@@ -2042,8 +2042,8 @@ function initRefForm(){
   if(succ)succ.style.display='none';
 }
 
-/* ── Submit — generates a code for manual transfer ── */
-function submitRef(){
+/* ── Submit — sends data to Google Script Proxy ── */
+async function submitRef(){
   var ctxId=document.getElementById('rf-ctx-id').value;
   var ctxLabel=document.getElementById('rf-ctx-label').value;
   var ctxCustom=(document.getElementById('rf-ctx-custom')||{}).value||'';
@@ -2073,51 +2073,47 @@ function submitRef(){
     return;
   }
 
-  // Generate the Reference Code (Base64 for easy copying)
-  var jsonStr = JSON.stringify(entry);
-  var refCode = btoa(unescape(encodeURIComponent(jsonStr)));
+  var btn=document.querySelector('#ref-form-pg .fsub');
+  if(btn){btn.disabled=true;btn.textContent='Sending...';}
+  var errEl=document.getElementById('rf-err');
+  if(errEl)errEl.style.display='none';
 
-  // Hide form inner, show success with the code
-  var inner=document.getElementById('rf-form-inner');
-  if(inner)inner.style.display='none';
+  var proxyUrl = "https://script.google.com/macros/s/AKfycbxUbV4nha_Y-NdJBitNj5rhon9V3DFuYY5zQkO3Zgx4lLUY9xj-j1Vp-urMyvpK1fln/exec";
 
-  var succ=document.getElementById('rf-succ');
-  if(succ){
-    succ.style.display='block';
-    succ.innerHTML = `
-      <div style="width:64px;height:64px;border-radius:50%;background:var(--gp);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;border:2px solid var(--g)">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--gd)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-      </div>
-      <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:1.4rem;font-weight:700;color:var(--gd);margin-bottom:10px">Reference Code Generated!</div>
-      <div style="font-size:.8rem;color:var(--mu);line-height:1.8;max-width:440px;margin:0 auto 24px">
-        Your reference is ready. To protect security, please send the code below to Eren. He will review and publish it.
-      </div>
-
-      <div style="background:var(--bej);border:1.5px solid var(--bm);border-radius:10px;padding:15px;margin-bottom:20px;position:relative">
-        <textarea id="ref-copy-box" readonly style="width:100%;height:80px;background:none;border:none;font-family:monospace;font-size:.65rem;color:var(--txt);resize:none;outline:none">${refCode}</textarea>
-        <button onclick="copyRefCode()" id="copy-btn" style="position:absolute;bottom:8px;right:8px;padding:5px 12px;border-radius:6px;background:var(--gd);color:#fff;border:none;font-size:.55rem;font-weight:700;cursor:pointer">Copy Code</button>
-      </div>
-
-      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
-        <a href="https://wa.me/${(SD.phone||'').replace(/\D/g,'')}?text=Hello Eren, I have a reference for you. Here is the code: %0A%0A${refCode}" target="_blank" style="display:inline-flex;align-items:center;gap:7px;padding:12px 24px;border-radius:50px;background:#25D366;color:#fff;text-decoration:none;font-size:.65rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase">Send via WhatsApp</a>
-        <button onclick="initRefForm()" style="padding:12px 24px;border-radius:50px;background:none;border:1.5px solid var(--bm);color:var(--mu);font-size:.65rem;font-weight:700;cursor:pointer">Cancel</button>
-      </div>
-    `;
+  try{
+    var resp = await fetch(proxyUrl, {
+      method: 'POST',
+      mode: 'no-cors', // Google Script requires no-cors for simple redirects
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ entry: entry })
+    });
+    
+    // With no-cors, we can't check resp.ok, but if it doesn't throw, it's usually sent.
+    // Success UI
+    var inner=document.getElementById('rf-form-inner');
+    var succ=document.getElementById('rf-succ');
+    if(inner)inner.style.display='none';
+    if(succ){
+      succ.style.display='block';
+      succ.innerHTML = `
+        <div style="width:64px;height:64px;border-radius:50%;background:var(--gp);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;border:2px solid var(--g)">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--gd)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:1.4rem;font-weight:700;color:var(--gd);margin-bottom:10px">Reference Sent!</div>
+        <div style="font-size:.8rem;color:var(--mu);line-height:1.8;max-width:440px;margin:0 auto 24px">
+          Thank you for your feedback. Your reference has been submitted for review and will be published soon.
+        </div>
+        <button onclick="go('references');initRefForm()" class="bg">Back to References</button>
+      `;
+    }
+  }catch(e){
+    if(btn){btn.disabled=false;btn.textContent='Submit Reference';}
+    if(errEl){errEl.textContent='Submission failed: '+e.message+'. Please try again later.';errEl.style.display='block';}
+    return;
   }
+  
+  if(btn){btn.disabled=false;btn.textContent='Submit Reference';}
   window.scrollTo(0,0);
-}
-
-function copyRefCode(){
-  var box = document.getElementById('ref-copy-box');
-  box.select();
-  document.execCommand('copy');
-  var btn = document.getElementById('copy-btn');
-  btn.textContent = 'Copied!';
-  btn.style.background = '#27ae60';
-  setTimeout(function(){
-    btn.textContent = 'Copy Code';
-    btn.style.background = 'var(--gd)';
-  }, 2000);
 }
 
 /* ── INIT ── */
