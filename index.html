@@ -720,6 +720,8 @@ var DEF = {
   "linkedin": "http://www.linkedin.com/in/erenakcam",
   "freelance": "",
   "profilePhoto": "assets/profile.png",
+  "pendingRefs": [],
+  "refs": [],
   "colorGreen": "#7ab898",
   "colorGreenDeep": "#2d5a3d",
   "colorGreenLight": "#a8c9b8",
@@ -1111,43 +1113,11 @@ var DEF = {
   "colorText": "#1e2e28",
   "colorTextMid": "#4a6a58",
   "colorTextMuted": "#6b7a6e",
-  "references": [],
-  "pendingRefs": [
-    {
-      "id": "ref_1778793314527",
-      "savedAt": "2026-05-14T21:15:14.527Z",
-      "approved": false,
-      "name": ".ss",
-      "title": "",
-      "org": "",
-      "context": "",
-      "period": "",
-      "rating": 0,
-      "text": "",
-      "textEn": "",
-      "contactEmail": "",
-      "contactPhone": "",
-      "contactLinkedin": "",
-      "photo": ""
-    },
-    {
-      "id": "ref_1778790389071",
-      "savedAt": "2026-05-14T20:26:29.071Z",
-      "approved": false,
-      "name": "Eren Akçam",
-      "title": "Öğrenci",
-      "org": "Kosbi",
-      "context": "Private KOSBİ Zülfü-Mevlüt Çelik Vocational High School — Computer-Aided Machine Drawing — 11th Grade · 2023 — 2027",
-      "period": "2023 - 2027",
-      "rating": 4,
-      "text": "Eren cooiiiiiiioejsjjdjdjjrk iyiejjejejdjrj",
-      "textEn": "",
-      "contactEmail": "erenakacam@gmail.com",
-      "contactPhone": "+905516286262",
-      "contactLinkedin": "",
-      "photo": ""
-    }
-  ],
+  "refsToken": "",
+  "refsUser": "ErenAkcam",
+  "refsRepo": "Personal.Website",
+  "refsPath": "refs.json",
+  "refsBranch": "main",
   "refs": []
 };
 
@@ -1549,17 +1519,42 @@ function showPage(id){
 
 function go(id){
   var cur=PAGES.find(function(p){var el=document.getElementById(p);return el&&el.classList.contains('on');});
-  if(cur&&cur!==id)pageHistory.push(cur);
-  if(pageHistory.length>20)pageHistory.shift();
-  showPage(id);
+  if(cur && cur !== id) pageHistory.push(cur);
+  if(pageHistory.length > 20) pageHistory.shift();
+  
+  if(window.location.hash !== '#' + id) {
+    window.location.hash = id;
+  } else {
+    showPage(id);
+  }
 }
 
 function goBack(){
-  var prev=pageHistory.pop()||'pp';
-  showPage(prev);
-  var bb=document.getElementById('mob-back-btn');
-  if(bb)bb.style.display=(prev==='pp'?'none':'');
+  if(pageHistory.length > 0) {
+    var prev = pageHistory.pop();
+    go(prev);
+  } else {
+    go('pp');
+  }
 }
+
+window.addEventListener('hashchange', function(){
+  var id = window.location.hash.replace('#','');
+  if(PAGES.indexOf(id) > -1) {
+    showPage(id);
+  } else {
+    showPage('pp');
+  }
+});
+
+window.addEventListener('load', function(){
+  var id = window.location.hash.replace('#','');
+  if(PAGES.indexOf(id) > -1) {
+    showPage(id);
+  } else {
+    showPage('pp');
+  }
+});
 function animateBars(){
   document.querySelectorAll('.sbf').forEach(function(b){
     var w=b.getAttribute('data-w')+'%';
@@ -1946,16 +1941,48 @@ function renderRefs(){
       '</div>';
     }
 
-    h+='<div style="display:flex;gap:22px;padding:30px 0;border-bottom:1px solid var(--bm);align-items:flex-start">'+
-      '<div style="flex-shrink:0">'+avatar+'</div>'+
+    // Context card
+    var contextCardHtml = '';
+    if(r.contextId) {
+      var mem = SD.memory || {};
+      var ctxItem = null;
+      var parts = (r.contextId || '').split('_');
+      var type = parts[0]; // exp or edu
+      var idx = parseInt(parts[1]);
+      if(type === 'exp' && mem.experience) ctxItem = mem.experience[idx];
+      if(type === 'edu' && mem.education) ctxItem = mem.education[idx];
+
+      if(ctxItem) {
+        var logoHtml = ctxItem.logo 
+          ? '<img src="'+esc(ctxItem.logo)+'" style="width:32px;height:32px;border-radius:6px;object-fit:contain;background:white;border:1.5px solid var(--bm);flex-shrink:0"/>'
+          : '<div style="width:32px;height:32px;border-radius:6px;background:var(--gp);border:1.5px solid var(--bm);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--mu)" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg></div>';
+        
+        contextCardHtml = '<div style="display:inline-flex;align-items:center;gap:10px;padding:8px 12px;background:var(--bl);border:1.5px solid var(--bm);border-radius:10px;margin-bottom:12px;max-width:100%">'+
+          logoHtml +
+          '<div style="min-width:0">'+
+            '<div style="font-size:.62rem;font-weight:700;color:var(--txt);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+esc(ctxItem.title)+'</div>'+
+            '<div style="font-size:.54rem;color:var(--mu);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+esc(ctxItem.company || '')+'</div>'+
+          '</div>'+
+        '</div>';
+      }
+    }
+
+    h+='<div style="display:flex;gap:22px;padding:36px 0;border-bottom:1px solid var(--bm);align-items:flex-start;position:relative">'+
+      '<div style="flex-shrink:0;position:sticky;top:20px">'+avatar+'</div>'+
       '<div style="flex:1;min-width:0">'+
-        (r.name?'<div style="font-family:\'Barlow Condensed\',sans-serif;font-size:1.08rem;font-weight:700;color:var(--txt);letter-spacing:.04em;text-transform:uppercase;margin-bottom:2px">'+esc(r.name)+'</div>':'')+
-        ((r.title||r.org)?'<div style="font-size:.72rem;color:var(--gd);font-weight:600;margin-bottom:3px">'+(r.title?esc(r.title):'')+(r.title&&r.org?' · ':'')+(r.org?esc(r.org):'')+'</div>':'')+
-        (r.context?'<div style="font-size:.63rem;color:var(--mu);margin-bottom:8px">'+esc(r.context)+'</div>':'')+
-        ((r.period||stars)?'<div style="display:flex;gap:10px;align-items:center;margin-bottom:12px;flex-wrap:wrap">'+
-          (r.period?'<span style="font-size:.6rem;color:var(--mu);background:var(--gp);padding:3px 9px;border-radius:20px;border:1px solid var(--bm)">'+esc(r.period)+'</span>':'')+
-          (stars?'<span style="font-size:.9rem;letter-spacing:1px">'+stars+'</span>':'')+
-        '</div>':'')+
+        '<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:15px;margin-bottom:10px">'+
+          '<div style="min-width:0">'+
+            (r.name?'<div style="font-family:\'Barlow Condensed\',sans-serif;font-size:1.2rem;font-weight:700;color:var(--txt);letter-spacing:.03em;text-transform:uppercase;line-height:1">'+esc(r.name)+'</div>':'')+
+            ((r.title || r.org) ? '<div style="font-size:.75rem;color:var(--gd);font-weight:600;margin-top:5px;line-height:1.4">'+(r.title?esc(r.title):'')+(r.title&&r.org?' @ ':'')+(r.org?esc(r.org):'')+'</div>':'')+
+          '</div>'+
+          (stars?'<div style="font-size:.85rem;letter-spacing:1px;white-space:nowrap">'+stars+'</div>':'')+
+        '</div>'+
+        
+        contextCardHtml+
+        (!contextCardHtml && r.context ? '<div style="font-size:.65rem;color:var(--mu);margin-bottom:12px;display:flex;align-items:center;gap:5px"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>'+esc(r.context)+'</div>' : '')+
+        
+        (r.period ? '<div style="margin-bottom:15px"><span style="font-size:.58rem;font-weight:700;color:var(--mu);background:var(--gp);padding:3px 10px;border-radius:20px;border:1px solid var(--bm);text-transform:uppercase;letter-spacing:.05em">'+esc(r.period)+'</span></div>' : '')+
+        
         textHtml+
         contactHtml+
       '</div>'+
@@ -2087,6 +2114,7 @@ async function submitRef(){
     title:(document.getElementById('rf-title').value||'').trim(),
     org:(document.getElementById('rf-org').value||'').trim(),
     context:context,
+    contextId:ctxId,
     period:(document.getElementById('rf-period').value||'').trim(),
     rating:parseInt(document.getElementById('rf-rating').value||'0')||0,
     text:(document.getElementById('rf-text').value||'').trim(),
@@ -2108,7 +2136,7 @@ async function submitRef(){
   var errEl=document.getElementById('rf-err');
   if(errEl)errEl.style.display='none';
 
-  var proxyUrl = "https://script.google.com/macros/s/AKfycbxTlXE6pILk8fADA5dTr_WfFmsWoqqh3lVVroI6gy2Vh42yQgZbTMVeQ8tfkLhDMTWX/exec";
+  var proxyUrl = "https://script.google.com/macros/s/AKfycbw7hmPGWvpgfQMewS9irCjoqW__arSkUgRlmQW9ftlchH-dg8G1hc9HwXMjnX6J0qnR/exec";
 
   try{
     var resp = await fetch(proxyUrl, {
@@ -2133,7 +2161,7 @@ async function submitRef(){
         <div style="font-size:.8rem;color:var(--mu);line-height:1.8;max-width:440px;margin:0 auto 24px">
           Thank you for your feedback. Your reference has been submitted for review and will be published soon.
         </div>
-        <button onclick="go('references');initRefForm()" class="bg">Back to References</button>
+        <button onclick="go('ref');initRefForm()" class="bg">Back to References</button>
       `;
     }
   }catch(e){
