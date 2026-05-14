@@ -720,6 +720,8 @@ var DEF = {
   "linkedin": "http://www.linkedin.com/in/erenakcam",
   "freelance": "",
   "profilePhoto": "assets/profile.png",
+  "pendingRefs": [],
+  "refs": [],
   "colorGreen": "#7ab898",
   "colorGreenDeep": "#2d5a3d",
   "colorGreenLight": "#a8c9b8",
@@ -2040,8 +2042,8 @@ function initRefForm(){
   if(succ)succ.style.display='none';
 }
 
-/* ── Submit — saves to refs.json in GitHub repo ── */
-async function submitRef(){
+/* ── Submit — generates a code for manual transfer ── */
+function submitRef(){
   var ctxId=document.getElementById('rf-ctx-id').value;
   var ctxLabel=document.getElementById('rf-ctx-label').value;
   var ctxCustom=(document.getElementById('rf-ctx-custom')||{}).value||'';
@@ -2065,75 +2067,57 @@ async function submitRef(){
     photo:window._rfPhotoData||''
   };
 
-  if(!entry.name&&!entry.text&&!entry.contactEmail&&!entry.org){
+  if(!entry.name && !entry.text && !entry.contactEmail && !entry.org){
     var err=document.getElementById('rf-err');
     if(err){err.textContent='Please fill in at least your name or reference text.';err.style.display='block';}
     return;
   }
 
-  var btn=document.querySelector('#ref-form-pg .fsub');
-  if(btn){btn.disabled=true;btn.textContent='Sending...';}
-  var errEl=document.getElementById('rf-err');
-  if(errEl)errEl.style.display='none';
+  // Generate the Reference Code (Base64 for easy copying)
+  var jsonStr = JSON.stringify(entry);
+  var refCode = btoa(unescape(encodeURIComponent(jsonStr)));
 
-  var token=SD.refsToken||'';
-  var user=SD.refsUser||'ErenAkcam';
-  var repo=SD.refsRepo||'Personal.Website';
-  var path=SD.refsPath||'refs.json';
-
-  if(!token){
-    // No token configured — show a helpful message
-    if(btn){btn.disabled=false;btn.textContent='Submit Reference';}
-    if(errEl){errEl.textContent='Submissions are temporarily unavailable. Please contact Eren directly.';errEl.style.display='block';}
-    return;
-  }
-
-  try{
-    var apiUrl='https://api.github.com/repos/'+user+'/'+repo+'/contents/'+path;
-    var headers={'Authorization':'token '+token,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'};
-
-    // GET current refs.json (may not exist yet)
-    var sha=null;
-    var existingRefs=[];
-    try{
-      var getResp=await fetch(apiUrl,{headers:headers});
-      if(getResp.ok){
-        var fileData=await getResp.json();
-        sha=fileData.sha;
-        var decoded=decodeURIComponent(escape(atob(fileData.content.replace(/\n/g,''))));
-        existingRefs=JSON.parse(decoded);
-      }
-    }catch(e){/* file doesn't exist yet, start fresh */}
-
-    // Prepend new entry
-    existingRefs.unshift(entry);
-
-    // PUT updated refs.json
-    var body={
-      message:'New reference submission: '+(entry.name||'Anonymous')+' — '+entry.savedAt.slice(0,10),
-      content:btoa(unescape(encodeURIComponent(JSON.stringify(existingRefs,null,2)))),
-      branch:SD.refsBranch||'main'
-    };
-    if(sha)body.sha=sha;
-
-    var putResp=await fetch(apiUrl,{method:'PUT',headers:headers,body:JSON.stringify(body)});
-    if(!putResp.ok){
-      var pe=await putResp.json();
-      throw new Error(pe.message||'Write failed');
-    }
-  }catch(e){
-    if(btn){btn.disabled=false;btn.textContent='Submit Reference';}
-    if(errEl){errEl.textContent='Submission failed: '+e.message+'. Please try again or contact Eren directly.';errEl.style.display='block';}
-    return;
-  }
-
-  // Success
+  // Hide form inner, show success with the code
   var inner=document.getElementById('rf-form-inner');
-  var succ=document.getElementById('rf-succ');
   if(inner)inner.style.display='none';
-  if(succ)succ.style.display='block';
-  if(btn){btn.disabled=false;btn.textContent='Submit Reference';}
+
+  var succ=document.getElementById('rf-succ');
+  if(succ){
+    succ.style.display='block';
+    succ.innerHTML = `
+      <div style="width:64px;height:64px;border-radius:50%;background:var(--gp);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;border:2px solid var(--g)">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--gd)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:1.4rem;font-weight:700;color:var(--gd);margin-bottom:10px">Reference Code Generated!</div>
+      <div style="font-size:.8rem;color:var(--mu);line-height:1.8;max-width:440px;margin:0 auto 24px">
+        Your reference is ready. To protect security, please send the code below to Eren. He will review and publish it.
+      </div>
+
+      <div style="background:var(--bej);border:1.5px solid var(--bm);border-radius:10px;padding:15px;margin-bottom:20px;position:relative">
+        <textarea id="ref-copy-box" readonly style="width:100%;height:80px;background:none;border:none;font-family:monospace;font-size:.65rem;color:var(--txt);resize:none;outline:none">${refCode}</textarea>
+        <button onclick="copyRefCode()" id="copy-btn" style="position:absolute;bottom:8px;right:8px;padding:5px 12px;border-radius:6px;background:var(--gd);color:#fff;border:none;font-size:.55rem;font-weight:700;cursor:pointer">Copy Code</button>
+      </div>
+
+      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+        <a href="https://wa.me/${(SD.phone||'').replace(/\D/g,'')}?text=Hello Eren, I have a reference for you. Here is the code: %0A%0A${refCode}" target="_blank" style="display:inline-flex;align-items:center;gap:7px;padding:12px 24px;border-radius:50px;background:#25D366;color:#fff;text-decoration:none;font-size:.65rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase">Send via WhatsApp</a>
+        <button onclick="initRefForm()" style="padding:12px 24px;border-radius:50px;background:none;border:1.5px solid var(--bm);color:var(--mu);font-size:.65rem;font-weight:700;cursor:pointer">Cancel</button>
+      </div>
+    `;
+  }
   window.scrollTo(0,0);
+}
+
+function copyRefCode(){
+  var box = document.getElementById('ref-copy-box');
+  box.select();
+  document.execCommand('copy');
+  var btn = document.getElementById('copy-btn');
+  btn.textContent = 'Copied!';
+  btn.style.background = '#27ae60';
+  setTimeout(function(){
+    btn.textContent = 'Copy Code';
+    btn.style.background = 'var(--gd)';
+  }, 2000);
 }
 
 /* ── INIT ── */
