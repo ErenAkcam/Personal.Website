@@ -1110,7 +1110,13 @@ var DEF = {
   "colorBejDark": "#9ab8a8",
   "colorText": "#1e2e28",
   "colorTextMid": "#4a6a58",
-  "colorTextMuted": "#6b7a6e"
+  "colorTextMuted": "#6b7a6e",
+  "refsToken": "",
+  "refsUser": "ErenAkcam",
+  "refsRepo": "Personal.Website",
+  "refsPath": "refs.json",
+  "refsBranch": "main",
+  "refs": []
 };
 
 /* ── Helpers ── */
@@ -1811,12 +1817,11 @@ function attachMailHandlers(){
 var RF_KEY = 'erensite_refs';
 
 function lRefs(){
-  try{var s=localStorage.getItem(RF_KEY);return s?JSON.parse(s):[];}
-  catch(e){return [];}
+  // On public site, refs come from SD.refs (embedded by admin at deploy time)
+  return (SD&&SD.refs)||[];
 }
 function pRefs(arr){
-  try{localStorage.setItem(RF_KEY,JSON.stringify(arr));}
-  catch(e){}
+  // Not used on public page — refs written via GitHub API
 }
 
 /* ── Avatar initials helper ── */
@@ -1896,14 +1901,16 @@ function renderRefs(){
     // Text with translate toggle
     var textHtml='';
     if(r.text){
+      window._refTexts=window._refTexts||{};
+      window._refTexts[r.id]={orig:r.text,en:r.textEn||''};
       var safe=esc(r.text);
-      var enText=r.textEn?esc(r.textEn):'';
-      var hasTranslation=!!enText;
+      var hasTranslation=!!(r.textEn&&r.textEn.trim());
+      var togBtn=hasTranslation
+        ?'<button onclick="toggleRefLang(&apos;'+r.id+'&apos;)" id="rtog-'+r.id+'" style="font-size:.55rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:none;border:1px solid var(--bm);padding:3px 9px;border-radius:20px;cursor:pointer;color:var(--mu)">🌐 Show in English</button>'
+        :'';
       textHtml='<div style="margin-bottom:10px">'+
         '<p id="rtxt-'+r.id+'" style="font-size:.82rem;line-height:1.9;color:var(--tm);font-weight:300;font-style:italic;margin-bottom:6px">&ldquo;'+safe+'&rdquo;</p>'+
-        (hasTranslation?
-          '<button onclick="toggleRefLang(\''+r.id+'\',\''+safe.replace(/'/g,"\'")+'\',\''+enText.replace(/'/g,"\'")+'\')" id="rtog-'+r.id+'" style="font-size:.55rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:none;border:1px solid var(--bm);padding:3px 9px;border-radius:20px;cursor:pointer;color:var(--mu)">🌐 Show in English</button>':
-          '')+
+        togBtn+
       '</div>';
     }
 
@@ -1931,16 +1938,17 @@ function renderRefs(){
 
 /* ── Toggle original / English translation ── */
 var _refLangState={};
-function toggleRefLang(id,original,translated){
+function toggleRefLang(id){
   var p=document.getElementById('rtxt-'+id);
   var btn=document.getElementById('rtog-'+id);
   if(!p||!btn)return;
+  var texts=(window._refTexts||{})[id]||{orig:'',en:''};
   _refLangState[id]=!_refLangState[id];
   if(_refLangState[id]){
-    p.innerHTML='&ldquo;'+translated+'&rdquo;';
+    p.innerHTML='&ldquo;'+esc(texts.en)+'&rdquo;';
     btn.textContent='🌐 Show Original';
   }else{
-    p.innerHTML='&ldquo;'+original+'&rdquo;';
+    p.innerHTML='&ldquo;'+esc(texts.orig)+'&rdquo;';
     btn.textContent='🌐 Show in English';
   }
 }
@@ -2032,7 +2040,7 @@ function initRefForm(){
   if(succ)succ.style.display='none';
 }
 
-/* ── Submit — saves to GitHub Gist so admin can read it ── */
+/* ── Submit — saves to refs.json in GitHub repo ── */
 async function submitRef(){
   var ctxId=document.getElementById('rf-ctx-id').value;
   var ctxLabel=document.getElementById('rf-ctx-label').value;
@@ -2063,33 +2071,63 @@ async function submitRef(){
     return;
   }
 
-  // Show loading state on button
   var btn=document.querySelector('#ref-form-pg .fsub');
   if(btn){btn.disabled=true;btn.textContent='Sending...';}
-  var err2=document.getElementById('rf-err');
-  if(err2)err2.style.display='none';
+  var errEl=document.getElementById('rf-err');
+  if(errEl)errEl.style.display='none';
 
-  try{
-    // Save to GitHub Gist (anonymous — no token needed)
-    var resp=await fetch('https://api.github.com/gists',{
-      method:'POST',
-      headers:{'Content-Type':'application/json','Accept':'application/vnd.github.v3+json'},
-      body:JSON.stringify({
-        description:'SITE_REFERENCE_SUBMISSION',
-        public:false,
-        files:{
-          'reference_submission.json':{content:JSON.stringify(entry,null,2)}
-        }
-      })
-    });
-    if(!resp.ok)throw new Error('Network error '+resp.status);
-    // success
-  }catch(e){
-    // Even if network fails, save locally as fallback
-    console.warn('Gist save failed, local fallback:', e);
+  var token=SD.refsToken||'';
+  var user=SD.refsUser||'ErenAkcam';
+  var repo=SD.refsRepo||'Personal.Website';
+  var path=SD.refsPath||'refs.json';
+
+  if(!token){
+    // No token configured — show a helpful message
+    if(btn){btn.disabled=false;btn.textContent='Submit Reference';}
+    if(errEl){errEl.textContent='Submissions are temporarily unavailable. Please contact Eren directly.';errEl.style.display='block';}
+    return;
   }
 
-  // Hide form, show success
+  try{
+    var apiUrl='https://api.github.com/repos/'+user+'/'+repo+'/contents/'+path;
+    var headers={'Authorization':'token '+token,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'};
+
+    // GET current refs.json (may not exist yet)
+    var sha=null;
+    var existingRefs=[];
+    try{
+      var getResp=await fetch(apiUrl,{headers:headers});
+      if(getResp.ok){
+        var fileData=await getResp.json();
+        sha=fileData.sha;
+        var decoded=decodeURIComponent(escape(atob(fileData.content.replace(/\n/g,''))));
+        existingRefs=JSON.parse(decoded);
+      }
+    }catch(e){/* file doesn't exist yet, start fresh */}
+
+    // Prepend new entry
+    existingRefs.unshift(entry);
+
+    // PUT updated refs.json
+    var body={
+      message:'New reference submission: '+(entry.name||'Anonymous')+' — '+entry.savedAt.slice(0,10),
+      content:btoa(unescape(encodeURIComponent(JSON.stringify(existingRefs,null,2)))),
+      branch:SD.refsBranch||'main'
+    };
+    if(sha)body.sha=sha;
+
+    var putResp=await fetch(apiUrl,{method:'PUT',headers:headers,body:JSON.stringify(body)});
+    if(!putResp.ok){
+      var pe=await putResp.json();
+      throw new Error(pe.message||'Write failed');
+    }
+  }catch(e){
+    if(btn){btn.disabled=false;btn.textContent='Submit Reference';}
+    if(errEl){errEl.textContent='Submission failed: '+e.message+'. Please try again or contact Eren directly.';errEl.style.display='block';}
+    return;
+  }
+
+  // Success
   var inner=document.getElementById('rf-form-inner');
   var succ=document.getElementById('rf-succ');
   if(inner)inner.style.display='none';
