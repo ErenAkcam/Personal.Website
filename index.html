@@ -720,6 +720,8 @@ var DEF = {
   "linkedin": "http://www.linkedin.com/in/erenakcam",
   "freelance": "",
   "profilePhoto": "assets/profile.png",
+  "pendingRefs": [],
+  "refs": [],
   "colorGreen": "#7ab898",
   "colorGreenDeep": "#2d5a3d",
   "colorGreenLight": "#a8c9b8",
@@ -1092,7 +1094,17 @@ var DEF = {
     ]
   },
   "pageTexts": {
-    "con_title": "Contact Information"
+    "nav_profile": "PROFILE",
+    "nav_memory": "JOURNEY",
+    "nav_skills": "SKILLS",
+    "nav_certs": "CERTIFICATES",
+    "nav_ref": "REFERENCES",
+    "nav_contact": "CONTACT",
+    "con_title": "Contact Information",
+    "mem_sub": "Experience & Education",
+    "footer_email_label": "E-Mail",
+    "btn_story": "My Story",
+    "btn_skills": "View Skills"
   },
   "fontTheme": "classic",
   "fontCustom": {
@@ -1111,30 +1123,13 @@ var DEF = {
   "colorText": "#1e2e28",
   "colorTextMid": "#4a6a58",
   "colorTextMuted": "#6b7a6e",
-  "references": [],
-  "pendingRefs": [
-    {
-      "id": "ref_1778866009133",
-      "savedAt": "2026-05-15T17:26:49.133Z",
-      "approved": false,
-      "name": "Eren Akçam",
-      "title": "Student",
-      "org": "Kosbi",
-      "context": "Erasmus+ Internship — Weg Group — Machinery Department · 2025",
-      "contextId": "exp_1",
-      "period": "2025",
-      "rating": 5,
-      "text": "deneme deneme deneme",
-      "textEn": "",
-      "contactEmail": "erenakacam@gmail.com",
-      "contactPhone": "+90 551 628 62 62",
-      "contactLinkedin": "www.linkedin.com/in/erenakcam",
-      "photo": "assets/ref_photo_ref_1778866009133.png",
-      "editedAt": "2026-05-15T17:28:39.028Z"
-    }
-  ],
-  "refs": [],
-  "googleScriptUrl": "https://script.google.com/macros/s/AKfycbxuWU2CSqkytWZipAKNRvNYfMzaE6HEqo2aTHvaRIAxgewxDr_G0fJrnu60ukEPAr61/exec"
+  "googleScriptUrl": "",
+  "refsToken": "",
+  "refsUser": "ErenAkcam",
+  "refsRepo": "Personal.Website",
+  "refsPath": "refs.json",
+  "refsBranch": "main",
+  "refs": []
 };
 
 /* ── Helpers ── */
@@ -1511,6 +1506,7 @@ document.addEventListener('click',function(e){
 /* ── PAGE NAVIGATION ── */
 var PAGES=['pp','mem','sk','prt','cer','con','ref','ref-form-pg'];
 var pageHistory=[];
+var _isNavigatingBack = false;
 
 function showPage(id){
   PAGES.forEach(function(pid){
@@ -1530,13 +1526,15 @@ function showPage(id){
   if(bb)bb.style.display=(id==='pp'?'none':'');
 }
 
-function go(id, skipHistory){
+function go(id){
   if(!id) return;
-  var cur=PAGES.find(function(p){var el=document.getElementById(p);return el&&el.classList.contains('on');});
+  var cur = window.location.hash.replace('#','');
+  if(!cur) cur = 'pp';
   
-  if(!skipHistory && cur && cur !== id) {
-    pageHistory.push(cur);
-    if(pageHistory.length > 20) pageHistory.shift();
+  if(cur !== id && !_isNavigatingBack) {
+    if(pageHistory[pageHistory.length-1] !== cur) {
+      pageHistory.push(cur);
+    }
   }
   
   if(window.location.hash !== '#' + id) {
@@ -1548,10 +1546,12 @@ function go(id, skipHistory){
 
 function goBack(){
   if(pageHistory.length > 0) {
+    _isNavigatingBack = true;
     var prev = pageHistory.pop();
-    go(prev, true);
+    window.location.hash = prev;
+    setTimeout(function(){ _isNavigatingBack = false; }, 100);
   } else {
-    go('pp', true);
+    window.location.hash = 'pp';
   }
 }
 
