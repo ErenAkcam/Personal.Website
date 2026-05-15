@@ -401,7 +401,7 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
       <li><a id="n-sk"             onclick="go('sk');closeMobNav()"  data-key="nav_skills">SKILLS</a></li>
       <li style="display:none"><a id="n-prt" onclick="go('prt');closeMobNav()" data-key="nav_portfolio">PORTFOLIO</a></li>
       <li><a id="n-cer"            onclick="go('cer');closeMobNav()" data-key="nav_certs">CERTIFICATES</a></li>
-      <li><a id="n-ref"            onclick="go('ref');closeMobNav()">REFERENCES</a></li>
+      <li><a id="n-ref"            onclick="go('ref');closeMobNav()" data-key="nav_ref">REFERENCES</a></li>
       <li><a id="n-con"            onclick="go('con');closeMobNav()" data-key="nav_contact">CONTACT</a></li>
     </ul>
   </nav>
@@ -720,6 +720,8 @@ var DEF = {
   "linkedin": "http://www.linkedin.com/in/erenakcam",
   "freelance": "",
   "profilePhoto": "assets/profile.png",
+  "pendingRefs": [],
+  "refs": [],
   "colorGreen": "#7ab898",
   "colorGreenDeep": "#2d5a3d",
   "colorGreenLight": "#a8c9b8",
@@ -1092,7 +1094,8 @@ var DEF = {
     ]
   },
   "pageTexts": {
-    "con_title": "Contact Information"
+    "con_title": "Contact Information",
+    "nav_ref": "REFERENCES"
   },
   "fontTheme": "classic",
   "fontCustom": {
@@ -1111,30 +1114,12 @@ var DEF = {
   "colorText": "#1e2e28",
   "colorTextMid": "#4a6a58",
   "colorTextMuted": "#6b7a6e",
-  "references": [],
-  "pendingRefs": [],
-  "refs": [
-    {
-      "id": "ref_1778866009133",
-      "savedAt": "2026-05-15T17:26:49.133Z",
-      "approved": true,
-      "name": "Eren Akçam",
-      "title": "Student",
-      "org": "Kosbi",
-      "context": "Erasmus+ Internship — Weg Group — Machinery Department · 2025",
-      "contextId": "exp_1",
-      "period": "2025",
-      "rating": 5,
-      "text": "deneme deneme deneme",
-      "textEn": "",
-      "contactEmail": "erenakacam@gmail.com",
-      "contactPhone": "+90 551 628 62 62",
-      "contactLinkedin": "www.linkedin.com/in/erenakcam",
-      "photo": "assets/ref_photo_ref_1778866009133.png",
-      "editedAt": "2026-05-15T17:28:39.028Z",
-      "approvedAt": "2026-05-15T17:28:41.241Z"
-    }
-  ]
+  "refsToken": "",
+  "refsUser": "ErenAkcam",
+  "refsRepo": "Personal.Website",
+  "refsPath": "refs.json",
+  "refsBranch": "main",
+  "refs": []
 };
 
 /* ── Helpers ── */
@@ -1492,9 +1477,6 @@ function showDetail(catId,projId){
   window.scrollTo(0,0);
 }
 
-/* ── Language dropdown (English only) ── */
-/* ── Language dropdown (English only - dead code removed) ── */
-
 /* ── Mobile nav ── */
 function toggleMobNav(){
   var m=document.getElementById('nav-menu');
@@ -1580,9 +1562,6 @@ function animateBars(){
 }
 
 /* ── Contact form ── */
-/* Formspree entegrasyonu — formspree.io'dan ücretsiz form ID alın */
-var FORMSPREE_ID = 'mwvrnjzl';
-
 function sendMsg(){
   var nameEl=document.getElementById('f-name'),
       emailEl=document.getElementById('f-email'),
@@ -1611,61 +1590,51 @@ function sendMsg(){
   }
   err.style.display='none';
 
-  // Formspree ID girilmemişse mailto fallback
-  if(!FORMSPREE_ID||FORMSPREE_ID==='YOUR_FORM_ID'){
+  var proxyUrl = SD.googleScriptUrl;
+  if(btn){btn.disabled=true;btn.textContent='Sending...';}
+
+  if(proxyUrl){
+    fetch(proxyUrl, {
+      method:'POST',
+      body: JSON.stringify({
+        type: 'contact',
+        name: name,
+        email: email,
+        subject: subj || 'Portfolio Contact',
+        message: msg
+      })
+    })
+    .then(function(r){
+      if(btn){btn.disabled=false;btn.textContent='Send Message';}
+      if(r.ok){
+        var wrap=document.getElementById('cf-wrap');
+        var succ=document.getElementById('f-succ');
+        if(wrap)wrap.style.display='none';
+        if(succ)succ.style.display='block';
+      }else{
+        err.textContent='Something went wrong. Please try again.';
+        err.style.display='block';
+      }
+    })
+    .catch(function(){
+      if(btn){btn.disabled=false;btn.textContent='Send Message';}
+      err.textContent='Network error. Please check your connection.';
+      err.style.display='block';
+    });
+  } else {
+    // mailto fallback
     var recipient=SD.email||'eren.akcamm@gmail.com';
     var mailtoLink='mailto:'+recipient+
       '?subject='+encodeURIComponent((subj||'Portfolio Contact')+' — from '+name)+
       '&body='+encodeURIComponent('Name: '+name+'\nEmail: '+email+'\n\n'+msg);
     var a=document.createElement('a');a.href=mailtoLink;a.style.display='none';
     document.body.appendChild(a);a.click();document.body.removeChild(a);
-    setTimeout(function(){
-      var wrap=document.getElementById('cf-wrap');
-      var succ=document.getElementById('f-succ');
-      if(wrap)wrap.style.display='none';
-      if(succ)succ.style.display='block';
-    },600);
-    return;
+    if(btn){btn.disabled=false;btn.textContent='Send Message';}
   }
-
-  // Formspree ile gerçek mail gönder
-  if(btn){btn.disabled=true;btn.textContent='Sending...';}
-
-  fetch('https://formspree.io/f/'+FORMSPREE_ID,{
-    method:'POST',
-    headers:{'Content-Type':'application/json','Accept':'application/json'},
-    body:JSON.stringify({
-      name:name,
-      email:email,
-      subject:subj||'Portfolio Contact',
-      message:msg,
-      _replyto:email,
-      _subject:(subj||'Portfolio Contact')+' — from '+name
-    })
-  })
-  .then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d};});})
-  .then(function(res){
-    if(btn){btn.disabled=false;btn.textContent='Send Message';}
-    if(res.ok){
-      var wrap=document.getElementById('cf-wrap');
-      var succ=document.getElementById('f-succ');
-      if(wrap)wrap.style.display='none';
-      if(succ)succ.style.display='block';
-    }else{
-      err.textContent=res.data.error||'Something went wrong. Please try again.';
-      err.style.display='block';
-    }
-  })
-  .catch(function(){
-    if(btn){btn.disabled=false;btn.textContent='Send Message';}
-    err.textContent='Network error. Please check your connection and try again.';
-    err.style.display='block';
-  });
 }
 
 /* ── Lightbox ── */
-/* ── Lightbox state ── */
-var _lbCatId=null, _lbScale=1, _lbTouchDist=0, _lbTouchX=0;
+var _lbCatId=null, _lbScale=1;
 
 function openLb(src, catId){
   var img=document.getElementById('lb-img');
@@ -1673,7 +1642,6 @@ function openLb(src, catId){
   img.style.transform='scale(1)';
   _lbScale=1;
   _lbCatId=catId||null;
-  // ok butonlarını göster/gizle
   var cats=(SD.certs&&SD.certs.categories)||[];
   var cat=catId?cats.find(function(c){return c.id===catId;}):null;
   var showArrows=cat&&cat.items&&cat.items.length>1;
@@ -1692,7 +1660,6 @@ function closeLb(){
 function lbSlide(dir){
   if(!_lbCatId)return;
   slideCert(_lbCatId,dir);
-  // güncel resmi lightbox'a yansıt
   setTimeout(function(){
     var img=document.getElementById('cimg-'+_lbCatId);
     if(img){
@@ -1714,109 +1681,12 @@ function lbUpdateCounter(){
   el.textContent=(certSliders[_lbCatId]||0)+1+' / '+cat.items.length;
 }
 
-/* Lightbox keyboard + swipe + pinch */
 document.addEventListener('keydown',function(e){
   if(!document.getElementById('lb').classList.contains('on'))return;
   if(e.key==='Escape')closeLb();
   if(e.key==='ArrowLeft')lbSlide(-1);
   if(e.key==='ArrowRight')lbSlide(1);
 });
-(function(){
-  var wrap=document.getElementById('lb-img-wrap');
-  var img=document.getElementById('lb-img');
-  if(!wrap)return;
-
-  var _startX=0,_startY=0,_startDist=0,_startScale=1;
-  var _originX=0,_originY=0; // pinch merkezi
-  var _isPinching=false;
-
-  var _panX=0,_panY=0,_panStartX=0,_panStartY=0;
-
-  function lbShowArrows(show){
-    var pv=document.getElementById('lb-pv');
-    var nx=document.getElementById('lb-nx');
-    if(pv)pv.style.opacity=show?'1':'0';
-    if(nx)nx.style.opacity=show?'1':'0';
-    if(pv)pv.style.pointerEvents=show?'auto':'none';
-    if(nx)nx.style.pointerEvents=show?'auto':'none';
-  }
-
-  wrap.addEventListener('touchstart',function(e){
-    if(e.touches.length===1&&!_isPinching){
-      _panStartX=e.touches[0].clientX;
-      _panStartY=e.touches[0].clientY;
-      _startX=e.touches[0].clientX;
-      _startY=e.touches[0].clientY;
-      img.style.transition='none';
-    }
-    if(e.touches.length===2){
-      _isPinching=true;
-      lbShowArrows(false);
-      _startDist=Math.hypot(
-        e.touches[1].clientX-e.touches[0].clientX,
-        e.touches[1].clientY-e.touches[0].clientY
-      );
-      _startScale=_lbScale;
-      var mx=(e.touches[0].clientX+e.touches[1].clientX)/2;
-      var my=(e.touches[0].clientY+e.touches[1].clientY)/2;
-      var rect=img.getBoundingClientRect();
-      img.style.transition='none';
-      img.style.transformOrigin=
-        ((mx-rect.left)/_lbScale/rect.width*_lbScale*100).toFixed(1)+'% '+
-        ((my-rect.top)/_lbScale/rect.height*_lbScale*100).toFixed(1)+'%';
-    }
-  },{passive:true});
-
-  wrap.addEventListener('touchmove',function(e){
-    e.preventDefault();
-    if(e.touches.length===2&&_isPinching){
-      var dist=Math.hypot(
-        e.touches[1].clientX-e.touches[0].clientX,
-        e.touches[1].clientY-e.touches[0].clientY
-      );
-      if(_startDist>0){
-        _lbScale=Math.min(5,Math.max(1,_startScale*(dist/_startDist)));
-        img.style.transform='translate('+_panX+'px,'+_panY+'px) scale('+_lbScale+')';
-      }
-    } else if(e.touches.length===1&&_lbScale>1){
-      // Pan — zoom varken sürükle
-      var dx=e.touches[0].clientX-_panStartX;
-      var dy=e.touches[0].clientY-_panStartY;
-      _panX+=dx; _panY+=dy;
-      _panStartX=e.touches[0].clientX;
-      _panStartY=e.touches[0].clientY;
-      img.style.transform='translate('+_panX+'px,'+_panY+'px) scale('+_lbScale+')';
-    }
-  },{passive:false});
-
-  wrap.addEventListener('touchend',function(e){
-    if(e.touches.length===0&&_isPinching){
-      _isPinching=false;
-      if(_lbScale<=1.08){
-        _lbScale=1; _panX=0; _panY=0;
-        img.style.transition='transform .25s';
-        img.style.transform='translate(0,0) scale(1)';
-        img.style.transformOrigin='center center';
-        lbShowArrows(true);
-      }
-      return;
-    }
-    if(!_isPinching&&_lbScale<=1){
-      var dx=e.changedTouches[0].clientX-_startX;
-      var dy=e.changedTouches[0].clientY-_startY;
-      if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)){
-        lbSlide(dx<0?1:-1);
-      }
-    }
-  },{passive:true});
-
-  // Arka plana tıklayınca kapat
-  document.getElementById('lb').addEventListener('click',function(e){
-    if(e.target===this||e.target===wrap)closeLb();
-  });
-})();
-
-/* ── Storage sync — devre dışı ── */
 
 /* ── Smart email handler ── */
 function handleMailClick(e){
@@ -1824,138 +1694,83 @@ function handleMailClick(e){
   var email=SD.email||'eren.akcamm@gmail.com';
   var gmailUrl='https://mail.google.com/mail/?view=cm&to='+encodeURIComponent(email);
   var appOpened=false;
-
   function onBlur(){ appOpened=true; }
   window.addEventListener('blur', onBlur, {once:true});
-
-  // iframe üzerinden mailto dene (mobilde de çalışır, sayfa navigate etmez)
   var ifr=document.createElement('iframe');
   ifr.style.cssText='position:fixed;top:-9999px;left:-9999px;width:1px;height:1px;opacity:0;border:none;';
   ifr.src='mailto:'+email;
   document.body.appendChild(ifr);
-
   setTimeout(function(){
     window.removeEventListener('blur', onBlur);
     document.body.removeChild(ifr);
-    if(!appOpened){
-      window.open(gmailUrl,'_blank');
-    }
+    if(!appOpened) window.open(gmailUrl,'_blank');
   }, 500);
 }
 
 function attachMailHandlers(){
-  // Footer + hero email linkleri
-  document.querySelectorAll('.site-email, #s-em').forEach(function(el){
-    el.addEventListener('click',handleMailClick);
-  });
-  // Contact sayfası email linki
+  document.querySelectorAll('.site-email, #s-em').forEach(function(el){el.addEventListener('click',handleMailClick);});
   var cem=document.getElementById('c-email');
   if(cem)cem.addEventListener('click',handleMailClick);
 }
 
+/* ════ REFERENCES SYSTEM ════ */
+var _refFilterRating = 0;
 
-/* ══════════════════════════════════════
-   REFERENCES SYSTEM
-══════════════════════════════════════ */
-var RF_KEY = 'erensite_refs';
-
-function lRefs(){
-  // On public site, refs come from SD.refs (embedded by admin at deploy time)
-  return (SD&&SD.refs)||[];
-}
-function pRefs(arr){
-  // Not used on public page — refs written via GitHub API
-}
-
-/* ── Avatar initials helper ── */
-function rfInitials(name){
-  if(!name)return '?';
-  var parts=name.trim().split(/\s+/);
-  return ((parts[0]||'')[0]||'')+''+((parts[1]||'')[0]||'');
-}
-
-/* ── Live avatar update as name is typed ── */
-function rfNameToAvatar(){
-  if(window._rfPhotoData)return; // photo already uploaded
-  var name=(document.getElementById('rf-name')||{}).value||'';
-  var prev=document.getElementById('rf-photo-preview');
-  if(!prev)return;
-  var ini=rfInitials(name).toUpperCase();
-  if(ini&&ini!=='?'){
-    prev.innerHTML='<span style="font-family:\'Playfair Display\',serif;font-style:italic;font-weight:700;font-size:1.4rem;color:var(--gd)">'+ini+'</span>';
-  }else{
-    prev.innerHTML='<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--mu)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>';
-  }
-}
-
-/* ── Build avatar HTML for card display ── */
-function rfAvatarHtml(r,size){
-  size=size||64;
-  if(r.photo){
-    return '<img src="'+esc(r.photo)+'" style="width:'+size+'px;height:'+size+'px;border-radius:50%;object-fit:cover;border:3px solid var(--gp);flex-shrink:0"/>';
-  }
-  var ini=rfInitials(r.name||'').toUpperCase();
-  var inner=ini&&ini.trim()
-    ?'<span style="font-family:\'Playfair Display\',serif;font-style:italic;font-weight:700;font-size:'+(size*0.34)+'px;color:var(--gd)">'+esc(ini)+'</span>'
-    :'<svg width="'+(size*0.46)+'" height="'+(size*0.46)+'" viewBox="0 0 24 24" fill="none" stroke="var(--gd)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>';
-  return '<div style="width:'+size+'px;height:'+size+'px;border-radius:50%;background:var(--gp);border:3px solid var(--g);display:flex;align-items:center;justify-content:center;flex-shrink:0">'+inner+'</div>';
-}
-
-/* ── Render approved references on public page ── */
 function renderRefs(){
-  var el=document.getElementById('ref-body');
-  if(!el)return;
-  var refs=lRefs().filter(function(r){return r.approved;});
-  if(!refs.length){
-    el.innerHTML=
-      '<div style="text-align:center;padding:64px 20px">'+
-      '<div style="font-size:2rem;margin-bottom:14px;opacity:.25;color:var(--gd)">✦</div>'+
-      '<div style="font-family:\'Playfair Display\',serif;font-style:italic;font-size:1.1rem;color:var(--mu);margin-bottom:8px">No references yet</div>'+
-      '<div style="font-size:.72rem;color:var(--mu);margin-bottom:32px">Be the first to recommend Eren.</div>'+
-      '<button onclick="go(\'ref-form-pg\');initRefForm()" class="bg">Write a Reference</button>'+
-      '</div>';
-    return;
-  }
-  var h='';
+  var el=document.getElementById('ref-body');if(!el)return;
+  var refs=SD.refs||[];
+  if(!refs.length){el.innerHTML='<p style="color:var(--mu);font-size:.8rem">No references yet.</p>';return;}
+
+  var total = refs.length;
+  var sum = 0;
+  var counts = {1:0, 2:0, 3:0, 4:0, 5:0};
   refs.forEach(function(r){
+    var rat = parseInt(r.rating) || 5;
+    sum += rat;
+    counts[rat]++;
+  });
+  var avg = (sum / total).toFixed(1);
+
+  var filterHtml = '<div style="display:flex;gap:15px;align-items:center;flex-wrap:wrap;margin-bottom:32px;padding-bottom:24px;border-bottom:2px solid var(--g)">'+
+    '<div style="flex-shrink:0">'+
+      '<div style="font-size:.54rem;font-weight:700;color:var(--mu);text-transform:uppercase;letter-spacing:.15em;margin-bottom:4px">Average Rating</div>'+
+      '<div style="display:flex;align-items:baseline;gap:6px">'+
+        '<span style="font-family:serif;font-size:2.2rem;font-weight:700;color:var(--txt);line-height:1">'+avg+'</span>'+
+        '<span style="font-size:1rem;color:var(--g)">★</span>'+
+      '</div>'+
+    '</div>'+
+    '<div style="display:flex;gap:8px;flex-wrap:wrap;flex:1;justify-content:flex-end">';
+    
+    [5,4,3,2,1].forEach(function(star){
+      if(counts[star] > 0) {
+        var on = _refFilterRating === star;
+        filterHtml += '<button onclick="setRefFilter('+star+')" style="padding:8px 14px;border-radius:12px;border:1.5px solid '+(on?'var(--g)':'var(--bm)')+';background:'+(on?'var(--g)':'var(--bl)')+';color:'+(on?'var(--blk)':'var(--txt)')+';cursor:pointer;display:flex;align-items:center;gap:6px;transition:all .15s">'+
+          '<span style="font-size:.7rem;font-weight:700">'+star+' ★</span>'+
+          '<span style="font-size:.55rem;opacity:.6">('+counts[star]+')</span>'+
+        '</button>';
+      }
+    });
+    
+    if(_refFilterRating > 0) {
+      filterHtml += '<button onclick="setRefFilter(0)" style="padding:8px 14px;border-radius:12px;border:none;background:var(--gp);color:var(--gd);cursor:pointer;font-size:.65rem;font-weight:700">Clear</button>';
+    }
+    
+  filterHtml += '</div></div>';
+
+  var h=filterHtml;
+  var filtered = _refFilterRating > 0 ? refs.filter(function(r){return (parseInt(r.rating)||5) === _refFilterRating;}) : refs;
+
+  filtered.forEach(function(r){
     var stars='';
-    if(r.rating){for(var i=1;i<=5;i++)stars+='<span style="color:'+(i<=r.rating?'#f0a500':'var(--bm)')+'">★</span>';}
+    var rat=parseInt(r.rating)||0;
+    if(rat){for(var i=1;i<=5;i++)stars+='<span style="color:'+(i<=rat?'var(--g)':'var(--bm)')+'">★</span>';}
     var avatar=rfAvatarHtml(r,64);
 
-    // Contact links
-    var contactHtml='';
-    if(r.contactEmail||r.contactPhone||r.contactLinkedin){
-      contactHtml='<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">';
-      if(r.contactEmail)
-        contactHtml+='<a href="mailto:'+esc(r.contactEmail)+'" style="display:inline-flex;align-items:center;gap:4px;font-size:.6rem;font-weight:600;color:var(--gd);text-decoration:none;background:var(--gp);padding:3px 10px;border-radius:20px;border:1px solid var(--g)">'+
-          '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>'+
-          esc(r.contactEmail)+'</a>';
-      if(r.contactPhone)
-        contactHtml+='<a href="tel:'+esc(r.contactPhone.replace(/\s/g,''))+'" style="display:inline-flex;align-items:center;gap:4px;font-size:.6rem;font-weight:600;color:var(--gd);text-decoration:none;background:var(--gp);padding:3px 10px;border-radius:20px;border:1px solid var(--g)">'+
-          '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .82h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>'+
-          esc(r.contactPhone)+'</a>';
-      if(r.contactLinkedin)
-        contactHtml+='<a href="'+esc(r.contactLinkedin)+'" target="_blank" style="display:inline-flex;align-items:center;gap:4px;font-size:.6rem;font-weight:600;color:var(--gd);text-decoration:none;background:var(--gp);padding:3px 10px;border-radius:20px;border:1px solid var(--g)">'+
-          '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>'+
-          'LinkedIn</a>';
-      contactHtml+='</div>';
-    }
-
-    // Text with translate toggle
-    var textHtml='';
-    if(r.text){
-      window._refTexts=window._refTexts||{};
-      window._refTexts[r.id]={orig:r.text,en:r.textEn||''};
-      var safe=esc(r.text);
-      var hasTranslation=!!(r.textEn&&r.textEn.trim());
-      var togBtn=hasTranslation
-        ?'<button onclick="toggleRefLang(&apos;'+r.id+'&apos;)" id="rtog-'+r.id+'" style="font-size:.55rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:none;border:1px solid var(--bm);padding:3px 9px;border-radius:20px;cursor:pointer;color:var(--mu)">🌐 Show in English</button>'
-        :'';
-      textHtml='<div style="margin-bottom:10px">'+
-        '<p id="rtxt-'+r.id+'" style="font-size:.82rem;line-height:1.9;color:var(--tm);font-weight:300;font-style:italic;margin-bottom:6px">&ldquo;'+safe+'&rdquo;</p>'+
-        togBtn+
-      '</div>';
-    }
+    var textToShow = r.textEn || r.text || '';
+    var hasTranslation = r.textEn && r.text;
+    var togBtn=hasTranslation
+      ?'<button onclick="toggleRefLang(\''+r.id+'\')" id="rtog-'+r.id+'" style="font-size:.55rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:none;border:1px solid var(--bm);padding:3px 9px;border-radius:20px;cursor:pointer;color:var(--mu)">🌐 Show Original</button>'
+      :'';
 
     // Context card
     var contextCardHtml = '';
@@ -1963,16 +1778,13 @@ function renderRefs(){
       var mem = SD.memory || {};
       var ctxItem = null;
       var parts = (r.contextId || '').split('_');
-      var type = parts[0]; // exp or edu
-      var idx = parseInt(parts[1]);
+      var type = parts[0]; var idx = parseInt(parts[1]);
       if(type === 'exp' && mem.experience) ctxItem = mem.experience[idx];
       if(type === 'edu' && mem.education) ctxItem = mem.education[idx];
-
       if(ctxItem) {
         var logoHtml = ctxItem.logo 
           ? '<img src="'+esc(ctxItem.logo)+'" style="width:32px;height:32px;border-radius:6px;object-fit:contain;background:white;border:1.5px solid var(--bm);flex-shrink:0"/>'
           : '<div style="width:32px;height:32px;border-radius:6px;background:var(--gp);border:1.5px solid var(--bm);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--mu)" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg></div>';
-        
         contextCardHtml = '<div style="display:inline-flex;align-items:center;gap:10px;padding:8px 12px;background:var(--bl);border:1.5px solid var(--bm);border-radius:10px;margin-bottom:12px;max-width:100%">'+
           logoHtml +
           '<div style="min-width:0">'+
@@ -1993,42 +1805,54 @@ function renderRefs(){
           '</div>'+
           (stars?'<div style="font-size:.85rem;letter-spacing:1px;white-space:nowrap">'+stars+'</div>':'')+
         '</div>'+
-        
         contextCardHtml+
         (!contextCardHtml && r.context ? '<div style="font-size:.65rem;color:var(--mu);margin-bottom:12px;display:flex;align-items:center;gap:5px"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>'+esc(r.context)+'</div>' : '')+
-        
         (r.period ? '<div style="margin-bottom:15px"><span style="font-size:.58rem;font-weight:700;color:var(--mu);background:var(--gp);padding:3px 10px;border-radius:20px;border:1px solid var(--bm);text-transform:uppercase;letter-spacing:.05em">'+esc(r.period)+'</span></div>' : '')+
-        
-        textHtml+
-        contactHtml+
+        '<div id="rtxt-'+r.id+'" class="tlp" style="margin-bottom:15px">&ldquo;'+esc(textToShow)+'&rdquo;</div>'+
+        togBtn+
       '</div>'+
     '</div>';
   });
-
-  h+='<div style="padding:36px 0 10px;text-align:center">'+
-    '<button onclick="go(\'ref-form-pg\');initRefForm()" style="display:inline-flex;align-items:center;gap:7px;padding:12px 30px;border-radius:50px;background:var(--blk);color:var(--gl);border:none;font-family:\'Raleway\',sans-serif;font-size:.63rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer">Write a Reference ✦</button>'+
-  '</div>';
-  el.innerHTML=h;
+  
+  el.innerHTML=h + '<div style="padding:36px 0 10px;text-align:center"><button onclick="go(\'ref-form-pg\');initRefForm()" style="display:inline-flex;align-items:center;gap:7px;padding:12px 30px;border-radius:50px;background:var(--blk);color:var(--gl);border:none;font-family:\'Raleway\',sans-serif;font-size:.63rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer">Write a Reference ✦</button></div>';
 }
 
-/* ── Toggle original / English translation ── */
+function setRefFilter(rating){
+  _refFilterRating = rating;
+  renderRefs();
+}
+
+function rfInitials(name){
+  if(!name)return '?';
+  var parts=name.trim().split(/\s+/);
+  return ((parts[0]||'')[0]||'')+''+((parts[1]||'')[0]||'');
+}
+
+function rfAvatarHtml(r,size){
+  size=size||64;
+  if(r.photo){
+    return '<img src="'+esc(r.photo)+'" style="width:'+size+'px;height:'+size+'px;border-radius:50%;object-fit:cover;border:3px solid var(--gp);flex-shrink:0"/>';
+  }
+  var ini=rfInitials(r.name||'').toUpperCase();
+  var inner=ini&&ini.trim()
+    ?'<span style="font-family:\'Playfair Display\',serif;font-style:italic;font-weight:700;font-size:'+(size*0.34)+'px;color:var(--gd)">'+esc(ini)+'</span>'
+    :'<svg width="'+(size*0.46)+'" height="'+(size*0.46)+'" viewBox="0 0 24 24" fill="none" stroke="var(--gd)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>';
+  return '<div style="width:'+size+'px;height:'+size+'px;border-radius:50%;background:var(--gp);border:3px solid var(--g);display:flex;align-items:center;justify-content:center;flex-shrink:0">'+inner+'</div>';
+}
+
 var _refLangState={};
 function toggleRefLang(id){
   var p=document.getElementById('rtxt-'+id);
   var btn=document.getElementById('rtog-'+id);
   if(!p||!btn)return;
-  var texts=(window._refTexts||{})[id]||{orig:'',en:''};
+  var r = (SD.refs||[]).find(function(x){return x.id===id;});
+  if(!r)return;
   _refLangState[id]=!_refLangState[id];
-  if(_refLangState[id]){
-    p.innerHTML='&ldquo;'+esc(texts.en)+'&rdquo;';
-    btn.textContent='🌐 Show Original';
-  }else{
-    p.innerHTML='&ldquo;'+esc(texts.orig)+'&rdquo;';
-    btn.textContent='🌐 Show in English';
-  }
+  var text = _refLangState[id] ? (r.text || r.textEn) : (r.textEn || r.text);
+  p.innerHTML='&ldquo;'+esc(text)+'&rdquo;';
+  btn.textContent = _refLangState[id] ? '🌐 Show English' : '🌐 Show Original';
 }
 
-/* ── Context modal ── */
 function openCtxModal(){
   var modal=document.getElementById('ctx-modal');
   if(!modal)return;
@@ -2066,19 +1890,28 @@ function ctxSelect(id,label){
   document.getElementById('ctx-modal').style.display='none';
 }
 
-/* ── Rating ── */
-var _rfRating=0;
 function setRfRating(v){
-  _rfRating=v;
   document.getElementById('rf-rating').value=v;
   var labels=['','Fair','Good','Great','Excellent','Outstanding'];
-  document.getElementById('rf-rating-label').textContent=labels[v]||'';
+  var l=document.getElementById('rf-rating-label');if(l)l.textContent=labels[v]||'';
   document.querySelectorAll('#rf-stars span').forEach(function(s){
     s.style.color=parseInt(s.getAttribute('data-v'))<=v?'#f0a500':'var(--bm)';
   });
 }
 
-/* ── Photo upload ── */
+function rfNameToAvatar(){
+  if(window._rfPhotoData)return;
+  var name=(document.getElementById('rf-name')||{}).value||'';
+  var prev=document.getElementById('rf-photo-preview');
+  if(!prev)return;
+  var ini=rfInitials(name).toUpperCase();
+  if(ini&&ini!=='?'){
+    prev.innerHTML='<span style="font-family:\'Playfair Display\',serif;font-style:italic;font-weight:700;font-size:1.4rem;color:var(--gd)">'+ini+'</span>';
+  }else{
+    prev.innerHTML='<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--mu)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>';
+  }
+}
+
 function rfPhotoChange(inp){
   if(!inp.files||!inp.files[0])return;
   var reader=new FileReader();
@@ -2090,9 +1923,7 @@ function rfPhotoChange(inp){
   reader.readAsDataURL(inp.files[0]);
 }
 
-/* ── Reset form ── */
 function initRefForm(){
-  _rfRating=0;
   window._rfPhotoData=null;
   ['rf-name','rf-title','rf-org','rf-period','rf-text',
    'rf-contact-email','rf-contact-phone','rf-contact-linkedin',
@@ -2106,22 +1937,16 @@ function initRefForm(){
   var cw=document.getElementById('ctx-custom-wrap');
   if(cw)cw.style.display='none';
   setRfRating(0);
-  var err=document.getElementById('rf-err');if(err)err.style.display='none';
-  var succ=document.getElementById('rf-succ');if(succ)succ.style.display='none';
-  // Re-show form inner
-  var inner=document.getElementById('rf-form-inner');
-  if(inner)inner.style.display='';
-  var succ=document.getElementById('rf-succ');
-  if(succ)succ.style.display='none';
+  document.getElementById('rf-err').style.display='none';
+  document.getElementById('rf-form-inner').style.display='';
+  document.getElementById('rf-succ').style.display='none';
 }
 
-/* ── Submit — sends data to Google Script Proxy ── */
 async function submitRef(){
   var ctxId=document.getElementById('rf-ctx-id').value;
   var ctxLabel=document.getElementById('rf-ctx-label').value;
   var ctxCustom=(document.getElementById('rf-ctx-custom')||{}).value||'';
   var context=ctxId==='other'?(ctxCustom||'Other'):ctxLabel;
-
   var entry={
     id:'ref_'+Date.now(),
     savedAt:new Date().toISOString(),
@@ -2132,67 +1957,57 @@ async function submitRef(){
     context:context,
     contextId:ctxId,
     period:(document.getElementById('rf-period').value||'').trim(),
-    rating:parseInt(document.getElementById('rf-rating').value||'0')||0,
+    rating:parseInt(document.getElementById('rf-rating').value)||5,
     text:(document.getElementById('rf-text').value||'').trim(),
-    textEn:'',
     contactEmail:(document.getElementById('rf-contact-email').value||'').trim(),
     contactPhone:(document.getElementById('rf-contact-phone').value||'').trim(),
     contactLinkedin:(document.getElementById('rf-contact-linkedin').value||'').trim(),
     photo:window._rfPhotoData||''
   };
 
-  if(!entry.name && !entry.text && !entry.contactEmail && !entry.org){
-    var err=document.getElementById('rf-err');
-    if(err){err.textContent='Please fill in at least your name or reference text.';err.style.display='block';}
-    return;
-  }
-
+  var err=document.getElementById('rf-err');
   var btn=document.querySelector('#ref-form-pg .fsub');
-  if(btn){btn.disabled=true;btn.textContent='Sending...';}
-  var errEl=document.getElementById('rf-err');
-  if(errEl)errEl.style.display='none';
-
-  var proxyUrl = "https://script.google.com/macros/s/AKfycbzQJXy9wSy3gXyABTvKX6Q78YLehgYOP7Befr2TTfr7vNPQ2GWiLLE3UEOGAodpaaSt/exec";
-
-  try{
-    var resp = await fetch(proxyUrl, {
-      method: 'POST',
-      mode: 'no-cors', // Google Script requires no-cors for simple redirects
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ entry: entry })
-    });
-    
-    // With no-cors, we can't check resp.ok, but if it doesn't throw, it's usually sent.
-    // Success UI
-    var inner=document.getElementById('rf-form-inner');
-    var succ=document.getElementById('rf-succ');
-    if(inner)inner.style.display='none';
-    if(succ){
-      succ.style.display='block';
-      succ.innerHTML = `
-        <div style="width:64px;height:64px;border-radius:50%;background:var(--gp);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;border:2px solid var(--g)">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--gd)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-        <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:1.4rem;font-weight:700;color:var(--gd);margin-bottom:10px">Reference Sent!</div>
-        <div style="font-size:.8rem;color:var(--mu);line-height:1.8;max-width:440px;margin:0 auto 24px">
-          Thank you for your feedback. Your reference has been submitted for review and will be published soon.
-        </div>
-        <button onclick="go('ref');initRefForm()" class="bg">Back to References</button>
-      `;
-    }
-  }catch(e){
-    if(btn){btn.disabled=false;btn.textContent='Submit Reference';}
-    if(errEl){errEl.textContent='Submission failed: '+e.message+'. Please try again later.';errEl.style.display='block';}
+  
+  if(!entry.text || !entry.name){
+    if(err){err.textContent='Please fill in at least your name and reference text.'; err.style.display='block';}
     return;
   }
+  if(err)err.style.display='none';
+
+  var proxyUrl = SD.googleScriptUrl;
+  if(!proxyUrl) { if(err){err.textContent='Script URL not set in Admin.'; err.style.display='block';} return; }
   
-  if(btn){btn.disabled=false;btn.textContent='Submit Reference';}
+  if(btn){btn.disabled=true;btn.textContent='Sending...';}
+  try {
+    var r = await fetch(proxyUrl, {
+      method: 'POST',
+      body: JSON.stringify(entry)
+    });
+    if(r.ok) {
+      document.getElementById('rf-form-inner').style.display='none';
+      document.getElementById('rf-succ').style.display='block';
+      setTimeout(function(){ go('ref'); }, 2500);
+    } else { throw new Error('Server error'); }
+  } catch(e) {
+    if(err){err.textContent='Error: ' + e.message; err.style.display='block';}
+    if(btn){btn.disabled=false;btn.textContent='Submit Reference';}
+  }
   window.scrollTo(0,0);
 }
 
 /* ── INIT ── */
 applyData();
 attachMailHandlers();
+
+// Instant Navigation check
+(function(){
+  var id = window.location.hash.replace('#','');
+  if(PAGES.indexOf(id) > -1) {
+    showPage(id);
+  } else {
+    showPage('pp');
+  }
+})();
 
 </script>
 <button class="mob-back" id="mob-back-btn" onclick="goBack()"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>Back</button>
