@@ -560,7 +560,7 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
       <!-- Header note -->
       <div style="margin-bottom:30px;padding-bottom:22px;border-bottom:2px solid var(--g)">
         <div style="font-size:.54rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--g);margin-bottom:8px">Voluntary Reference Form</div>
-        <p style="font-size:.8rem;line-height:1.78;color:var(--mu)">All fields are optional. Fill in as much or as little as you're comfortable with. Your reference will be reviewed before being published on the site.</p>
+        <p style="font-size:.8rem;line-height:1.78;color:var(--mu)">Buradan gönderdiğiniz referanslar doğrudan sisteme kaydedilir. Admin panelinden onaylandıktan sonra yayına alınır.</p>
       </div>
 
       <!-- SECTION 1: Identity -->
@@ -685,7 +685,7 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--gd)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
       </div>
       <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:1.4rem;font-weight:700;color:var(--gd);margin-bottom:10px">Thank you!</div>
-      <div style="font-size:.8rem;color:var(--mu);line-height:1.8;max-width:360px;margin:0 auto">Your reference has been submitted and will be reviewed before it appears on the site.</div>
+      <div style="font-size:.8rem;color:var(--mu);line-height:1.8;max-width:360px;margin:0 auto">Referansınız sisteme başarıyla iletildi. Admin onayından sonra portfolyoda görünecektir.</div>
       <button onclick="go('ref');initRefForm()" style="display:inline-block;margin-top:28px;padding:12px 30px;border-radius:9px;background:var(--gd);color:var(--bl);border:none;font-family:'Raleway',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer">Back to References</button>
     </div>
   </div>
@@ -720,6 +720,8 @@ var DEF = {
   "linkedin": "http://www.linkedin.com/in/erenakcam",
   "freelance": "",
   "profilePhoto": "assets/profile.png",
+  "pendingRefs": [],
+  "refs": [],
   "colorGreen": "#7ab898",
   "colorGreenDeep": "#2d5a3d",
   "colorGreenLight": "#a8c9b8",
@@ -1092,7 +1094,35 @@ var DEF = {
     ]
   },
   "pageTexts": {
-    "con_title": "Contact Information"
+    "nav_profile": "PROFILE",
+    "nav_memory": "JOURNEY",
+    "nav_skills": "SKILLS",
+    "nav_certs": "CERTIFICATES",
+    "nav_ref": "REFERENCES",
+    "nav_contact": "CONTACT",
+    "con_title": "Contact Information",
+    "con_sub": "Get in Touch",
+    "con_subtitle": "Feel free to reach out for collaborations, freelance projects or just a friendly hello.",
+    "con_email_label": "E-Mail",
+    "con_phone_label": "Phone",
+    "con_linkedin_label": "LinkedIn",
+    "con_form_title": "Send a Message",
+    "con_form_sub": "Your message will be sent directly to my email inbox.",
+    "con_form_name": "Full Name",
+    "con_form_email": "Email",
+    "con_form_subject": "Subject",
+    "con_form_message": "Message",
+    "con_form_btn": "Send Message",
+    "con_success_msg": "Message Sent!",
+    "con_success_sub": "Thank you, I'll get back to you soon.",
+    "mem_sub": "Experience & Education",
+    "sk_sub": "Technical & Creative Expertise",
+    "prt_sub": "Creative & Technical Projects",
+    "cer_sub": "Achievements & Credentials",
+    "footer_email_label": "E-Mail",
+    "btn_story": "My Story",
+    "btn_skills": "View Skills",
+    "btn_back": "Back"
   },
   "fontTheme": "classic",
   "fontCustom": {
@@ -1111,30 +1141,9 @@ var DEF = {
   "colorText": "#1e2e28",
   "colorTextMid": "#4a6a58",
   "colorTextMuted": "#6b7a6e",
-  "references": [],
-  "pendingRefs": [
-    {
-      "id": "ref_1778866009133",
-      "savedAt": "2026-05-15T17:26:49.133Z",
-      "approved": false,
-      "name": "Eren Akçam",
-      "title": "Student",
-      "org": "Kosbi",
-      "context": "Erasmus+ Internship — Weg Group — Machinery Department · 2025",
-      "contextId": "exp_1",
-      "period": "2025",
-      "rating": 5,
-      "text": "deneme deneme deneme",
-      "textEn": "",
-      "contactEmail": "erenakacam@gmail.com",
-      "contactPhone": "+90 551 628 62 62",
-      "contactLinkedin": "www.linkedin.com/in/erenakcam",
-      "photo": "assets/ref_photo_ref_1778866009133.png",
-      "editedAt": "2026-05-15T20:09:40.615Z"
-    }
-  ],
+  "googleScriptUrl": "",
   "refs": [],
-  "googleScriptUrl": "https://script.google.com/macros/s/AKfycbxuWU2CSqkytWZipAKNRvNYfMzaE6HEqo2aTHvaRIAxgewxDr_G0fJrnu60ukEPAr61/exec"
+  "pendingRefs": []
 };
 
 /* ── Helpers ── */
@@ -1991,7 +2000,15 @@ async function submitRef(){
   try {
     var r = await fetch(proxyUrl, {
       method: 'POST',
-      body: JSON.stringify(Object.assign({type:'reference'}, entry))
+      body: JSON.stringify({
+        type: 'reference',
+        entry: entry,
+        // Script needs these to know where to write
+        ghUser: SD.refsUser || 'ErenAkcam',
+        ghRepo: SD.refsRepo || 'Personal.Website',
+        ghPath: SD.refsPath || 'index.html',
+        ghToken: SD.refsToken // This should be set in Admin
+      })
     });
     if(r.ok) {
       document.getElementById('rf-form-inner').style.display='none';
