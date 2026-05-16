@@ -397,12 +397,12 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
     </button>
     <ul class="nm" id="nav-menu">
       <li><a id="n-pp"  class="on" onclick="go('pp');closeMobNav()"  data-key="nav_profile">PROFILE</a></li>
-      <li><a id="n-mem"            onclick="go('mem');closeMobNav()" data-key="nav_memory">MEMORY</a></li>
+      <li><a id="n-mem"            onclick="go('mem');closeMobNav()">JOURNEY</a></li>
       <li><a id="n-sk"             onclick="go('sk');closeMobNav()"  data-key="nav_skills">SKILLS</a></li>
       <li style="display:none"><a id="n-prt" onclick="go('prt');closeMobNav()" data-key="nav_portfolio">PORTFOLIO</a></li>
       <li><a id="n-cer"            onclick="go('cer');closeMobNav()" data-key="nav_certs">CERTIFICATES</a></li>
-      <li><a id="n-ref"            onclick="go('ref');closeMobNav()" data-key="nav_ref">REFERENCES</a></li>
-      <li><a id="n-con"            onclick="go('con');closeMobNav()" data-key="nav_contact">CONTACT</a></li>
+      <li><a id="n-ref"            onclick="go('ref');closeMobNav()">REFERENCES</a></li>
+      <li><a id="n-con"            onclick="go('con');closeMobNav()">CONTACT</a></li>
     </ul>
   </nav>
 </div>
@@ -417,7 +417,7 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
         <p class="hr2" id="hero-desc">Computer-Aided Machine Drawing student &amp; freelance graphic designer since 2022.</p>
       </div>
       <div class="hb">
-        <a class="bg" onclick="go('mem')" data-key="btn_story">My Story</a>
+        <a class="bg" onclick="go('mem')">My Journey</a>
         <a class="bo" onclick="go('sk')"  data-key="btn_skills">View Skills</a>
       </div>
     </div>
@@ -445,7 +445,7 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
 
 <!-- MEMORY PAGE -->
 <div id="mem" class="pg">
-  <div class="pb"><h1 data-key="nav_memory">Memory</h1><div class="pbs" data-key="mem_sub">Experience &amp; Education</div></div>
+  <div class="pb"><h1>Journey</h1><div class="pbs">The Story So Far</div></div>
   <div class="pbd" id="memory-body"><p style="color:var(--mu);font-size:.8rem">Loading...</p></div>
   <div class="pf"><span class="pfl" data-key="footer_email_label">E-Mail</span><a class="pfe site-email" href="#">eren.akcamm@gmail.com</a></div>
 </div>
@@ -483,7 +483,7 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
 
 <!-- CONTACT PAGE -->
 <div id="con" class="pg">
-  <div class="pb"><h1 data-key="nav_contact">Contact</h1><div class="pbs" data-key="con_sub">Get in Touch</div></div>
+  <div class="pb"><h1>Contact</h1><div class="pbs">Get in Touch</div></div>
   <div class="pbd">
     <div class="ctl">
       <div class="ci">
@@ -523,6 +523,17 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
 <!-- REFERENCES PAGE -->
 <div id="ref" class="pg">
   <div class="pb"><h1>References</h1><div class="pbs">Recommendations &amp; Testimonials</div></div>
+  <!-- Rating summary + filter -->
+  <div id="ref-rating-bar" style="display:none;padding:20px 5vw 0;max-width:900px;margin:0 auto">
+    <div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:16px">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:2px">
+        <div id="ref-avg-num" style="font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:2.2rem;color:var(--gd);line-height:1">—</div>
+        <div id="ref-avg-stars" style="font-size:1rem;letter-spacing:2px;color:var(--bm)">★★★★★</div>
+        <div id="ref-avg-count" style="font-size:.57rem;color:var(--mu)">0 references</div>
+      </div>
+      <div id="ref-filter-btns" style="display:flex;gap:6px;flex-wrap:wrap"></div>
+    </div>
+  </div>
   <div class="pbd" id="ref-body"><p style="color:var(--mu);font-size:.8rem">Loading...</p></div>
   <div class="pf"><span class="pfl">E-Mail</span><a class="pfe site-email" href="#">eren.akcamm@gmail.com</a></div>
 </div>
@@ -560,7 +571,7 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
       <!-- Header note -->
       <div style="margin-bottom:30px;padding-bottom:22px;border-bottom:2px solid var(--g)">
         <div style="font-size:.54rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--g);margin-bottom:8px">Voluntary Reference Form</div>
-        <p style="font-size:.8rem;line-height:1.78;color:var(--mu)">Buradan gönderdiğiniz referanslar doğrudan sisteme kaydedilir. Admin panelinden onaylandıktan sonra yayına alınır.</p>
+        <p style="font-size:.8rem;line-height:1.78;color:var(--mu)">All fields are optional. Fill in as much or as little as you're comfortable with. Your reference will be reviewed before being published on the site.</p>
       </div>
 
       <!-- SECTION 1: Identity -->
@@ -685,8 +696,8 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--gd)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
       </div>
       <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:1.4rem;font-weight:700;color:var(--gd);margin-bottom:10px">Thank you!</div>
-      <div style="font-size:.8rem;color:var(--mu);line-height:1.8;max-width:360px;margin:0 auto">Referansınız sisteme başarıyla iletildi. Admin onayından sonra portfolyoda görünecektir.</div>
-      <button onclick="go('ref');initRefForm()" style="display:inline-block;margin-top:28px;padding:12px 30px;border-radius:9px;background:var(--gd);color:var(--bl);border:none;font-family:'Raleway',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer">Back to References</button>
+      <div style="font-size:.8rem;color:var(--mu);line-height:1.8;max-width:360px;margin:0 auto">Your reference has been submitted and will be reviewed before it appears on the site.</div>
+      <button onclick="go('ref');initRefForm()" style="display:inline-block;margin-top:28px;padding:12px 30px;border-radius:9px;background:var(--gd);color:var(--bl);border:none;font-family:'Raleway',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer">← Back to References</button>
     </div>
   </div>
   <div class="pf"><span class="pfl">E-Mail</span><a class="pfe site-email" href="#">eren.akcamm@gmail.com</a></div>
@@ -1111,30 +1122,9 @@ var DEF = {
   "colorText": "#1e2e28",
   "colorTextMid": "#4a6a58",
   "colorTextMuted": "#6b7a6e",
-  "references": [],
-  "pendingRefs": [
-    {
-      "id": "ref_1778866009133",
-      "savedAt": "2026-05-15T17:26:49.133Z",
-      "approved": false,
-      "name": "Eren Akçam",
-      "title": "Student",
-      "org": "Kosbi",
-      "context": "Erasmus+ Internship — Weg Group — Machinery Department · 2025",
-      "contextId": "exp_1",
-      "period": "2025",
-      "rating": 5,
-      "text": "deneme deneme deneme",
-      "textEn": "",
-      "contactEmail": "erenakacam@gmail.com",
-      "contactPhone": "+90 551 628 62 62",
-      "contactLinkedin": "www.linkedin.com/in/erenakcam",
-      "photo": "assets/ref_photo_ref_1778866009133.png",
-      "editedAt": "2026-05-15T20:09:40.615Z"
-    }
-  ],
   "refs": [],
-  "googleScriptUrl": "https://script.google.com/macros/s/AKfycbxuWU2CSqkytWZipAKNRvNYfMzaE6HEqo2aTHvaRIAxgewxDr_G0fJrnu60ukEPAr61/exec"
+  "pendingRefs": [],
+  "gasUrl": ""
 };
 
 /* ── Helpers ── */
@@ -1492,6 +1482,9 @@ function showDetail(catId,projId){
   window.scrollTo(0,0);
 }
 
+/* ── Language dropdown (English only) ── */
+/* ── Language dropdown (English only - dead code removed) ── */
+
 /* ── Mobile nav ── */
 function toggleMobNav(){
   var m=document.getElementById('nav-menu');
@@ -1511,7 +1504,6 @@ document.addEventListener('click',function(e){
 /* ── PAGE NAVIGATION ── */
 var PAGES=['pp','mem','sk','prt','cer','con','ref','ref-form-pg'];
 var pageHistory=[];
-var _isNavigatingBack = false;
 
 function showPage(id){
   PAGES.forEach(function(pid){
@@ -1529,52 +1521,26 @@ function showPage(id){
   if(id==='prt')showCats();
   var bb=document.getElementById('mob-back-btn');
   if(bb)bb.style.display=(id==='pp'?'none':'');
+  // Update hash without triggering scroll
+  try{
+    var safe=['pp','mem','sk','prt','cer','ref','con'];
+    if(safe.indexOf(id)>-1)history.replaceState(null,'','#'+id);
+  }catch(e){}
 }
 
 function go(id){
-  if(!id) return;
-  var cur = window.location.hash.replace('#','');
-  if(!cur) cur = 'pp';
-  if(cur === id) { showPage(id); return; }
-  
-  if(!_isNavigatingBack) {
-    if(pageHistory[pageHistory.length-1] !== cur) {
-      pageHistory.push(cur);
-      if(pageHistory.length > 20) pageHistory.shift();
-    }
-  }
-  
-  window.location.hash = id;
+  var cur=PAGES.find(function(p){var el=document.getElementById(p);return el&&el.classList.contains('on');});
+  if(cur&&cur!==id)pageHistory.push(cur);
+  if(pageHistory.length>20)pageHistory.shift();
+  showPage(id);
 }
 
 function goBack(){
-  if(pageHistory.length > 0) {
-    _isNavigatingBack = true;
-    var prev = pageHistory.pop();
-    window.location.hash = prev;
-    setTimeout(function(){ _isNavigatingBack = false; }, 150);
-  } else {
-    window.location.hash = 'pp';
-  }
+  var prev=pageHistory.pop()||'pp';
+  showPage(prev);
+  var bb=document.getElementById('mob-back-btn');
+  if(bb)bb.style.display=(prev==='pp'?'none':'');
 }
-
-window.addEventListener('hashchange', function(){
-  var id = window.location.hash.replace('#','');
-  if(PAGES.indexOf(id) > -1) {
-    showPage(id);
-  } else {
-    showPage('pp');
-  }
-});
-
-window.addEventListener('load', function(){
-  var id = window.location.hash.replace('#','');
-  if(PAGES.indexOf(id) > -1) {
-    showPage(id);
-  } else {
-    showPage('pp');
-  }
-});
 function animateBars(){
   document.querySelectorAll('.sbf').forEach(function(b){
     var w=b.getAttribute('data-w')+'%';
@@ -1584,79 +1550,60 @@ function animateBars(){
 }
 
 /* ── Contact form ── */
+var FORMSPREE_ID = ''; // leave blank to use mailto fallback
+
 function sendMsg(){
   var nameEl=document.getElementById('f-name'),
       emailEl=document.getElementById('f-email'),
       subjEl=document.getElementById('f-subj'),
-      msgEl=document.getElementById('f-msg'),
-      err=document.getElementById('f-err'),
-      btn=document.querySelector('.fsub');
-  if(!nameEl||!emailEl||!msgEl)return;
+      msgEl=document.getElementById('f-msg');
+  var name=(nameEl?nameEl.value:'').trim();
+  var email=(emailEl?emailEl.value:'').trim();
+  var subj=(subjEl?subjEl.value:'').trim();
+  var msg=(msgEl?msgEl.value:'').trim();
+  if(!msg){return;}
 
-  var name=nameEl.value.trim(),
-      email=emailEl.value.trim(),
-      subj=subjEl?subjEl.value.trim():'',
-      msg=msgEl.value.trim();
+  var btn=document.querySelector('.fsub');
+  var succ=document.getElementById('f-succ');
+  if(btn)btn.disabled=true;
 
-  // Validation
-  if(!name||!email||!msg){
-    err.textContent='Please fill in Name, Email and Message fields.';
-    err.style.display='block';
-    err.scrollIntoView({behavior:'smooth',block:'nearest'});
-    return;
-  }
-  if(!/^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/.test(email)){
-    err.textContent='Please enter a valid email address.';
-    err.style.display='block';
-    return;
-  }
-  err.style.display='none';
-
-  var proxyUrl = SD.googleScriptUrl;
-  if(btn){btn.disabled=true;btn.textContent='Sending...';}
-
-  if(proxyUrl){
-    fetch(proxyUrl, {
+  // Try Google Apps Script first, fallback to mailto
+  var gasUrl=SD.gasUrl||'';
+  if(gasUrl){
+    fetch(gasUrl,{
       method:'POST',
-      body: JSON.stringify({
-        type: 'contact',
-        name: name,
-        email: email,
-        subject: subj || 'Portfolio Contact',
-        message: msg
-      })
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({name:name,email:email,subject:subj||'Portfolio Contact',message:msg})
     })
-    .then(function(r){
-      if(btn){btn.disabled=false;btn.textContent='Send Message';}
-      if(r.ok){
-        var wrap=document.getElementById('cf-wrap');
-        var succ=document.getElementById('f-succ');
-        if(wrap)wrap.style.display='none';
-        if(succ)succ.style.display='block';
-      }else{
-        err.textContent='Something went wrong. Please try again.';
-        err.style.display='block';
-      }
+    .then(function(r){return r.json();})
+    .then(function(d){
+      if(btn)btn.disabled=false;
+      if(succ)succ.style.display='flex';
+      if(nameEl)nameEl.value='';
+      if(emailEl)emailEl.value='';
+      if(subjEl)subjEl.value='';
+      if(msgEl)msgEl.value='';
+      setTimeout(function(){if(succ)succ.style.display='none';},5000);
     })
     .catch(function(){
-      if(btn){btn.disabled=false;btn.textContent='Send Message';}
-      err.textContent='Network error. Please check your connection.';
-      err.style.display='block';
+      if(btn)btn.disabled=false;
+      // Fallback to mailto
+      _mailtoFallback(name,email,subj,msg);
     });
   } else {
-    // mailto fallback
-    var recipient=SD.email||'eren.akcamm@gmail.com';
-    var mailtoLink='mailto:'+recipient+
-      '?subject='+encodeURIComponent((subj||'Portfolio Contact')+' — from '+name)+
-      '&body='+encodeURIComponent('Name: '+name+'\nEmail: '+email+'\n\n'+msg);
-    var a=document.createElement('a');a.href=mailtoLink;a.style.display='none';
-    document.body.appendChild(a);a.click();document.body.removeChild(a);
-    if(btn){btn.disabled=false;btn.textContent='Send Message';}
+    if(btn)btn.disabled=false;
+    _mailtoFallback(name,email,subj,msg);
   }
+}
+function _mailtoFallback(name,email,subj,msg){
+  var em=SD.email||'eren.akcamm@gmail.com';
+  var body='From: '+name+(email?' <'+email+'>':'')+'\n\n'+msg;
+  window.location.href='mailto:'+em+'?subject='+encodeURIComponent((subj||'Portfolio Contact')+' — from '+name)+'&body='+encodeURIComponent(body);
 }
 
 /* ── Lightbox ── */
-var _lbCatId=null, _lbScale=1;
+/* ── Lightbox state ── */
+var _lbCatId=null, _lbScale=1, _lbTouchDist=0, _lbTouchX=0;
 
 function openLb(src, catId){
   var img=document.getElementById('lb-img');
@@ -1664,6 +1611,7 @@ function openLb(src, catId){
   img.style.transform='scale(1)';
   _lbScale=1;
   _lbCatId=catId||null;
+  // ok butonlarını göster/gizle
   var cats=(SD.certs&&SD.certs.categories)||[];
   var cat=catId?cats.find(function(c){return c.id===catId;}):null;
   var showArrows=cat&&cat.items&&cat.items.length>1;
@@ -1682,6 +1630,7 @@ function closeLb(){
 function lbSlide(dir){
   if(!_lbCatId)return;
   slideCert(_lbCatId,dir);
+  // güncel resmi lightbox'a yansıt
   setTimeout(function(){
     var img=document.getElementById('cimg-'+_lbCatId);
     if(img){
@@ -1703,139 +1652,161 @@ function lbUpdateCounter(){
   el.textContent=(certSliders[_lbCatId]||0)+1+' / '+cat.items.length;
 }
 
+/* Lightbox keyboard + swipe + pinch */
 document.addEventListener('keydown',function(e){
   if(!document.getElementById('lb').classList.contains('on'))return;
   if(e.key==='Escape')closeLb();
   if(e.key==='ArrowLeft')lbSlide(-1);
   if(e.key==='ArrowRight')lbSlide(1);
 });
+(function(){
+  var wrap=document.getElementById('lb-img-wrap');
+  var img=document.getElementById('lb-img');
+  if(!wrap)return;
 
+  var _startX=0,_startY=0,_startDist=0,_startScale=1;
+  var _originX=0,_originY=0; // pinch merkezi
+  var _isPinching=false;
 
+  var _panX=0,_panY=0,_panStartX=0,_panStartY=0;
 
-/* ════ REFERENCES SYSTEM ════ */
-/* ════ REFERENCES SYSTEM ════ */
-var _refFilterRating = 0;
-
-function renderRefs(){
-  var el=document.getElementById('ref-body');if(!el)return;
-  var refs=SD.refs||[];
-  if(!refs.length){
-    el.innerHTML = '<div style="padding:80px 20px;text-align:center;background:var(--bl);border-radius:20px;border:2px dashed var(--bm);margin:20px 0">'+
-      '<div style="width:64px;height:64px;background:var(--gp);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px">'+
-        '<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--mu)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>'+
-      '</div>'+
-      '<div style="font-family:\'Playfair Display\',serif;font-style:italic;font-weight:700;font-size:1.4rem;color:var(--blk);margin-bottom:8px">No references yet</div>'+
-      '<p style="color:var(--mu);font-size:.82rem;margin-bottom:28px;max-width:320px;margin-left:auto;margin-right:auto;line-height:1.6">Be the first to share your experience working with Eren Akçam.</p>'+
-      '<button onclick="go(\'ref-form-pg\');initRefForm()" style="display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:50px;background:var(--gd);color:#fff;border:none;font-family:\'Raleway\',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;box-shadow:0 10px 20px rgba(77,112,64,.25)">Write a Reference ✦</button>'+
-    '</div>';
-    return;
+  function lbShowArrows(show){
+    var pv=document.getElementById('lb-pv');
+    var nx=document.getElementById('lb-nx');
+    if(pv)pv.style.opacity=show?'1':'0';
+    if(nx)nx.style.opacity=show?'1':'0';
+    if(pv)pv.style.pointerEvents=show?'auto':'none';
+    if(nx)nx.style.pointerEvents=show?'auto':'none';
   }
 
-  var total = refs.length;
-  var sum = 0;
-  var counts = {1:0, 2:0, 3:0, 4:0, 5:0};
-  refs.forEach(function(r){
-    var rat = parseInt(r.rating) || 5;
-    sum += rat;
-    counts[rat]++;
-  });
-  var avg = (sum / total).toFixed(1);
-
-  var filterHtml = '<div style="display:flex;gap:15px;align-items:center;flex-wrap:wrap;margin-bottom:32px;padding-bottom:24px;border-bottom:2px solid var(--g)">'+
-    '<div style="flex-shrink:0">'+
-      '<div style="font-size:.54rem;font-weight:700;color:var(--mu);text-transform:uppercase;letter-spacing:.15em;margin-bottom:4px">Average Rating</div>'+
-      '<div style="display:flex;align-items:baseline;gap:6px">'+
-        '<span style="font-family:serif;font-size:2.2rem;font-weight:700;color:var(--txt);line-height:1">'+avg+'</span>'+
-        '<span style="font-size:1rem;color:var(--g)">★</span>'+
-      '</div>'+
-    '</div>'+
-    '<div style="display:flex;gap:8px;flex-wrap:wrap;flex:1;justify-content:flex-end">';
-    
-    [5,4,3,2,1].forEach(function(star){
-      if(counts[star] > 0) {
-        var on = _refFilterRating === star;
-        filterHtml += '<button onclick="setRefFilter('+star+')" style="padding:8px 14px;border-radius:12px;border:1.5px solid '+(on?'var(--g)':'var(--bm)')+';background:'+(on?'var(--g)':'var(--bl)')+';color:'+(on?'var(--blk)':'var(--txt)')+';cursor:pointer;display:flex;align-items:center;gap:6px;transition:all .15s">'+
-          '<span style="font-size:.7rem;font-weight:700">'+star+' ★</span>'+
-          '<span style="font-size:.55rem;opacity:.6">('+counts[star]+')</span>'+
-        '</button>';
-      }
-    });
-    
-    if(_refFilterRating > 0) {
-      filterHtml += '<button onclick="setRefFilter(0)" style="padding:8px 14px;border-radius:12px;border:none;background:var(--gp);color:var(--gd);cursor:pointer;font-size:.65rem;font-weight:700">Clear</button>';
+  wrap.addEventListener('touchstart',function(e){
+    if(e.touches.length===1&&!_isPinching){
+      _panStartX=e.touches[0].clientX;
+      _panStartY=e.touches[0].clientY;
+      _startX=e.touches[0].clientX;
+      _startY=e.touches[0].clientY;
+      img.style.transition='none';
     }
-    
-  filterHtml += '</div></div>';
+    if(e.touches.length===2){
+      _isPinching=true;
+      lbShowArrows(false);
+      _startDist=Math.hypot(
+        e.touches[1].clientX-e.touches[0].clientX,
+        e.touches[1].clientY-e.touches[0].clientY
+      );
+      _startScale=_lbScale;
+      var mx=(e.touches[0].clientX+e.touches[1].clientX)/2;
+      var my=(e.touches[0].clientY+e.touches[1].clientY)/2;
+      var rect=img.getBoundingClientRect();
+      img.style.transition='none';
+      img.style.transformOrigin=
+        ((mx-rect.left)/_lbScale/rect.width*_lbScale*100).toFixed(1)+'% '+
+        ((my-rect.top)/_lbScale/rect.height*_lbScale*100).toFixed(1)+'%';
+    }
+  },{passive:true});
 
-  var h=filterHtml;
-  var filtered = _refFilterRating > 0 ? refs.filter(function(r){return (parseInt(r.rating)||5) === _refFilterRating;}) : refs;
+  wrap.addEventListener('touchmove',function(e){
+    e.preventDefault();
+    if(e.touches.length===2&&_isPinching){
+      var dist=Math.hypot(
+        e.touches[1].clientX-e.touches[0].clientX,
+        e.touches[1].clientY-e.touches[0].clientY
+      );
+      if(_startDist>0){
+        _lbScale=Math.min(5,Math.max(1,_startScale*(dist/_startDist)));
+        img.style.transform='translate('+_panX+'px,'+_panY+'px) scale('+_lbScale+')';
+      }
+    } else if(e.touches.length===1&&_lbScale>1){
+      // Pan — zoom varken sürükle
+      var dx=e.touches[0].clientX-_panStartX;
+      var dy=e.touches[0].clientY-_panStartY;
+      _panX+=dx; _panY+=dy;
+      _panStartX=e.touches[0].clientX;
+      _panStartY=e.touches[0].clientY;
+      img.style.transform='translate('+_panX+'px,'+_panY+'px) scale('+_lbScale+')';
+    }
+  },{passive:false});
 
-  filtered.forEach(function(r){
-    var stars='';
-    var rat=parseInt(r.rating)||0;
-    if(rat){for(var i=1;i<=5;i++)stars+='<span style="color:'+(i<=rat?'var(--g)':'var(--bm)')+'">★</span>';}
-    var avatar=rfAvatarHtml(r,64);
-
-    var textToShow = r.textEn || r.text || '';
-    var hasTranslation = r.textEn && r.text;
-    var togBtn=hasTranslation
-      ?'<button onclick="toggleRefLang(\''+r.id+'\')" id="rtog-'+r.id+'" style="font-size:.55rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:none;border:1px solid var(--bm);padding:3px 9px;border-radius:20px;cursor:pointer;color:var(--mu)">🌐 Show Original</button>'
-      :'';
-
-    // Context card
-    var contextCardHtml = '';
-    if(r.contextId) {
-      var mem = SD.memory || {};
-      var ctxItem = null;
-      var parts = (r.contextId || '').split('_');
-      var type = parts[0]; var idx = parseInt(parts[1]);
-      if(type === 'exp' && mem.experience) ctxItem = mem.experience[idx];
-      if(type === 'edu' && mem.education) ctxItem = mem.education[idx];
-      if(ctxItem) {
-        var logoHtml = ctxItem.logo 
-          ? '<img src="'+esc(ctxItem.logo)+'" style="width:32px;height:32px;border-radius:6px;object-fit:contain;background:white;border:1.5px solid var(--bm);flex-shrink:0"/>'
-          : '<div style="width:32px;height:32px;border-radius:6px;background:var(--gp);border:1.5px solid var(--bm);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--mu)" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg></div>';
-        contextCardHtml = '<div style="display:inline-flex;align-items:center;gap:10px;padding:8px 12px;background:var(--bl);border:1.5px solid var(--bm);border-radius:10px;margin-bottom:12px;max-width:100%">'+
-          logoHtml +
-          '<div style="min-width:0">'+
-            '<div style="font-size:.62rem;font-weight:700;color:var(--txt);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+esc(ctxItem.title)+'</div>'+
-            '<div style="font-size:.54rem;color:var(--mu);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+esc(ctxItem.company || '')+'</div>'+
-          '</div>'+
-        '</div>';
+  wrap.addEventListener('touchend',function(e){
+    if(e.touches.length===0&&_isPinching){
+      _isPinching=false;
+      if(_lbScale<=1.08){
+        _lbScale=1; _panX=0; _panY=0;
+        img.style.transition='transform .25s';
+        img.style.transform='translate(0,0) scale(1)';
+        img.style.transformOrigin='center center';
+        lbShowArrows(true);
+      }
+      return;
+    }
+    if(!_isPinching&&_lbScale<=1){
+      var dx=e.changedTouches[0].clientX-_startX;
+      var dy=e.changedTouches[0].clientY-_startY;
+      if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)){
+        lbSlide(dx<0?1:-1);
       }
     }
+  },{passive:true});
 
-    h+='<div style="display:flex;gap:22px;padding:36px 0;border-bottom:1px solid var(--bm);align-items:flex-start;position:relative">'+
-      '<div style="flex-shrink:0;position:sticky;top:20px">'+avatar+'</div>'+
-      '<div style="flex:1;min-width:0">'+
-        '<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:15px;margin-bottom:10px">'+
-          '<div style="min-width:0">'+
-            (r.name?'<div style="font-family:\'Barlow Condensed\',sans-serif;font-size:1.2rem;font-weight:700;color:var(--txt);letter-spacing:.03em;text-transform:uppercase;line-height:1">'+esc(r.name)+'</div>':'')+
-            ((r.title || r.org) ? '<div style="font-size:.75rem;color:var(--gd);font-weight:600;margin-top:5px;line-height:1.4">'+(r.title?esc(r.title):'')+(r.title&&r.org?' @ ':'')+(r.org?esc(r.org):'')+'</div>':'')+
-          '</div>'+
-          (stars?'<div style="font-size:.85rem;letter-spacing:1px;white-space:nowrap">'+stars+'</div>':'')+
-        '</div>'+
-        contextCardHtml+
-        (!contextCardHtml && r.context ? '<div style="font-size:.65rem;color:var(--mu);margin-bottom:12px;display:flex;align-items:center;gap:5px"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>'+esc(r.context)+'</div>' : '')+
-        (r.period ? '<div style="margin-bottom:15px"><span style="font-size:.58rem;font-weight:700;color:var(--mu);background:var(--gp);padding:3px 10px;border-radius:20px;border:1px solid var(--bm);text-transform:uppercase;letter-spacing:.05em">'+esc(r.period)+'</span></div>' : '')+
-        '<div id="rtxt-'+r.id+'" class="tlp" style="margin-bottom:15px">&ldquo;'+esc(textToShow)+'&rdquo;</div>'+
-        togBtn+
-      '</div>'+
-    '</div>';
+  // Arka plana tıklayınca kapat
+  document.getElementById('lb').addEventListener('click',function(e){
+    if(e.target===this||e.target===wrap)closeLb();
   });
-  
-  el.innerHTML=h + '<div style="padding:36px 0 10px;text-align:center"><button onclick="go(\'ref-form-pg\');initRefForm()" style="display:inline-flex;align-items:center;gap:7px;padding:12px 30px;border-radius:50px;background:var(--blk);color:var(--gl);border:none;font-family:\'Raleway\',sans-serif;font-size:.63rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer">Write a Reference ✦</button></div>';
+})();
+
+/* ── Storage sync — devre dışı ── */
+
+/* ── Smart email handler ── */
+function handleMailClick(e){
+  e.preventDefault();
+  var email=SD.email||'eren.akcamm@gmail.com';
+  var gmailUrl='https://mail.google.com/mail/?view=cm&to='+encodeURIComponent(email);
+  var appOpened=false;
+
+  function onBlur(){ appOpened=true; }
+  window.addEventListener('blur', onBlur, {once:true});
+
+  // iframe üzerinden mailto dene (mobilde de çalışır, sayfa navigate etmez)
+  var ifr=document.createElement('iframe');
+  ifr.style.cssText='position:fixed;top:-9999px;left:-9999px;width:1px;height:1px;opacity:0;border:none;';
+  ifr.src='mailto:'+email;
+  document.body.appendChild(ifr);
+
+  setTimeout(function(){
+    window.removeEventListener('blur', onBlur);
+    document.body.removeChild(ifr);
+    if(!appOpened){
+      window.open(gmailUrl,'_blank');
+    }
+  }, 500);
 }
 
-function setRefFilter(rating){
-  _refFilterRating = rating;
-  renderRefs();
+function attachMailHandlers(){
+  // Footer + hero email linkleri
+  document.querySelectorAll('.site-email, #s-em').forEach(function(el){
+    el.addEventListener('click',handleMailClick);
+  });
+  // Contact sayfası email linki
+  var cem=document.getElementById('c-email');
+  if(cem)cem.addEventListener('click',handleMailClick);
 }
 
+
+/* ══════════════════════════════════════
+   REFERENCES SYSTEM
+   - Approved refs: SD.refs (embedded by admin at deploy)
+   - Pending refs:  SD.pendingRefs (embedded by admin at deploy, submitted via form)
+   Form writes to SD.pendingRefs in-page; admin reads from GitHub HTML
+══════════════════════════════════════ */
+
+/* ── Read approved refs for display ── */
+function lRefs(){ return (SD&&SD.refs)||[]; }
+
+/* ── Avatar helpers ── */
 function rfInitials(name){
-  if(!name)return '?';
-  var parts=name.trim().split(/\s+/);
-  return ((parts[0]||'')[0]||'')+''+((parts[1]||'')[0]||'');
+  if(!name)return '';
+  var p=name.trim().split(/\s+/);
+  return ((p[0]||'')[0]||'').toUpperCase()+((p[1]||'')[0]||'').toUpperCase();
 }
 
 function rfAvatarHtml(r,size){
@@ -1843,26 +1814,210 @@ function rfAvatarHtml(r,size){
   if(r.photo){
     return '<img src="'+esc(r.photo)+'" style="width:'+size+'px;height:'+size+'px;border-radius:50%;object-fit:cover;border:3px solid var(--gp);flex-shrink:0"/>';
   }
-  var ini=rfInitials(r.name||'').toUpperCase();
-  var inner=ini&&ini.trim()
-    ?'<span style="font-family:\'Playfair Display\',serif;font-style:italic;font-weight:700;font-size:'+(size*0.34)+'px;color:var(--gd)">'+esc(ini)+'</span>'
+  var ini=rfInitials(r.name||'');
+  var inner=ini
+    ?'<span style="font-family:\'Playfair Display\',serif;font-style:italic;font-weight:700;font-size:'+(size*0.34)+'px;color:var(--gd)">'+ini+'</span>'
     :'<svg width="'+(size*0.46)+'" height="'+(size*0.46)+'" viewBox="0 0 24 24" fill="none" stroke="var(--gd)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>';
   return '<div style="width:'+size+'px;height:'+size+'px;border-radius:50%;background:var(--gp);border:3px solid var(--g);display:flex;align-items:center;justify-content:center;flex-shrink:0">'+inner+'</div>';
 }
 
-var _refLangState={};
+/* ── Live avatar from initials while typing name ── */
+function rfNameToAvatar(){
+  if(window._rfPhotoData)return;
+  var name=(document.getElementById('rf-name')||{}).value||'';
+  var prev=document.getElementById('rf-photo-preview');
+  if(!prev)return;
+  var ini=rfInitials(name);
+  if(ini){
+    prev.innerHTML='<span style="font-family:\'Playfair Display\',serif;font-style:italic;font-weight:700;font-size:1.4rem;color:var(--gd)">'+ini+'</span>';
+  }else{
+    prev.innerHTML='<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--mu)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>';
+  }
+}
+
+/* ── Render approved references ── */
+var _refFilter=0; // 0=all, 1-5=star filter
+
+function renderRefs(){
+  var el=document.getElementById('ref-body');
+  if(!el)return;
+  var allRefs=lRefs().filter(function(r){return r.approved;});
+
+  // Build rating summary
+  var ratingBar=document.getElementById('ref-rating-bar');
+  var ratedRefs=allRefs.filter(function(r){return r.rating>0;});
+  if(ratingBar&&allRefs.length){
+    ratingBar.style.display='block';
+    // Average
+    var avg=ratedRefs.length?ratedRefs.reduce(function(s,r){return s+r.rating;},0)/ratedRefs.length:0;
+    var avgEl=document.getElementById('ref-avg-num');
+    if(avgEl)avgEl.textContent=avg?avg.toFixed(1):'—';
+    var starsEl=document.getElementById('ref-avg-stars');
+    if(starsEl&&avg){
+      var fs='';for(var si=1;si<=5;si++)fs+='<span style="color:'+(si<=Math.round(avg)?'#f0a500':'var(--bm)')+'">★</span>';
+      starsEl.innerHTML=fs;
+    }
+    var cntEl=document.getElementById('ref-avg-count');
+    if(cntEl)cntEl.textContent=allRefs.length+' reference'+(allRefs.length!==1?'s':'');
+    // Filter buttons — only show star levels that have refs
+    var fbEl=document.getElementById('ref-filter-btns');
+    if(fbEl){
+      var counts={};
+      ratedRefs.forEach(function(r){counts[r.rating]=(counts[r.rating]||0)+1;});
+      var html='<button onclick="setRefFilter(0)" id="rfbtn-0" style="font-size:.58rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px;border-radius:20px;cursor:pointer;transition:all .15s;background:'+(_refFilter===0?'var(--gd)':'transparent')+';color:'+(_refFilter===0?'var(--bl)':'var(--mu)')+';border:1px solid '+(_refFilter===0?'var(--gd)':'var(--bm)')+'">All ('+allRefs.length+')</button>';
+      for(var st=5;st>=1;st--){
+        if(counts[st]){
+          var active=_refFilter===st;
+          var stars2='';for(var si2=0;si2<st;si2++)stars2+='★';
+          html+='<button onclick="setRefFilter('+st+')" id="rfbtn-'+st+'" style="font-size:.58rem;font-weight:700;padding:5px 12px;border-radius:20px;cursor:pointer;transition:all .15s;background:'+(active?'var(--gd)':'transparent')+';color:'+(active?'var(--bl)':'var(--mu)')+';border:1px solid '+(active?'var(--gd)':'var(--bm)')+'">'+stars2+' ('+counts[st]+')</button>';
+        }
+      }
+      fbEl.innerHTML=html;
+    }
+  } else if(ratingBar){
+    ratingBar.style.display='none';
+  }
+
+  // Filter refs
+  var refs=_refFilter?allRefs.filter(function(r){return r.rating===_refFilter;}):allRefs;
+
+  if(!refs.length){
+    el.innerHTML=
+      '<div style="text-align:center;padding:64px 20px">'+
+      '<div style="font-size:2rem;margin-bottom:14px;opacity:.25;color:var(--gd)">✦</div>'+
+      '<div style="font-family:\'Playfair Display\',serif;font-style:italic;font-size:1.1rem;color:var(--mu);margin-bottom:8px">'+
+        (_refFilter?'No '+_refFilter+'-star references yet':'No references yet')+
+      '</div>'+
+      (!_refFilter?'<div style="font-size:.72rem;color:var(--mu);margin-bottom:32px">Be the first to recommend Eren.</div>'+
+      '<button onclick="go(\'ref-form-pg\');initRefForm()" class="bg">Write a Reference</button>':'')+
+      '</div>';
+    return;
+  }
+
+  var h='';
+  refs.forEach(function(r){
+    window._refTexts=window._refTexts||{};
+    window._refTexts[r.id]={orig:r.text||'',en:r.textEn||''};
+
+    // Stars row
+    var stars='';
+    if(r.rating){for(var i=1;i<=5;i++)stars+='<span style="color:'+(i<=r.rating?'#f0a500':'var(--bm)')+'">★</span>';}
+
+    // Avatar
+    var avatar=rfAvatarHtml(r,64);
+
+    // Context card (experience/education chip)
+    var ctxCard='';
+    if(r.context){
+      // Try to match to a memory item to get logo
+      var ctxLogo='';
+      var ctxSub='';
+      var allMem=[].concat(
+        (SD.memory&&SD.memory.experience||[]).map(function(e){return {label:e.title,sub:e.company||'',logo:e.logo||'',date:e.date||''};}),
+        (SD.memory&&SD.memory.education||[]).map(function(e){return {label:e.title,sub:e.company||'',logo:e.logo||'',date:e.date||''};})
+      );
+      var matched=allMem.find(function(m){return r.context.indexOf(m.label)>-1||r.context.indexOf(m.sub)>-1;});
+      if(matched){ctxLogo=matched.logo;ctxSub=matched.sub+(matched.date?' · '+matched.date:'');}
+
+      ctxCard='<div style="display:inline-flex;align-items:center;gap:8px;background:var(--gp);border:1px solid var(--g);border-radius:10px;padding:6px 10px;margin-bottom:10px;max-width:100%">'+
+        (ctxLogo?'<img src="'+esc(ctxLogo)+'" style="width:28px;height:28px;border-radius:5px;object-fit:contain;background:var(--bl);flex-shrink:0"/>':'<div style="width:28px;height:28px;border-radius:5px;background:var(--bm);flex-shrink:0;display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--mu)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg></div>')+
+        '<div style="min-width:0">'+
+          '<div style="font-size:.63rem;font-weight:700;color:var(--gd);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:200px">'+esc(r.context.split(' — ')[0])+'</div>'+
+          (ctxSub?'<div style="font-size:.54rem;color:var(--mu)">'+esc(ctxSub)+'</div>':'')+
+        '</div>'+
+      '</div>';
+    }
+
+    // Contact pills
+    var contactHtml='';
+    if(r.contactEmail||r.contactPhone||r.contactLinkedin){
+      contactHtml='<div style="display:flex;gap:7px;flex-wrap:wrap;margin-top:10px">';
+      if(r.contactEmail)
+        contactHtml+='<a href="mailto:'+esc(r.contactEmail)+'" style="display:inline-flex;align-items:center;gap:4px;font-size:.58rem;font-weight:600;color:var(--gd);text-decoration:none;background:var(--gp);padding:4px 10px;border-radius:20px;border:1px solid var(--g)">'+
+          '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>'+
+          esc(r.contactEmail)+'</a>';
+      if(r.contactPhone)
+        contactHtml+='<a href="tel:'+esc((r.contactPhone||'').replace(/\s/g,''))+'" style="display:inline-flex;align-items:center;gap:4px;font-size:.58rem;font-weight:600;color:var(--gd);text-decoration:none;background:var(--gp);padding:4px 10px;border-radius:20px;border:1px solid var(--g)">'+
+          '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .82h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>'+
+          esc(r.contactPhone)+'</a>';
+      if(r.contactLinkedin)
+        contactHtml+='<a href="'+esc(r.contactLinkedin)+'" target="_blank" style="display:inline-flex;align-items:center;gap:4px;font-size:.58rem;font-weight:600;color:var(--gd);text-decoration:none;background:var(--gp);padding:4px 10px;border-radius:20px;border:1px solid var(--g)">'+
+          '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>'+
+          'LinkedIn</a>';
+      contactHtml+='</div>';
+    }
+
+    // Text — always show English if available (EN is canonical), toggle to original
+    var textHtml='';
+    if(r.textEn||r.text){
+      var displayText=r.textEn||r.text;   // English preferred
+      var origText=r.text||'';
+      var hasOrig=!!(r.textEn&&origText&&origText!==r.textEn);
+      var togBtn=hasOrig
+        ?'<button onclick="toggleRefLang(&apos;'+r.id+'&apos;)" id="rtog-'+r.id+'" style="font-size:.53rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:none;border:1px solid var(--bm);padding:3px 9px;border-radius:20px;cursor:pointer;color:var(--mu)">🌐 Show Original</button>'
+        :'';
+      textHtml='<div style="margin:10px 0">'+
+        '<p id="rtxt-'+r.id+'" style="font-size:.82rem;line-height:1.9;color:var(--tm);font-weight:300;font-style:italic;margin-bottom:6px">&ldquo;'+esc(displayText)+'&rdquo;</p>'+
+        togBtn+
+      '</div>';
+      // Store both for toggle
+      window._refTexts=window._refTexts||{};
+      window._refTexts[r.id]={en:displayText,orig:origText,showingEn:true};
+    }
+
+    // Name label with title/org as subtitle
+    var nameHtml='';
+    if(r.name){
+      nameHtml='<div style="font-family:\'Barlow Condensed\',sans-serif;font-size:1.05rem;font-weight:700;color:var(--txt);letter-spacing:.04em;text-transform:uppercase;margin-bottom:1px">'+esc(r.name)+'</div>';
+    }
+    var metaHtml='';
+    if(r.title||r.org){
+      metaHtml='<div style="font-size:.68rem;margin-bottom:1px">'+
+        (r.title?'<span style="color:var(--gd);font-weight:600">'+esc(r.title)+'</span>':'')+
+        (r.title&&r.org?'<span style="color:var(--mu)"> at </span>':'')+
+        (r.org?'<span style="color:var(--mu)">'+esc(r.org)+'</span>':'')+
+      '</div>';
+    }
+    var periodHtml=r.period?'<div style="font-size:.59rem;color:var(--mu);margin-bottom:6px">'+esc(r.period)+'</div>':'';
+
+    h+='<div style="display:flex;gap:20px;padding:28px 0;border-bottom:1px solid var(--bm);align-items:flex-start">'+
+      '<div style="flex-shrink:0;padding-top:2px">'+avatar+'</div>'+
+      '<div style="flex:1;min-width:0">'+
+        nameHtml+metaHtml+periodHtml+
+        (stars?'<div style="font-size:.88rem;letter-spacing:1px;margin-bottom:8px">'+stars+'</div>':'')+
+        ctxCard+
+        textHtml+contactHtml+
+      '</div>'+
+    '</div>';
+  });
+
+  h+='<div style="padding:36px 0 10px;text-align:center">'+
+    '<button onclick="go(\'ref-form-pg\');initRefForm()" style="display:inline-flex;align-items:center;gap:7px;padding:12px 30px;border-radius:50px;background:var(--blk);color:var(--gl);border:none;font-family:\'Raleway\',sans-serif;font-size:.63rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer">Write a Reference ✦</button>'+
+  '</div>';
+  el.innerHTML=h;
+}
+
+function setRefFilter(stars){
+  _refFilter=stars;
+  renderRefs();
+}
+/* ── Lang toggle — EN shown by default, toggle to original ── */
 function toggleRefLang(id){
   var p=document.getElementById('rtxt-'+id);
   var btn=document.getElementById('rtog-'+id);
   if(!p||!btn)return;
-  var r = (SD.refs||[]).find(function(x){return x.id===id;});
-  if(!r)return;
-  _refLangState[id]=!_refLangState[id];
-  var text = _refLangState[id] ? (r.text || r.textEn) : (r.textEn || r.text);
-  p.innerHTML='&ldquo;'+esc(text)+'&rdquo;';
-  btn.textContent = _refLangState[id] ? '🌐 Show English' : '🌐 Show Original';
+  var texts=(window._refTexts||{})[id]||{en:'',orig:'',showingEn:true};
+  texts.showingEn=!texts.showingEn;
+  if(texts.showingEn){
+    p.innerHTML='&ldquo;'+esc(texts.en)+'&rdquo;';
+    btn.textContent='🌐 Show Original';
+  }else{
+    p.innerHTML='&ldquo;'+esc(texts.orig)+'&rdquo;';
+    btn.textContent='🌐 Show English';
+  }
 }
 
+/* ── Context modal ── */
 function openCtxModal(){
   var modal=document.getElementById('ctx-modal');
   if(!modal)return;
@@ -1900,28 +2055,19 @@ function ctxSelect(id,label){
   document.getElementById('ctx-modal').style.display='none';
 }
 
+/* ── Rating ── */
+var _rfRating=0;
 function setRfRating(v){
+  _rfRating=v;
   document.getElementById('rf-rating').value=v;
   var labels=['','Fair','Good','Great','Excellent','Outstanding'];
-  var l=document.getElementById('rf-rating-label');if(l)l.textContent=labels[v]||'';
+  document.getElementById('rf-rating-label').textContent=labels[v]||'';
   document.querySelectorAll('#rf-stars span').forEach(function(s){
     s.style.color=parseInt(s.getAttribute('data-v'))<=v?'#f0a500':'var(--bm)';
   });
 }
 
-function rfNameToAvatar(){
-  if(window._rfPhotoData)return;
-  var name=(document.getElementById('rf-name')||{}).value||'';
-  var prev=document.getElementById('rf-photo-preview');
-  if(!prev)return;
-  var ini=rfInitials(name).toUpperCase();
-  if(ini&&ini!=='?'){
-    prev.innerHTML='<span style="font-family:\'Playfair Display\',serif;font-style:italic;font-weight:700;font-size:1.4rem;color:var(--gd)">'+ini+'</span>';
-  }else{
-    prev.innerHTML='<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--mu)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>';
-  }
-}
-
+/* ── Photo upload ── */
 function rfPhotoChange(inp){
   if(!inp.files||!inp.files[0])return;
   var reader=new FileReader();
@@ -1933,7 +2079,9 @@ function rfPhotoChange(inp){
   reader.readAsDataURL(inp.files[0]);
 }
 
+/* ── Reset form ── */
 function initRefForm(){
+  _rfRating=0;
   window._rfPhotoData=null;
   ['rf-name','rf-title','rf-org','rf-period','rf-text',
    'rf-contact-email','rf-contact-phone','rf-contact-linkedin',
@@ -1947,16 +2095,20 @@ function initRefForm(){
   var cw=document.getElementById('ctx-custom-wrap');
   if(cw)cw.style.display='none';
   setRfRating(0);
-  document.getElementById('rf-err').style.display='none';
-  document.getElementById('rf-form-inner').style.display='';
-  document.getElementById('rf-succ').style.display='none';
+  var err=document.getElementById('rf-err');if(err)err.style.display='none';
+  var inner=document.getElementById('rf-form-inner');
+  if(inner)inner.style.display='';
+  var succ=document.getElementById('rf-succ');
+  if(succ)succ.style.display='none';
 }
 
-async function submitRef(){
+/* ── Submit — writes into SD.pendingRefs (in-page, no token needed) ── */
+function submitRef(){
   var ctxId=document.getElementById('rf-ctx-id').value;
   var ctxLabel=document.getElementById('rf-ctx-label').value;
   var ctxCustom=(document.getElementById('rf-ctx-custom')||{}).value||'';
   var context=ctxId==='other'?(ctxCustom||'Other'):ctxLabel;
+
   var entry={
     id:'ref_'+Date.now(),
     savedAt:new Date().toISOString(),
@@ -1965,76 +2117,45 @@ async function submitRef(){
     title:(document.getElementById('rf-title').value||'').trim(),
     org:(document.getElementById('rf-org').value||'').trim(),
     context:context,
-    contextId:ctxId,
     period:(document.getElementById('rf-period').value||'').trim(),
-    rating:parseInt(document.getElementById('rf-rating').value)||5,
+    rating:parseInt(document.getElementById('rf-rating').value||'0')||0,
     text:(document.getElementById('rf-text').value||'').trim(),
+    textEn:'',
     contactEmail:(document.getElementById('rf-contact-email').value||'').trim(),
     contactPhone:(document.getElementById('rf-contact-phone').value||'').trim(),
     contactLinkedin:(document.getElementById('rf-contact-linkedin').value||'').trim(),
     photo:window._rfPhotoData||''
   };
 
-  var err=document.getElementById('rf-err');
-  var btn=document.querySelector('#ref-form-pg .fsub');
-  
-  if(!entry.text || !entry.name){
-    if(err){err.textContent='Please fill in at least your name and reference text.'; err.style.display='block';}
+  if(!entry.name&&!entry.text&&!entry.contactEmail&&!entry.org){
+    var err=document.getElementById('rf-err');
+    if(err){err.textContent='Please fill in at least your name or reference text.';err.style.display='block';}
     return;
   }
-  if(err)err.style.display='none';
 
-  var proxyUrl = SD.googleScriptUrl;
-  if(!proxyUrl) { if(err){err.textContent='Script URL not set in Admin.'; err.style.display='block';} return; }
-  
-  if(btn){btn.disabled=true;btn.textContent='Sending...';}
-  try {
-    var r = await fetch(proxyUrl, {
-      method: 'POST',
-      body: JSON.stringify({
-        type: 'reference',
-        entry: entry,
-        // Script needs these to know where to write
-        ghUser: SD.refsUser || 'ErenAkcam',
-        ghRepo: SD.refsRepo || 'Personal.Website',
-        ghPath: SD.refsPath || 'index.html',
-        ghToken: SD.refsToken // This should be set in Admin
-      })
-    });
-    if(r.ok) {
-      document.getElementById('rf-form-inner').style.display='none';
-      document.getElementById('rf-succ').style.display='block';
-      setTimeout(function(){ go('ref'); }, 2500);
-    } else { throw new Error('Server error'); }
-  } catch(e) {
-    if(err){err.textContent='Error: ' + e.message; err.style.display='block';}
-    if(btn){btn.disabled=false;btn.textContent='Submit Reference';}
-  }
+  // Append to SD.pendingRefs — lives in page memory
+  SD.pendingRefs=SD.pendingRefs||[];
+  SD.pendingRefs.unshift(entry);
+
+  // Show success then auto-navigate back to references page
+  var inner=document.getElementById('rf-form-inner');
+  var succ=document.getElementById('rf-succ');
+  if(inner)inner.style.display='none';
+  if(succ)succ.style.display='block';
   window.scrollTo(0,0);
-}
-
-function attachMailHandlers(){
-  document.querySelectorAll('.site-email').forEach(function(el){
-    el.onclick=function(e){
-      if(SD.googleScriptUrl) {
-        // If script is set, we prefer the contact page form, but if they click a direct link:
-        // (Optional: Redirect to contact page or let default mailto work)
-      }
-    };
-  });
+  // Auto-return after 3s
+  setTimeout(function(){go('ref');initRefForm();},3000);
 }
 
 /* ── INIT ── */
 applyData();
 attachMailHandlers();
-
-// Instant Navigation check
+// Restore last page from hash — instant, no flash
 (function(){
-  var id = window.location.hash.replace('#','');
-  if(PAGES.indexOf(id) > -1) {
-    showPage(id);
-  } else {
-    showPage('pp');
+  var h=window.location.hash.replace('#','');
+  var valid=['pp','mem','sk','prt','cer','ref','con'];
+  if(h&&valid.indexOf(h)>-1){
+    showPage(h);
   }
 })();
 
