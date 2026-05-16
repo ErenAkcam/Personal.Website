@@ -397,12 +397,11 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
     </button>
     <ul class="nm" id="nav-menu">
       <li><a id="n-pp"  class="on" onclick="go('pp');closeMobNav()"  data-key="nav_profile">PROFILE</a></li>
-      <li><a id="n-mem"            onclick="go('mem');closeMobNav()">JOURNEY</a></li>
+      <li><a id="n-mem"            onclick="go('mem');closeMobNav()" data-key="nav_memory">MEMORY</a></li>
       <li><a id="n-sk"             onclick="go('sk');closeMobNav()"  data-key="nav_skills">SKILLS</a></li>
       <li style="display:none"><a id="n-prt" onclick="go('prt');closeMobNav()" data-key="nav_portfolio">PORTFOLIO</a></li>
       <li><a id="n-cer"            onclick="go('cer');closeMobNav()" data-key="nav_certs">CERTIFICATES</a></li>
-      <li><a id="n-ref"            onclick="go('ref');closeMobNav()">REFERENCES</a></li>
-      <li><a id="n-con"            onclick="go('con');closeMobNav()">CONTACT</a></li>
+      <li><a id="n-con"            onclick="go('con');closeMobNav()" data-key="nav_contact">CONTACT</a></li>
     </ul>
   </nav>
 </div>
@@ -417,7 +416,7 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
         <p class="hr2" id="hero-desc">Computer-Aided Machine Drawing student &amp; freelance graphic designer since 2022.</p>
       </div>
       <div class="hb">
-        <a class="bg" onclick="go('mem')">My Journey</a>
+        <a class="bg" onclick="go('mem')" data-key="btn_story">My Story</a>
         <a class="bo" onclick="go('sk')"  data-key="btn_skills">View Skills</a>
       </div>
     </div>
@@ -445,7 +444,7 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
 
 <!-- MEMORY PAGE -->
 <div id="mem" class="pg">
-  <div class="pb"><h1>Journey</h1><div class="pbs">The Story So Far</div></div>
+  <div class="pb"><h1 data-key="nav_memory">Memory</h1><div class="pbs" data-key="mem_sub">Experience &amp; Education</div></div>
   <div class="pbd" id="memory-body"><p style="color:var(--mu);font-size:.8rem">Loading...</p></div>
   <div class="pf"><span class="pfl" data-key="footer_email_label">E-Mail</span><a class="pfe site-email" href="#">eren.akcamm@gmail.com</a></div>
 </div>
@@ -483,7 +482,7 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
 
 <!-- CONTACT PAGE -->
 <div id="con" class="pg">
-  <div class="pb"><h1>Contact</h1><div class="pbs">Get in Touch</div></div>
+  <div class="pb"><h1 data-key="nav_contact">Contact</h1><div class="pbs" data-key="con_sub">Get in Touch</div></div>
   <div class="pbd">
     <div class="ctl">
       <div class="ci">
@@ -519,190 +518,6 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
   </div>
   <div class="pf"><span class="pfl" data-key="footer_email_label">E-Mail</span><a class="pfe site-email" href="#">eren.akcamm@gmail.com</a></div>
 </div>
-
-<!-- REFERENCES PAGE -->
-<div id="ref" class="pg">
-  <div class="pb"><h1>References</h1><div class="pbs">Recommendations &amp; Testimonials</div></div>
-  <!-- Rating summary + filter -->
-  <div id="ref-rating-bar" style="display:none;padding:20px 5vw 0;max-width:900px;margin:0 auto">
-    <div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:16px">
-      <div style="display:flex;flex-direction:column;align-items:center;gap:2px">
-        <div id="ref-avg-num" style="font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:2.2rem;color:var(--gd);line-height:1">—</div>
-        <div id="ref-avg-stars" style="font-size:1rem;letter-spacing:2px;color:var(--bm)">★★★★★</div>
-        <div id="ref-avg-count" style="font-size:.57rem;color:var(--mu)">0 references</div>
-      </div>
-      <div id="ref-filter-btns" style="display:flex;gap:6px;flex-wrap:wrap"></div>
-    </div>
-  </div>
-  <div class="pbd" id="ref-body"><p style="color:var(--mu);font-size:.8rem">Loading...</p></div>
-  <div class="pf"><span class="pfl">E-Mail</span><a class="pfe site-email" href="#">eren.akcamm@gmail.com</a></div>
-</div>
-
-<!-- REFERENCE FORM PAGE (gizli — sadece sitedeki butonla erişilir) -->
-<div id="ref-form-pg" class="pg">
-  <div class="pb">
-    <h1>Write a Reference</h1>
-    <div class="pbs">Share your experience working with Eren</div>
-  </div>
-  <div class="pbd">
-
-    <!-- Context selector modal overlay -->
-    <div id="ctx-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.78);z-index:8000;align-items:center;justify-content:center;backdrop-filter:blur(6px)">
-      <div style="background:var(--bl);border-radius:20px;padding:32px 28px;max-width:540px;width:92vw;max-height:82vh;overflow-y:auto;box-shadow:0 24px 64px rgba(0,0,0,.45)">
-        <div style="font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:1.35rem;color:var(--blk);margin-bottom:6px">How do you know Eren?</div>
-        <p style="font-size:.72rem;color:var(--mu);margin-bottom:22px;line-height:1.7">Select the experience or education that best describes your relationship, or choose "Other".</p>
-        <div id="ctx-list" style="display:flex;flex-direction:column;gap:9px;margin-bottom:16px"></div>
-        <div style="border-top:1px solid var(--bm);padding-top:14px;margin-top:4px">
-          <div onclick="ctxSelect('other','Other / Custom')" style="display:flex;align-items:center;gap:12px;padding:13px 15px;border:1.5px solid var(--bm);border-radius:12px;cursor:pointer;background:var(--bej);transition:border-color .15s" onmouseenter="this.style.borderColor='var(--g)'" onmouseleave="this.style.borderColor='var(--bm)'">
-            <div style="width:40px;height:40px;border-radius:9px;background:var(--bm);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--mu)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
-            </div>
-            <div>
-              <div style="font-size:.84rem;font-weight:700;color:var(--txt)">Other / Custom</div>
-              <div style="font-size:.63rem;color:var(--mu)">Describe your own context</div>
-            </div>
-          </div>
-        </div>
-        <button onclick="document.getElementById('ctx-modal').style.display='none'" style="margin-top:16px;width:100%;padding:11px;border-radius:9px;background:var(--bm);border:none;font-family:'Raleway',sans-serif;font-size:.64rem;font-weight:700;color:var(--txt);cursor:pointer;letter-spacing:.08em;text-transform:uppercase">Cancel</button>
-      </div>
-    </div>
-
-    <div id="rf-form-inner" style="max-width:740px;margin:0 auto">
-      <!-- Header note -->
-      <div style="margin-bottom:30px;padding-bottom:22px;border-bottom:2px solid var(--g)">
-        <div style="font-size:.54rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--g);margin-bottom:8px">Voluntary Reference Form</div>
-        <p style="font-size:.8rem;line-height:1.78;color:var(--mu)">All fields are optional. Fill in as much or as little as you're comfortable with. Your reference will be reviewed before being published on the site.</p>
-      </div>
-
-      <!-- SECTION 1: Identity -->
-      <div style="margin-bottom:26px">
-        <div style="font-size:.5rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gd);margin-bottom:14px;display:flex;align-items:center;gap:8px"><span style="display:inline-block;width:18px;height:18px;border-radius:50%;background:var(--gd);color:var(--bl);font-size:.55rem;font-weight:700;text-align:center;line-height:18px;flex-shrink:0">1</span>Your Identity</div>
-        <!-- Photo + name row -->
-        <div style="display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:start">
-          <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
-            <div id="rf-photo-preview" style="width:84px;height:84px;border-radius:50%;background:var(--gp);border:2.5px solid var(--g);overflow:hidden;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:1.3rem;color:var(--gd)">
-              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--mu)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-            </div>
-            <label style="font-size:.54rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--gd);cursor:pointer;background:var(--gp);padding:5px 11px;border-radius:20px;border:1px solid var(--g);transition:background .15s" onmouseenter="this.style.background='var(--gl)'" onmouseleave="this.style.background='var(--gp)'">
-              Upload Photo
-              <input type="file" accept="image/*" style="display:none" onchange="rfPhotoChange(this)"/>
-            </label>
-            <div style="font-size:.5rem;color:var(--mu)">Optional</div>
-          </div>
-          <div style="display:flex;flex-direction:column;gap:11px">
-            <div>
-              <label class="flbl">Full Name <span style="color:var(--mu);font-weight:400;text-transform:none;letter-spacing:0">(optional)</span></label>
-              <input class="finp" id="rf-name" type="text" placeholder="Your full name" oninput="rfNameToAvatar()"/>
-            </div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-              <div>
-                <label class="flbl">Title / Position <span style="color:var(--mu);font-weight:400;text-transform:none;letter-spacing:0">(opt.)</span></label>
-                <input class="finp" id="rf-title" type="text" placeholder="e.g. Department Head"/>
-              </div>
-              <div>
-                <label class="flbl">Institution / Company <span style="color:var(--mu);font-weight:400;text-transform:none;letter-spacing:0">(opt.)</span></label>
-                <input class="finp" id="rf-org" type="text" placeholder="e.g. Weg Group"/>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- SECTION 2: Relationship -->
-      <div style="margin-bottom:26px">
-        <div style="font-size:.5rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gd);margin-bottom:14px;display:flex;align-items:center;gap:8px"><span style="display:inline-block;width:18px;height:18px;border-radius:50%;background:var(--gd);color:var(--bl);font-size:.55rem;font-weight:700;text-align:center;line-height:18px;flex-shrink:0">2</span>Relationship with Eren</div>
-        <div style="margin-bottom:12px">
-          <label class="flbl">Context <span style="color:var(--mu);font-weight:400;text-transform:none;letter-spacing:0">(optional)</span></label>
-          <div onclick="openCtxModal()" style="display:flex;align-items:center;justify-content:space-between;padding:11px 14px;border:1.5px solid var(--bm);border-radius:9px;background:var(--bej);cursor:pointer;transition:border-color .15s;min-height:48px" onmouseenter="this.style.borderColor='var(--g)'" onmouseleave="this.style.borderColor='var(--bm)'">
-            <span id="ctx-display-text" style="font-size:.8rem;color:var(--mu)">Click to select context...</span>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--mu)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-          <div id="ctx-custom-wrap" style="display:none;margin-top:8px">
-            <input class="finp" id="rf-ctx-custom" type="text" placeholder="Describe how you know Eren..."/>
-          </div>
-          <input type="hidden" id="rf-ctx-id" value=""/>
-          <input type="hidden" id="rf-ctx-label" value=""/>
-        </div>
-        <div>
-          <label class="flbl">Period Worked Together <span style="color:var(--mu);font-weight:400;text-transform:none;letter-spacing:0">(optional)</span></label>
-          <input class="finp" id="rf-period" type="text" placeholder="e.g. 2024 – 2025 or Summer 2025"/>
-        </div>
-      </div>
-
-      <!-- SECTION 3: Evaluation -->
-      <div style="margin-bottom:26px">
-        <div style="font-size:.5rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gd);margin-bottom:14px;display:flex;align-items:center;gap:8px"><span style="display:inline-block;width:18px;height:18px;border-radius:50%;background:var(--gd);color:var(--bl);font-size:.55rem;font-weight:700;text-align:center;line-height:18px;flex-shrink:0">3</span>Evaluation</div>
-        <!-- Rating -->
-        <div style="margin-bottom:16px">
-          <label class="flbl">Overall Rating <span style="color:var(--mu);font-weight:400;text-transform:none;letter-spacing:0">(optional — out of 5)</span></label>
-          <div style="display:flex;gap:4px;align-items:center;margin-top:6px" id="rf-stars">
-            <span onclick="setRfRating(1)" data-v="1" style="font-size:1.9rem;cursor:pointer;color:var(--bm);transition:color .12s;line-height:1">★</span>
-            <span onclick="setRfRating(2)" data-v="2" style="font-size:1.9rem;cursor:pointer;color:var(--bm);transition:color .12s;line-height:1">★</span>
-            <span onclick="setRfRating(3)" data-v="3" style="font-size:1.9rem;cursor:pointer;color:var(--bm);transition:color .12s;line-height:1">★</span>
-            <span onclick="setRfRating(4)" data-v="4" style="font-size:1.9rem;cursor:pointer;color:var(--bm);transition:color .12s;line-height:1">★</span>
-            <span onclick="setRfRating(5)" data-v="5" style="font-size:1.9rem;cursor:pointer;color:var(--bm);transition:color .12s;line-height:1">★</span>
-            <span id="rf-rating-label" style="font-size:.7rem;color:var(--mu);margin-left:10px;font-weight:600"></span>
-          </div>
-          <input type="hidden" id="rf-rating" value="0"/>
-        </div>
-        <!-- Reference text -->
-        <div>
-          <label class="flbl">Reference / Recommendation Text <span style="color:var(--mu);font-weight:400;text-transform:none;letter-spacing:0">(optional)</span></label>
-          <textarea class="finp" id="rf-text" rows="6" placeholder="Share your experience working with Eren — his skills, character, reliability, work ethic, standout moments...&#10;&#10;You may write in any language."></textarea>
-          <div style="font-size:.53rem;color:var(--mu);margin-top:5px">✦ You may write in any language — it will be shown as-is, with a translation toggle for visitors.</div>
-        </div>
-      </div>
-
-      <!-- SECTION 4: Contact -->
-      <div style="margin-bottom:30px">
-        <div style="font-size:.5rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gd);margin-bottom:14px;display:flex;align-items:center;gap:8px"><span style="display:inline-block;width:18px;height:18px;border-radius:50%;background:var(--gd);color:var(--bl);font-size:.55rem;font-weight:700;text-align:center;line-height:18px;flex-shrink:0">4</span>Contact Information <span style="font-size:.5rem;font-weight:400;text-transform:none;letter-spacing:0;color:var(--mu);margin-left:6px">(all optional — shown publicly if provided)</span></div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
-          <div>
-            <label class="flbl">
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:3px"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              Email Address
-            </label>
-            <input class="finp" id="rf-contact-email" type="email" placeholder="your@email.com"/>
-          </div>
-          <div>
-            <label class="flbl">
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:3px"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .82h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-              Phone
-            </label>
-            <input class="finp" id="rf-contact-phone" type="tel" placeholder="+90 5xx xxx xx xx"/>
-          </div>
-        </div>
-        <div>
-          <label class="flbl">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:3px"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-            LinkedIn Profile URL
-          </label>
-          <input class="finp" id="rf-contact-linkedin" type="url" placeholder="https://linkedin.com/in/yourname"/>
-        </div>
-      </div>
-
-      <!-- Submit -->
-      <div id="rf-err" style="font-size:.71rem;color:#c0392b;margin-bottom:12px;display:none"></div>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
-        <button class="fsub" onclick="submitRef()" style="width:auto;padding:13px 36px">Submit Reference</button>
-        <button onclick="go('ref')" style="padding:12px 24px;border-radius:9px;background:none;border:1.5px solid var(--bm);font-family:'Raleway',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);cursor:pointer">Cancel</button>
-      </div>
-
-    </div>
-
-    <!-- Success state — outside form inner so it shows after hiding form -->
-    <div id="rf-succ" style="display:none;max-width:740px;margin:0 auto;text-align:center;padding:64px 20px">
-      <div style="width:64px;height:64px;border-radius:50%;background:var(--gp);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;border:2px solid var(--g)">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--gd)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-      </div>
-      <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:1.4rem;font-weight:700;color:var(--gd);margin-bottom:10px">Thank you!</div>
-      <div style="font-size:.8rem;color:var(--mu);line-height:1.8;max-width:360px;margin:0 auto">Your reference has been submitted and will be reviewed before it appears on the site.</div>
-      <button onclick="go('ref');initRefForm()" style="display:inline-block;margin-top:28px;padding:12px 30px;border-radius:9px;background:var(--gd);color:var(--bl);border:none;font-family:'Raleway',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer">← Back to References</button>
-    </div>
-  </div>
-  <div class="pf"><span class="pfl">E-Mail</span><a class="pfe site-email" href="#">eren.akcamm@gmail.com</a></div>
-</div>
-
 
 <div class="lb" id="lb">
   <button class="lbx" onclick="closeLb()">&#215;</button>
@@ -1121,10 +936,7 @@ var DEF = {
   "colorBejDark": "#9ab8a8",
   "colorText": "#1e2e28",
   "colorTextMid": "#4a6a58",
-  "colorTextMuted": "#6b7a6e",
-  "refs": undefined,
-  "pendingRefs": undefined,
-  "gasUrl": ""
+  "colorTextMuted": "#6b7a6e"
 };
 
 /* ── Helpers ── */
@@ -1260,7 +1072,6 @@ function applyData(){
     renderSkills();
     renderCerts();
     preloadCertImages();
-    renderRefs();
     showCats();
   }catch(e){console.warn('applyData error:',e);}
 }
@@ -1502,7 +1313,7 @@ document.addEventListener('click',function(e){
 });
 
 /* ── PAGE NAVIGATION ── */
-var PAGES=['pp','mem','sk','prt','cer','con','ref','ref-form-pg'];
+var PAGES=['pp','mem','sk','prt','cer','con'];
 var pageHistory=[];
 
 function showPage(id){
@@ -1517,15 +1328,9 @@ function showPage(id){
   if(nv)nv.classList.add('on');
   window.scrollTo(0,0);
   if(id==='sk')setTimeout(animateBars,80);
-  if(id==='ref')renderRefs();
   if(id==='prt')showCats();
   var bb=document.getElementById('mob-back-btn');
   if(bb)bb.style.display=(id==='pp'?'none':'');
-  // Update hash without triggering scroll
-  try{
-    var safe=['pp','mem','sk','prt','cer','ref','con'];
-    if(safe.indexOf(id)>-1)history.replaceState(null,'','#'+id);
-  }catch(e){}
 }
 
 function go(id){
@@ -1550,55 +1355,87 @@ function animateBars(){
 }
 
 /* ── Contact form ── */
-var FORMSPREE_ID = ''; // leave blank to use mailto fallback
+/* Formspree entegrasyonu — formspree.io'dan ücretsiz form ID alın */
+var FORMSPREE_ID = 'mwvrnjzl';
 
 function sendMsg(){
   var nameEl=document.getElementById('f-name'),
       emailEl=document.getElementById('f-email'),
       subjEl=document.getElementById('f-subj'),
-      msgEl=document.getElementById('f-msg');
-  var name=(nameEl?nameEl.value:'').trim();
-  var email=(emailEl?emailEl.value:'').trim();
-  var subj=(subjEl?subjEl.value:'').trim();
-  var msg=(msgEl?msgEl.value:'').trim();
-  if(!msg){return;}
+      msgEl=document.getElementById('f-msg'),
+      err=document.getElementById('f-err'),
+      btn=document.querySelector('.fsub');
+  if(!nameEl||!emailEl||!msgEl)return;
 
-  var btn=document.querySelector('.fsub');
-  var succ=document.getElementById('f-succ');
-  if(btn)btn.disabled=true;
+  var name=nameEl.value.trim(),
+      email=emailEl.value.trim(),
+      subj=subjEl?subjEl.value.trim():'',
+      msg=msgEl.value.trim();
 
-  // Try Google Apps Script first, fallback to mailto
-  var gasUrl=SD.gasUrl||'';
-  if(gasUrl){
-    fetch(gasUrl,{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({name:name,email:email,subject:subj||'Portfolio Contact',message:msg})
-    })
-    .then(function(r){return r.json();})
-    .then(function(d){
-      if(btn)btn.disabled=false;
-      if(succ)succ.style.display='flex';
-      if(nameEl)nameEl.value='';
-      if(emailEl)emailEl.value='';
-      if(subjEl)subjEl.value='';
-      if(msgEl)msgEl.value='';
-      setTimeout(function(){if(succ)succ.style.display='none';},5000);
-    })
-    .catch(function(){
-      if(btn)btn.disabled=false;
-      // Fallback to mailto
-      _mailtoFallback(name,email,subj,msg);
-    });
-  } else {
-    if(btn)btn.disabled=false;
-    _mailtoFallback(name,email,subj,msg);
+  // Validation
+  if(!name||!email||!msg){
+    err.textContent='Please fill in Name, Email and Message fields.';
+    err.style.display='block';
+    err.scrollIntoView({behavior:'smooth',block:'nearest'});
+    return;
   }
-}
-function _mailtoFallback(name,email,subj,msg){
-  var em=SD.email||'eren.akcamm@gmail.com';
-  var body='From: '+name+(email?' <'+email+'>':'')+'\n\n'+msg;
-  window.location.href='mailto:'+em+'?subject='+encodeURIComponent((subj||'Portfolio Contact')+' — from '+name)+'&body='+encodeURIComponent(body);
+  if(!/^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/.test(email)){
+    err.textContent='Please enter a valid email address.';
+    err.style.display='block';
+    return;
+  }
+  err.style.display='none';
+
+  // Formspree ID girilmemişse mailto fallback
+  if(!FORMSPREE_ID||FORMSPREE_ID==='YOUR_FORM_ID'){
+    var recipient=SD.email||'eren.akcamm@gmail.com';
+    var mailtoLink='mailto:'+recipient+
+      '?subject='+encodeURIComponent((subj||'Portfolio Contact')+' — from '+name)+
+      '&body='+encodeURIComponent('Name: '+name+'\nEmail: '+email+'\n\n'+msg);
+    var a=document.createElement('a');a.href=mailtoLink;a.style.display='none';
+    document.body.appendChild(a);a.click();document.body.removeChild(a);
+    setTimeout(function(){
+      var wrap=document.getElementById('cf-wrap');
+      var succ=document.getElementById('f-succ');
+      if(wrap)wrap.style.display='none';
+      if(succ)succ.style.display='block';
+    },600);
+    return;
+  }
+
+  // Formspree ile gerçek mail gönder
+  if(btn){btn.disabled=true;btn.textContent='Sending...';}
+
+  fetch('https://formspree.io/f/'+FORMSPREE_ID,{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify({
+      name:name,
+      email:email,
+      subject:subj||'Portfolio Contact',
+      message:msg,
+      _replyto:email,
+      _subject:(subj||'Portfolio Contact')+' — from '+name
+    })
+  })
+  .then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d};});})
+  .then(function(res){
+    if(btn){btn.disabled=false;btn.textContent='Send Message';}
+    if(res.ok){
+      var wrap=document.getElementById('cf-wrap');
+      var succ=document.getElementById('f-succ');
+      if(wrap)wrap.style.display='none';
+      if(succ)succ.style.display='block';
+    }else{
+      err.textContent=res.data.error||'Something went wrong. Please try again.';
+      err.style.display='block';
+    }
+  })
+  .catch(function(){
+    if(btn){btn.disabled=false;btn.textContent='Send Message';}
+    err.textContent='Network error. Please check your connection and try again.';
+    err.style.display='block';
+  });
 }
 
 /* ── Lightbox ── */
@@ -1791,373 +1628,9 @@ function attachMailHandlers(){
   if(cem)cem.addEventListener('click',handleMailClick);
 }
 
-
-/* ══════════════════════════════════════
-   REFERENCES SYSTEM
-   - Approved refs: SD.refs (embedded by admin at deploy)
-   - Pending refs:  SD.pendingRefs (embedded by admin at deploy, submitted via form)
-   Form writes to SD.pendingRefs in-page; admin reads from GitHub HTML
-══════════════════════════════════════ */
-
-/* ── Read approved refs for display ── */
-function lRefs(){ return (SD&&SD.refs)||[]; }
-
-/* ── Avatar helpers ── */
-function rfInitials(name){
-  if(!name)return '';
-  var p=name.trim().split(/\s+/);
-  return ((p[0]||'')[0]||'').toUpperCase()+((p[1]||'')[0]||'').toUpperCase();
-}
-
-function rfAvatarHtml(r,size){
-  size=size||64;
-  if(r.photo){
-    return '<img src="'+esc(r.photo)+'" style="width:'+size+'px;height:'+size+'px;border-radius:50%;object-fit:cover;border:3px solid var(--gp);flex-shrink:0"/>';
-  }
-  var ini=rfInitials(r.name||'');
-  var inner=ini
-    ?'<span style="font-family:\'Playfair Display\',serif;font-style:italic;font-weight:700;font-size:'+(size*0.34)+'px;color:var(--gd)">'+ini+'</span>'
-    :'<svg width="'+(size*0.46)+'" height="'+(size*0.46)+'" viewBox="0 0 24 24" fill="none" stroke="var(--gd)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>';
-  return '<div style="width:'+size+'px;height:'+size+'px;border-radius:50%;background:var(--gp);border:3px solid var(--g);display:flex;align-items:center;justify-content:center;flex-shrink:0">'+inner+'</div>';
-}
-
-/* ── Live avatar from initials while typing name ── */
-function rfNameToAvatar(){
-  if(window._rfPhotoData)return;
-  var name=(document.getElementById('rf-name')||{}).value||'';
-  var prev=document.getElementById('rf-photo-preview');
-  if(!prev)return;
-  var ini=rfInitials(name);
-  if(ini){
-    prev.innerHTML='<span style="font-family:\'Playfair Display\',serif;font-style:italic;font-weight:700;font-size:1.4rem;color:var(--gd)">'+ini+'</span>';
-  }else{
-    prev.innerHTML='<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--mu)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>';
-  }
-}
-
-/* ── Render approved references ── */
-var _refFilter=0; // 0=all, 1-5=star filter
-
-function renderRefs(){
-  var el=document.getElementById('ref-body');
-  if(!el)return;
-  var allRefs=lRefs().filter(function(r){return r.approved;});
-
-  // Build rating summary
-  var ratingBar=document.getElementById('ref-rating-bar');
-  var ratedRefs=allRefs.filter(function(r){return r.rating>0;});
-  if(ratingBar&&allRefs.length){
-    ratingBar.style.display='block';
-    // Average
-    var avg=ratedRefs.length?ratedRefs.reduce(function(s,r){return s+r.rating;},0)/ratedRefs.length:0;
-    var avgEl=document.getElementById('ref-avg-num');
-    if(avgEl)avgEl.textContent=avg?avg.toFixed(1):'—';
-    var starsEl=document.getElementById('ref-avg-stars');
-    if(starsEl&&avg){
-      var fs='';for(var si=1;si<=5;si++)fs+='<span style="color:'+(si<=Math.round(avg)?'#f0a500':'var(--bm)')+'">★</span>';
-      starsEl.innerHTML=fs;
-    }
-    var cntEl=document.getElementById('ref-avg-count');
-    if(cntEl)cntEl.textContent=allRefs.length+' reference'+(allRefs.length!==1?'s':'');
-    // Filter buttons — only show star levels that have refs
-    var fbEl=document.getElementById('ref-filter-btns');
-    if(fbEl){
-      var counts={};
-      ratedRefs.forEach(function(r){counts[r.rating]=(counts[r.rating]||0)+1;});
-      var html='<button onclick="setRefFilter(0)" id="rfbtn-0" style="font-size:.58rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px;border-radius:20px;cursor:pointer;transition:all .15s;background:'+(_refFilter===0?'var(--gd)':'transparent')+';color:'+(_refFilter===0?'var(--bl)':'var(--mu)')+';border:1px solid '+(_refFilter===0?'var(--gd)':'var(--bm)')+'">All ('+allRefs.length+')</button>';
-      for(var st=5;st>=1;st--){
-        if(counts[st]){
-          var active=_refFilter===st;
-          var stars2='';for(var si2=0;si2<st;si2++)stars2+='★';
-          html+='<button onclick="setRefFilter('+st+')" id="rfbtn-'+st+'" style="font-size:.58rem;font-weight:700;padding:5px 12px;border-radius:20px;cursor:pointer;transition:all .15s;background:'+(active?'var(--gd)':'transparent')+';color:'+(active?'var(--bl)':'var(--mu)')+';border:1px solid '+(active?'var(--gd)':'var(--bm)')+'">'+stars2+' ('+counts[st]+')</button>';
-        }
-      }
-      fbEl.innerHTML=html;
-    }
-  } else if(ratingBar){
-    ratingBar.style.display='none';
-  }
-
-  // Filter refs
-  var refs=_refFilter?allRefs.filter(function(r){return r.rating===_refFilter;}):allRefs;
-
-  if(!refs.length){
-    el.innerHTML=
-      '<div style="text-align:center;padding:64px 20px">'+
-      '<div style="font-size:2rem;margin-bottom:14px;opacity:.25;color:var(--gd)">✦</div>'+
-      '<div style="font-family:\'Playfair Display\',serif;font-style:italic;font-size:1.1rem;color:var(--mu);margin-bottom:8px">'+
-        (_refFilter?'No '+_refFilter+'-star references yet':'No references yet')+
-      '</div>'+
-      (!_refFilter?'<div style="font-size:.72rem;color:var(--mu);margin-bottom:32px">Be the first to recommend Eren.</div>'+
-      '<button onclick="go(\'ref-form-pg\');initRefForm()" class="bg">Write a Reference</button>':'')+
-      '</div>';
-    return;
-  }
-
-  var h='';
-  refs.forEach(function(r){
-    window._refTexts=window._refTexts||{};
-    window._refTexts[r.id]={orig:r.text||'',en:r.textEn||''};
-
-    // Stars row
-    var stars='';
-    if(r.rating){for(var i=1;i<=5;i++)stars+='<span style="color:'+(i<=r.rating?'#f0a500':'var(--bm)')+'">★</span>';}
-
-    // Avatar
-    var avatar=rfAvatarHtml(r,64);
-
-    // Context card (experience/education chip)
-    var ctxCard='';
-    if(r.context){
-      // Try to match to a memory item to get logo
-      var ctxLogo='';
-      var ctxSub='';
-      var allMem=[].concat(
-        (SD.memory&&SD.memory.experience||[]).map(function(e){return {label:e.title,sub:e.company||'',logo:e.logo||'',date:e.date||''};}),
-        (SD.memory&&SD.memory.education||[]).map(function(e){return {label:e.title,sub:e.company||'',logo:e.logo||'',date:e.date||''};})
-      );
-      var matched=allMem.find(function(m){return r.context.indexOf(m.label)>-1||r.context.indexOf(m.sub)>-1;});
-      if(matched){ctxLogo=matched.logo;ctxSub=matched.sub+(matched.date?' · '+matched.date:'');}
-
-      ctxCard='<div style="display:inline-flex;align-items:center;gap:8px;background:var(--gp);border:1px solid var(--g);border-radius:10px;padding:6px 10px;margin-bottom:10px;max-width:100%">'+
-        (ctxLogo?'<img src="'+esc(ctxLogo)+'" style="width:28px;height:28px;border-radius:5px;object-fit:contain;background:var(--bl);flex-shrink:0"/>':'<div style="width:28px;height:28px;border-radius:5px;background:var(--bm);flex-shrink:0;display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--mu)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg></div>')+
-        '<div style="min-width:0">'+
-          '<div style="font-size:.63rem;font-weight:700;color:var(--gd);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:200px">'+esc(r.context.split(' — ')[0])+'</div>'+
-          (ctxSub?'<div style="font-size:.54rem;color:var(--mu)">'+esc(ctxSub)+'</div>':'')+
-        '</div>'+
-      '</div>';
-    }
-
-    // Contact pills
-    var contactHtml='';
-    if(r.contactEmail||r.contactPhone||r.contactLinkedin){
-      contactHtml='<div style="display:flex;gap:7px;flex-wrap:wrap;margin-top:10px">';
-      if(r.contactEmail)
-        contactHtml+='<a href="mailto:'+esc(r.contactEmail)+'" style="display:inline-flex;align-items:center;gap:4px;font-size:.58rem;font-weight:600;color:var(--gd);text-decoration:none;background:var(--gp);padding:4px 10px;border-radius:20px;border:1px solid var(--g)">'+
-          '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>'+
-          esc(r.contactEmail)+'</a>';
-      if(r.contactPhone)
-        contactHtml+='<a href="tel:'+esc((r.contactPhone||'').replace(/\s/g,''))+'" style="display:inline-flex;align-items:center;gap:4px;font-size:.58rem;font-weight:600;color:var(--gd);text-decoration:none;background:var(--gp);padding:4px 10px;border-radius:20px;border:1px solid var(--g)">'+
-          '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .82h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>'+
-          esc(r.contactPhone)+'</a>';
-      if(r.contactLinkedin)
-        contactHtml+='<a href="'+esc(r.contactLinkedin)+'" target="_blank" style="display:inline-flex;align-items:center;gap:4px;font-size:.58rem;font-weight:600;color:var(--gd);text-decoration:none;background:var(--gp);padding:4px 10px;border-radius:20px;border:1px solid var(--g)">'+
-          '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>'+
-          'LinkedIn</a>';
-      contactHtml+='</div>';
-    }
-
-    // Text — always show English if available (EN is canonical), toggle to original
-    var textHtml='';
-    if(r.textEn||r.text){
-      var displayText=r.textEn||r.text;   // English preferred
-      var origText=r.text||'';
-      var hasOrig=!!(r.textEn&&origText&&origText!==r.textEn);
-      var togBtn=hasOrig
-        ?'<button onclick="toggleRefLang(&apos;'+r.id+'&apos;)" id="rtog-'+r.id+'" style="font-size:.53rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:none;border:1px solid var(--bm);padding:3px 9px;border-radius:20px;cursor:pointer;color:var(--mu)">🌐 Show Original</button>'
-        :'';
-      textHtml='<div style="margin:10px 0">'+
-        '<p id="rtxt-'+r.id+'" style="font-size:.82rem;line-height:1.9;color:var(--tm);font-weight:300;font-style:italic;margin-bottom:6px">&ldquo;'+esc(displayText)+'&rdquo;</p>'+
-        togBtn+
-      '</div>';
-      // Store both for toggle
-      window._refTexts=window._refTexts||{};
-      window._refTexts[r.id]={en:displayText,orig:origText,showingEn:true};
-    }
-
-    // Name label with title/org as subtitle
-    var nameHtml='';
-    if(r.name){
-      nameHtml='<div style="font-family:\'Barlow Condensed\',sans-serif;font-size:1.05rem;font-weight:700;color:var(--txt);letter-spacing:.04em;text-transform:uppercase;margin-bottom:1px">'+esc(r.name)+'</div>';
-    }
-    var metaHtml='';
-    if(r.title||r.org){
-      metaHtml='<div style="font-size:.68rem;margin-bottom:1px">'+
-        (r.title?'<span style="color:var(--gd);font-weight:600">'+esc(r.title)+'</span>':'')+
-        (r.title&&r.org?'<span style="color:var(--mu)"> at </span>':'')+
-        (r.org?'<span style="color:var(--mu)">'+esc(r.org)+'</span>':'')+
-      '</div>';
-    }
-    var periodHtml=r.period?'<div style="font-size:.59rem;color:var(--mu);margin-bottom:6px">'+esc(r.period)+'</div>':'';
-
-    h+='<div style="display:flex;gap:20px;padding:28px 0;border-bottom:1px solid var(--bm);align-items:flex-start">'+
-      '<div style="flex-shrink:0;padding-top:2px">'+avatar+'</div>'+
-      '<div style="flex:1;min-width:0">'+
-        nameHtml+metaHtml+periodHtml+
-        (stars?'<div style="font-size:.88rem;letter-spacing:1px;margin-bottom:8px">'+stars+'</div>':'')+
-        ctxCard+
-        textHtml+contactHtml+
-      '</div>'+
-    '</div>';
-  });
-
-  h+='<div style="padding:36px 0 10px;text-align:center">'+
-    '<button onclick="go(\'ref-form-pg\');initRefForm()" style="display:inline-flex;align-items:center;gap:7px;padding:12px 30px;border-radius:50px;background:var(--blk);color:var(--gl);border:none;font-family:\'Raleway\',sans-serif;font-size:.63rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer">Write a Reference ✦</button>'+
-  '</div>';
-  el.innerHTML=h;
-}
-
-function setRefFilter(stars){
-  _refFilter=stars;
-  renderRefs();
-}
-/* ── Lang toggle — EN shown by default, toggle to original ── */
-function toggleRefLang(id){
-  var p=document.getElementById('rtxt-'+id);
-  var btn=document.getElementById('rtog-'+id);
-  if(!p||!btn)return;
-  var texts=(window._refTexts||{})[id]||{en:'',orig:'',showingEn:true};
-  texts.showingEn=!texts.showingEn;
-  if(texts.showingEn){
-    p.innerHTML='&ldquo;'+esc(texts.en)+'&rdquo;';
-    btn.textContent='🌐 Show Original';
-  }else{
-    p.innerHTML='&ldquo;'+esc(texts.orig)+'&rdquo;';
-    btn.textContent='🌐 Show English';
-  }
-}
-
-/* ── Context modal ── */
-function openCtxModal(){
-  var modal=document.getElementById('ctx-modal');
-  if(!modal)return;
-  var list=document.getElementById('ctx-list');
-  if(!list)return;
-  list.innerHTML='';
-  var items=[];
-  (SD.memory&&SD.memory.experience||[]).forEach(function(e,i){
-    items.push({id:'exp_'+i,label:e.title,sub:(e.company||'')+(e.date?' · '+e.date:''),logo:e.logo||''});
-  });
-  (SD.memory&&SD.memory.education||[]).forEach(function(e,i){
-    items.push({id:'edu_'+i,label:e.title,sub:(e.company||'')+(e.date?' · '+e.date:''),logo:e.logo||''});
-  });
-  items.forEach(function(item){
-    var logoHtml=item.logo
-      ?'<img src="'+esc(item.logo)+'" style="width:40px;height:40px;border-radius:9px;object-fit:contain;background:var(--bl);border:1px solid var(--bm);flex-shrink:0"/>'
-      :'<div style="width:40px;height:40px;border-radius:9px;background:var(--gp);border:1px solid var(--bm);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--mu)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg></div>';
-    var div=document.createElement('div');
-    div.style.cssText='display:flex;align-items:center;gap:13px;padding:13px 15px;border:1.5px solid var(--bm);border-radius:12px;cursor:pointer;transition:border-color .15s;background:var(--bl)';
-    div.innerHTML=logoHtml+'<div><div style="font-size:.84rem;font-weight:700;color:var(--txt)">'+esc(item.label)+'</div><div style="font-size:.63rem;color:var(--mu)">'+esc(item.sub)+'</div></div>';
-    div.onmouseenter=function(){this.style.borderColor='var(--g)';};
-    div.onmouseleave=function(){this.style.borderColor='var(--bm)';};
-    div.onclick=(function(id,label){return function(){ctxSelect(id,label);};})(item.id,item.label+(item.sub?' — '+item.sub:''));
-    list.appendChild(div);
-  });
-  modal.style.display='flex';
-}
-function ctxSelect(id,label){
-  document.getElementById('rf-ctx-id').value=id;
-  document.getElementById('rf-ctx-label').value=label;
-  var disp=document.getElementById('ctx-display-text');
-  if(disp){disp.textContent=label;disp.style.color='var(--txt)';}
-  var cw=document.getElementById('ctx-custom-wrap');
-  if(cw)cw.style.display=(id==='other'?'block':'none');
-  document.getElementById('ctx-modal').style.display='none';
-}
-
-/* ── Rating ── */
-var _rfRating=0;
-function setRfRating(v){
-  _rfRating=v;
-  document.getElementById('rf-rating').value=v;
-  var labels=['','Fair','Good','Great','Excellent','Outstanding'];
-  document.getElementById('rf-rating-label').textContent=labels[v]||'';
-  document.querySelectorAll('#rf-stars span').forEach(function(s){
-    s.style.color=parseInt(s.getAttribute('data-v'))<=v?'#f0a500':'var(--bm)';
-  });
-}
-
-/* ── Photo upload ── */
-function rfPhotoChange(inp){
-  if(!inp.files||!inp.files[0])return;
-  var reader=new FileReader();
-  reader.onload=function(e){
-    var prev=document.getElementById('rf-photo-preview');
-    if(prev)prev.innerHTML='<img src="'+e.target.result+'" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/>';
-    window._rfPhotoData=e.target.result;
-  };
-  reader.readAsDataURL(inp.files[0]);
-}
-
-/* ── Reset form ── */
-function initRefForm(){
-  _rfRating=0;
-  window._rfPhotoData=null;
-  ['rf-name','rf-title','rf-org','rf-period','rf-text',
-   'rf-contact-email','rf-contact-phone','rf-contact-linkedin',
-   'rf-ctx-id','rf-ctx-label','rf-ctx-custom'].forEach(function(id){
-    var el=document.getElementById(id);if(el)el.value='';
-  });
-  var disp=document.getElementById('ctx-display-text');
-  if(disp){disp.textContent='Click to select context...';disp.style.color='var(--mu)';}
-  var prev=document.getElementById('rf-photo-preview');
-  if(prev)prev.innerHTML='<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--mu)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>';
-  var cw=document.getElementById('ctx-custom-wrap');
-  if(cw)cw.style.display='none';
-  setRfRating(0);
-  var err=document.getElementById('rf-err');if(err)err.style.display='none';
-  var inner=document.getElementById('rf-form-inner');
-  if(inner)inner.style.display='';
-  var succ=document.getElementById('rf-succ');
-  if(succ)succ.style.display='none';
-}
-
-/* ── Submit — writes into SD.pendingRefs (in-page, no token needed) ── */
-function submitRef(){
-  var ctxId=document.getElementById('rf-ctx-id').value;
-  var ctxLabel=document.getElementById('rf-ctx-label').value;
-  var ctxCustom=(document.getElementById('rf-ctx-custom')||{}).value||'';
-  var context=ctxId==='other'?(ctxCustom||'Other'):ctxLabel;
-
-  var entry={
-    id:'ref_'+Date.now(),
-    savedAt:new Date().toISOString(),
-    approved:false,
-    name:(document.getElementById('rf-name').value||'').trim(),
-    title:(document.getElementById('rf-title').value||'').trim(),
-    org:(document.getElementById('rf-org').value||'').trim(),
-    context:context,
-    period:(document.getElementById('rf-period').value||'').trim(),
-    rating:parseInt(document.getElementById('rf-rating').value||'0')||0,
-    text:(document.getElementById('rf-text').value||'').trim(),
-    textEn:'',
-    contactEmail:(document.getElementById('rf-contact-email').value||'').trim(),
-    contactPhone:(document.getElementById('rf-contact-phone').value||'').trim(),
-    contactLinkedin:(document.getElementById('rf-contact-linkedin').value||'').trim(),
-    photo:window._rfPhotoData||''
-  };
-
-  if(!entry.name&&!entry.text&&!entry.contactEmail&&!entry.org){
-    var err=document.getElementById('rf-err');
-    if(err){err.textContent='Please fill in at least your name or reference text.';err.style.display='block';}
-    return;
-  }
-
-  // Append to SD.pendingRefs — lives in page memory
-  SD.pendingRefs=SD.pendingRefs||[];
-  SD.pendingRefs.unshift(entry);
-
-  // Show success then auto-navigate back to references page
-  var inner=document.getElementById('rf-form-inner');
-  var succ=document.getElementById('rf-succ');
-  if(inner)inner.style.display='none';
-  if(succ)succ.style.display='block';
-  window.scrollTo(0,0);
-  // Auto-return after 3s
-  setTimeout(function(){go('ref');initRefForm();},3000);
-}
-
 /* ── INIT ── */
 applyData();
 attachMailHandlers();
-// Restore last page from hash — instant, no flash
-(function(){
-  var h=window.location.hash.replace('#','');
-  var valid=['pp','mem','sk','prt','cer','ref','con'];
-  if(h&&valid.indexOf(h)>-1){
-    showPage(h);
-  }
-})();
 
 </script>
 <button class="mob-back" id="mob-back-btn" onclick="goBack()"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>Back</button>
