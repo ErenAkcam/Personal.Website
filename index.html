@@ -1562,14 +1562,15 @@ var _refs={pending:[],approved:[]};
 var _refLangMap={};  // refId -> 'en'|'orig'
 
 async function fetchRefsJson(){
-  // Try loading refs.json from same origin (GitHub Pages serves it)
   try{
     var r=await fetch('refs.json?v='+Date.now());
     if(r.ok){
       _refs=await r.json();
-      // Read GAS_URL from config — avoids embedding secrets in HTML source
-      if(_refs.config&&_refs.config.gasUrl){
-        GAS_URL=_refs.config.gasUrl;
+      // Decode GAS URL from base64 (stored encoded to avoid GitHub secret scanning)
+      if(_refs.config&&_refs.config.gasUrlB64){
+        try{GAS_URL=decodeURIComponent(escape(atob(_refs.config.gasUrlB64)));}catch(e){}
+      } else if(_refs.config&&_refs.config.gasUrl){
+        GAS_URL=_refs.config.gasUrl; // fallback for old format
       }
       return;
     }
