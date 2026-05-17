@@ -384,6 +384,82 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
   .hb{flex-direction:column}
   .bg,.bo{width:100%;justify-content:center}
 }
+
+/* ── REFERENCES ── */
+.ref-score{background:var(--blk);border-radius:14px;padding:22px 28px;margin-bottom:20px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.ref-score-num{font-family:'Playfair Display',serif;font-style:italic;font-size:3rem;font-weight:700;color:var(--bl);line-height:1}
+.ref-score-stars{display:flex;gap:3px}
+.ref-score-star{font-size:1.5rem;color:#f0c060}
+.ref-score-star.empty{color:rgba(255,255,255,.2)}
+.ref-score-count{font-size:.68rem;color:var(--bd);font-weight:300;margin-top:4px}
+.ref-filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px}
+.ref-filter-btn{display:inline-flex;align-items:center;gap:5px;padding:7px 14px;border-radius:50px;font-size:.6rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:var(--gp);color:var(--gd);border:1.5px solid var(--bm);cursor:pointer;transition:all .15s}
+.ref-filter-btn:hover{background:var(--g);color:var(--blk);border-color:var(--g)}
+.ref-filter-btn.on{background:var(--g);color:var(--blk);border-color:var(--g)}
+.ref-filter-btn .ref-count{background:rgba(0,0,0,.15);border-radius:20px;padding:1px 6px;font-size:.55rem}
+.ref-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:18px}
+.ref-card{background:var(--bl);border:1.5px solid var(--bm);border-radius:16px;padding:22px;position:relative;overflow:hidden;transition:transform .18s,box-shadow .18s}
+.ref-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.1)}
+.ref-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gd),var(--g))}
+.ref-card-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:14px}
+.ref-avatar{width:52px;height:52px;border-radius:50%;flex-shrink:0;border:2px solid var(--bm);object-fit:cover;background:var(--gp);display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;color:var(--gd);overflow:hidden}
+.ref-avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.ref-info{flex:1;min-width:0}
+.ref-name{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;color:var(--txt);letter-spacing:.03em;text-transform:uppercase;margin-bottom:1px}
+.ref-role{font-size:.65rem;color:var(--gd);font-weight:600;margin-bottom:1px}
+.ref-company{font-size:.62rem;color:var(--mu)}
+.ref-stars{display:flex;gap:2px;margin-top:4px}
+.ref-star{font-size:.75rem;color:#f0c060}
+.ref-star.empty{color:var(--bm)}
+.ref-ctx{display:flex;align-items:center;gap:8px;background:var(--bej);border:1px solid var(--bm);border-radius:8px;padding:7px 10px;margin-bottom:12px}
+.ref-ctx-logo{width:28px;height:28px;border-radius:5px;object-fit:contain;background:var(--bl);flex-shrink:0;border:1px solid var(--bm)}
+.ref-ctx-info{flex:1;min-width:0}
+.ref-ctx-title{font-family:'Barlow Condensed',sans-serif;font-size:.72rem;font-weight:700;color:var(--txt);letter-spacing:.03em;text-transform:uppercase;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ref-ctx-loc{font-size:.58rem;color:var(--mu)}
+.ref-period{font-size:.6rem;color:var(--mu);margin-bottom:10px;display:flex;align-items:center;gap:4px}
+.ref-period svg{width:11px;height:11px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.ref-review{font-size:.82rem;line-height:1.75;color:var(--tm);font-style:italic;font-weight:300;border-left:3px solid var(--g);padding-left:12px}
+.ref-toggle-lang{display:inline-flex;align-items:center;gap:4px;font-size:.55rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gd);background:var(--gp);border:1px solid var(--bm);border-radius:20px;padding:3px 9px;cursor:pointer;margin-top:10px;transition:all .12s}
+.ref-toggle-lang:hover{background:var(--g);color:var(--blk)}
+.ref-write-btn{display:flex;justify-content:center;margin-top:32px;padding-top:24px;border-top:1px solid var(--bm)}
+.ref-secret-btn{display:inline-flex;align-items:center;gap:5px;font-size:.55rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--bd);background:transparent;border:1px dashed var(--bm);border-radius:20px;padding:7px 16px;cursor:pointer;transition:all .15s}
+.ref-secret-btn:hover{color:var(--gd);border-color:var(--g)}
+
+/* ── REFERENCE FORM ── */
+.ref-form-wrap{max-width:640px;margin:0 auto}
+.ref-form-card{background:var(--blk);border-radius:18px;padding:32px;margin-bottom:20px;border:1px solid rgba(255,255,255,.08)}
+.ref-form-title{font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:1.6rem;color:var(--bl);margin-bottom:6px}
+.ref-form-sub{font-size:.68rem;color:var(--bd);margin-bottom:24px;line-height:1.6}
+.ref-fld{margin-bottom:14px}
+.ref-lbl{display:block;font-size:.52rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:4px}
+.ref-lbl .opt{color:rgba(255,255,255,.2);font-weight:400}
+.ref-inp{width:100%;padding:10px 13px;border-radius:9px;border:1.5px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);font-family:'Raleway',sans-serif;font-size:.83rem;color:var(--bl);outline:none;resize:vertical;transition:border-color .15s}
+.ref-inp:focus{border-color:var(--g);background:rgba(255,255,255,.08)}
+.ref-inp::placeholder{color:rgba(255,255,255,.18)}
+.ref-stars-input{display:flex;gap:8px;flex-direction:row-reverse;justify-content:flex-end}
+.ref-stars-input input{display:none}
+.ref-stars-input label{font-size:1.8rem;color:rgba(255,255,255,.2);cursor:pointer;transition:color .1s;line-height:1}
+.ref-stars-input label:hover,.ref-stars-input label:hover~label,.ref-stars-input input:checked~label{color:#f0c060}
+.ref-photo-preview{width:68px;height:68px;border-radius:50%;background:var(--gd);display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;font-weight:700;color:#e8f0e4;overflow:hidden;flex-shrink:0;border:2px solid rgba(255,255,255,.1)}
+.ref-photo-preview img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.ref-ctx-dropdown{position:relative}
+.ref-ctx-panel{position:absolute;top:100%;left:0;right:0;background:var(--blk);border:1.5px solid rgba(255,255,255,.12);border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.5);z-index:100;max-height:260px;overflow-y:auto;margin-top:4px}
+.ref-ctx-opt{display:flex;align-items:center;gap:10px;padding:10px 14px;cursor:pointer;transition:background .12s}
+.ref-ctx-opt:hover{background:rgba(255,255,255,.06)}
+.ref-ctx-opt-logo{width:32px;height:32px;border-radius:6px;object-fit:contain;background:rgba(255,255,255,.08);flex-shrink:0;border:1px solid rgba(255,255,255,.1)}
+.ref-ctx-opt-body{flex:1;min-width:0}
+.ref-ctx-opt-title{font-size:.73rem;font-weight:600;color:var(--bl)}
+.ref-ctx-opt-sub{font-size:.6rem;color:rgba(255,255,255,.4)}
+.ref-submit{width:100%;padding:14px;border-radius:11px;background:linear-gradient(135deg,var(--gd),var(--g));color:#e8f0e4;border:none;font-family:'Raleway',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;margin-top:8px;transition:opacity .2s,transform .1s;box-shadow:0 4px 16px rgba(45,90,61,.4)}
+.ref-submit:hover{opacity:.9;transform:translateY(-1px)}
+.ref-submit:active{transform:none}
+.ref-other-input{display:none;margin-top:8px}
+
+@media(max-width:768px){
+  .ref-grid{grid-template-columns:1fr}
+  .ref-form-card{padding:22px 18px}
+  .ref-score{padding:16px 18px}
+}
 </style>
 </head>
 <body>
@@ -397,7 +473,8 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
     </button>
     <ul class="nm" id="nav-menu">
       <li><a id="n-pp"  class="on" onclick="go('pp');closeMobNav()"  data-key="nav_profile">PROFILE</a></li>
-      <li><a id="n-mem"            onclick="go('mem');closeMobNav()" data-key="nav_memory">MEMORY</a></li>
+      <li><a id="n-mem"            onclick="go('mem');closeMobNav()" data-key="nav_memory">JOURNEY</a></li>
+      <li><a id="n-refs"           onclick="go('refs');closeMobNav()">REFERENCES</a></li>
       <li><a id="n-sk"             onclick="go('sk');closeMobNav()"  data-key="nav_skills">SKILLS</a></li>
       <li style="display:none"><a id="n-prt" onclick="go('prt');closeMobNav()" data-key="nav_portfolio">PORTFOLIO</a></li>
       <li><a id="n-cer"            onclick="go('cer');closeMobNav()" data-key="nav_certs">CERTIFICATES</a></li>
@@ -442,9 +519,9 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
   <div class="pf"><span class="pfl" data-key="footer_email_label">E-Mail</span><a class="pfe site-email" href="#">eren.akcamm@gmail.com</a></div>
 </div>
 
-<!-- MEMORY PAGE -->
+<!-- JOURNEY PAGE (formerly Memory) -->
 <div id="mem" class="pg">
-  <div class="pb"><h1 data-key="nav_memory">Memory</h1><div class="pbs" data-key="mem_sub">Experience &amp; Education</div></div>
+  <div class="pb"><h1 data-key="nav_memory">Journey</h1><div class="pbs" data-key="mem_sub">Experience &amp; Education</div></div>
   <div class="pbd" id="memory-body"><p style="color:var(--mu);font-size:.8rem">Loading...</p></div>
   <div class="pf"><span class="pfl" data-key="footer_email_label">E-Mail</span><a class="pfe site-email" href="#">eren.akcamm@gmail.com</a></div>
 </div>
@@ -513,6 +590,115 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
           <div class="fsucc-m" data-key="con_success_msg">Message Sent!</div>
           <div class="fsucc-s" data-key="con_success_sub">Thank you, I'll get back to you soon.</div>
         </div>
+      </div>
+    </div>
+  </div>
+  <div class="pf"><span class="pfl" data-key="footer_email_label">E-Mail</span><a class="pfe site-email" href="#">eren.akcamm@gmail.com</a></div>
+</div>
+
+<!-- REFERENCES PAGE -->
+<div id="refs" class="pg">
+  <div class="pb"><h1>References</h1><div class="pbs">What others say about working with me</div></div>
+  <div class="pbd">
+    <div id="refs-score-wrap"></div>
+    <div id="refs-filter-wrap" class="ref-filters"></div>
+    <div id="refs-grid" class="ref-grid"></div>
+    <div class="ref-write-btn">
+      <button class="ref-secret-btn" onclick="go('refform')">
+        <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        Write a Reference
+      </button>
+    </div>
+  </div>
+  <div class="pf"><span class="pfl" data-key="footer_email_label">E-Mail</span><a class="pfe site-email" href="#">eren.akcamm@gmail.com</a></div>
+</div>
+
+<!-- REFERENCE FORM PAGE -->
+<div id="refform" class="pg">
+  <div class="pb"><h1>Write a Reference</h1><div class="pbs">Share your experience of working with me</div></div>
+  <div class="pbd">
+    <div class="ref-form-wrap">
+      <div class="ref-form-card">
+        <div class="ref-form-title">Your Reference</div>
+        <p class="ref-form-sub">All fields are optional — fill in as much or as little as you like. Your submission will be reviewed before appearing on the site.</p>
+        <!-- Photo -->
+        <div class="ref-fld">
+          <label class="ref-lbl">Profile Photo <span class="opt">(optional)</span></label>
+          <div style="display:flex;align-items:center;gap:14px">
+            <div class="ref-photo-preview" id="rf-photo-preview"><span id="rf-photo-initials">?</span></div>
+            <label style="cursor:pointer;display:inline-flex;align-items:center;gap:6px;font-size:.62rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gl);background:rgba(168,200,152,.1);border:1px solid rgba(168,200,152,.2);border-radius:8px;padding:8px 14px">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              Upload Photo
+              <input type="file" accept="image/*" id="rf-photo-file" style="display:none" onchange="handleRefPhoto(this)"/>
+            </label>
+          </div>
+        </div>
+        <!-- Name -->
+        <div class="ref-fld">
+          <label class="ref-lbl">Full Name <span class="opt">(optional)</span></label>
+          <input class="ref-inp" id="rf-name" type="text" placeholder="Your name" oninput="updateRefInitials()"/>
+        </div>
+        <!-- Title + Company row -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:11px">
+          <div class="ref-fld">
+            <label class="ref-lbl">Title / Position <span class="opt">(optional)</span></label>
+            <input class="ref-inp" id="rf-title" type="text" placeholder="e.g. Manager"/>
+          </div>
+          <div class="ref-fld">
+            <label class="ref-lbl">Organization <span class="opt">(optional)</span></label>
+            <input class="ref-inp" id="rf-company" type="text" placeholder="Company or school name"/>
+          </div>
+        </div>
+        <!-- Context -->
+        <div class="ref-fld">
+          <label class="ref-lbl">Relationship Context <span class="opt">(optional)</span></label>
+          <div class="ref-ctx-dropdown">
+            <input class="ref-inp" id="rf-ctx-display" readonly placeholder="Select context..." onclick="toggleCtxPanel()" style="cursor:pointer"/>
+            <input type="hidden" id="rf-ctx-value"/>
+            <div class="ref-ctx-panel" id="rf-ctx-panel" style="display:none"></div>
+          </div>
+          <div class="ref-other-input" id="rf-other-wrap">
+            <input class="ref-inp" id="rf-other-text" placeholder="Describe how we know each other..."/>
+          </div>
+        </div>
+        <!-- Period -->
+        <div class="ref-fld">
+          <label class="ref-lbl">Time Period Worked Together <span class="opt">(optional)</span></label>
+          <input class="ref-inp" id="rf-period" type="text" placeholder="e.g. 2023 — 2024"/>
+        </div>
+        <!-- Rating -->
+        <div class="ref-fld">
+          <label class="ref-lbl">Rating <span class="opt">(optional)</span></label>
+          <div class="ref-stars-input">
+            <input type="radio" id="rs5" name="rf-rating" value="5"><label for="rs5" title="5">★</label>
+            <input type="radio" id="rs4" name="rf-rating" value="4"><label for="rs4" title="4">★</label>
+            <input type="radio" id="rs3" name="rf-rating" value="3" checked><label for="rs3" title="3">★</label>
+            <input type="radio" id="rs2" name="rf-rating" value="2"><label for="rs2" title="2">★</label>
+            <input type="radio" id="rs1" name="rf-rating" value="1"><label for="rs1" title="1">★</label>
+          </div>
+        </div>
+        <!-- Review -->
+        <div class="ref-fld">
+          <label class="ref-lbl">Your Review <span class="opt">(optional — write in any language)</span></label>
+          <textarea class="ref-inp" id="rf-review" rows="5" placeholder="Share your experience..."></textarea>
+        </div>
+        <!-- Contact info -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:11px">
+          <div class="ref-fld">
+            <label class="ref-lbl">E-Mail <span class="opt">(optional)</span></label>
+            <input class="ref-inp" id="rf-email" type="email" placeholder="your@email.com"/>
+          </div>
+          <div class="ref-fld">
+            <label class="ref-lbl">Phone <span class="opt">(optional)</span></label>
+            <input class="ref-inp" id="rf-phone" type="tel" placeholder="+90..."/>
+          </div>
+        </div>
+        <div class="ref-fld">
+          <label class="ref-lbl">LinkedIn <span class="opt">(optional)</span></label>
+          <input class="ref-inp" id="rf-linkedin" type="url" placeholder="https://linkedin.com/in/..."/>
+        </div>
+        <div id="rf-err" style="font-size:.71rem;color:#e07060;margin-bottom:8px;display:none"></div>
+        <button class="ref-submit" onclick="submitRef()">Submit Reference</button>
       </div>
     </div>
   </div>
@@ -1312,9 +1498,11 @@ document.addEventListener('click',function(e){
   if(!e.target.closest('nav'))closeMobNav();
 });
 
-/* ── PAGE NAVIGATION ── */
-var PAGES=['pp','mem','sk','prt','cer','con'];
-var pageHistory=[];
+/* ── Google Apps Script URL (admin panel tarafından inject edilir) ── */
+var GAS_URL='';
+
+/* ── PAGE NAVIGATION — History API ── */
+var PAGES=['pp','mem','sk','prt','cer','con','refs','refform'];
 
 function showPage(id){
   PAGES.forEach(function(pid){
@@ -1329,23 +1517,38 @@ function showPage(id){
   window.scrollTo(0,0);
   if(id==='sk')setTimeout(animateBars,80);
   if(id==='prt')showCats();
+  if(id==='refs')renderRefs();
+  if(id==='refform')initRefForm();
   var bb=document.getElementById('mob-back-btn');
-  if(bb)bb.style.display=(id==='pp'?'none':'');
+  if(bb)bb.style.display=(id==='pp'?'none':'flex');
 }
 
 function go(id){
-  var cur=PAGES.find(function(p){var el=document.getElementById(p);return el&&el.classList.contains('on');});
-  if(cur&&cur!==id)pageHistory.push(cur);
-  if(pageHistory.length>20)pageHistory.shift();
+  if(!document.getElementById(id))return;
+  history.pushState({page:id},'',window.location.pathname+'#'+id);
   showPage(id);
 }
 
 function goBack(){
-  var prev=pageHistory.pop()||'pp';
-  showPage(prev);
-  var bb=document.getElementById('mob-back-btn');
-  if(bb)bb.style.display=(prev==='pp'?'none':'');
+  history.back();
 }
+
+window.addEventListener('popstate',function(e){
+  var id=(e.state&&e.state.page)||(location.hash.replace('#',''))||'pp';
+  if(!document.getElementById(id))id='pp';
+  showPage(id);
+  var bb=document.getElementById('mob-back-btn');
+  if(bb)bb.style.display=(id==='pp'?'none':'flex');
+});
+
+/* On initial load — go straight to hash page */
+(function initNav(){
+  var hash=location.hash.replace('#','');
+  var startPage=(hash&&document.getElementById(hash))?hash:'pp';
+  history.replaceState({page:startPage},'',window.location.pathname+'#'+startPage);
+  showPage(startPage);
+})();
+
 function animateBars(){
   document.querySelectorAll('.sbf').forEach(function(b){
     var w=b.getAttribute('data-w')+'%';
@@ -1354,10 +1557,326 @@ function animateBars(){
   });
 }
 
-/* ── Contact form ── */
-/* Formspree entegrasyonu — formspree.io'dan ücretsiz form ID alın */
-var FORMSPREE_ID = 'mwvrnjzl';
+/* ── REFERENCES — load & render ── */
+var _refs={pending:[],approved:[]};
+var _refLangMap={};  // refId -> 'en'|'orig'
 
+async function fetchRefsJson(){
+  // Try loading refs.json from same origin (GitHub Pages serves it)
+  try{
+    var r=await fetch('refs.json?v='+Date.now());
+    if(r.ok){_refs=await r.json();return;}
+  }catch(e){}
+  _refs={pending:[],approved:[]};
+}
+
+function getRefInitials(name){
+  if(!name)return '?';
+  var p=name.trim().split(' ');
+  return ((p[0]||'')[0]||'').toUpperCase()+((p.length>1?(p[p.length-1]||'')[0]:'') ||'').toUpperCase();
+}
+
+function buildRefStars(rating,size){
+  var s='';
+  for(var i=1;i<=5;i++){
+    s+='<span class="ref-star'+(i>rating?' empty':'')+(size?' ref-score-star':'')+'">★</span>';
+  }
+  return s;
+}
+
+function getCtxCard(ctxValue){
+  // returns {logo,title,location} for a given context key
+  var mem=SD.memory||{};
+  if(ctxValue&&ctxValue.startsWith('exp:')){
+    var t=ctxValue.slice(4);
+    var exp=(mem.experience||[]).find(function(e){return e.title===t;});
+    if(exp)return {logo:exp.logo||'',title:exp.company||exp.title,location:exp.location||exp.date};
+  }
+  if(ctxValue&&ctxValue.startsWith('edu:')){
+    var t=ctxValue.slice(4);
+    var edu=(mem.education||[]).find(function(e){return e.title===t;});
+    if(edu)return {logo:edu.logo||'',title:edu.company||edu.title,location:edu.location||edu.date};
+  }
+  return null;
+}
+
+function renderRefs(){
+  fetchRefsJson().then(function(){
+    var approved=(_refs.approved||[]).filter(function(r){return r.approved!==false;});
+    // Score
+    renderRefScore(approved);
+    // Active filter
+    renderRefFilters(approved);
+    // Grid
+    renderRefGrid(approved,null);
+  });
+}
+
+var _activeRefFilter=null;
+
+function renderRefScore(approved){
+  var wrap=document.getElementById('refs-score-wrap');
+  if(!wrap)return;
+  if(!approved.length){wrap.innerHTML='';return;}
+  var total=approved.reduce(function(s,r){return s+(parseInt(r.rating)||0);},0);
+  var avg=total/approved.length;
+  var avgRound=Math.round(avg*10)/10;
+  var fullStars=Math.round(avg);
+  var starsHtml='';
+  for(var i=1;i<=5;i++)starsHtml+='<span class="ref-score-star'+(i>fullStars?' empty':'')+'">★</span>';
+  wrap.innerHTML=
+    '<div class="ref-score">'+
+      '<div>'+
+        '<div class="ref-score-num">'+avgRound.toFixed(1)+'</div>'+
+        '<div class="ref-score-stars">'+starsHtml+'</div>'+
+        '<div class="ref-score-count">'+approved.length+' reference'+(approved.length!==1?'s':'')+'</div>'+
+      '</div>'+
+      '<div style="font-size:.7rem;color:var(--bd);line-height:1.6;font-weight:300;max-width:260px">Average rating based on all approved references.</div>'+
+    '</div>';
+}
+
+function renderRefFilters(approved){
+  var wrap=document.getElementById('refs-filter-wrap');
+  if(!wrap)return;
+  // Count per star
+  var counts={1:0,2:0,3:0,4:0,5:0};
+  approved.forEach(function(r){var s=parseInt(r.rating)||0;if(s>=1&&s<=5)counts[s]++;});
+  var html='<button class="ref-filter-btn'+(  _activeRefFilter===null?' on':'')+'" onclick="filterRefs(null)">All <span class="ref-count">'+approved.length+'</span></button>';
+  for(var s=5;s>=1;s--){
+    if(counts[s]>0){
+      html+='<button class="ref-filter-btn'+(_activeRefFilter===s?' on':'')+'" onclick="filterRefs('+s+')">'+s+' ★ <span class="ref-count">'+counts[s]+'</span></button>';
+    }
+  }
+  wrap.innerHTML=html;
+}
+
+function filterRefs(star){
+  _activeRefFilter=star;
+  var approved=(_refs.approved||[]).filter(function(r){return r.approved!==false;});
+  renderRefFilters(approved);
+  renderRefGrid(approved,star);
+}
+
+function renderRefGrid(approved,starFilter){
+  var grid=document.getElementById('refs-grid');
+  if(!grid)return;
+  var list=starFilter?approved.filter(function(r){return parseInt(r.rating)===starFilter;}):approved;
+  if(!list.length){
+    grid.innerHTML='<div style="color:var(--mu);font-size:.82rem;text-align:center;padding:40px 0">No references yet.</div>';
+    return;
+  }
+  grid.innerHTML=list.map(function(ref){return buildRefCard(ref);}).join('');
+}
+
+function buildRefCard(ref){
+  var id=ref.id||Math.random();
+  var isOrig=(_refLangMap[id]==='orig');
+  var name=isOrig?(ref.name||ref.nameEn||''):(ref.nameEn||ref.name||'');
+  var title=isOrig?(ref.title||ref.titleEn||''):(ref.titleEn||ref.title||'');
+  var company=isOrig?(ref.company||ref.companyEn||''):(ref.companyEn||ref.company||'');
+  var review=isOrig?(ref.review||ref.reviewEn||''):(ref.reviewEn||ref.review||'');
+  var hasOrig=ref.name&&ref.nameEn&&(ref.name!==ref.nameEn||ref.review!==ref.reviewEn);
+
+  // Avatar
+  var avatarHtml='';
+  if(ref.photo){
+    avatarHtml='<div class="ref-avatar"><img src="'+esc(ref.photo)+'?v=1" alt="'+esc(name)+'" onerror="this.parentNode.innerHTML=\''+getRefInitials(name)+'\'" loading="lazy"/></div>';
+  } else {
+    avatarHtml='<div class="ref-avatar">'+getRefInitials(name)+'</div>';
+  }
+
+  // Stars
+  var starsHtml='<div class="ref-stars">'+buildRefStars(parseInt(ref.rating)||0,false)+'</div>';
+
+  // Context card
+  var ctxHtml='';
+  var ctx=getCtxCard(ref.context);
+  if(ctx){
+    ctxHtml='<div class="ref-ctx">'+
+      (ctx.logo?'<img class="ref-ctx-logo" src="'+esc(ctx.logo)+'" alt="" onerror="this.style.display=\'none\'"/>'+'':'')+
+      '<div class="ref-ctx-info">'+
+        '<div class="ref-ctx-title">'+esc(ctx.title)+'</div>'+
+        (ctx.location?'<div class="ref-ctx-loc">'+esc(ctx.location)+'</div>':'')+
+      '</div>'+
+    '</div>';
+  } else if(ref.context==='other'&&ref.company){
+    ctxHtml='<div class="ref-ctx"><div class="ref-ctx-info"><div class="ref-ctx-title">'+esc(company)+'</div></div></div>';
+  }
+
+  // Period
+  var periodHtml=ref.period?'<div class="ref-period"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>'+esc(ref.period)+'</div>':'';
+
+  // Lang toggle
+  var langToggle=hasOrig?
+    '<button class="ref-toggle-lang" onclick="toggleRefLang(\''+id+'\',this)">'+
+      (isOrig?'🌐 EN':'🌐 Original')+
+    '</button>':'';
+
+  return '<div class="ref-card">'+
+    '<div class="ref-card-head">'+
+      avatarHtml+
+      '<div class="ref-info">'+
+        (name?'<div class="ref-name">'+esc(name)+'</div>':'')+
+        (title?'<div class="ref-role">'+esc(title)+'</div>':'')+
+        (company&&!ctx?'<div class="ref-company">'+esc(company)+'</div>':'')+
+        starsHtml+
+      '</div>'+
+    '</div>'+
+    ctxHtml+
+    periodHtml+
+    (review?'<div class="ref-review">"'+esc(review)+'"</div>':'')+
+    langToggle+
+  '</div>';
+}
+
+function toggleRefLang(id,btn){
+  _refLangMap[id]=(_refLangMap[id]==='orig')?'en':'orig';
+  // Re-render just the grid
+  var approved=(_refs.approved||[]).filter(function(r){return r.approved!==false;});
+  renderRefGrid(approved,_activeRefFilter);
+}
+
+/* ── REFERENCE FORM ── */
+var _refPhotoBase64=null;
+
+function initRefForm(){
+  _refPhotoBase64=null;
+  updateRefInitials();
+  buildCtxPanel();
+  // Reset form
+  ['rf-name','rf-title','rf-company','rf-period','rf-review','rf-email','rf-phone','rf-linkedin','rf-other-text','rf-ctx-display'].forEach(function(id){
+    var el=document.getElementById(id);if(el)el.value='';
+  });
+  var hid=document.getElementById('rf-ctx-value');if(hid)hid.value='';
+  var ow=document.getElementById('rf-other-wrap');if(ow)ow.style.display='none';
+  var r3=document.getElementById('rs3');if(r3)r3.checked=true;
+  var prev=document.getElementById('rf-photo-preview');
+  if(prev){prev.innerHTML='<span id="rf-photo-initials">?</span>';}
+  var err=document.getElementById('rf-err');if(err)err.style.display='none';
+}
+
+function updateRefInitials(){
+  var name=(document.getElementById('rf-name')||{value:''}).value||'';
+  var ini=getRefInitials(name)||'?';
+  var span=document.getElementById('rf-photo-initials');
+  if(span)span.textContent=ini;
+  if(!_refPhotoBase64){
+    var prev=document.getElementById('rf-photo-preview');
+    if(prev&&!prev.querySelector('img'))prev.innerHTML='<span id="rf-photo-initials">'+ini+'</span>';
+  }
+}
+
+function handleRefPhoto(input){
+  var file=input.files[0];if(!file)return;
+  var reader=new FileReader();
+  reader.onload=function(e){
+    _refPhotoBase64=e.target.result;
+    var prev=document.getElementById('rf-photo-preview');
+    if(prev)prev.innerHTML='<img src="'+e.target.result+'" alt=""/>';
+  };
+  reader.readAsDataURL(file);
+}
+
+function buildCtxPanel(){
+  var panel=document.getElementById('rf-ctx-panel');
+  if(!panel)return;
+  var mem=SD.memory||{};
+  var items=[{type:'other',logo:'',title:'Other (describe below)',sub:''}];
+  (mem.experience||[]).forEach(function(e){
+    items.push({type:'exp',key:'exp:'+e.title,logo:e.logo||'',title:e.title,sub:e.company+(e.location?' · '+e.location:'')});
+  });
+  (mem.education||[]).forEach(function(e){
+    items.push({type:'edu',key:'edu:'+e.title,logo:e.logo||'',title:e.title,sub:e.company+(e.location?' · '+e.location:'')});
+  });
+  panel.innerHTML=items.map(function(it){
+    var logoHtml=it.logo?'<img class="ref-ctx-opt-logo" src="'+esc(it.logo)+'" alt="" onerror="this.style.display=\'none\'"/>':'<div class="ref-ctx-opt-logo" style="display:flex;align-items:center;justify-content:center;font-size:.7rem;color:rgba(255,255,255,.3)">'+(it.type==='other'?'✎':'')+'</div>';
+    return '<div class="ref-ctx-opt" onclick="selectCtx(\''+esc(it.key||'other')+'\',\''+esc(it.title)+'\',\''+it.type+'\')">'+
+      logoHtml+
+      '<div class="ref-ctx-opt-body">'+
+        '<div class="ref-ctx-opt-title">'+esc(it.title)+'</div>'+
+        (it.sub?'<div class="ref-ctx-opt-sub">'+esc(it.sub)+'</div>':'')+
+      '</div>'+
+    '</div>';
+  }).join('');
+}
+
+function toggleCtxPanel(){
+  var panel=document.getElementById('rf-ctx-panel');
+  if(!panel)return;
+  var open=panel.style.display==='none'||!panel.style.display;
+  panel.style.display=open?'block':'none';
+}
+
+function selectCtx(key,label,type){
+  var display=document.getElementById('rf-ctx-display');
+  var hidden=document.getElementById('rf-ctx-value');
+  var ow=document.getElementById('rf-other-wrap');
+  var panel=document.getElementById('rf-ctx-panel');
+  if(display)display.value=label;
+  if(hidden)hidden.value=key;
+  if(panel)panel.style.display='none';
+  if(ow)ow.style.display=(type==='other'?'block':'none');
+}
+
+// Close ctx panel on outside click
+document.addEventListener('click',function(e){
+  if(!e.target.closest('.ref-ctx-dropdown')){
+    var panel=document.getElementById('rf-ctx-panel');
+    if(panel)panel.style.display='none';
+  }
+});
+
+function gv2(id){var e=document.getElementById(id);return e?e.value.trim():'';}
+
+async function submitRef(){
+  var btn=document.querySelector('.ref-submit');
+  var err=document.getElementById('rf-err');
+  if(err)err.style.display='none';
+
+  if(!GAS_URL){
+    if(err){err.textContent='Submission system is not configured yet. Please try again later.';err.style.display='block';}
+    return;
+  }
+
+  var ratingEl=document.querySelector('input[name="rf-rating"]:checked');
+  var ctxVal=gv2('rf-ctx-value');
+  var otherText=gv2('rf-other-text');
+  var finalCtx=ctxVal==='other'?(otherText||'other'):ctxVal;
+
+  var payload={
+    type:'reference',
+    name:gv2('rf-name'),
+    title:gv2('rf-title'),
+    company:gv2('rf-company'),
+    context:finalCtx,
+    period:gv2('rf-period'),
+    rating:ratingEl?parseInt(ratingEl.value):3,
+    review:gv2('rf-review'),
+    email:gv2('rf-email'),
+    phone:gv2('rf-phone'),
+    linkedin:gv2('rf-linkedin'),
+    photoBase64:_refPhotoBase64||null,
+    language:navigator.language.slice(0,2)||'en'
+  };
+
+  if(btn){btn.disabled=true;btn.textContent='Submitting...';}
+  try{
+    var r=await fetch(GAS_URL,{method:'POST',body:JSON.stringify(payload),headers:{'Content-Type':'application/json'}});
+    var data=await r.json();
+    if(data.ok||r.ok){
+      // Success — redirect to refs page
+      if(btn){btn.disabled=false;btn.textContent='Submit Reference';}
+      go('refs');
+    } else {
+      throw new Error(data.error||'Unknown error');
+    }
+  }catch(e){
+    if(btn){btn.disabled=false;btn.textContent='Submit Reference';}
+    if(err){err.textContent='Error: '+e.message+'. Please try again.';err.style.display='block';}
+  }
+}
+
+/* ── Contact form — GAS based ── */
 function sendMsg(){
   var nameEl=document.getElementById('f-name'),
       emailEl=document.getElementById('f-email'),
@@ -1366,75 +1885,46 @@ function sendMsg(){
       err=document.getElementById('f-err'),
       btn=document.querySelector('.fsub');
   if(!nameEl||!emailEl||!msgEl)return;
-
-  var name=nameEl.value.trim(),
-      email=emailEl.value.trim(),
-      subj=subjEl?subjEl.value.trim():'',
-      msg=msgEl.value.trim();
-
-  // Validation
+  var name=nameEl.value.trim(),email=emailEl.value.trim(),subj=subjEl?subjEl.value.trim():'',msg=msgEl.value.trim();
   if(!name||!email||!msg){
-    err.textContent='Please fill in Name, Email and Message fields.';
-    err.style.display='block';
-    err.scrollIntoView({behavior:'smooth',block:'nearest'});
-    return;
+    err.textContent='Please fill in Name, Email and Message fields.';err.style.display='block';
+    err.scrollIntoView({behavior:'smooth',block:'nearest'});return;
   }
   if(!/^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/.test(email)){
-    err.textContent='Please enter a valid email address.';
-    err.style.display='block';
-    return;
+    err.textContent='Please enter a valid email address.';err.style.display='block';return;
   }
   err.style.display='none';
-
-  // Formspree ID girilmemişse mailto fallback
-  if(!FORMSPREE_ID||FORMSPREE_ID==='YOUR_FORM_ID'){
+  if(!GAS_URL){
+    // Fallback to mailto
     var recipient=SD.email||'eren.akcamm@gmail.com';
-    var mailtoLink='mailto:'+recipient+
-      '?subject='+encodeURIComponent((subj||'Portfolio Contact')+' — from '+name)+
-      '&body='+encodeURIComponent('Name: '+name+'\nEmail: '+email+'\n\n'+msg);
+    var mailtoLink='mailto:'+recipient+'?subject='+encodeURIComponent((subj||'Portfolio Contact')+' — from '+name)+'&body='+encodeURIComponent('Name: '+name+'\nEmail: '+email+'\n\n'+msg);
     var a=document.createElement('a');a.href=mailtoLink;a.style.display='none';
     document.body.appendChild(a);a.click();document.body.removeChild(a);
     setTimeout(function(){
-      var wrap=document.getElementById('cf-wrap');
-      var succ=document.getElementById('f-succ');
-      if(wrap)wrap.style.display='none';
-      if(succ)succ.style.display='block';
+      var wrap=document.getElementById('cf-wrap'),succ=document.getElementById('f-succ');
+      if(wrap)wrap.style.display='none';if(succ)succ.style.display='block';
     },600);
     return;
   }
-
-  // Formspree ile gerçek mail gönder
   if(btn){btn.disabled=true;btn.textContent='Sending...';}
-
-  fetch('https://formspree.io/f/'+FORMSPREE_ID,{
+  fetch(GAS_URL,{
     method:'POST',
-    headers:{'Content-Type':'application/json','Accept':'application/json'},
-    body:JSON.stringify({
-      name:name,
-      email:email,
-      subject:subj||'Portfolio Contact',
-      message:msg,
-      _replyto:email,
-      _subject:(subj||'Portfolio Contact')+' — from '+name
-    })
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({type:'contact',name:name,email:email,subject:subj||'Portfolio Contact',message:msg})
   })
   .then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d};});})
   .then(function(res){
     if(btn){btn.disabled=false;btn.textContent='Send Message';}
-    if(res.ok){
-      var wrap=document.getElementById('cf-wrap');
-      var succ=document.getElementById('f-succ');
-      if(wrap)wrap.style.display='none';
-      if(succ)succ.style.display='block';
+    if(res.ok||res.data.ok){
+      var wrap=document.getElementById('cf-wrap'),succ=document.getElementById('f-succ');
+      if(wrap)wrap.style.display='none';if(succ)succ.style.display='block';
     }else{
-      err.textContent=res.data.error||'Something went wrong. Please try again.';
-      err.style.display='block';
+      err.textContent=res.data.error||'Something went wrong. Please try again.';err.style.display='block';
     }
   })
   .catch(function(){
     if(btn){btn.disabled=false;btn.textContent='Send Message';}
-    err.textContent='Network error. Please check your connection and try again.';
-    err.style.display='block';
+    err.textContent='Network error. Please check your connection and try again.';err.style.display='block';
   });
 }
 
