@@ -1565,7 +1565,14 @@ async function fetchRefsJson(){
   // Try loading refs.json from same origin (GitHub Pages serves it)
   try{
     var r=await fetch('refs.json?v='+Date.now());
-    if(r.ok){_refs=await r.json();return;}
+    if(r.ok){
+      _refs=await r.json();
+      // Read GAS_URL from config — avoids embedding secrets in HTML source
+      if(_refs.config&&_refs.config.gasUrl){
+        GAS_URL=_refs.config.gasUrl;
+      }
+      return;
+    }
   }catch(e){}
   _refs={pending:[],approved:[]};
 }
