@@ -407,7 +407,7 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
       <li><a id="n-sk"             onclick="go('sk');closeMobNav()"  data-key="nav_skills">SKILLS</a></li>
       <li style="display:none"><a id="n-prt" onclick="go('prt');closeMobNav()" data-key="nav_portfolio">PORTFOLIO</a></li>
       <li><a id="n-cer"            onclick="go('cer');closeMobNav()" data-key="nav_certs">CERTIFICATES</a></li>
-      <li><a id="n-ref"            onclick="go('ref');closeMobNav()" data-key="nav_references">REFERENCES</a></li>
+      <li style="display:none"><a id="n-ref" onclick="go('ref');closeMobNav()" data-key="nav_references">REFERENCES</a></li>
       <li><a id="n-con"            onclick="go('con');closeMobNav()" data-key="nav_contact">CONTACT</a></li>
     </ul>
   </nav>
@@ -448,7 +448,7 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
 
   <div class="pf"><span class="pfl" data-key="footer_email_label">E-Mail</span><a class="pfe site-email" href="#">eren.akcamm@gmail.com</a></div>
 </div>
- 
+
 <!-- MEMORY PAGE -->
 <div id="mem" class="pg">
   <div class="pb"><h1 data-key="nav_memory">Journey</h1><div class="pbs" data-key="mem_sub">Experience &amp; Education</div></div>
@@ -1568,7 +1568,7 @@ document.addEventListener('click',function(e){
 });
 
 /* ── PAGE NAVIGATION ── */
-var PAGES=['pp','mem','sk','prt','cer','con','ref'];
+var PAGES=['pp','mem','sk','prt','cer','con'];
 var pageHistory=[];
 
 /* ── Google Apps Script Web App URL ─────────────────────────────
@@ -1954,7 +1954,6 @@ function go(id){
   if(cur&&cur!==id)pageHistory.push(cur);
   if(pageHistory.length>20)pageHistory.shift();
   showPage(id);
-  localStorage.setItem('lastPage', id);
 }
 
 function goBack(){
@@ -2228,8 +2227,7 @@ function attachMailHandlers(){
 applyData();
 attachMailHandlers();
 (function(){
-  var lastPage = localStorage.getItem('lastPage') || 'pp';
-  go(lastPage);
+  go('pp');
 })();
 
 </script>
