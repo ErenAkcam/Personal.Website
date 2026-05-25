@@ -6,6 +6,7 @@
 <title id="page-title">Eren Akçam | Portfolio</title>
 <link rel="icon" id="site-favicon" type="image/png" href="assets/favicon.png"/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Barlow+Condensed:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -111,10 +112,10 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
 .skt{display:flex;align-items:center;justify-content:space-between;gap:7px}
 .skn{font-family:'Barlow Condensed',sans-serif;font-size:.9rem;font-weight:600;color:var(--txt);letter-spacing:.04em;text-transform:uppercase}
 .skb{font-size:.54rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:20px;white-space:nowrap;flex-shrink:0}
-.ba{background:#c6d9b8;color:#2a5020;border:1px solid #a8c49a}
-.bi{background:#d4dfc8;color:#3a5030;border:1px solid #b8ceaa}
-.bb{background:#ddd8c4;color:#5a4e30;border:1px solid #c8c0a0}
-.bn{background:#b8d0a8;color:#1e3d14;border:1px solid #8ab87a}
+.ba{background:var(--gd);color:#fff;border:1px solid var(--gd)}
+.bi{background:var(--g);color:#fff;border:1px solid var(--g)}
+.bb{background:var(--gl);color:#fff;border:1px solid var(--gl)}
+.bn{background:var(--blk);color:#fff;border:1px solid var(--blk)}
 .sbt{width:100%;height:5px;background:var(--bm);border-radius:3px;overflow:hidden}
 .sbf{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--gd),var(--g));transition:width 1s cubic-bezier(.4,0,.2,1)}
 
@@ -133,7 +134,7 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
 @media(max-width:768px){.ca{width:42px;height:42px}.ca svg{width:18px;height:18px}.ca.pv{left:6px}.ca.nx{right:6px}}
 .cnp{margin:7px 10px 10px;background:var(--bej);border:1px solid var(--bm);border-radius:8px;padding:7px 11px;display:flex;align-items:center;gap:8px}
 .cna{font-family:'Barlow Condensed',sans-serif;font-size:.69rem;font-weight:700;color:var(--tm);letter-spacing:.07em;text-transform:uppercase;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.cco{font-size:.58rem;font-weight:700;color:var(--gd);background:#c6d9b8;border:1px solid #a8c49a;padding:2px 8px;border-radius:20px;white-space:nowrap;flex-shrink:0}
+.cco{font-size:.58rem;font-weight:700;color:#fff;background:var(--gd);border:1px solid var(--gd);padding:2px 8px;border-radius:20px;white-space:nowrap;flex-shrink:0;box-shadow:0 2px 6px rgba(77,112,64,.2)}
 .cds{display:flex;gap:5px;align-items:center;justify-content:center;padding:0 10px 9px}
 .cd{width:6px;height:6px;border-radius:50%;background:var(--bm);cursor:pointer;transition:background .2s,transform .15s;border:none;padding:0}
 .cd.on{background:var(--gd);transform:scale(1.4)}
@@ -221,6 +222,11 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
 .fsucc-i svg{width:22px;height:22px;fill:none;stroke:var(--gd);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
 .fsucc-m{font-size:.92rem;color:var(--gd);font-weight:700;margin-bottom:5px}
 .fsucc-s{font-size:.74rem;color:var(--tm)}
+
+/* ── REF FORM STYLES ── */
+.star-rating { display: inline-flex; gap: 4px; font-size: 1.6rem; cursor: pointer; transition: color 0.2s; user-select:none; }
+.star-rating span { color: var(--bm); transition: color 0.15s, transform 0.15s; }
+.star-rating span:hover { transform: scale(1.1); }
 
 /* ── LIGHTBOX ── */
 .lb{display:none;position:fixed;inset:0;background:rgba(3,6,2,.93);z-index:9999;align-items:center;justify-content:center}
@@ -397,10 +403,11 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
     </button>
     <ul class="nm" id="nav-menu">
       <li><a id="n-pp"  class="on" onclick="go('pp');closeMobNav()"  data-key="nav_profile">PROFILE</a></li>
-      <li><a id="n-mem"            onclick="go('mem');closeMobNav()" data-key="nav_memory">MEMORY</a></li>
+      <li><a id="n-mem"            onclick="go('mem');closeMobNav()" data-key="nav_memory">JOURNEY</a></li>
       <li><a id="n-sk"             onclick="go('sk');closeMobNav()"  data-key="nav_skills">SKILLS</a></li>
       <li style="display:none"><a id="n-prt" onclick="go('prt');closeMobNav()" data-key="nav_portfolio">PORTFOLIO</a></li>
       <li><a id="n-cer"            onclick="go('cer');closeMobNav()" data-key="nav_certs">CERTIFICATES</a></li>
+      <li><a id="n-ref"            onclick="go('ref');closeMobNav()" data-key="nav_references">REFERENCES</a></li>
       <li><a id="n-con"            onclick="go('con');closeMobNav()" data-key="nav_contact">CONTACT</a></li>
     </ul>
   </nav>
@@ -444,7 +451,7 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
 
 <!-- MEMORY PAGE -->
 <div id="mem" class="pg">
-  <div class="pb"><h1 data-key="nav_memory">Memory</h1><div class="pbs" data-key="mem_sub">Experience &amp; Education</div></div>
+  <div class="pb"><h1 data-key="nav_memory">Journey</h1><div class="pbs" data-key="mem_sub">Experience &amp; Education</div></div>
   <div class="pbd" id="memory-body"><p style="color:var(--mu);font-size:.8rem">Loading...</p></div>
   <div class="pf"><span class="pfl" data-key="footer_email_label">E-Mail</span><a class="pfe site-email" href="#">eren.akcamm@gmail.com</a></div>
 </div>
@@ -480,6 +487,25 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
   <div class="pf"><span class="pfl" data-key="footer_email_label">E-Mail</span><a class="pfe site-email" href="#">eren.akcamm@gmail.com</a></div>
 </div>
 
+<!-- REFERENCES PAGE -->
+<div id="ref" class="pg">
+  <div class="pb"><h1 data-key="nav_references">References</h1><div class="pbs" data-key="ref_sub">Professional Recommendations</div></div>
+  <div class="pbd" style="padding-top:42px" id="refs-body">
+    <div style="background:var(--bej); padding:35px 20px; border-radius:14px; text-align:center; border:1.5px dashed var(--bm); margin-bottom: 35px;">
+      <div style="width:56px;height:56px;background:var(--gp);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 15px;">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--gd)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      </div>
+      <h3 style="font-family:var(--font-heading, sans-serif); color:var(--txt); margin-bottom:10px; font-size:1.6rem; font-weight:700;">Have we worked together?</h3>
+      <p style="color:var(--mu); font-size:0.9rem; margin-bottom:20px; max-width:480px; margin-left:auto; margin-right:auto; line-height:1.6;">I'd love to hear your thoughts! Your recommendations help me grow and showcase the value I bring to every collaboration.</p>
+      <button class="bg" onclick="openRefPanel()" data-key="btn_write_ref" style="font-size:0.8rem; padding:12px 26px; border-radius:50px;">Write a Reference</button>
+    </div>
+    <div id="ref-list" style="display:flex; flex-direction:column; gap:26px; max-width:900px; margin:0 auto;">
+      <p style="color:var(--mu);font-size:.9rem; text-align: center;">No references published yet.</p>
+    </div>
+  </div>
+  <div class="pf"><span class="pfl" data-key="footer_email_label">E-Mail</span><a class="pfe site-email" href="#">eren.akcamm@gmail.com</a></div>
+</div>
+
 <!-- CONTACT PAGE -->
 <div id="con" class="pg">
   <div class="pb"><h1 data-key="nav_contact">Contact</h1><div class="pbs" data-key="con_sub">Get in Touch</div></div>
@@ -500,11 +526,14 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
         <p class="cfs" data-key="con_form_sub">Your message will be sent directly to my email inbox.</p>
         <div id="cf-wrap">
           <div class="fr2">
-            <div class="fld"><label class="flbl" data-key="con_form_name">Full Name</label><input class="finp" id="f-name" type="text" placeholder="Your name"/></div>
-            <div class="fld"><label class="flbl" data-key="con_form_email">Email</label><input class="finp" id="f-email" type="email" placeholder="your@email.com"/></div>
+            <div class="fld"><label class="flbl" data-key="con_form_name">Full Name (Optional)</label><input class="finp" id="f-name" type="text" placeholder="Anonymous"/></div>
+            <div class="fld"><label class="flbl" data-key="con_form_email">Email (Optional)</label><input class="finp" id="f-email" type="email" placeholder="your@email.com"/></div>
           </div>
-          <div class="fld"><label class="flbl" data-key="con_form_subject">Subject</label><input class="finp" id="f-subj" type="text" placeholder="What's this about?"/></div>
-          <div class="fld"><label class="flbl" data-key="con_form_message">Message</label><textarea class="finp" id="f-msg" rows="5" placeholder="Write your message here..."></textarea></div>
+          <div class="fr2">
+            <div class="fld"><label class="flbl" data-key="con_form_subject">Subject *</label><input class="finp" id="f-subj" type="text" placeholder="What's this about?"/></div>
+            <div class="fld"><label class="flbl" data-key="con_form_phone">Phone (Optional)</label><input class="finp" id="f-phone" type="text" placeholder="+90 555 ..."/></div>
+          </div>
+          <div class="fld"><label class="flbl" data-key="con_form_message">Message *</label><textarea class="finp" id="f-msg" rows="5" placeholder="Write your message here..."></textarea></div>
           <div id="f-err" style="font-size:.71rem;color:#c0392b;margin-bottom:8px;display:none"></div>
           <button class="fsub" onclick="sendMsg()" data-key="con_form_btn">Send Message</button>
         </div>
@@ -517,6 +546,107 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
     </div>
   </div>
   <div class="pf"><span class="pfl" data-key="footer_email_label">E-Mail</span><a class="pfe site-email" href="#">eren.akcamm@gmail.com</a></div>
+</div>
+
+<!-- REFERENCE PANEL (Modal) -->
+<div class="lb" id="ref-panel" style="z-index: 10000; align-items: flex-start; padding: 40px 20px; overflow-y: auto;">
+  <div class="cf" style="max-width: 650px; width: 100%; margin: auto; position: relative; padding: 40px 35px;">
+    <button class="lbx" onclick="closeRefPanel()" style="top: 15px; right: 20px; color: #1a1a14;">&#215;</button>
+    <div class="cft" style="font-size: 1.5rem; margin-bottom: 10px;">Write a Reference</div>
+    <p class="cfs" style="margin-bottom: 25px; border-bottom: 2px solid var(--bej); padding-bottom: 15px;">We appreciate your feedback. Please fill out the form below to submit your reference.</p>
+    
+    <div class="fr2">
+      <div class="fld"><label class="flbl">Name, Surname *</label><input class="finp" id="r-name" type="text" required /></div>
+      <div class="fld"><label class="flbl">Title *</label><input class="finp" id="r-title" type="text" placeholder="e.g. Senior Manager" required /></div>
+    </div>
+    
+    <div class="fr2">
+      <div class="fld"><label class="flbl">Company / Institution *</label><input class="finp" id="r-company" type="text" required /></div>
+      
+      <div class="fld" style="position:relative;">
+        <label class="flbl">Context / Relationship *</label>
+        <div id="r-ctx-trigger" class="finp" style="display:flex;align-items:center;cursor:pointer;justify-content:space-between;background:var(--bej);" onclick="toggleCtxMenu()">
+          <div id="r-ctx-selected" style="display:flex;align-items:center;gap:10px;color:var(--bd);">Select an option...</div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--bd)" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div id="r-ctx-menu" style="display:none;position:absolute;top:100%;left:0;right:0;background:var(--bl);border:1.5px solid var(--bm);border-radius:8px;z-index:10;max-height:220px;overflow-y:auto;box-shadow:0 8px 24px rgba(0,0,0,0.12);margin-top:4px;">
+          <!-- Items injected by JS -->
+        </div>
+        <input type="hidden" id="r-context-sel" value="" onchange="handleContextChange()" />
+        
+        <div id="r-context-other-wrap" style="display:none; margin-top:8px;">
+          <input class="finp" id="r-context-other" type="text" placeholder="Please specify your relationship" />
+        </div>
+      </div>
+    </div>
+    
+    <div class="fr2" style="align-items: center;">
+      <div class="fld">
+        <label class="flbl">Work Period *</label>
+        <div style="display: flex; gap: 10px; align-items: center;">
+          <div style="position:relative; display:flex; align-items:center; flex:1;">
+            <input class="finp" id="r-period-start" type="text" placeholder="Start (e.g. 2022)" required style="padding-right:30px;" />
+            <input type="date" onchange="var e=document.getElementById('r-period-start'); e.value=this.value; e.focus();" style="position:absolute; right:8px; opacity:0; width:20px; height:20px; cursor:pointer; z-index:2;" />
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--mu)" stroke-width="2" style="position:absolute; right:10px; pointer-events:none;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </div>
+          <span style="color:var(--mu); font-weight:bold;">-</span>
+          <div style="position:relative; display:flex; align-items:center; flex:1;">
+            <input class="finp" id="r-period-end" type="text" placeholder="End (Optional)" style="padding-right:30px;" />
+            <input type="date" onchange="var e=document.getElementById('r-period-end'); e.value=this.value; e.focus();" style="position:absolute; right:8px; opacity:0; width:20px; height:20px; cursor:pointer; z-index:2;" />
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--mu)" stroke-width="2" style="position:absolute; right:10px; pointer-events:none;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </div>
+        </div>
+      </div>
+      
+      <div class="fld" style="margin-bottom:0;">
+        <label class="flbl" style="margin-bottom:2px;">Evaluation *</label>
+        <div class="star-rating">
+          <span data-val="1">★</span><span data-val="2">★</span><span data-val="3">★</span><span data-val="4">★</span><span data-val="5">★</span>
+        </div>
+        <input type="hidden" id="r-rating" value="5" />
+      </div>
+    </div>
+    
+    <div class="fld" style="margin-top: 13px;">
+      <label class="flbl">Explanation *</label>
+      <textarea class="finp" id="r-desc" rows="4" placeholder="Your experience working together..." required></textarea>
+    </div>
+    
+    <div style="margin-top: 30px; margin-bottom: 15px; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gd); border-bottom: 1px solid var(--bm); padding-bottom: 5px;">Optional Details</div>
+    
+    <div class="fr2">
+      <div class="fld">
+        <label class="flbl">Profile Photo</label>
+        <div style="display:flex; align-items:center; gap:15px; background:var(--bej); padding:10px; border-radius:8px; border:1.5px solid var(--bm);">
+          <div id="r-photo-preview" style="width:48px; height:48px; border-radius:50%; background:var(--bl); border:2px dashed var(--bd); display:flex; align-items:center; justify-content:center; overflow:hidden; background-size:cover; background-position:center; flex-shrink:0;">
+             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--bd)" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <label class="bg" style="cursor:pointer; font-size:0.6rem; padding:8px 16px; margin:0;">
+            Choose File
+            <input type="file" id="r-photo-file" accept="image/*" style="display:none" onchange="previewRefPhoto(event)" />
+          </label>
+          <input type="hidden" id="r-photo-data" />
+        </div>
+      </div>
+      
+      <div style="display:flex; flex-direction:column; justify-content:flex-end;">
+         <div class="fld"><label class="flbl">LinkedIn URL</label><input class="finp" id="r-linkedin" type="text" placeholder="https://linkedin.com/in/..." /></div>
+      </div>
+    </div>
+    
+    <div class="fr2">
+      <div class="fld"><label class="flbl">Phone</label><input class="finp" id="r-phone" type="text" placeholder="+90 555 555 5555" /></div>
+      <div class="fld"><label class="flbl">Email</label><input class="finp" id="r-email" type="email" placeholder="mail@example.com" /></div>
+    </div>
+    
+    <div id="r-err" style="font-size:.75rem;color:#e74c3c;margin-top:10px;margin-bottom:12px;display:none;background:#fdebd0;padding:10px;border-radius:6px;border:1px solid #fad7a1;"></div>
+    <div id="r-succ" style="font-size:.8rem;color:var(--gd);margin-top:10px;margin-bottom:12px;display:none;font-weight:bold;background:#d5e8d4;padding:12px;border-radius:6px;border:1px solid #82b366;text-align:center;">
+      <svg viewBox="0 0 24 24" width="20" height="20" style="vertical-align:middle;margin-right:5px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      Reference submitted successfully!
+    </div>
+    
+    <button class="fsub" onclick="submitRefForm()" style="font-size:0.75rem; padding:15px;">Submit Reference</button>
+  </div>
 </div>
 
 <div class="lb" id="lb">
@@ -920,6 +1050,7 @@ var DEF = {
   "pageTexts": {
     "con_title": "Contact Information"
   },
+  "references": [],
   "fontTheme": "classic",
   "fontCustom": {
     "headingFont": "",
@@ -944,6 +1075,69 @@ function clone(o){return JSON.parse(JSON.stringify(o));}
 function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 function stripB64(obj){if(!obj||typeof obj!=='object')return;Object.keys(obj).forEach(function(k){if(typeof obj[k]==='string'&&obj[k].startsWith('data:'))obj[k]='';else stripB64(obj[k]);});}
 
+function getInitials(name) {
+  if (!name) return '';
+  var cleanName = name.trim().replace(/\s+/g, ' ');
+  var parts = cleanName.split(' ');
+  if (parts.length === 1) {
+    return parts[0].substring(0, 2).toUpperCase();
+  }
+  var firstInitial = parts[0].charAt(0);
+  var lastInitial = parts[parts.length - 1].charAt(0);
+  return (firstInitial + lastInitial).toUpperCase();
+}
+
+function getInitialsAvatar(name, size) {
+  var initials = getInitials(name) || '?';
+  var fontSize = size === 72 ? '1.5rem' : '1.2rem';
+  var borderSize = size === 72 ? '2.5px' : '2px';
+  var fontFam = "var(--font-heading, 'Playfair Display', serif)";
+  
+  return '<div style="' +
+    'width:' + size + 'px;' +
+    'height:' + size + 'px;' +
+    'border-radius:50%;' +
+    'background:linear-gradient(135deg, var(--gd), var(--g));' +
+    'border:' + borderSize + ' solid var(--bm);' +
+    'display:inline-flex;' +
+    'align-items:center;' +
+    'justify-content:center;' +
+    'color:var(--bl);' +
+    'font-family:' + fontFam + ';' +
+    'font-weight:700;' +
+    'font-style:italic;' +
+    'font-size:' + fontSize + ';' +
+    'letter-spacing:0.05em;' +
+    'flex-shrink:0;' +
+    'text-transform:uppercase;' +
+    'box-shadow:inset 0 2px 4px rgba(0,0,0,0.1), 0 4px 8px rgba(0,0,0,0.05);' +
+    'user-select:none;' +
+    '">' + esc(initials) + '</div>';
+}
+
+function getLinkedInUsername(url) {
+  if (!url) return '';
+  var clean = url.trim()
+    .replace(/^(https?:\/\/)?(www\.)?/, '')
+    .replace(/\/+$/, '');
+  
+  var inIdx = clean.indexOf('linkedin.com/in/');
+  if (inIdx !== -1) {
+    var sub = clean.substring(inIdx + 16);
+    return sub.split('/')[0].split('?')[0];
+  }
+  
+  var compIdx = clean.indexOf('linkedin.com/company/');
+  if (compIdx !== -1) {
+    var sub = clean.substring(compIdx + 21);
+    return sub.split('/')[0].split('?')[0];
+  }
+
+  var parts = clean.split('/');
+  var last = parts[parts.length - 1].split('?')[0];
+  return last || 'LinkedIn';
+}
+
 /* ── Load data — her zaman DEF kullan (admin deploy eder) ── */
 function lSD(){
   return clone(DEF);
@@ -961,6 +1155,12 @@ function applyTheme(){
 }
 
 var FONT_THEMES={
+  'premium':{
+    body:"'Inter', sans-serif",
+    heading:"'Outfit', sans-serif",
+    mono:"'JetBrains Mono', monospace",
+    bodyColor:'',bodySize:'',headingColor:'',headingSize:''
+  },
   'classic':{
     body:"'Raleway',sans-serif",
     heading:"'Playfair Display',serif",
@@ -1071,6 +1271,7 @@ function applyData(){
     renderMemory();
     renderSkills();
     renderCerts();
+    renderReferences();
     preloadCertImages();
     showCats();
   }catch(e){console.warn('applyData error:',e);}
@@ -1103,6 +1304,60 @@ function memRow(e){
     (e.company?'<div class="tls">'+esc(e.company)+'</div>':'')+
     (e.location?'<div class="tlc">'+esc(e.location)+'</div>':'')+
     '<p class="tlp">'+descHtml+'</p></div></div>';
+}
+
+/* ── References ── */
+function renderReferences() {
+  var el = document.getElementById('ref-list');
+  if(!el) return;
+  var refs = SD.references || [];
+  var pubRefs = refs.filter(function(r){ return r.status === 'published'; });
+  
+  if(pubRefs.length === 0) {
+    el.innerHTML = '<p style="color:var(--mu);font-size:.9rem; grid-column: 1 / -1; text-align: center;">No references published yet.</p>';
+    return;
+  }
+  
+  var h = '';
+  pubRefs.forEach(function(r) {
+    var stars = '';
+    for(var i=1; i<=5; i++) {
+      stars += '<span style="color:' + (i <= r.rating ? '#f1c40f' : 'var(--bm)') + '">★</span>';
+    }
+    
+    var links = '';
+    if(r.linkedin) links += '<a href="'+esc(r.linkedin)+'" target="_blank" style="color:var(--gd); background:var(--bej); padding:4px 8px; border-radius:4px; text-decoration:none; display:inline-flex; align-items:center; gap:4px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg> LinkedIn</a>';
+    if(r.email) links += '<a href="mailto:'+esc(r.email)+'" style="color:var(--gd); background:var(--bej); padding:4px 8px; border-radius:4px; text-decoration:none; display:inline-flex; align-items:center; gap:4px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> Email</a>';
+    
+    var avatarHtml = r.photo
+      ? '<div style="width:72px; height:72px; border-radius:50%; background-image:url(\''+esc(r.photo)+'\'); background-size:cover; background-position:center; border:2.5px solid var(--bm); flex-shrink:0;"></div>'
+      : getInitialsAvatar(r.name, 72);
+    
+    var ctxIcon = r.logo ? '<img src="'+esc(r.logo)+'" style="width:14px;height:14px;border-radius:2px;object-fit:cover;"/>' : '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>';
+    
+    h += '<div style="background:var(--bl); border:1.5px solid var(--bm); border-radius:16px; padding:35px 40px; position:relative; box-shadow:0 6px 24px rgba(0,0,0,0.04); transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform=\'translateY(-2px)\';this.style.boxShadow=\'0 8px 28px rgba(0,0,0,0.06)\'" onmouseout="this.style.transform=\'none\';this.style.boxShadow=\'0 6px 24px rgba(0,0,0,0.04)\'">' +
+           '<div style="display:flex; gap:20px; align-items:flex-start; margin-bottom:24px;">' +
+             avatarHtml +
+             '<div style="flex:1;">' +
+               '<div style="font-family:var(--font-heading, sans-serif); font-size:1.3rem; font-weight:700; color:var(--txt); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:5px;">' +
+                 '<span>' + esc(r.name) + '</span>' +
+                 '<div class="star-rating" style="font-size:1.1rem; cursor:default; pointer-events:none;">' + stars + '</div>' +
+               '</div>' +
+               '<div style="font-size:0.85rem; color:var(--gd); font-weight:600; margin-bottom:10px; line-height:1.4;">' + esc(r.title) + ' @ ' + esc(r.company) + '</div>' +
+               '<div style="display:flex; gap:16px; flex-wrap:wrap;">' + 
+                 '<div style="font-size:0.75rem; color:var(--mu); display:flex; align-items:center; gap:6px;">' + ctxIcon + ' ' + esc(r.context) + '</div>' +
+                 '<div style="font-size:0.75rem; color:var(--mu); display:flex; align-items:center; gap:6px;">' +
+                   '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> ' + esc(r.period) +
+                 '</div>' +
+               '</div>' +
+             '</div>' +
+           '</div>' +
+           '<p style="font-size:0.95rem; color:var(--txt); line-height:1.7; font-style:italic; position:relative; padding-left:15px; border-left:3px solid var(--bej);">"' + esc(r.desc).replace(/\n/g, '<br>') + '"</p>' +
+           (links ? '<div style="margin-top:24px; padding-top:16px; border-top:1px dashed var(--bm); display:flex; gap:16px; font-size:0.75rem;">' + links + '</div>' : '') +
+         '</div>';
+  });
+  
+  el.innerHTML = h;
 }
 
 /* ── Skills ── */
@@ -1313,8 +1568,368 @@ document.addEventListener('click',function(e){
 });
 
 /* ── PAGE NAVIGATION ── */
-var PAGES=['pp','mem','sk','prt','cer','con'];
+var PAGES=['pp','mem','sk','prt','cer','con','ref'];
 var pageHistory=[];
+
+/* ── Google Apps Script Web App URL ─────────────────────────────
+   Deploy ettikten sonra URL'i buraya yapıştır.
+   Örnek: 'https://script.google.com/macros/s/AKfycb.../exec'
+──────────────────────────────────────────────────────────────── */
+var GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyoHYtwxvMeUnTqRbI7v0Us1X0hVewLyRe9reZc9F5GTwngzaLQSJ-S6fErZu7-8RezIg/exec';
+
+function submitRefForm() {
+  var name     = document.getElementById('r-name').value.trim();
+  var title    = document.getElementById('r-title').value.trim();
+  var company  = document.getElementById('r-company').value.trim();
+  var ctxSel   = document.getElementById('r-context-sel');
+  var context  = ctxSel.value === 'other'
+                   ? document.getElementById('r-context-other').value.trim()
+                   : ctxSel.value;
+  var pStart   = document.getElementById('r-period-start').value.trim();
+  var pEnd     = document.getElementById('r-period-end').value.trim();
+  var rating   = document.getElementById('r-rating').value;
+  var desc     = document.getElementById('r-desc').value.trim();
+  var photo    = document.getElementById('r-photo-data').value;
+  var linkedin = document.getElementById('r-linkedin').value.trim();
+  var phone    = document.getElementById('r-phone').value.trim();
+  var email    = document.getElementById('r-email').value.trim();
+  var err      = document.getElementById('r-err');
+  var succ     = document.getElementById('r-succ');
+  var btn      = document.querySelector('#ref-panel .fsub');
+
+  // Zorunlu alan kontrolü
+  if(!name || !title || !company || !context || !pStart || !desc) {
+    err.textContent = 'Please fill all required fields (*).';
+    err.style.display = 'block';
+    return;
+  }
+
+  // URL yapılandırılmamışsa uyar
+  if(!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL === 'YOUR_GOOGLE_SCRIPT_URL_HERE') {
+    err.textContent = 'Configuration error: Google Script URL is not set.';
+    err.style.display = 'block';
+    return;
+  }
+
+  err.style.display = 'none';
+  succ.style.display = 'none';
+
+  // Butonu devre dışı bırak
+  if(btn) { btn.disabled = true; btn.textContent = 'Sending...'; }
+
+  var payload = {
+    name:         name,
+    title:        title,
+    company:      company,
+    context:      context,
+    period_start: pStart,
+    period_end:   pEnd,
+    rating:       rating,
+    desc:         desc,
+    photo:        photo,
+    linkedin:     linkedin,
+    phone:        phone,
+    email:        email
+  };
+
+  // Google Apps Script'e POST at
+  fetch(GOOGLE_SCRIPT_URL, {
+    method: 'POST',
+    mode: 'no-cors',   // Apps Script CORS kısıtlaması — no-cors ile geçilir
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  })
+  .then(function() {
+    // no-cors modunda response okunamaz; başarılı kabul et
+    succ.style.display = 'block';
+    _clearRefForm();
+    setTimeout(function(){ closeRefPanel(); }, 2500);
+  })
+  .catch(function(fetchErr) {
+    err.textContent = 'Network error. Please try again. (' + fetchErr.message + ')';
+    err.style.display = 'block';
+  })
+  .finally(function() {
+    if(btn) { btn.disabled = false; btn.textContent = 'Submit Reference'; }
+  });
+}
+
+/* Formu temizleyen yardımcı fonksiyon */
+function _clearRefForm() {
+  document.querySelectorAll('#ref-panel input[type="text"], #ref-panel input[type="month"], #ref-panel input[type="email"], #ref-panel textarea')
+    .forEach(function(i){ i.value = ''; });
+  document.getElementById('r-context-sel').value = '';
+  document.getElementById('r-ctx-selected').innerHTML = '<span style="color:var(--bd)">Select an option...</span>';
+  handleContextChange();
+  document.getElementById('r-photo-data').value = '';
+  var preview = document.getElementById('r-photo-preview');
+  preview.style.backgroundImage = '';
+  preview.style.background = 'var(--bl)';
+  preview.style.border = '2px dashed var(--bd)';
+  preview.textContent = '';
+  preview.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--bd)" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>';
+  document.getElementById('r-rating').value = 5;
+  if(window._updateStars) window._updateStars(5);
+}
+
+/* ── Referansları refs.json'dan yükle ve sayfada göster ─────── */
+function loadRefs() {
+  var list = document.getElementById('ref-list');
+  if(!list) return;
+  var url = 'refs.json?_=' + new Date().getTime();
+  fetch(url)
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      var jsonRefs = data.references || [];
+      var defaultRefs = (SD.references || []).filter(function(r){ return r.status === 'published'; });
+      var jsonNames = jsonRefs.map(function(r){ return r.name; });
+      var filteredDefaults = defaultRefs.filter(function(r){ return !jsonNames.includes(r.name); });
+      var allRefs = jsonRefs.concat(filteredDefaults);
+      if(!allRefs.length) {
+        list.innerHTML = '<p style="color:var(--mu);font-size:.9rem;text-align:center;">No references published yet.</p>';
+        return;
+      }
+      list.innerHTML = allRefs.map(function(r){ return buildRefCard(r); }).join('');
+    })
+    .catch(function(){
+      var defaultRefs = (SD.references || []).filter(function(r){ return r.status === 'published'; });
+      if (defaultRefs.length) {
+        list.innerHTML = defaultRefs.map(function(r){ return buildRefCard(r); }).join('');
+      } else {
+        list.innerHTML = '<p style="color:var(--mu);font-size:.9rem;text-align:center;">No references published yet.</p>';
+      }
+    });
+}
+
+/* Tek bir referans kartı HTML'i */
+function buildRefCard(r) {
+  var stars = '';
+  for(var i=1; i<=5; i++){
+    stars += '<span style="color:'+(i<=r.rating?'#f1c40f':'var(--bm)')+';font-size:1rem;">★</span>';
+  }
+  var avatar = r.photo
+    ? '<div style="width:56px;height:56px;border-radius:50%;background-image:url('+esc(r.photo)+');background-size:cover;background-position:center;border:2px solid var(--bm);flex-shrink:0;"></div>'
+    : getInitialsAvatar(r.name, 56);
+  var period = r.period || (r.period_start + (r.period_end ? ' – ' + r.period_end : ' – Present'));
+  var links = '';
+  if(r.linkedin) {
+    var liUser = getLinkedInUsername(r.linkedin);
+    links += '<a href="'+esc(r.linkedin)+'" target="_blank" style="display:inline-flex;align-items:center;gap:4px;font-size:.6rem;font-weight:700;color:var(--gd);text-decoration:none;background:var(--gp);border:1px solid var(--bm);border-radius:20px;padding:3px 10px;margin-top:8px;margin-right:8px;"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>' + esc(liUser) + '</a>';
+  }
+  if(r.email) {
+    links += '<a href="mailto:'+esc(r.email)+'" style="display:inline-flex;align-items:center;gap:4px;font-size:.6rem;font-weight:700;color:var(--gd);text-decoration:none;background:var(--gp);border:1px solid var(--bm);border-radius:20px;padding:3px 10px;margin-top:8px;margin-right:8px;"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>' + esc(r.email) + '</a>';
+  }
+  if(r.phone) {
+    links += '<a href="tel:'+esc(r.phone)+'" style="display:inline-flex;align-items:center;gap:4px;font-size:.6rem;font-weight:700;color:var(--gd);text-decoration:none;background:var(--gp);border:1px solid var(--bm);border-radius:20px;padding:3px 10px;margin-top:8px;margin-right:8px;"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>' + esc(r.phone) + '</a>';
+  }
+  return '<div style="background:var(--bl);border:1.5px solid var(--bm);border-radius:16px;padding:28px 28px 24px;box-shadow:0 3px 14px rgba(0,0,0,.06);">'+
+    '<div style="display:flex;gap:18px;align-items:flex-start;margin-bottom:18px;">'+avatar+
+      '<div style="flex:1;min-width:0;"><div style="font-family:\'Barlow Condensed\',sans-serif;font-size:1.1rem;font-weight:700;color:var(--txt);letter-spacing:.04em;text-transform:uppercase;">'+esc(r.name)+'</div>'+
+        '<div style="font-size:.72rem;color:var(--gd);font-weight:600;margin-top:2px;">'+esc(r.title)+' · '+esc(r.company)+'</div>'+
+        '<div style="font-size:.63rem;color:var(--mu);margin-top:2px;">'+esc(r.context)+' · '+esc(period)+'</div>'+
+        '<div style="margin-top:5px;">'+stars+'</div>'+links+'</div></div>'+
+    '<div style="position:relative;padding-left:18px;border-left:3px solid var(--g);">'+
+      '<svg width="18" height="14" viewBox="0 0 24 20" fill="var(--gp)" style="position:absolute;top:-2px;left:-2px;opacity:.6"><path d="M0 20 C0 8 4 2 12 0L14 4C8 6 6 10 7 14H12V20H0Z M12 20 C12 8 16 2 24 0L26 4C20 6 18 10 19 14H24V20H12Z"/></svg>'+
+      '<p style="font-size:.84rem;line-height:1.85;color:var(--tm);font-weight:300;padding-left:14px;">'+esc(r.desc)+'</p></div></div>';
+}
+
+function openRefPanel() {
+  document.getElementById('ref-panel').classList.add('on');
+  if(!window._refInit) {
+    populateRefContexts();
+    initStarRating();
+    
+    // Hook up name input listener for initials preview
+    var rNameEl = document.getElementById('r-name');
+    if (rNameEl) {
+      rNameEl.addEventListener('input', function() {
+        var photoData = document.getElementById('r-photo-data').value;
+        if (!photoData) {
+          var initials = getInitials(this.value);
+          var preview = document.getElementById('r-photo-preview');
+          if (initials) {
+            preview.style.backgroundImage = 'none';
+            preview.style.background = 'linear-gradient(135deg, var(--gd), var(--g))';
+            preview.style.border = '2px solid var(--bm)';
+            preview.style.fontFamily = "var(--font-heading, 'Playfair Display', serif)";
+            preview.style.fontWeight = '700';
+            preview.style.fontStyle = 'italic';
+            preview.style.fontSize = '1rem';
+            preview.style.color = 'var(--bl)';
+            preview.style.display = 'flex';
+            preview.style.alignItems = 'center';
+            preview.style.justifyContent = 'center';
+            preview.textContent = initials;
+          } else {
+            preview.style.backgroundImage = '';
+            preview.style.background = 'var(--bl)';
+            preview.style.border = '2px dashed var(--bd)';
+            preview.textContent = '';
+            preview.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--bd)" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>';
+          }
+        }
+      });
+    }
+    
+    window._refInit = true;
+  }
+}
+
+function closeRefPanel() {
+  document.getElementById('ref-panel').classList.remove('on');
+  document.getElementById('r-err').style.display = 'none';
+  document.getElementById('r-succ').style.display = 'none';
+}
+
+function previewRefPhoto(event) {
+  var file = event.target.files[0];
+  if(!file) return;
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    var img = new Image();
+    img.onload = function() {
+      var max_size = 256;
+      var width = img.width;
+      var height = img.height;
+      if (width > height) {
+        if (width > max_size) {
+          height *= max_size / width;
+          width = max_size;
+        }
+      } else {
+        if (height > max_size) {
+          width *= max_size / height;
+          height = max_size;
+        }
+      }
+      var canvas = document.createElement('canvas');
+      canvas.width = width;
+      canvas.height = height;
+      var ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, width, height);
+      var compressedBase64 = canvas.toDataURL('image/jpeg', 0.85);
+      
+      var preview = document.getElementById('r-photo-preview');
+      preview.style.backgroundImage = 'url(' + compressedBase64 + ')';
+      preview.style.background = '';
+      preview.style.border = '2px solid var(--bm)';
+      preview.innerHTML = ''; 
+      document.getElementById('r-photo-data').value = compressedBase64;
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+function toggleCtxMenu() {
+  var menu = document.getElementById('r-ctx-menu');
+  if(menu) menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+}
+
+function selectCtx(val, text, imgSrc) {
+  var hidden = document.getElementById('r-context-sel');
+  var display = document.getElementById('r-ctx-selected');
+  hidden.value = val;
+  
+  if (imgSrc) {
+    display.innerHTML = '<img src="' + esc(imgSrc) + '" style="width:24px;height:24px;border-radius:4px;object-fit:cover;"/> <span style="color:var(--txt)">' + esc(text) + '</span>';
+  } else {
+    display.innerHTML = '<span style="color:var(--txt)">' + esc(text) + '</span>';
+  }
+  
+  document.getElementById('r-ctx-menu').style.display = 'none';
+  handleContextChange();
+}
+
+document.addEventListener('click', function(e) {
+  var wrap = document.getElementById('r-ctx-trigger');
+  if(wrap && !wrap.contains(e.target) && e.target.closest('#r-ctx-menu') === null) {
+    var menu = document.getElementById('r-ctx-menu');
+    if(menu) menu.style.display = 'none';
+  }
+});
+
+function populateRefContexts() {
+  var menu = document.getElementById('r-ctx-menu');
+  if(!menu) return;
+  menu.innerHTML = '';
+  
+  var mem = SD.memory || (typeof DEF!=='undefined'?DEF.memory:{});
+  
+  function addGroup(label, items) {
+    if(!items || !items.length) return;
+    var grp = document.createElement('div');
+    grp.style.cssText = 'padding:8px 12px;font-size:0.65rem;font-weight:700;color:var(--bd);text-transform:uppercase;letter-spacing:0.1em;background:var(--bej);';
+    grp.textContent = label;
+    menu.appendChild(grp);
+    
+    items.forEach(function(e) {
+      var it = document.createElement('div');
+      it.style.cssText = 'padding:10px 12px;display:flex;align-items:center;gap:10px;cursor:pointer;border-bottom:1px solid var(--bej);transition:background 0.15s;';
+      it.onmouseover = function(){ this.style.background = 'var(--gp)'; };
+      it.onmouseout = function(){ this.style.background = 'transparent'; };
+      
+      var imgHtml = '';
+      if(e.logo) {
+        imgHtml = '<img src="' + esc(e.logo) + '" style="width:24px;height:24px;border-radius:4px;object-fit:cover;flex-shrink:0;background:#fff;"/>';
+      } else {
+        imgHtml = '<div style="width:24px;height:24px;border-radius:4px;background:var(--bm);flex-shrink:0;"></div>';
+      }
+      
+      it.innerHTML = imgHtml + '<div style="font-size:0.8rem;color:var(--txt);font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + esc(e.title) + '</div>';
+      it.onclick = function() { selectCtx(e.title, e.title, e.logo); };
+      menu.appendChild(it);
+    });
+  }
+  
+  addGroup('Experience', mem.experience);
+  addGroup('Education', mem.education);
+  
+  var optOther = document.createElement('div');
+  optOther.style.cssText = 'padding:12px;display:flex;align-items:center;gap:10px;cursor:pointer;transition:background 0.15s;';
+  optOther.onmouseover = function(){ this.style.background = 'var(--gp)'; };
+  optOther.onmouseout = function(){ this.style.background = 'transparent'; };
+  optOther.innerHTML = '<div style="width:24px;height:24px;border-radius:4px;background:var(--bej);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--mu)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg></div><div style="font-size:0.8rem;color:var(--txt);font-weight:600;">Other (Please specify)</div>';
+  optOther.onclick = function() { selectCtx('other', 'Other (Please specify)', null); };
+  menu.appendChild(optOther);
+}
+
+function handleContextChange() {
+  var sel = document.getElementById('r-context-sel');
+  var otherDiv = document.getElementById('r-context-other-wrap');
+  if(sel && otherDiv) {
+    otherDiv.style.display = sel.value === 'other' ? 'block' : 'none';
+  }
+}
+
+function initStarRating() {
+  var stars = document.querySelectorAll('.star-rating span');
+  var input = document.getElementById('r-rating');
+  
+  window._updateStars = function(val, hover) {
+    stars.forEach(function(s) {
+      var sVal = parseInt(s.getAttribute('data-val'));
+      s.style.color = sVal <= val ? '#f1c40f' : 'var(--bm)';
+    });
+  };
+  
+  stars.forEach(function(star) {
+    star.addEventListener('click', function() {
+      var val = parseInt(this.getAttribute('data-val'));
+      input.value = val;
+      window._updateStars(val);
+    });
+    star.addEventListener('mouseover', function() {
+      var val = parseInt(this.getAttribute('data-val'));
+      window._updateStars(val, true);
+    });
+    star.addEventListener('mouseout', function() {
+      window._updateStars(parseInt(input.value));
+    });
+  });
+  
+  window._updateStars(5);
+}
 
 function showPage(id){
   PAGES.forEach(function(pid){
@@ -1329,6 +1944,7 @@ function showPage(id){
   window.scrollTo(0,0);
   if(id==='sk')setTimeout(animateBars,80);
   if(id==='prt')showCats();
+  if(id==='ref')loadRefs();
   var bb=document.getElementById('mob-back-btn');
   if(bb)bb.style.display=(id==='pp'?'none':'');
 }
@@ -1338,6 +1954,7 @@ function go(id){
   if(cur&&cur!==id)pageHistory.push(cur);
   if(pageHistory.length>20)pageHistory.shift();
   showPage(id);
+  localStorage.setItem('lastPage', id);
 }
 
 function goBack(){
@@ -1354,86 +1971,65 @@ function animateBars(){
   });
 }
 
-/* ── Contact form ── */
-/* Formspree entegrasyonu — formspree.io'dan ücretsiz form ID alın */
-var FORMSPREE_ID = 'mwvrnjzl';
+/* ── Contact form (Google Apps Script) ── */
+var GAS_CONTACT_URL = 'https://script.google.com/macros/s/AKfycbzOygn61F1XBjrR6FmrQQAqMJmRIeqTpPnAB83Hdv4ozWv5SReQb725K8DH6erVIbmU/exec';
 
 function sendMsg(){
   var nameEl=document.getElementById('f-name'),
       emailEl=document.getElementById('f-email'),
       subjEl=document.getElementById('f-subj'),
+      phoneEl=document.getElementById('f-phone'),
       msgEl=document.getElementById('f-msg'),
       err=document.getElementById('f-err'),
       btn=document.querySelector('.fsub');
-  if(!nameEl||!emailEl||!msgEl)return;
+  
+  if(!msgEl)return;
 
-  var name=nameEl.value.trim(),
-      email=emailEl.value.trim(),
+  var name=nameEl?nameEl.value.trim():'',
+      email=emailEl?emailEl.value.trim():'',
       subj=subjEl?subjEl.value.trim():'',
+      phone=phoneEl?phoneEl.value.trim():'',
       msg=msgEl.value.trim();
 
-  // Validation
-  if(!name||!email||!msg){
-    err.textContent='Please fill in Name, Email and Message fields.';
+  if(!msg||!subj){
+    err.textContent='Lütfen Konu ve Mesaj alanlarını doldurun.';
     err.style.display='block';
     err.scrollIntoView({behavior:'smooth',block:'nearest'});
     return;
   }
-  if(!/^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/.test(email)){
-    err.textContent='Please enter a valid email address.';
+  
+  err.style.display='none';
+
+  if(!GAS_CONTACT_URL){
+    err.textContent='Backend henüz bağlanmadı.';
     err.style.display='block';
     return;
   }
-  err.style.display='none';
 
-  // Formspree ID girilmemişse mailto fallback
-  if(!FORMSPREE_ID||FORMSPREE_ID==='YOUR_FORM_ID'){
-    var recipient=SD.email||'eren.akcamm@gmail.com';
-    var mailtoLink='mailto:'+recipient+
-      '?subject='+encodeURIComponent((subj||'Portfolio Contact')+' — from '+name)+
-      '&body='+encodeURIComponent('Name: '+name+'\nEmail: '+email+'\n\n'+msg);
-    var a=document.createElement('a');a.href=mailtoLink;a.style.display='none';
-    document.body.appendChild(a);a.click();document.body.removeChild(a);
-    setTimeout(function(){
-      var wrap=document.getElementById('cf-wrap');
-      var succ=document.getElementById('f-succ');
-      if(wrap)wrap.style.display='none';
-      if(succ)succ.style.display='block';
-    },600);
-    return;
-  }
+  if(btn){btn.disabled=true;btn.textContent='Gönderiliyor...';}
 
-  // Formspree ile gerçek mail gönder
-  if(btn){btn.disabled=true;btn.textContent='Sending...';}
+  var fd = new FormData();
+  fd.append('name', name || 'Anonim');
+  fd.append('email', email || 'Belirtilmedi');
+  fd.append('phone', phone || 'Belirtilmedi');
+  fd.append('subject', subj);
+  fd.append('message', msg);
 
-  fetch('https://formspree.io/f/'+FORMSPREE_ID,{
-    method:'POST',
-    headers:{'Content-Type':'application/json','Accept':'application/json'},
-    body:JSON.stringify({
-      name:name,
-      email:email,
-      subject:subj||'Portfolio Contact',
-      message:msg,
-      _replyto:email,
-      _subject:(subj||'Portfolio Contact')+' — from '+name
-    })
+  fetch(GAS_CONTACT_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    body: fd
   })
-  .then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d};});})
-  .then(function(res){
+  .then(function(){
     if(btn){btn.disabled=false;btn.textContent='Send Message';}
-    if(res.ok){
-      var wrap=document.getElementById('cf-wrap');
-      var succ=document.getElementById('f-succ');
-      if(wrap)wrap.style.display='none';
-      if(succ)succ.style.display='block';
-    }else{
-      err.textContent=res.data.error||'Something went wrong. Please try again.';
-      err.style.display='block';
-    }
+    var wrap=document.getElementById('cf-wrap');
+    var succ=document.getElementById('f-succ');
+    if(wrap)wrap.style.display='none';
+    if(succ)succ.style.display='block';
   })
   .catch(function(){
     if(btn){btn.disabled=false;btn.textContent='Send Message';}
-    err.textContent='Network error. Please check your connection and try again.';
+    err.textContent='Bir hata oluştu, lütfen daha sonra tekrar deneyin.';
     err.style.display='block';
   });
 }
@@ -1631,6 +2227,10 @@ function attachMailHandlers(){
 /* ── INIT ── */
 applyData();
 attachMailHandlers();
+(function(){
+  var lastPage = localStorage.getItem('lastPage') || 'pp';
+  go(lastPage);
+})();
 
 </script>
 <button class="mob-back" id="mob-back-btn" onclick="goBack()"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>Back</button>
