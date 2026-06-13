@@ -2088,6 +2088,33 @@ html{scroll-behavior:smooth}
 </div>
 
 <script>
+/* ╔══════════════════════════════════════════════════════════════╗
+   ║                  ⚙️  SİTE KONFİGÜRASYONU                   ║
+   ║  Değiştirmeniz gerekebilecek tüm değerler burada.           ║
+   ╚══════════════════════════════════════════════════════════════╝ */
+var CONFIG = {
+  /* --- GOOGLE APPS SCRIPT ---
+     Referans formunun verilerini GitHub'a kaydeden GAS Web App URL'si.
+     Google Apps Script dağıtımınızdan aldığınız exec URL'yi buraya girin. */
+  GAS_REF_URL: "https://script.google.com/macros/s/AKfycbxHrZ6QD3Y97vW7EDg32jeUVHO-p_9UIZL5p7NH7drFldK6KkKz8SbSSqlwJ6K_-L_p_g/exec",
+
+  /* --- İLETİŞİM FORMU (FormSubmit.co) ---
+     FormSubmit.co'dan aldığınız e-posta adresi veya form ID'si. */
+  CONTACT_FORM_ACTION: "https://formsubmit.co/eren.akcamm@gmail.com",
+
+  /* --- SOSYAL MEDYA ---
+     Güncel sosyal medya profil bağlantılarınız. */
+  LINKEDIN_URL:  "http://www.linkedin.com/in/erenakcam",
+  GITHUB_URL:    "",
+  INSTAGRAM_URL: "",
+
+  /* --- PORTFOLIO AYARLARI ---
+     Site genelinde geçerli olan genel ayarlar. */
+  SITE_LANG: "en",          // Varsayılan dil: "en" veya "tr"
+  MAX_PHOTO_SIZE_KB: 256,   // Referans fotoğrafı maksimum boyutu (KB)
+};
+/* ══════════════════════════════════════════════════════════════════ */
+
 var SK='erensite_data';
 
 
@@ -2388,7 +2415,7 @@ var DEF = {
   "colorText": "#1e2e28",
   "colorTextMid": "#4a6a58",
   "colorTextMuted": "#6b7a6e",
-  "GAS_REF_URL": "https://script.google.com/macros/s/AKfycbxCb19TD-c03ICRWkqlAwojPzu_wKVgxX8GH4CMATx7gmqtNvjimtWUof-H3vWMvXst/exec",
+  "GAS_REF_URL": "",
   "references": [],
   "pending_references": []
 };
@@ -3333,8 +3360,8 @@ function rpSubmit(){
     setTimeout(function(){closeRefPanel();}, 2000);
   }
 
-  if (SD && SD.GAS_REF_URL) {
-    fetch(SD.GAS_REF_URL, {
+  if (CONFIG.GAS_REF_URL) {
+    fetch(CONFIG.GAS_REF_URL, {
       method: 'POST',
       body: JSON.stringify(ref)
     })
