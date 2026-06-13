@@ -3023,18 +3023,151 @@ function attachMailHandlers(){
   if(cem)cem.addEventListener('click',handleMailClick);
 }
 
+/* ── UNIVERSAL STORAGE (Works with file:// protocol) ── */
+// 🔗 Submit referansı GitHub'a push et (pending_refs.json)
+function submitReferenceToGitHub(ref) {
+  try {
+    // Token localStorage'dan oku
+    const token = localStorage.getItem('github_token');
+    const owner = localStorage.getItem('github_owner') || 'eren-akcam';
+    const repo = localStorage.getItem('github_repo') || 'portfolio';
+    const branch = localStorage.getItem('github_branch') || 'main';
+    
+    if (!token) {
+      console.log('⚠️ GitHub token not set - only saving locally');
+      return; // Token set etmediyse, sadece local'de tut
+    }
+    
+    // GitHub API'ye pending_refs.json push et
+    const url = `https://api.github.com/repos/${owner}/${repo}/contents/pending_refs.json?ref=${branch}`;
+    
+    fetch(url, {
+      headers: {
+        'Authorization': `token ${token}`,
+        'Accept': 'application/vnd.github.v3+json'
+      }
+    })
+    .then(r => r.json())
+    .then(data => {
+      // Existing refs
+      let refs = [];
+      if (data.content) {
+        refs = JSON.parse(atob(data.content));
+      }
+      
+      // Add new ref
+      refs.push(ref);
+      
+      // Push back to GitHub
+      const content = btoa(JSON.stringify(refs, null, 2));
+      const sha = data.sha;
+      
+      const payload = {
+        message: `📝 Add reference from ${ref.name}`,
+        content: content,
+        branch: branch
+      };
+      
+      if (sha) payload.sha = sha;
+      
+      return fetch(url, {
+        method: 'PUT',
+        headers: {
+          'Authorization': `token ${token}`,
+          'Content-Type': 'application/json',
+          'Accept': 'application/vnd.github.v3+json'
+        },
+        body: JSON.stringify(payload)
+      });
+    })
+    .then(r => r.json())
+    .then(data => {
+      console.log('✅ Reference pushed to GitHub:', data);
+    })
+    .catch(err => {
+      console.log('⚠️ GitHub push failed (will save locally):', err);
+    });
+  } catch(e) {
+    console.log('⚠️ Error:', e);
+  }
+}
+
+// Initialize global storage object
+if (!window.appStorage) {
+  window.appStorage = {
+    github_token: '',
+    github_owner: 'eren-akcam',
+    github_repo: 'portfolio',
+    github_branch: 'main',
+    admin_pending_refs: [],
+    admin_approved_refs: []
+  };
+}
+
+function getAppStorageData(key) {
+  try {
+    const val = window.appStorage[key];
+    if (typeof val === 'string' && (val.startsWith('[') || val.startsWith('{'))) {
+      return JSON.parse(val);
+    }
+    if (Array.isArray(val)) return val;
+    if (typeof val === 'object') return val;
+    return val;
+  } catch(e) {
+    return key === 'admin_pending_refs' || key === 'admin_approved_refs' ? [] : null;
+  }
+}
+
+function setAppStorageData(key, value) {
+  window.appStorage[key] = typeof value === 'string' ? value : JSON.stringify(value);
+  // Try localStorage too
+  try {
+    localStorage.setItem(key, typeof value === 'string' ? value : JSON.stringify(value));
+  } catch(e) {}
+}
+
+// 📥 Load approved references from GitHub
+function loadApprovedReferencesFromGitHub() {
+  try {
+    const owner = localStorage.getItem('github_owner') || 'eren-akcam';
+    const repo = localStorage.getItem('github_repo') || 'portfolio';
+    const branch = localStorage.getItem('github_branch') || 'main';
+    
+    const url = `https://api.github.com/repos/${owner}/${repo}/contents/approved_refs.json?ref=${branch}`;
+    
+    fetch(url)
+      .then(r => r.json())
+      .then(data => {
+        if (data.content) {
+          const refs = JSON.parse(atob(data.content));
+          localStorage.setItem('admin_approved_refs', JSON.stringify(refs));
+          setAppStorageData('admin_approved_refs', refs);
+          console.log('✅ Loaded approved references from GitHub');
+        }
+      })
+      .catch(err => {
+        console.log('⚠️ Could not load approved_refs.json (may not exist yet)', err);
+      });
+  } catch(e) {
+    console.log('Error loading approved refs:', e);
+  }
+}
+
 /* ── REFERENCES ── */
 var RP_KEY = 'erensite_refs_v1';
 
 function rpGetRefs(){
   // 📌 Admin Panel'den onaylı referansları göster
   try{ 
-    return JSON.parse(localStorage.getItem('admin_approved_refs')||'[]'); 
+    const data = getAppStorageData('admin_approved_refs');
+    return Array.isArray(data) ? data : [];
   }
   catch(e){ return []; }
 }
 function rpSaveRefs(arr){
-  try{ localStorage.setItem(RP_KEY, JSON.stringify(arr)); }
+  try{ 
+    setAppStorageData(RP_KEY, arr);
+  }
   catch(e){}
 }
 
@@ -3179,6 +3312,22 @@ function rpPreviewPhoto(event){
 /* Star rating init */
 (function(){
   document.addEventListener('DOMContentLoaded',function(){
+    // 🔄 Sync window.appStorage from localStorage (if available)
+    try {
+      const keys = ['admin_pending_refs', 'admin_approved_refs', 'github_token', 'github_owner', 'github_repo', 'github_branch'];
+      keys.forEach(key => {
+        const val = localStorage.getItem(key);
+        if (val) {
+          window.appStorage[key] = val;
+        }
+      });
+    } catch(e) {
+      console.log('localStorage not accessible - using window.appStorage only');
+    }
+    
+    // 📥 Load approved references from GitHub
+    loadApprovedReferencesFromGitHub();
+    
     rpInitStars();
     rpNameInitials();
     rpInitContext();
@@ -3314,14 +3463,14 @@ function rpSubmit(){
   };
 
   // 📝 Pending referanslara kaydet (admin onayı bekleniyor)
-  var pending = [];
-  try { pending = JSON.parse(localStorage.getItem('admin_pending_refs')||'[]'); }
-  catch(e) { pending = []; }
-  
+  var pending = getAppStorageData('admin_pending_refs') || [];
   pending.push(ref);
-  localStorage.setItem('admin_pending_refs', JSON.stringify(pending));
+  setAppStorageData('admin_pending_refs', pending);
   
-  // ✅ Admin onaylı referansları göster (localStorage'dan)
+  // 📤 GitHub'a push et (Admin panel'in görmesi için)
+  submitReferenceToGitHub(ref);
+  
+  // ✅ Admin onaylı referansları göster
   var refs = rpGetRefs();
   rpSaveRefs(refs);
 
