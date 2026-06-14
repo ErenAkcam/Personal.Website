@@ -3042,39 +3042,82 @@ function rpSaveRefs(arr){
   catch(e){}
 }
 
-/* ── GOOGLE APPS SCRIPT İLE İLETİŞİM ── */
+/* ── GITHUB API İLE İLETİŞİM ── */
+const GITHUB_TOKEN = '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';
+const GITHUB_OWNER = 'ErenAkcam';
+const GITHUB_REPO = 'Persanal.Website';
+const GITHUB_FILE_PATH = 'references.json';
+
+// ÖNEMLİ GÜVENLİK UYARISI: GitHub PAT (Personal Access Token) kodun içinde client-side (frontend) olarak bulunması bir güvenlik riskidir.
+// Ancak sunucusuz (backend olmadan) bir mimari istendiğinden bu yöntem uygulanmıştır. 
+// Token'ın sadece bu repository'e yazma yetkisi olduğuna ve başka özel verilerinize erişimi olmadığına emin olun.
 function rpSubmitToGoogleAppsScript(ref, callback){
-  if(!GOOGLE_APPS_SCRIPT_URL || GOOGLE_APPS_SCRIPT_URL.includes('YOUR_DEPLOYMENT_ID')){
-    // Apps Script URL yapılandırılmamış, sadece yerel kaydet
-    console.log('Google Apps Script URL yapılandırılmamış. Sadece yerel depolamaya kaydedildi.');
-    if(callback) callback();
-    return;
-  }
-
-  var payload = {
-    name: ref.name,
-    email: ref.email,
-    phone: ref.phone,
-    country: ref.phone ? ref.phone.split('-')[0].replace('+','') : '',
-    context: ref.context,
-    relationship: ref.period,
-    message: ref.desc
-  };
-
-  fetch(GOOGLE_APPS_SCRIPT_URL, {
-    method: 'POST',
-    mode: 'no-cors', // GitHub Pages'de CORS sorunları için
+  const apiUrl = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${GITHUB_FILE_PATH}`;
+  
+  // 1. Dosyanın mevcut SHA değerini ve içeriğini al
+  fetch(apiUrl, {
     headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(payload)
+      'Authorization': `token ${GITHUB_TOKEN}`,
+      'Accept': 'application/vnd.github.v3+json'
+    }
   })
-  .then(function(){
-    console.log('Referans GitHub\'a gönderildi');
+  .then(res => {
+    if (!res.ok) {
+      if (res.status === 404) {
+        return { sha: null, content: null }; // Dosya yoksa oluşturacağız
+      }
+      throw new Error('Dosya bilgisi alınamadı');
+    }
+    return res.json();
+  })
+  .then(fileData => {
+    let referencesData = { references: [], lastUpdated: new Date().toISOString() };
+    
+    // Eğer dosya varsa, içeriğini çöz ve mevcut referansları al
+    if (fileData.content) {
+      try {
+        const decodedContent = decodeURIComponent(escape(atob(fileData.content)));
+        referencesData = JSON.parse(decodedContent);
+      } catch(e) {
+        console.error('Mevcut references.json okunurken hata:', e);
+      }
+    }
+    
+    // 2. Yeni referansı listeye ekle
+    if (!referencesData.references) referencesData.references = [];
+    referencesData.references.push(ref);
+    referencesData.lastUpdated = new Date().toISOString();
+    
+    // 3. İçeriği JSON yapıp tekrar base64 olarak şifrele (Türkçe karakterleri koruyarak)
+    const newContentStr = JSON.stringify(referencesData, null, 2);
+    const encodedContent = btoa(unescape(encodeURIComponent(newContentStr)));
+    
+    // 4. Güncellenmiş içeriği GitHub API ile kaydet
+    const putBody = {
+      message: 'Add new reference via website form',
+      content: encodedContent
+    };
+    if (fileData.sha) {
+      putBody.sha = fileData.sha;
+    }
+    
+    return fetch(apiUrl, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `token ${GITHUB_TOKEN}`,
+        'Accept': 'application/vnd.github.v3+json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(putBody)
+    });
+  })
+  .then(res => {
+    if (!res.ok) throw new Error('GitHub üzerinde dosya güncellenemedi');
+    console.log('Referans GitHub\'a başarıyla eklendi (references.json güncellendi)');
     if(callback) callback();
   })
-  .catch(function(err){
-    console.log('Google Apps Script\'e gönderim hatası:', err);
+  .catch(err => {
+    console.error('GitHub API ile güncelleme hatası:', err);
     // Hata olsa da yerel kaydı sakladık, callback'i çağır
     if(callback) callback();
   });
