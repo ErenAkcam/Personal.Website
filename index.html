@@ -3024,7 +3024,14 @@ function attachMailHandlers(){
 }
 
 /* ── REFERENCES ── */
+/* ── GOOGLE APPS SCRIPT KONFIGURASYONU ── */
+// Google Apps Script Web App URL'sini burada gir
+// Apps Script'ten Deploy > Web app olarak deploy ettikten sonra URL'sini buraya yapıştır
+const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/d/YOUR_DEPLOYMENT_ID/userweb';
+// Örnek: const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/d/1Bp_9-...KKY/userweb';
+
 var RP_KEY = 'erensite_refs_v1';
+var REFS_FROM_GITHUB = []; // GitHub'dan yüklenen referanslar
 
 function rpGetRefs(){
   try{ return JSON.parse(localStorage.getItem(RP_KEY)||'[]'); }
@@ -3034,6 +3041,71 @@ function rpSaveRefs(arr){
   try{ localStorage.setItem(RP_KEY, JSON.stringify(arr)); }
   catch(e){}
 }
+
+/* ── GOOGLE APPS SCRIPT İLE İLETİŞİM ── */
+function rpSubmitToGoogleAppsScript(ref, callback){
+  if(!GOOGLE_APPS_SCRIPT_URL || GOOGLE_APPS_SCRIPT_URL.includes('YOUR_DEPLOYMENT_ID')){
+    // Apps Script URL yapılandırılmamış, sadece yerel kaydet
+    console.log('Google Apps Script URL yapılandırılmamış. Sadece yerel depolamaya kaydedildi.');
+    if(callback) callback();
+    return;
+  }
+
+  var payload = {
+    name: ref.name,
+    email: ref.email,
+    phone: ref.phone,
+    country: ref.phone ? ref.phone.split('-')[0].replace('+','') : '',
+    context: ref.context,
+    relationship: ref.period,
+    message: ref.desc
+  };
+
+  fetch(GOOGLE_APPS_SCRIPT_URL, {
+    method: 'POST',
+    mode: 'no-cors', // GitHub Pages'de CORS sorunları için
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(payload)
+  })
+  .then(function(){
+    console.log('Referans GitHub\'a gönderildi');
+    if(callback) callback();
+  })
+  .catch(function(err){
+    console.log('Google Apps Script\'e gönderim hatası:', err);
+    // Hata olsa da yerel kaydı sakladık, callback'i çağır
+    if(callback) callback();
+  });
+}
+
+/* ── GITHUB'DAN REFERANS YÜKLEMESİ ── */
+function loadReferencesFromGithub(){
+  fetch('references.json')
+    .then(function(response){
+      if(!response.ok) throw new Error('references.json bulunamadı');
+      return response.json();
+    })
+    .then(function(data){
+      if(data && data.references && Array.isArray(data.references)){
+        REFS_FROM_GITHUB = data.references;
+        // Sayfayı render et
+        renderRefPage();
+      }
+    })
+    .catch(function(err){
+      console.log('GitHub referansları yüklenirken hata:', err);
+      // Hata olsa da yerel veriler gösterilecek
+      renderRefPage();
+    });
+}
+
+/* ── SAYFA YÜKLENDİĞİNDE REFERANSLARı BAŞLAT ── */
+document.addEventListener('DOMContentLoaded', function(){
+  // GitHub'dan referansları yükle
+  loadReferencesFromGithub();
+});
 
 function rpGetInitials(name){
   if(!name)return '?';
@@ -3110,12 +3182,25 @@ function rpBuildCard(r){
 }
 
 function renderRefPage(){
-  var refs = rpGetRefs();
+  // Yerel referansları al
+  var localRefs = rpGetRefs();
+  
+  // GitHub referansları ekle
+  var allRefs = [].concat(localRefs, REFS_FROM_GITHUB);
+  
+  // Duplicates'i kaldır (aynı ID'ye sahip olanlar)
+  var seenIds = {};
+  var uniqueRefs = allRefs.filter(function(ref){
+    if(seenIds[ref.id]) return false;
+    seenIds[ref.id] = true;
+    return true;
+  });
+  
   var list = document.getElementById('ref-list');
   var empty = document.getElementById('ref-empty');
   if(!list||!empty)return;
 
-  if(!refs.length){
+  if(!uniqueRefs.length){
     list.innerHTML='';
     list.style.display='none';
     empty.style.display='flex';
@@ -3126,9 +3211,15 @@ function renderRefPage(){
   } else {
     empty.style.display='none';
     list.style.display='';
+    // Geçici olarak yerel refs'i güncellenmiş versiyonla değiştir
+    var originalGetRefs = window.rpGetRefs;
+    window.rpGetRefs = function(){ return uniqueRefs; };
+    
     buildRefFiltersBar();
-    /* Apply filters and sort */
     applyRefFilters();
+    
+    // Restore orijinal fonksiyon
+    window.rpGetRefs = originalGetRefs;
   }
 }
 
@@ -3310,9 +3401,16 @@ function rpSubmit(){
     date: new Date().toISOString()
   };
 
+  // Yerel depolamaya kaydet
   var refs = rpGetRefs();
   refs.push(ref);
   rpSaveRefs(refs);
+
+  // Google Apps Script'e gönder (arka planda)
+  rpSubmitToGoogleAppsScript(ref, function(){
+    // Başarılı veya başarısız olsa da devam et
+    btn.disabled=false;
+  });
 
   /* show success */
   document.getElementById('ref-form-body').style.display='none';

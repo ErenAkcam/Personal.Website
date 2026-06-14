@@ -1,0 +1,16 @@
+{
+  "references": [
+    {
+      "id": 1,
+      "date": "2024-01-15",
+      "name": "John Smith",
+      "email": "john@example.com",
+      "phone": "+1-555-0123",
+      "country": "US",
+      "context": "Project Manager at Tech Corp",
+      "relationship": "Worked together for 3 years",
+      "message": "Eren is an exceptional professional with outstanding problem-solving skills."
+    }
+  ],
+  "lastUpdated": "2024-01-15T10:30:00Z"
+}
