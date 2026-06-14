@@ -1948,7 +1948,7 @@ html{scroll-behavior:smooth}
           <input class="ref-inp" id="rp-name" type="text" placeholder="Jane Smith"/>
         </div>
         <div class="ref-field">
-          <label class="ref-label">Title / Position <span style="color:var(--mu);font-weight:400">(optional)</span></label>
+          <label class="ref-label">Title / Position <span style="color:var(--mu)" style="font-weight:400">(optional)</span></label>
           <input class="ref-inp" id="rp-title" type="text" placeholder="e.g. Department Head"/>
         </div>
       </div>
@@ -2080,7 +2080,7 @@ html{scroll-behavior:smooth}
 <div class="lb" id="lb">
   <button class="lbx" onclick="closeLb()">&#215;</button>
   <div id="lb-img-wrap" style="position:relative;display:inline-flex;align-items:center;justify-content:center;touch-action:none;overflow:hidden;max-width:96vw;max-height:92vh;border-radius:10px">
-    <img id="lb-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" style="max-width:92vw;max-height:88vh;width:auto;height:auto;object-fit:contain;transform-origin:center center;transition:transform .2s;user-select:none;-webkit-user-drag:none;display:block;border-radius:9px"/>
+    <img id="lb-img" src="" alt="" style="max-width:92vw;max-height:88vh;width:auto;height:auto;object-fit:contain;transform-origin:center center;transition:transform .2s;user-select:none;-webkit-user-drag:none;display:block;border-radius:9px"/>
     <button class="lb-arr lb-pv" id="lb-pv" onclick="lbSlide(-1)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
     <button class="lb-arr lb-nx" id="lb-nx" onclick="lbSlide(1)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
   </div>
@@ -2088,39 +2088,11 @@ html{scroll-behavior:smooth}
 </div>
 
 <script>
-/* ╔══════════════════════════════════════════════════════════════╗
-   ║                  ⚙️  SİTE KONFİGÜRASYONU                   ║
-   ║  Değiştirmeniz gerekebilecek tüm değerler burada.           ║
-   ╚══════════════════════════════════════════════════════════════╝ */
-var CONFIG = {
-  /* --- GOOGLE APPS SCRIPT ---
-     Referans formunun verilerini GitHub'a kaydeden GAS Web App URL'si.
-     Google Apps Script dağıtımınızdan aldığınız exec URL'yi buraya girin. */
-  GAS_REF_URL: "https://script.google.com/macros/s/AKfycbwt1sHI8FVzMxf8eUNFCdD1OZiQMwzElF8KE7ZT7HqnhkHK6mg8D2_T8kMye_Tsex62Jw/exec",
-
-  /* --- İLETİŞİM FORMU (FormSubmit.co) ---
-     FormSubmit.co'dan aldığınız e-posta adresi veya form ID'si. */
-  CONTACT_FORM_ACTION: "https://formsubmit.co/eren.akcamm@gmail.com",
-
-  /* --- SOSYAL MEDYA ---
-     Güncel sosyal medya profil bağlantılarınız. */
-  LINKEDIN_URL:  "http://www.linkedin.com/in/erenakcam",
-  GITHUB_URL:    "",
-  INSTAGRAM_URL: "",
-
-  /* --- PORTFOLIO AYARLARI ---
-     Site genelinde geçerli olan genel ayarlar. */
-  SITE_LANG: "en",          // Varsayılan dil: "en" veya "tr"
-  MAX_PHOTO_SIZE_KB: 256,   // Referans fotoğrafı maksimum boyutu (KB)
-};
-/* ══════════════════════════════════════════════════════════════════ */
-
 var SK='erensite_data';
 
 
 /* ── Defaults — tüm içerik buraya gömülü ── */
-var DEF = 
-{
+var DEF = {
   "name": "Eren Akçam",
   "role": "Student · Designerss",
   "tag": "Design & Engineering",
@@ -2415,27 +2387,7 @@ var DEF =
   "colorBejDark": "#9ab8a8",
   "colorText": "#1e2e28",
   "colorTextMid": "#4a6a58",
-  "colorTextMuted": "#6b7a6e",
-  "GAS_REF_URL": "",
-  "references": [],
-  "pending_references": [
-    {
-      "id": 1781356412471,
-      "name": "sssssss",
-      "title": "sssssssss",
-      "company": "sssssss",
-      "context": "Freelance — Graphic Designer",
-      "period": "2022 — Today",
-      "rating": 5,
-      "desc": "sssssssssssssss",
-      "photo": "",
-      "email": "",
-      "phone": "",
-      "linkedin": "",
-      "date": "2026-06-13T13:13:32.471Z"
-    }
-  ]
-}
+  "colorTextMuted": "#6b7a6e"
 };
 
 /* ── Helpers ── */
@@ -2502,7 +2454,7 @@ function applyFontTheme(){
   try{
     var ft=SD.fontTheme||'classic';
     var custom=SD.fontCustom||{};
-    var theme=FONT_THEMES[ft]||FONT_THEMES.classic;
+    var theme=FONT_THEMES[ft]||FONT_THEMES['classic'];
     // Body font
     document.body.style.fontFamily=custom.bodyFont||theme.body;
     // Heading font override via CSS variable
@@ -2618,19 +2570,20 @@ function memRow(e,type){
   var logoPart='';
   if(e.logo){
     logoPart='<div class="tli-logo-wrap"><img src="'+esc(e.logo)+'" alt=""/></div>';
-  var icon = type === 'Education' ?
-    '<svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.1 2.686 2 6 2s6-.9 6-2v-5"/></svg>' :
-    '<svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>';
-  logoPart='<div class="tli-logo-wrap">'+icon+'</div>';
+  } else {
+    var icon=type==='Education'
+      ?'<svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.1 2.686 2 6 2s6-.9 6-2v-5"/></svg>'
+      :'<svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>';
+    logoPart='<div class="tli-logo-wrap">'+icon+'</div>';
   }
 
-  var locationHtml = e.location ?
-    '<div class="tlc"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>'+esc(e.location)+'</div>' :
-    '';
+  var locationHtml=e.location
+    ?'<div class="tlc"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>'+esc(e.location)+'</div>'
+    :'';
 
-  var expandBtn = isLong ?
-    '<button class="tli-expand-btn" data-id="'+id+'"><span>Read more</span><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>' :
-    '';
+  var expandBtn=isLong
+    ?'<button class="tli-expand-btn" data-id="'+id+'"><span>Read more</span><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>'
+    :'';
 
   return '<div class="tli">'+
     '<div class="tli-visual">'+
@@ -3074,10 +3027,10 @@ function attachMailHandlers(){
 var RP_KEY = 'erensite_refs_v1';
 
 function rpGetRefs(){
-  return (SD && SD.references) || [];
+  try{ return JSON.parse(localStorage.getItem(RP_KEY)||'[]'); }
+  catch(e){ return []; }
 }
 function rpSaveRefs(arr){
-  if(SD) SD.references = arr;
   try{ localStorage.setItem(RP_KEY, JSON.stringify(arr)); }
   catch(e){}
 }
@@ -3093,9 +3046,9 @@ function rpEsc(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;
 
 function rpBuildCard(r){
   /* avatar */
-  var avatarHtml = r.photo ?
-    '<div class="ref-avatar"><img src="'+rpEsc(r.photo)+'" alt=""/></div>' :
-    '<div class="ref-avatar" style="background:linear-gradient(135deg,var(--gd),var(--g))">'+rpEsc(rpGetInitials(r.name))+'</div>';
+  var avatarHtml = r.photo
+    ? '<div class="ref-avatar"><img src="'+rpEsc(r.photo)+'" alt=""/></div>'
+    : '<div class="ref-avatar" style="background:linear-gradient(135deg,var(--gd),var(--g))">'+rpEsc(rpGetInitials(r.name))+'</div>';
 
   /* stars - positioned top right, below will be date */
   var stars='';
@@ -3208,7 +3161,7 @@ function rpPreviewPhoto(event){
       if(w>h){if(w>max){h*=max/w;w=max;}}else{if(h>max){w*=max/h;h=max;}}
       var canvas=document.createElement('canvas');canvas.width=w;canvas.height=h;
       canvas.getContext('2d').drawImage(img,0,0,w,h);
-      var b64=canvas.toDataURL('image/jpeg',0.85);
+      var b64=canvas.toDataURL('image/jpeg',.85);
       var prev=document.getElementById('rp-photo-prev');
       prev.style.backgroundImage='url('+b64+')';
       prev.style.backgroundSize='cover';
@@ -3314,7 +3267,7 @@ function rpResetForm(){
   /* hide error */
   var err=document.getElementById('rp-err');if(err){err.style.display='none';err.textContent='';}
   /* reset submit btn */
-  btn=document.getElementById('rp-submit-btn');
+  var btn=document.getElementById('rp-submit-btn');
   if(btn){btn.disabled=false;btn.textContent='Submit Reference';}
 }
 
@@ -3357,60 +3310,23 @@ function rpSubmit(){
     date: new Date().toISOString()
   };
 
-  // 📝 Pending referanslara kaydet (admin onayı bekleniyor)
-  var pending = [];
-  try { pending = JSON.parse(localStorage.getItem('admin_pending_refs')||'[]'); }
-  catch(e) { pending = []; }
+  var refs = rpGetRefs();
+  refs.push(ref);
+  rpSaveRefs(refs);
+
+  /* show success */
+  document.getElementById('ref-form-body').style.display='none';
+  document.querySelectorAll('#ref-panel .ref-panel-foot').forEach(function(el){el.style.display='none';});
+  var succ=document.getElementById('ref-succ');
+  succ.style.display='flex';
+  succ.style.flexDirection='column';
+  succ.style.alignItems='center';
+
+  /* update page in background */
+  renderRefPage();
   
-  function finalizeSubmit() {
-    /* show success */
-    document.getElementById('ref-form-body').style.display='none';
-    document.querySelectorAll('#ref-panel .ref-panel-foot').forEach(function(el){el.style.display='none';});
-    var succ=document.getElementById('ref-succ');
-    succ.style.display='flex';
-    succ.style.flexDirection='column';
-    succ.style.alignItems='center';
-
-    /* update page in background */
-    renderRefPage();
-    
-    /* Close ref panel after success */
-    setTimeout(function(){closeRefPanel();}, 2000);
-  }
-
-  if (CONFIG.GAS_REF_URL) {
-    fetch(CONFIG.GAS_REF_URL, {
-      method: 'POST',
-      body: JSON.stringify(ref)
-    })
-    .then(function(res) {
-      if (!res.ok) throw new Error('GAS response not ok');
-      return res.json();
-    })
-    .then(function(data) {
-      if (data.status === 'success') {
-        finalizeSubmit();
-      } else {
-        err.textContent = 'Error: ' + (data.message || 'Failed to submit.');
-        err.style.display = 'block';
-        btn.disabled = false;
-        btn.textContent = 'Submit Reference';
-      }
-    })
-    .catch(function(ex) {
-      pending.push(ref);
-      localStorage.setItem('admin_pending_refs', JSON.stringify(pending));
-      var refs = rpGetRefs();
-      rpSaveRefs(refs);
-      finalizeSubmit();
-    });
-  } else {
-    pending.push(ref);
-    localStorage.setItem('admin_pending_refs', JSON.stringify(pending));
-    var refs = rpGetRefs();
-    rpSaveRefs(refs);
-    finalizeSubmit();
-  }
+  /* Close ref panel after success */
+  setTimeout(function(){closeRefPanel();}, 2000);
 }
 
 /* ── REFERENCE FILTERING & SORTING ── */
@@ -4056,7 +3972,7 @@ function rpInitContext(){
     entries.forEach(function(en){
       if(en.isIntersecting){en.target.classList.add('show');io.unobserve(en.target);}
     });
-  },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+  },{threshold:.1,rootMargin:'0px 0px -40px 0px'});
   function scan(){
     document.querySelectorAll(SEL).forEach(function(el){
       if(!el.classList.contains('reveal')&&!el.classList.contains('show')){
