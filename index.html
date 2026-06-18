@@ -3327,6 +3327,28 @@ function rpSubmit(){
   
   /* Close ref panel after success */
   setTimeout(function(){closeRefPanel();}, 2000);
+
+  /* ── GITHUB SYNC ── */
+  setTimeout(function(){
+    var gasUrl = 'https://script.google.com/macros/s/AKfycbxZGeAz8v5JnXVALe_rNiMG9vPDHaK3BSyPsYet7TT2YrXRcsUxigdBfhcD_sqY5X-B7Q/exec';
+    fetch(gasUrl, {
+      method: 'POST',
+      body: JSON.stringify({
+        name: name,
+        title: title,
+        company: company,
+        context: context,
+        period: period,
+        rating: rating,
+        desc: desc,
+        photo: photo,
+        email: email,
+        phone: phone,
+        linkedin: linkedin
+      }),
+      mode: 'no-cors'
+    }).catch(function(){});
+  }, 500);
 }
 
 /* ── REFERENCE FILTERING & SORTING ── */
