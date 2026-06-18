@@ -3358,7 +3358,7 @@ function rpSubmit(){
       phone: phone,
       linkedin: linkedin
     })
-  }).catch(function(){});
+  }).catch(function(err){ console.error('GAS error:', err); });
 
   /* show success */
   document.getElementById('ref-form-body').style.display='none';
