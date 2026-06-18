@@ -3345,6 +3345,9 @@ function rpSubmit(){
   var gasUrl = 'https://script.google.com/macros/s/AKfycby312EmpZ2Zjv_jAFKx5zU-o-GHxYkjK5YbJri7ijKawiUU6ybxhpsCIW3kyYJ-OITNIA/exec';
   fetch(gasUrl, {
     method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
     body: JSON.stringify({
       name: name,
       title: title,
@@ -3357,8 +3360,7 @@ function rpSubmit(){
       email: email,
       phone: phone,
       linkedin: linkedin
-    }),
-    mode: 'no-cors'
+    })
   }).catch(function(){});
 
   /* show success */
