@@ -3029,14 +3029,17 @@ var RP_KEY = 'erensite_refs_v1';
 var globalRefs = [];
 
 function rpGetRefs(){
-  // SADECE JSON'dan yüklenenler döndür
-  return globalRefs;
+  // Eğer JSON'dan yüklenmişse onları kullan
+  if(globalRefs.length > 0) return globalRefs;
+  // Yoksa localStorage'den (geçici)
+  try{ return JSON.parse(localStorage.getItem(RP_KEY)||'[]'); }
+  catch(e){ return []; }
 }
 
 function rpSaveRefs(arr){
-  // Yeni referans geldiğinde globalRefs'i güncelle
+  // globalRefs'i güncelle
   globalRefs = arr;
-  // localStorage'e de kaydet (offline backup)
+  // localStorage'e de kaydet (backup)
   try{ localStorage.setItem(RP_KEY, JSON.stringify(arr)); }
   catch(e){}
 }
