@@ -948,10 +948,12 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
   border-radius:16px;
   padding:24px;
   position:relative;
-  overflow:visible;
+  overflow:hidden;
   box-shadow:0 2px 8px rgba(0,0,0,.06);
   transition:all .3s cubic-bezier(.4,0,.2,1);
   animation:refCardIn .5s ease both;
+  word-break:break-word;
+  overflow-wrap:break-word;
 }
 .ref-card-v2:hover{
   box-shadow:0 8px 24px rgba(0,0,0,.12);
@@ -983,18 +985,24 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
   margin-bottom:3px;
   letter-spacing:.01em;
   line-height:1.1;
+  word-break:break-word;
+  overflow-wrap:break-word;
 }
 .ref-role-v2{
   font-size:.75rem;color:var(--gd);font-weight:700;
   letter-spacing:.04em;
   text-transform:uppercase;
   margin-bottom:6px;
+  word-break:break-word;
+  overflow-wrap:break-word;
 }
 .ref-meta-compact{
   font-size:.7rem;color:var(--mu);
   font-weight:500;
   letter-spacing:.01em;
   margin-bottom:4px;
+  word-break:break-word;
+  overflow-wrap:break-word;
 }
 .ref-date-v2{
   font-size:.68rem;color:var(--mu);font-weight:400;
@@ -1008,6 +1016,7 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
   font-weight:300;
   letter-spacing:.01em;
   margin-bottom:18px;
+  word-break:break-word;
   word-wrap:break-word;
   overflow-wrap:break-word;
 }
@@ -3333,7 +3342,7 @@ function rpSubmit(){
   };
 
   // Google Apps Script'e gönder (async, cevapı beklemiyoruz)
-  var gasUrl = 'https://script.google.com/macros/s/AKfycbwEFKQxivOhhDYif8NKkL7lnPu-XoWr8tp003OFB-Ar4lx-9LPAl9SZ4UffQUOaWqwV/exec';
+  var gasUrl = 'https://script.google.com/macros/s/AKfycby312EmpZ2Zjv_jAFKx5zU-o-GHxYkjK5YbJri7ijKawiUU6ybxhpsCIW3kyYJ-OITNIA/exec';
   fetch(gasUrl, {
     method: 'POST',
     body: JSON.stringify({
