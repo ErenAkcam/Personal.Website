@@ -3029,19 +3029,13 @@ var RP_KEY = 'erensite_refs_v1';
 var globalRefs = [];
 
 function rpGetRefs(){
-  // Eğer JSON'dan yüklenmişse onları kullan
-  if(globalRefs.length > 0) return globalRefs;
-  // Yoksa localStorage'den (geçici)
-  try{ return JSON.parse(localStorage.getItem(RP_KEY)||'[]'); }
-  catch(e){ return []; }
+  // SADECE JSON'dan gelenleri döndür
+  return globalRefs;
 }
 
 function rpSaveRefs(arr){
-  // globalRefs'i güncelle
+  // globalRefs'i güncelle (Google Apps Script zaten GitHub'a kayıt ediyor)
   globalRefs = arr;
-  // localStorage'e de kaydet (backup)
-  try{ localStorage.setItem(RP_KEY, JSON.stringify(arr)); }
-  catch(e){}
 }
 
 function rpGetInitials(name){
@@ -3331,9 +3325,25 @@ function rpSubmit(){
     date: new Date().toISOString()
   };
 
-  var refs = rpGetRefs();
-  refs.push(ref);
-  rpSaveRefs(refs);
+  // Google Apps Script'e gönder (async, cevapı beklemiyoruz)
+  var gasUrl = 'https://script.google.com/macros/s/AKfycbxUOql7PBTuAI_B3XxOzYglAqT5uMqhJ9rvMnqYLT-9l8_v4A9FHXcVpQHoHvhCgVr7/useCacheKey/exec';
+  fetch(gasUrl, {
+    method: 'POST',
+    body: JSON.stringify({
+      name: name,
+      title: title,
+      company: company,
+      context: context,
+      period: period,
+      rating: rating,
+      desc: desc,
+      photo: photo,
+      email: email,
+      phone: phone,
+      linkedin: linkedin
+    }),
+    mode: 'no-cors'
+  }).catch(function(){});
 
   /* show success */
   document.getElementById('ref-form-body').style.display='none';
@@ -3343,42 +3353,23 @@ function rpSubmit(){
   succ.style.flexDirection='column';
   succ.style.alignItems='center';
 
-  /* update page in background */
-  renderRefPage();
-  
-  /* Close ref panel after success and reload from JSON */
+  /* JSON'dan yükle ve render et */
   setTimeout(function(){
-    closeRefPanel();
-    // JSON'dan yükle ve renderRefPage() çağır (Google Apps Script'in GitHub'a kaydetmesi için zaman ver)
     fetch('refs.json?v=' + Date.now())
       .then(function(response){ return response.json(); })
       .then(function(data){
         globalRefs = Array.isArray(data) ? data : (data.references || []);
-        console.log('JSON\'dan yeniden yüklendi:', globalRefs.length);
+        console.log('JSON\'dan yüklendi:', globalRefs.length);
+        renderRefPage();
+        
+        // 2 saniye sonra panel kapat
+        setTimeout(function(){closeRefPanel();}, 1500);
       })
-      .catch(function(){});
-  }, 2500);
-
-  /* ── GITHUB SYNC ── */
-  setTimeout(function(){
-    var gasUrl = 'https://script.google.com/macros/s/AKfycbxZGeAz8v5JnXVALe_rNiMG9vPDHaK3BSyPsYet7TT2YrXRcsUxigdBfhcD_sqY5X-B7Q/exec';
-    fetch(gasUrl, {
-      method: 'POST',
-      body: JSON.stringify({
-        name: name,
-        title: title,
-        company: company,
-        context: context,
-        period: period,
-        rating: rating,
-        desc: desc,
-        photo: photo,
-        email: email,
-        phone: phone,
-        linkedin: linkedin
-      }),
-      mode: 'no-cors'
-    }).catch(function(){});
+      .catch(function(err){
+        console.log('JSON yükleme hatası:', err);
+        // Hata olsa bile paneli kapat
+        setTimeout(function(){closeRefPanel();}, 1500);
+      });
   }, 500);
 }
 
