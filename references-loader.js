@@ -98,7 +98,7 @@ function submitReferenceForm() {
   }
 
   // Google Apps Script URL'i (deploy sonrası alacaksınız)
-  const GAS_URL = 'https://script.google.com/macros/d/YOUR_SCRIPT_ID/useless'; 
+  const GAS_URL = 'https://script.google.com/macros/s/AKfycbx1QcyZUI0eet3Q8G3K4q2wTQfOxP5kOU-62fCjNtphEPgOyOVm2wEBIQVNWmcot5fMZg/exec'; 
   // Yukarıdaki URL'i Scripts kendi URL'i ile değiştir
 
   // Gönder
