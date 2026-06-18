@@ -3138,12 +3138,19 @@ function renderRefPage(){
 /* Panel open / close */
 function openRefPanel(){
   // Önce JSON'dan yükle, sonra paneli aç
-  fetch('refs.json?v=' + Date.now())
-    .then(function(response){ return response.json(); })
+  fetch('refs.json?t=' + new Date().getTime())
+    .then(function(response){ 
+      if(!response.ok) throw new Error('Failed to load refs');
+      return response.json(); 
+    })
     .then(function(data){
       globalRefs = Array.isArray(data) ? data : (data.references || []);
+      console.log('Panel açma sırasında yüklendi:', globalRefs.length);
     })
-    .catch(function(){})
+    .catch(function(err){
+      console.log('Panel açma sırasında yükleme hatası:', err);
+      // Hata olsa bile paneli aç, globalRefs mevcut verileri kullan
+    })
     .finally(function(){
       // Paneli aç ve render et
       document.getElementById('ref-overlay').classList.add('on');
@@ -3326,7 +3333,7 @@ function rpSubmit(){
   };
 
   // Google Apps Script'e gönder (async, cevapı beklemiyoruz)
-  var gasUrl = 'https://script.google.com/macros/s/AKfycbxZGeAz8v5JnXVALe_rNiMG9vPDHaK3BSyPsYet7TT2YrXRcsUxigdBfhcD_sqY5X-B7Q/exec';
+  var gasUrl = 'https://script.google.com/macros/s/AKfycbwEFKQxivOhhDYif8NKkL7lnPu-XoWr8tp003OFB-Ar4lx-9LPAl9SZ4UffQUOaWqwV/exec';
   fetch(gasUrl, {
     method: 'POST',
     body: JSON.stringify({
@@ -3370,7 +3377,7 @@ function rpSubmit(){
         // Hata olsa bile paneli kapat
         setTimeout(function(){closeRefPanel();}, 1500);
       });
-  }, 500);
+  }, 2000);
 }
 
 /* ── REFERENCE FILTERING & SORTING ── */
@@ -4007,8 +4014,11 @@ function rpInitContext(){
 
 /* ── LOAD REFS FROM JSON ── */
 document.addEventListener('DOMContentLoaded', function(){
-  fetch('refs.json?v=' + Date.now())
-    .then(function(response){ return response.json(); })
+  fetch('refs.json?t=' + new Date().getTime())
+    .then(function(response){ 
+      if(!response.ok) throw new Error('Response not ok');
+      return response.json(); 
+    })
     .then(function(data){
       // refs.json array ise direkt kullan, değilse .references özelliğini al
       globalRefs = Array.isArray(data) ? data : (data.references || []);
