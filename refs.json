@@ -1,0 +1,30 @@
+{
+  "references": [
+    {
+      "id": "ref_001",
+      "name": "John Doe",
+      "role": "Project Manager",
+      "company": "Tech Corp",
+      "relationship": "Former Manager",
+      "period": "2022-2024",
+      "email": "john@example.com",
+      "phone": "+90 555 123 4567",
+      "recommendation": "Eren is a highly skilled professional with excellent attention to detail.",
+      "timestamp": "2024-01-15T10:30:00Z",
+      "context": "Senior UI/UX Designer"
+    },
+    {
+      "id": "ref_002",
+      "name": "Sarah Smith",
+      "role": "Design Lead",
+      "company": "Creative Agency",
+      "relationship": "Team Lead",
+      "period": "2023-2024",
+      "email": "sarah@example.com",
+      "phone": "+90 555 987 6543",
+      "recommendation": "Exceptional problem-solver with strong communication skills.",
+      "timestamp": "2024-02-20T14:45:00Z",
+      "context": "UX Researcher"
+    }
+  ]
+}
