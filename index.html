@@ -3029,14 +3029,13 @@ var RP_KEY = 'erensite_refs_v1';
 var globalRefs = [];
 
 function rpGetRefs(){
-  // JSON'dan yüklenenler varsa onları döndür
-  if(globalRefs.length > 0) return globalRefs;
-  // Yoksa localStorage'den oku (offline fallback)
-  try{ return JSON.parse(localStorage.getItem(RP_KEY)||'[]'); }
-  catch(e){ return []; }
+  // SADECE JSON'dan yüklenenler döndür
+  return globalRefs;
 }
 
 function rpSaveRefs(arr){
+  // Yeni referans geldiğinde globalRefs'i güncelle
+  globalRefs = arr;
   // localStorage'e de kaydet (offline backup)
   try{ localStorage.setItem(RP_KEY, JSON.stringify(arr)); }
   catch(e){}
@@ -3359,7 +3358,7 @@ function rpSubmit(){
 
   /* ── GITHUB SYNC ── */
   setTimeout(function(){
-    var gasUrl = 'https://script.google.com/macros/s/AKfycbxZGeAz8v5JnXVALe_rNiMG9vPDHaK3BSyPsYet7TT2YrXRcsUxigdBfhcD_sqY5X-B7Q/exec';
+    var gasUrl = 'https://script.google.com/macros/s/AKfycbxUOql7PBTuAI_B3XxOzYglAqT5uMqhJ9rvMnqYLT-9l8_v4A9FHXcVpQHoHvhCgVr7/useCacheKey/exec';
     fetch(gasUrl, {
       method: 'POST',
       body: JSON.stringify({
