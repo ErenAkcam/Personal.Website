@@ -3341,10 +3341,13 @@ function rpSubmit(){
     date: new Date().toISOString()
   };
 
-  // Google Apps Script'e gönder (async, cevapı beklemiyoruz)
+  // Google Apps Script'e gönder
   var gasUrl = 'https://script.google.com/macros/s/AKfycbyDv5hs5j4SAAx016trSboRRP-Q89x925NdMu6U7dw_WYWetCq930qF2NT9vVqPiaNN1w/exec';
   fetch(gasUrl, {
     method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
     body: JSON.stringify({
       name: name,
       title: title,
@@ -3358,7 +3361,17 @@ function rpSubmit(){
       phone: phone,
       linkedin: linkedin
     })
-  }).catch(function(err){ console.error('GAS error:', err); });
+  })
+  .then(resp => {
+    console.log('📤 GAS response:', resp);
+    return resp.json();
+  })
+  .then(data => {
+    console.log('✅ GAS başarılı:', data);
+  })
+  .catch(err => {
+    console.error('❌ GAS hatası:', err);
+  });
 
   /* show success */
   document.getElementById('ref-form-body').style.display='none';
@@ -3368,12 +3381,24 @@ function rpSubmit(){
   succ.style.flexDirection='column';
   succ.style.alignItems='center';
 
-  /* ✅ FIX: Panel kapanmasını bekle, sonra otomatikman kapan
-     NOT: refs.json YÜKLEME buradan KALDIR!
-     Referans SAYFASI açıldığında openRefPanel() otomatikman yükleyecek */
+  /* JSON'dan yükle ve render et */
   setTimeout(function(){
-    closeRefPanel();
-  }, 2500);
+    fetch('refs.json?v=' + Date.now())
+      .then(function(response){ return response.json(); })
+      .then(function(data){
+        globalRefs = Array.isArray(data) ? data : (data.references || []);
+        console.log('JSON\'dan yüklendi:', globalRefs.length);
+        renderRefPage();
+        
+        // 2 saniye sonra panel kapat
+        setTimeout(function(){closeRefPanel();}, 1500);
+      })
+      .catch(function(err){
+        console.log('JSON yükleme hatası:', err);
+        // Hata olsa bile paneli kapat
+        setTimeout(function(){closeRefPanel();}, 1500);
+      });
+  }, 2000);
 }
 
 /* ── REFERENCE FILTERING & SORTING ── */
@@ -4009,9 +4034,28 @@ function rpInitContext(){
 }
 
 /* ── LOAD REFS FROM JSON ── */
-/* ✅ FIX: Otomatik yükleme kaldırıldı
-   Referans paneli açıldığında openRefPanel() tarafından yüklenir
-   Bu şekilde hep güncel veriler görünür */
+document.addEventListener('DOMContentLoaded', function(){
+  fetch('refs.json?t=' + new Date().getTime())
+    .then(function(response){ 
+      if(!response.ok) throw new Error('Response not ok');
+      return response.json(); 
+    })
+    .then(function(data){
+      // refs.json array ise direkt kullan, değilse .references özelliğini al
+      globalRefs = Array.isArray(data) ? data : (data.references || []);
+      console.log('JSON\'dan referanslar yüklendi:', globalRefs.length);
+      
+      // Referans sayfası açık ise güncelle
+      var refPage = document.getElementById('ref-panel');
+      if(refPage && refPage.classList.contains('on')){
+        renderRefPage();
+      }
+    })
+    .catch(function(err){
+      console.log('JSON yükleme hatası:', err);
+      globalRefs = [];
+    });
+});
 
 
 </script>
