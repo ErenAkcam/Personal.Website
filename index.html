@@ -3026,11 +3026,18 @@ function attachMailHandlers(){
 /* ── REFERENCES ── */
 var RP_KEY = 'erensite_refs_v1';
 
+var globalRefs = [];
+
 function rpGetRefs(){
+  // JSON'dan yüklenenler varsa onları döndür
+  if(globalRefs.length > 0) return globalRefs;
+  // Yoksa localStorage'den oku (offline fallback)
   try{ return JSON.parse(localStorage.getItem(RP_KEY)||'[]'); }
   catch(e){ return []; }
 }
+
 function rpSaveRefs(arr){
+  // localStorage'e de kaydet (offline backup)
   try{ localStorage.setItem(RP_KEY, JSON.stringify(arr)); }
   catch(e){}
 }
@@ -3134,15 +3141,27 @@ function renderRefPage(){
 
 /* Panel open / close */
 function openRefPanel(){
-  document.getElementById('ref-overlay').classList.add('on');
-  document.getElementById('ref-panel').classList.add('on');
-  document.body.style.overflow='hidden';
-  /* reset form */
-  document.getElementById('ref-succ').style.display='none';
-  document.getElementById('ref-form-body').style.display='';
-  document.querySelectorAll('#ref-panel .ref-panel-foot').forEach(function(el){el.style.display='';});
-  rpResetForm();
+  // Önce JSON'dan yükle, sonra paneli aç
+  fetch('refs.json?v=' + Date.now())
+    .then(function(response){ return response.json(); })
+    .then(function(data){
+      globalRefs = Array.isArray(data) ? data : (data.references || []);
+    })
+    .catch(function(){})
+    .finally(function(){
+      // Paneli aç ve render et
+      document.getElementById('ref-overlay').classList.add('on');
+      document.getElementById('ref-panel').classList.add('on');
+      document.body.style.overflow='hidden';
+      /* reset form */
+      document.getElementById('ref-succ').style.display='none';
+      document.getElementById('ref-form-body').style.display='';
+      document.querySelectorAll('#ref-panel .ref-panel-foot').forEach(function(el){el.style.display='';});
+      rpResetForm();
+      renderRefPage();
+    });
 }
+
 function closeRefPanel(){
   document.getElementById('ref-overlay').classList.remove('on');
   document.getElementById('ref-panel').classList.remove('on');
@@ -3325,12 +3344,22 @@ function rpSubmit(){
   /* update page in background */
   renderRefPage();
   
-  /* Close ref panel after success */
-  setTimeout(function(){closeRefPanel();}, 2000);
+  /* Close ref panel after success and reload from JSON */
+  setTimeout(function(){
+    closeRefPanel();
+    // JSON'dan yükle ve renderRefPage() çağır (Google Apps Script'in GitHub'a kaydetmesi için zaman ver)
+    fetch('refs.json?v=' + Date.now())
+      .then(function(response){ return response.json(); })
+      .then(function(data){
+        globalRefs = Array.isArray(data) ? data : (data.references || []);
+        console.log('JSON\'dan yeniden yüklendi:', globalRefs.length);
+      })
+      .catch(function(){});
+  }, 2500);
 
   /* ── GITHUB SYNC ── */
   setTimeout(function(){
-    var gasUrl = 'https://script.google.com/macros/s/AKfycbxZGeAz8v5JnXVALe_rNiMG9vPDHaK3BSyPsYet7TT2YrXRcsUxigdBfhcD_sqY5X-B7Q/exec';
+    var gasUrl = 'https://script.google.com/macros/s/AKfycbxUOql7PBTuAI_B3XxOzYglAqT5uMqhJ9rvMnqYLT-9l8_v4A9FHXcVpQHoHvhCgVr7/useCacheKey/exec';
     fetch(gasUrl, {
       method: 'POST',
       body: JSON.stringify({
@@ -3982,6 +4011,27 @@ function applyContextCustom(){
 function rpInitContext(){
   // Dropdown is now populated dynamically on first open
 }
+
+/* ── LOAD REFS FROM JSON ── */
+document.addEventListener('DOMContentLoaded', function(){
+  fetch('refs.json?v=' + Date.now())
+    .then(function(response){ return response.json(); })
+    .then(function(data){
+      // refs.json array ise direkt kullan, değilse .references özelliğini al
+      globalRefs = Array.isArray(data) ? data : (data.references || []);
+      console.log('JSON\'dan referanslar yüklendi:', globalRefs.length);
+      
+      // Referans sayfası açık ise güncelle
+      var refPage = document.getElementById('ref-panel');
+      if(refPage && refPage.classList.contains('on')){
+        renderRefPage();
+      }
+    })
+    .catch(function(err){
+      console.log('JSON yükleme hatası:', err);
+      globalRefs = [];
+    });
+});
 
 
 </script>
