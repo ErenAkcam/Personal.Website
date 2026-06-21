@@ -865,15 +865,28 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
   font-weight:500;
 }
 .ref-ctx svg{width:12px;height:12px;flex-shrink:0}
-.ref-stars{display:flex;gap:2px;margin-top:6px;align-self:flex-start;flex-wrap:wrap;flex-shrink:0;grid-column:3;grid-row:1;}
-.ref-stars span{
+.ref-corner{
+  position:absolute;
+  top:16px;
+  right:24px;
+  z-index:10;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:8px;
+  max-width:160px;
+}
+.ref-stars{
   font-size:.95rem;
+  display:flex;
+  gap:2px;
+  flex-shrink:0;
+}
+.ref-stars span{
   text-shadow:0 1px 2px rgba(0,0,0,.04);
 }
 .ref-date-badge{
-  position:absolute;
-  top:46px;
-  right:24px;
+  position:relative;
   display:inline-block;
   background:var(--gp);
   color:var(--gd);
@@ -883,7 +896,6 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
   font-weight:600;
   letter-spacing:.04em;
   white-space:nowrap;
-  z-index:2;
   box-shadow:0 2px 8px rgba(0,0,0,.08);
 }
 .ref-body{
@@ -960,7 +972,7 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
 .ref-card-v2-right{
   flex:1;min-width:0;
   position:relative;
-  padding-right:88px;
+  padding-right:130px;
   word-wrap:break-word;
   overflow-wrap:break-word;
 }
@@ -1136,11 +1148,17 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
     font-size:.65rem;
     margin-bottom:6px;
   }
-  .ref-date-badge{
-    top:40px;
+  .ref-corner{
+    top:14px;
     right:18px;
+    max-width:130px;
+  }
+  .ref-date-badge{
     padding:5px 10px;
     font-size:.6rem;
+  }
+  .ref-card-v2-right{
+    padding-right:110px;
   }
   .ref-body-v2{
     font-size:.9rem;
@@ -1167,12 +1185,15 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
 }
 
 @media(max-width:420px){
+  .ref-corner{
+    top:12px;
+    right:14px;
+    max-width:105px;
+  }
   .ref-card-v2-right{
-    padding-right:64px;
+    padding-right:90px;
   }
   .ref-date-badge{
-    top:36px;
-    right:14px;
     padding:4px 8px;
     font-size:.55rem;
   }
@@ -3085,13 +3106,13 @@ function rpBuildCard(r){
     ? '<div class="ref-avatar"><img src="'+rpEsc(r.photo)+'" alt=""/></div>'
     : '<div class="ref-avatar" style="background:linear-gradient(135deg,var(--gd),var(--g))">'+rpEsc(rpGetInitials(r.name))+'</div>';
 
-  /* stars - positioned top right, below will be date */
+  /* stars + date - grouped together in one fixed top-right corner block */
   var stars='';
   var rating = parseInt(r.rating)||5;
   for(var i=1;i<=5;i++){
     stars+='<span style="color:'+(i<=rating?'#dda15e':'#d0d0d0')+'">★</span>';
   }
-  var starsHtml='<div class="ref-stars" style="position:absolute;top:16px;right:24px;font-size:.95rem;z-index:10;display:flex;gap:2px">'+stars+'</div>';
+  var starsHtml='<div class="ref-stars">'+stars+'</div>';
 
   /* role line: Title @ Company */
   var roleStr = [r.title, r.company].filter(Boolean).join(' @ ');
@@ -3127,8 +3148,7 @@ function rpBuildCard(r){
   }
 
   return '<div class="ref-card-v2" data-id="'+r.id+'">'+
-    starsHtml+
-    dateBadgeHtml+
+    '<div class="ref-corner">'+starsHtml+dateBadgeHtml+'</div>'+
     '<div class="ref-card-v2-content">'+
       '<div class="ref-card-v2-left">'+avatarHtml+'</div>'+
       '<div class="ref-card-v2-right">'+
