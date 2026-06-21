@@ -1,1 +1,20 @@
-{"refs":[],"approved":[]}
+{
+  "refs": [
+    {
+      "id": 1782057108009,
+      "name": "aaaaaa",
+      "title": "",
+      "company": "",
+      "context": "Freelance — Graphic Designer",
+      "period": "2022 — Today",
+      "rating": 5,
+      "desc": "aaaaaaaaaaaaaaaaaa",
+      "photo": "",
+      "email": "",
+      "phone": "",
+      "linkedin": "",
+      "date": "2026-06-21T15:51:48.009Z"
+    }
+  ],
+  "approved": []
+}
