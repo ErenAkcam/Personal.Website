@@ -3024,16 +3024,33 @@ function attachMailHandlers(){
 }
 
 /* ── REFERENCES ── */
-const GAS_URL = 'https://script.google.com/macros/s/AKfycbyCi0qSiTe9i-lL8M6oKFmiLevPQyUQmeNOjurmPRcpgTlOGWU47BJWYk89sB49EgBUjw/exec';
-const REFS_URL = 'https://raw.githubusercontent.com/ErenAkcam/Personal.Website/main/refs.json';
+var GAS_REFS_URL = 'https://script.google.com/macros/s/BURAYA_SCRIPT_ID_GELECEK/exec';
+var _refsCache = null;
+var _refsCacheTime = 0;
 
 function rpGetRefs(){
-  return fetch(REFS_URL).then(r => r.json()).catch(e => []);
+  // Sync fallback: return cache or empty (async load triggers re-render)
+  return _refsCache || [];
 }
 
-function rpSaveRefs(ref) {
-  fetch(GAS_URL, {method: 'POST', body: JSON.stringify({ref: ref}), headers: {'Content-Type': 'application/json'}})
-    .catch(e => console.log(e));
+function rpLoadRefsFromJSON(callback){
+  var now = Date.now();
+  // Cache for 30 seconds
+  if(_refsCache !== null && (now - _refsCacheTime) < 30000){
+    if(callback) callback(_refsCache);
+    return;
+  }
+  fetch('refs.json?_=' + now)
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      _refsCache = Array.isArray(data) ? data : [];
+      _refsCacheTime = Date.now();
+      if(callback) callback(_refsCache);
+    })
+    .catch(function(){
+      _refsCache = _refsCache || [];
+      if(callback) callback(_refsCache);
+    });
 }
 
 function rpGetInitials(name){
@@ -3110,27 +3127,30 @@ function rpBuildCard(r){
   '</div>';
 }
 
-function renderRefPage(refs){
-  if(!refs) refs = [];
+function renderRefPage(){
   var list = document.getElementById('ref-list');
   var empty = document.getElementById('ref-empty');
   if(!list||!empty)return;
+  list.innerHTML='<div style="text-align:center;padding:30px 20px;color:var(--mu);font-size:.82rem">Loading references...</div>';
+  list.style.display='';
+  empty.style.display='none';
 
-  if(!refs.length){
-    list.innerHTML='';
-    list.style.display='none';
-    empty.style.display='flex';
-    empty.style.flexDirection='column';
-    empty.style.alignItems='center';
-    var bar = document.getElementById('ref-filters-bar');
-    if(bar) bar.style.display = 'none';
-  } else {
-    empty.style.display='none';
-    list.style.display='';
-    buildRefFiltersBar();
-    /* Apply filters and sort */
-    applyRefFilters();
-  }
+  rpLoadRefsFromJSON(function(refs){
+    if(!refs.length){
+      list.innerHTML='';
+      list.style.display='none';
+      empty.style.display='flex';
+      empty.style.flexDirection='column';
+      empty.style.alignItems='center';
+      var bar = document.getElementById('ref-filters-bar');
+      if(bar) bar.style.display = 'none';
+    } else {
+      empty.style.display='none';
+      list.style.display='';
+      buildRefFiltersBar();
+      applyRefFilters();
+    }
+  });
 }
 
 /* Panel open / close */
@@ -3277,7 +3297,6 @@ function rpSubmit(){
   var title   = (document.getElementById('rp-title').value||'').trim();
   var company = (document.getElementById('rp-company').value||'').trim();
   var context = (document.getElementById('rp-context').value||'').trim();
-  // If empty, check custom input
   if(!context){
     var customRow=document.getElementById('context-custom-input-row');
     if(customRow&&customRow.style.display!=='none'){
@@ -3311,23 +3330,37 @@ function rpSubmit(){
     date: new Date().toISOString()
   };
 
-  rpSaveRefs(ref);
+  if(!GAS_REFS_URL || GAS_REFS_URL.indexOf('BURAYA_SCRIPT_ID_GELECEK') !== -1){
+    err.textContent='Google Apps Script URL henüz ayarlanmadı.';
+    err.style.display='block';
+    btn.disabled=false; btn.textContent='Submit Reference';
+    return;
+  }
 
-  /* show success */
-  document.getElementById('ref-form-body').style.display='none';
-  document.querySelectorAll('#ref-panel .ref-panel-foot').forEach(function(el){el.style.display='none';});
-  var succ=document.getElementById('ref-succ');
-  succ.style.display='flex';
-  succ.style.flexDirection='column';
-  succ.style.alignItems='center';
-
-  /* update page after 2 seconds */
-  setTimeout(function(){
-    rpGetRefs().then(function(refs){
-      renderRefPage(refs);
-      closeRefPanel();
-    });
-  }, 2000);
+  fetch(GAS_REFS_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(ref)
+  })
+  .then(function(){
+    // Invalidate cache so next load fetches fresh data
+    _refsCache = null;
+    _refsCacheTime = 0;
+    /* show success */
+    document.getElementById('ref-form-body').style.display='none';
+    document.querySelectorAll('#ref-panel .ref-panel-foot').forEach(function(el){el.style.display='none';});
+    var succ=document.getElementById('ref-succ');
+    succ.style.display='flex';
+    succ.style.flexDirection='column';
+    succ.style.alignItems='center';
+    setTimeout(function(){closeRefPanel(); renderRefPage();}, 2000);
+  })
+  .catch(function(){
+    btn.disabled=false; btn.textContent='Submit Reference';
+    err.textContent='Bir hata oluştu, lütfen tekrar deneyin.';
+    err.style.display='block';
+  });
 }
 
 /* ── REFERENCE FILTERING & SORTING ── */
@@ -3985,18 +4018,6 @@ function rpInitContext(){
   scan();
   setInterval(scan,1200);
 })();
-
-document.addEventListener('DOMContentLoaded', function() {
-  rpGetRefs().then(function(refs) {
-    renderRefPage(refs);
-  });
-});
-
-setInterval(function() {
-  rpGetRefs().then(function(refs) {
-    renderRefPage(refs);
-  });
-}, 60000);
 </script>
 </body>
 </html>
