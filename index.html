@@ -7,6 +7,7 @@
 <link rel="icon" id="site-favicon" type="image/png" href="assets/favicon.png"/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Barlow+Condensed:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<script src="refs.js"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -3023,55 +3024,13 @@ function attachMailHandlers(){
   if(cem)cem.addEventListener('click',handleMailClick);
 }
 
-/* ── REFERENCES (GitHub + Google Apps Script) ── */
-const GAS_DEPLOYMENT_URL = 'https://script.google.com/macros/s/AKfycbycjwWyFXb62esaOab1xE2gwrHXJ5Jp5ezdUAiHmvD2dKz2gsWJjQD_hgliqF5sH4pvHQ/exec';
-const GITHUB_RAW_URL = 'https://raw.githubusercontent.com/ErenAkcam/Personal.Website/main/refs.json';
-var RP_KEY = 'erensite_refs_v1';
-
+/* ── REFERENCES ── */
 function rpGetRefs(){
-  return fetch(GITHUB_RAW_URL)
-    .then(function(response) {
-      if (!response.ok) throw new Error('GitHub unavailable');
-      return response.json();
-    })
-    .then(function(data) {
-      try { localStorage.setItem(RP_KEY, JSON.stringify(data)); } catch (e) {}
-      return Array.isArray(data) ? data : [];
-    })
-    .catch(function(error) {
-      try {
-        var cached = localStorage.getItem(RP_KEY);
-        return cached ? JSON.parse(cached) : [];
-      } catch (e) { return []; }
-    });
+  return refsFromFile || [];
 }
 
 function rpSaveRefs(arr){
-  try{ localStorage.setItem(RP_KEY, JSON.stringify(arr)); }
-  catch(e){}
-}
-
-function rpAddRefToGitHub(ref) {
-  if (!GAS_DEPLOYMENT_URL || GAS_DEPLOYMENT_URL.includes('DEPLOYMENT')) {
-    return Promise.reject('Deployment URL error');
-  }
-  return fetch(GAS_DEPLOYMENT_URL, {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({ ref: ref })
-  })
-    .then(function(response) {
-      if (!response.ok) throw new Error('HTTP ' + response.status);
-      return response.json();
-    })
-    .then(function(data) {
-      if (!data.success) throw new Error(data.error);
-      return rpGetRefs();
-    })
-    .catch(function(error) {
-      console.error('Error:', error);
-      throw error;
-    });
+  refsFromFile = arr;
 }
 
 function rpGetInitials(name){
@@ -3349,28 +3308,23 @@ function rpSubmit(){
     date: new Date().toISOString()
   };
 
-  rpAddRefToGitHub(ref)
-    .then(function() {
-      /* show success */
-      document.getElementById('ref-form-body').style.display='none';
-      document.querySelectorAll('#ref-panel .ref-panel-foot').forEach(function(el){el.style.display='none';});
-      var succ=document.getElementById('ref-succ');
-      succ.style.display='flex';
-      succ.style.flexDirection='column';
-      succ.style.alignItems='center';
+  var refs = rpGetRefs();
+  refs.push(ref);
+  rpSaveRefs(refs);
 
-      /* update page from GitHub */
-      rpLoadAndRender();
-      
-      /* Close ref panel after success */
-      setTimeout(function(){closeRefPanel();}, 2000);
-    })
-    .catch(function(error) {
-      err.textContent = 'Error: ' + error;
-      err.style.display='block';
-      btn.disabled=false;
-      btn.textContent='Submit Reference';
-    });
+  /* show success */
+  document.getElementById('ref-form-body').style.display='none';
+  document.querySelectorAll('#ref-panel .ref-panel-foot').forEach(function(el){el.style.display='none';});
+  var succ=document.getElementById('ref-succ');
+  succ.style.display='flex';
+  succ.style.flexDirection='column';
+  succ.style.alignItems='center';
+
+  /* update page in background */
+  renderRefPage();
+  
+  /* Close ref panel after success */
+  setTimeout(function(){closeRefPanel();}, 2000);
 }
 
 /* ── REFERENCE FILTERING & SORTING ── */
@@ -4028,14 +3982,6 @@ function rpInitContext(){
   scan();
   setInterval(scan,1200);
 })();
-
-document.addEventListener('DOMContentLoaded', function() {
-  rpLoadAndRender();
-});
-
-setInterval(function() {
-  rpLoadAndRender();
-}, 30000);
 </script>
 </body>
 </html>
