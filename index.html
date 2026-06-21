@@ -824,8 +824,9 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
 .ref-card-top{
   display:grid;
   grid-template-columns: auto 1fr auto;
-  gap:16px;
-  align-items:flex-start;
+  grid-template-rows: auto auto;
+  gap:8px 16px;
+  align-items:start;
   margin-bottom:18px;
   position:relative;
   z-index:2;
@@ -840,9 +841,10 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
   box-shadow:0 4px 12px rgba(122,184,152,.15);
   position:relative;z-index:3;
   grid-column:1;
+  grid-row:1/3;
 }
 .ref-avatar img{width:100%;height:100%;object-fit:cover;display:block}
-.ref-meta{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px;word-wrap:break-word;word-break:break-word;grid-column:2;padding-right:20px;}
+.ref-meta{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px;word-wrap:break-word;word-break:break-word;grid-column:2;grid-row:1/3;}
 .ref-name{
   font-family:'Barlow Condensed',sans-serif;
   font-size:1.15rem;font-weight:700;
@@ -867,15 +869,14 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
   font-weight:500;
 }
 .ref-ctx svg{width:12px;height:12px;flex-shrink:0}
-.ref-stars{display:flex;gap:2px;margin-top:6px;align-self:flex-start;flex-wrap:wrap;flex-shrink:0;grid-column:3;}
+.ref-stars{display:flex;gap:2px;margin-top:6px;align-self:flex-start;flex-wrap:wrap;flex-shrink:0;grid-column:3;grid-row:1;}
 .ref-stars span{
   font-size:.95rem;
   text-shadow:0 1px 2px rgba(0,0,0,.04);
 }
 .ref-date-badge{
-  position:absolute;
-  top:0;
-  right:0;
+  position:relative;
+  display:inline-block;
   background:var(--gp);
   color:var(--gd);
   padding:6px 12px;
@@ -884,8 +885,11 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
   font-weight:600;
   letter-spacing:.04em;
   white-space:nowrap;
-  z-index:10;
+  z-index:2;
   box-shadow:0 2px 8px rgba(0,0,0,.08);
+  grid-column:3;
+  grid-row:2;
+  margin-left:auto;
 }
 .ref-body{
   font-size:.96rem;
@@ -1135,8 +1139,6 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
     margin-bottom:6px;
   }
   .ref-date-badge{
-    top:50px;
-    right:16px;
     padding:5px 10px;
     font-size:.6rem;
   }
@@ -1169,8 +1171,6 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
     padding-right:0;
   }
   .ref-date-badge{
-    top:48px;
-    right:12px;
     padding:4px 8px;
     font-size:.55rem;
   }
