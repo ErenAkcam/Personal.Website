@@ -3347,13 +3347,24 @@ function rpSubmit(){
     return;
   }
 
+  /* NOT: 'no-cors' modu kaldırıldı. no-cors altında tarayıcı body'yi
+     UTF-8 yerine farklı bir charset varsayımıyla gönderiyordu — bu da
+     Apps Script tarafında UTF-8 karakterlerin (—, ç, ı, İ, vb.) yanlış
+     decode edilip bozulmasına (mojibake) sebep oluyordu.
+     'text/plain;charset=utf-8' CORS 'simple request' sınıfına girer
+     (preflight gerektirmez) ve charset'i açıkça belirttiği için body
+     UTF-8 olarak bozulmadan iletilir. Apps Script tarafında zaten
+     Content-Type kontrol edilmiyor, sadece e.postData.contents
+     JSON.parse ediliyor, bu yüzden bu değişiklik güvenlidir. */
   fetch(GAS_REFS_URL, {
     method: 'POST',
-    mode: 'no-cors',
-    headers: {'Content-Type': 'application/json'},
+    mode: 'cors',
+    headers: {'Content-Type': 'text/plain;charset=utf-8'},
     body: JSON.stringify(ref)
   })
-  .then(function(){
+  .then(function(r){ return r.json ? r.json().catch(function(){return null;}) : null; })
+  .then(function(result){
+    if(result && result.error){ throw new Error(result.error); }
     // Invalidate cache so next load fetches fresh data
     _refsCache = null;
     _refsCacheTime = 0;
