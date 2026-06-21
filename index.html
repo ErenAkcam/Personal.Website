@@ -3024,7 +3024,7 @@ function attachMailHandlers(){
 }
 
 /* ── REFERENCES ── */
-var GAS_REFS_URL = 'https://script.google.com/macros/s/AKfycbzpVzYQCmNdEqKarBBSqArn1LLtuUAP_G92W4syn-DkkpbIL5bBFtzOKXIK7X5qk5b0ow/exec';
+var GAS_REFS_URL = 'https://script.google.com/macros/s/BURAYA_SCRIPT_ID_GELECEK/exec';
 var _refsCache = null;
 var _refsCacheTime = 0;
 
@@ -3035,7 +3035,6 @@ function rpGetRefs(){
 
 function rpLoadRefsFromJSON(callback){
   var now = Date.now();
-  // Cache for 30 seconds
   if(_refsCache !== null && (now - _refsCacheTime) < 30000){
     if(callback) callback(_refsCache);
     return;
@@ -3043,7 +3042,18 @@ function rpLoadRefsFromJSON(callback){
   fetch('refs.json?_=' + now)
     .then(function(r){ return r.json(); })
     .then(function(data){
-      _refsCache = Array.isArray(data) ? data : [];
+      var allRefs, approved;
+      if(Array.isArray(data)){
+        allRefs = data; approved = null;
+      } else {
+        allRefs = Array.isArray(data.refs) ? data.refs : [];
+        approved = Array.isArray(data.approved) ? data.approved : null;
+      }
+      if(approved !== null){
+        _refsCache = allRefs.filter(function(r){ return approved.indexOf(String(r.id)) !== -1; });
+      } else {
+        _refsCache = allRefs;
+      }
       _refsCacheTime = Date.now();
       if(callback) callback(_refsCache);
     })
