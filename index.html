@@ -97,7 +97,7 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
 }
 .tlh:first-child{margin-top:0}
 .tlh-dot{width:8px;height:8px;border-radius:50%;background:var(--g);flex-shrink:0;display:inline-block}
-.tl-grid{display:flex;flex-direction:column;gap:0}
+.tl-grid{display:flex;flex-direction:column;gap:16px;margin-bottom:20px}
 
 /* ── LOGO CARD STYLING ── */
 .logo-card {
@@ -107,15 +107,16 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
   justify-content: center;
   padding: 36px 32px;
   background: linear-gradient(135deg, rgba(45, 90, 61, 0.98) 0%, rgba(32, 64, 48, 0.98) 100%);
-  border-radius: 36px;
+  border-radius: 16px;
   border: 1.5px solid rgba(122, 184, 152, 0.35);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(12px);
   position: relative;
   overflow: hidden;
-  min-width: 180px;
-  min-height: 220px;
+  min-width: 160px;
+  min-height: 200px;
   transition: all 0.3s ease;
+  margin: 0;
 }
 
 .logo-card::before {
@@ -130,8 +131,8 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
 }
 
 .logo-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
   background: linear-gradient(135deg, rgba(50, 100, 70, 0.98) 0%, rgba(35, 70, 52, 0.98) 100%);
 }
 
@@ -142,6 +143,7 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
   height: 110px;
   object-fit: contain;
   transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border-radius: 12px;
 }
 
 .logo-card:hover img {
@@ -225,13 +227,13 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
   gap:16px;padding:28px;
 }
 .tli-logo-wrap{
-  width:140px;height:140px;border-radius:26px;
+  width:140px;height:140px;border-radius:16px;
   background:linear-gradient(135deg, rgba(45, 90, 61, 0.95) 0%, rgba(32, 64, 48, 0.95) 100%);
   border:1.5px solid rgba(122, 184, 152, 0.4);
   backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
   display:flex;align-items:center;justify-content:center;
   overflow:hidden;
-  box-shadow:0 10px 40px rgba(0,0,0,.4);
+  box-shadow:0 8px 24px rgba(0,0,0,.25);
   transition:transform .35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow .3s;
   position:relative;
 }
@@ -246,6 +248,7 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
   filter:drop-shadow(0 2px 8px rgba(0,0,0,.4)) brightness(1.15);
   position:relative;z-index:2;
   transition:transform .35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border-radius:10px;
 }
 .tli:hover .tli-logo-wrap img{
   transform:scale(1.08);
