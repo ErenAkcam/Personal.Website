@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title id="page-title">Eren Akçam | Portfolio</title>
 <link rel="icon" id="site-favicon" type="image/png" href="assets/favicon.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Barlow+Condensed:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
 <style>
@@ -2122,7 +2124,7 @@ var SK='erensite_data';
 /* ── Defaults — tüm içerik buraya gömülü ── */
 var DEF = {
   "name": "Eren Akçam",
-  "role": "Student · Designer",
+  "role": "Student · Designerss",
   "tag": "Design & Engineering",
   "herodesc": "This is the portfolio of a young professional who combines technical knowledge with creative design. I am currently a student of Computer-Aided Machine Drawing, and alongside my education, I been working as a freelance graphic designer since 2022. In addition to my technical drawing skills such as SolidWorks and AutoCAD, I have a strong interest in areas like game development and artificial intelligence. By browsing through my portfolio, you can discover how I apply my technical and digital skills!",
   "about": "Studying Computer-Aided Machine Drawing, combining technical precision with creative design.ss",
@@ -2374,7 +2376,7 @@ var DEF = {
         "location": "",
         "date": "2022 — Today",
         "logo": "https://play-lh.googleusercontent.com/XDKGzDD_jjY_KrqZg3COTdV9oW5e4lZjgOPGP07aOIaNsCqNdvcmVrocc7XFr01PdR0P",
-        "desc": "I have been working as a freelance graphic designer on the Bionluk platform since 2022. During this time, I have completed countless projects, gaining solid experience in both customer communication and professional design skills. My graphic design talent forms the basis of the technical and creative projects you will see in my portfolio."
+        "desc": "I have been working as a freelance graphic designer on the Bionluk platform since 2022. During this time, I have completed countless projects, gaining solid experience in both customer communication and professional design skills. My graphic design talent forms the basis of the technical and creative projects you will see in my portfolio.\n\n"
       },
       {
         "title": "Erasmus+ Internship",
@@ -2391,7 +2393,7 @@ var DEF = {
         "company": "Computer-Aided Machine Drawing — 11th Grade",
         "location": "Türkiye — İzmir / Kemalpaşa",
         "date": "2023 — 2027",
-        "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNezqmfNH5qvumBVxo9EjAMeM28mDpz0G7FA&s",
+        "logo": "assets/kosbi-logo.png",
         "desc": "I am currently continuing my education in the Computer-Aided Machine Design department at Private KOSBİ Zülfü Mevlüt Çelik Vocational and Technical Anatolian High School, where I am building a solid foundation for my career in engineering and manufacturing. Throughout my education, I have acquired advanced skills in SolidWorks, AutoCAD, technical drawing, and CNC machines.\nIn addition to my academic development, I have taken on an active leadership role by serving as Vice President of the Student Council. This responsibility has provided me with the opportunity to develop my skills in event and project management, team coordination, and organizational planning. By combining my technical expertise with these social and managerial skills, I manage my projects with a holistic perspective throughout both the design and implementation phases."
       }
     ]
@@ -3348,6 +3350,15 @@ function rpSubmit(){
   var phoneNum = (document.getElementById('rp-phone').value||'').trim();
   var phone   = phoneCode && phoneNum ? '+'+phoneCode+' '+phoneNum : '';
   var linkedin= (document.getElementById('rp-linkedin').value||'').trim();
+
+  // LinkedIn Formatter Logic
+  if (!linkedin && name) {
+    var charMap = { 'ç': 'c', 'ğ': 'g', 'ı': 'i', 'ö': 'o', 'ş': 's', 'ü': 'u', 'Ç': 'c', 'Ğ': 'g', 'İ': 'i', 'Ö': 'o', 'Ş': 's', 'Ü': 'u' };
+    var slug = name.toLowerCase().replace(/[çğşıöüÇĞİÖŞÜ]/g, function(m) { return charMap[m]; }).replace(/[^a-z0-9]/g, '');
+    linkedin = 'https://www.linkedin.com/in/' + slug;
+  } else if (linkedin && !linkedin.startsWith('http')) {
+    linkedin = 'https://www.linkedin.com/in/' + linkedin.replace(/^[/\\]+/, '');
+  }
   var err     = document.getElementById('rp-err');
   var btn     = document.getElementById('rp-submit-btn');
 
