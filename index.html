@@ -2301,13 +2301,11 @@ var DEF = {
         "items": [
           {
             "src": "assets/6_page-0001.jpg",
-            "name": "PMI",
-            "desc": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            "name": "PMI"
           },
           {
             "src": "assets/1_page-0001.jpg",
-            "name": "E-Twining (pupil quality label)",
-            "desc": "sssssssssssssssssssssssssssssssssssss"
+            "name": "E-Twining (pupil quality label)"
           },
           {
             "src": "assets/4_page-0001.jpg",
@@ -2337,8 +2335,7 @@ var DEF = {
         "items": [
           {
             "src": "assets/2_page-0001.jpg",
-            "name": "4004-Tübitak (A perspective on climate change from Izmir.)",
-            "desc": "sssssssssssssssssssssssss"
+            "name": "4004-Tübitak (A perspective on climate change from Izmir.)"
           },
           {
             "src": "assets/5_page-0001.jpg",
@@ -2396,7 +2393,7 @@ var DEF = {
         "company": "Computer-Aided Machine Drawing — 11th Grade",
         "location": "Türkiye — İzmir / Kemalpaşa",
         "date": "2023 — 2027",
-        "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyhy98wK6iR0JKdkzbmTZtfwl3MbrpN4iDx45xEl_YxA&s=10",
+        "logo": "assets/kosbi-logo.png",
         "desc": "I am currently continuing my education in the Computer-Aided Machine Design department at Private KOSBİ Zülfü Mevlüt Çelik Vocational and Technical Anatolian High School, where I am building a solid foundation for my career in engineering and manufacturing. Throughout my education, I have acquired advanced skills in SolidWorks, AutoCAD, technical drawing, and CNC machines.\nIn addition to my academic development, I have taken on an active leadership role by serving as Vice President of the Student Council. This responsibility has provided me with the opportunity to develop my skills in event and project management, team coordination, and organizational planning. By combining my technical expertise with these social and managerial skills, I manage my projects with a holistic perspective throughout both the design and implementation phases."
       }
     ]
@@ -2659,7 +2656,7 @@ function renderSkills(){
 function renderCerts(){
   var el=document.getElementById('certs-body');if(!el)return;
   var cats=(SD.certs&&SD.certs.categories)||DEF.certs.categories;
-  var h='<div class="crt" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(320px, 1fr)); gap:24px;">';
+  var h='<div class="crt">';
   cats.forEach(function(cat){
     if(!certSliders[cat.id])certSliders[cat.id]=0;
     var idx=certSliders[cat.id];
@@ -2672,50 +2669,56 @@ function renderCerts(){
     var hasDesc = !!(cur.desc && cur.desc.trim());
     var descHtml = hasDesc ? esc(cur.desc).replace(/\n/g, '<br>') : '';
     
-    h += '<div class="cs-premium" style="background:var(--bl); border-radius:20px; border:1.5px solid var(--bm); overflow:hidden; box-shadow:0 8px 24px rgba(0,0,0,0.06); display:flex; flex-direction:column; position:relative;">'+
-      '<div style="padding:16px 20px; border-bottom:1.5px solid var(--bm); display:flex; justify-content:space-between; align-items:center; background:var(--bej);">'+
-        '<div style="font-family:\'Playfair Display\',serif; font-style:italic; font-weight:700; color:var(--txt); font-size:1.15rem;">'+esc(cat.label)+'</div>'+
-        '<div class="cds" id="cdots-'+esc(cat.id)+'" style="display:flex;gap:4px;"></div>'+
-      '</div>'+
-      '<div id="ccard-'+esc(cat.id)+'" style="transition: opacity 0.25s ease, transform 0.25s ease; display:flex; flex-direction:column; flex:1;">'+
-        '<div class="cia" data-cid="'+esc(cat.id)+'" style="position:relative; background:var(--gp); width:100%; aspect-ratio:4/3; overflow:hidden; display:flex; align-items:center; justify-content:center; border-bottom:1.5px solid var(--bm);">'+
-          '<button class="ca pv" onclick="slideCert(\''+esc(cat.id)+'\', -1)" style="position:absolute; left:12px; top:50%; transform:translateY(-50%); width:36px; height:36px; border-radius:50%; background:rgba(10,18,12,0.4); backdrop-filter:blur(4px); border:1px solid rgba(255,255,255,0.2); color:#fff; cursor:pointer; display:flex; align-items:center; justify-content:center; z-index:2; transition:all 0.2s;">'+
-            '<svg viewBox="0 0 24 24" style="width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"><polyline points="15 18 9 12 15 6"/></svg>'+
-          '</button>'+
-          '<img id="cimg-'+esc(cat.id)+'" src="'+esc(cur.src)+'" alt="'+esc(cur.name)+'" onclick="openLb(this.src,\''+esc(cat.id)+'\')" style="width:90%; height:90%; object-fit:contain; cursor:zoom-in; filter:drop-shadow(0 10px 20px rgba(0,0,0,0.15)); transition:transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);"/>'+
-          '<button class="ca nx" onclick="slideCert(\''+esc(cat.id)+'\', 1)" style="position:absolute; right:12px; top:50%; transform:translateY(-50%); width:36px; height:36px; border-radius:50%; background:rgba(10,18,12,0.4); backdrop-filter:blur(4px); border:1px solid rgba(255,255,255,0.2); color:#fff; cursor:pointer; display:flex; align-items:center; justify-content:center; z-index:2; transition:all 0.2s;">'+
-            '<svg viewBox="0 0 24 24" style="width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"><polyline points="9 18 15 12 9 6"/></svg>'+
-          '</button>'+
-          '<div id="cco-'+esc(cat.id)+'" style="position:absolute; top:12px; right:12px; background:var(--gd); color:#fff; padding:4px 10px; border-radius:20px; font-size:0.6rem; font-family:\'JetBrains Mono\', monospace; font-weight:700; letter-spacing:0.1em; z-index:2; box-shadow:0 4px 10px rgba(0,0,0,0.2);">'+
-            (idx+1)+' / '+items.length+
+    h += '<div class="cs">'+
+      '<div class="csh">'+esc(cat.label)+'</div>'+
+      '<div id="ccard-'+esc(cat.id)+'" style="transition: opacity 0.2s, transform 0.2s;">'+
+        '<div class="csv">'+
+          '<div class="cia" data-cid="'+esc(cat.id)+'">'+
+            '<button class="ca pv" onclick="slideCert(\''+cat.id+'\',-1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>'+
+            '<img id="cimg-'+esc(cat.id)+'" src="'+esc(cur.src)+'" alt="'+esc(cur.name)+'" onclick="openLb(this.src,\''+cat.id+'\')" style="cursor:zoom-in"/>'+
+            '<button class="ca nx" onclick="slideCert(\''+cat.id+'\',1)"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>'+
           '</div>'+
         '</div>'+
-        '<div style="padding:20px; display:flex; flex-direction:column; flex:1; background:var(--bl);">'+
-          '<div id="cnm-'+esc(cat.id)+'" style="font-family:\'Barlow Condensed\', sans-serif; font-size:1.15rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--gd); margin-bottom:12px; display:flex; align-items:center; gap:8px;">'+
-            '<span style="display:inline-block; width:6px; height:6px; background:var(--g); border-radius:50%;"></span><span id="cnm-t-'+esc(cat.id)+'">'+esc(cur.name)+'</span>'+
-          '</div>'+
-          '<div id="cdesc-wrap-'+esc(cat.id)+'" style="background:var(--bej); border:1.5px solid var(--bm); border-radius:12px; padding:'+(hasDesc?'16px':'3px')+'; min-height:'+(hasDesc?'auto':'6px')+'; transition:all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94); position:relative; overflow:hidden;">'+
-            '<div id="cdesc-'+esc(cat.id)+'" style="font-size:0.82rem; color:var(--txt); line-height:1.6; opacity:'+(hasDesc?'1':'0')+'; transform:translateY('+(hasDesc?'0':'8px')+'); transition:all 0.35s ease;">'+descHtml+'</div>'+
-          '</div>'+
+        '<div class="cnp">'+
+          '<span class="cna" id="cnm-t-'+esc(cat.id)+'">'+esc(cur.name)+'</span>'+
+          '<span class="cco" id="cco-'+esc(cat.id)+'">'+(idx+1)+'/'+items.length+'</span>'+
+        '</div>'+
+        '<div id="cdesc-bar-'+esc(cat.id)+'" style="display:'+(hasDesc?'flex':'none')+'; align-items:center; justify-content:space-between; margin-top:8px; padding:10px 14px; background:var(--bej); border:1.5px dashed var(--bm); border-radius:10px; cursor:pointer; color:var(--gd); font-size:0.75rem; font-weight:700; text-transform:uppercase; transition:all 0.2s;" onclick="toggleCertDesc(\''+cat.id+'\')">'+
+          '<span>Açıklama & Detaylar</span>'+
+          '<svg id="cdesc-arr-'+esc(cat.id)+'" viewBox="0 0 24 24" style="width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2.5;transition:transform 0.3s;"><polyline points="6 9 12 15 18 9"/></svg>'+
+        '</div>'+
+        '<div id="cdesc-content-'+esc(cat.id)+'" style="max-height:0; overflow:hidden; transition:max-height 0.3s ease, opacity 0.3s ease; opacity:0; margin-top:4px;">'+
+          '<div id="cdesc-text-'+esc(cat.id)+'" style="padding:12px 14px; background:var(--bl); border:1px solid var(--bm); border-radius:10px; font-size:0.8rem; color:var(--txt); line-height:1.6;">'+descHtml+'</div>'+
         '</div>'+
       '</div>'+
+      '<div class="cds" id="cdots-'+esc(cat.id)+'"></div>'+
     '</div>';
   });
   h+='</div>';
   el.innerHTML=h;
   cats.forEach(function(cat){buildCertDots(cat.id);});
   
-  // Re-attach hover effects
-  document.querySelectorAll('.cs-premium .cia img').forEach(function(img) {
-    img.addEventListener('mouseenter', function(){ this.style.transform = 'scale(1.05)'; });
-    img.addEventListener('mouseleave', function(){ this.style.transform = 'scale(1)'; });
-  });
-  document.querySelectorAll('.cs-premium .ca').forEach(function(btn) {
-    btn.addEventListener('mouseenter', function(){ this.style.background = 'var(--gd)'; this.style.borderColor = 'var(--g)'; });
-    btn.addEventListener('mouseleave', function(){ this.style.background = 'rgba(10,18,12,0.4)'; this.style.borderColor = 'rgba(255,255,255,0.2)'; });
-  });
-
   addSwipeToCerts();
+}
+
+function toggleCertDesc(id) {
+  var content = document.getElementById('cdesc-content-' + id);
+  var arr = document.getElementById('cdesc-arr-' + id);
+  var bar = document.getElementById('cdesc-bar-' + id);
+  if(!content || !arr || !bar) return;
+  
+  var isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
+  if(isOpen) {
+    content.style.maxHeight = '0px';
+    content.style.opacity = '0';
+    arr.style.transform = 'rotate(0deg)';
+    bar.style.borderColor = 'var(--bm)';
+  } else {
+    content.style.maxHeight = content.scrollHeight + 'px';
+    content.style.opacity = '1';
+    arr.style.transform = 'rotate(180deg)';
+    bar.style.borderColor = 'var(--g)';
+  }
 }
 /* ── Cert swipe (mobile) ── */
 var _certTouchX={};
@@ -2738,6 +2741,17 @@ function slideCert(id,dir){
   
   var card = document.getElementById('ccard-'+id);
   if(card){
+    // Reset toggle if open
+    var content = document.getElementById('cdesc-content-' + id);
+    var arr = document.getElementById('cdesc-arr-' + id);
+    var bar = document.getElementById('cdesc-bar-' + id);
+    if(content && content.style.maxHeight && content.style.maxHeight !== '0px') {
+      content.style.maxHeight = '0px';
+      content.style.opacity = '0';
+      if(arr) arr.style.transform = 'rotate(0deg)';
+      if(bar) bar.style.borderColor = 'var(--bm)';
+    }
+
     card.style.opacity='0';
     card.style.transform='scale(0.98)';
     setTimeout(function(){
@@ -2747,23 +2761,11 @@ function slideCert(id,dir){
       
       var hasDesc = !!(cur.desc && cur.desc.trim());
       var descHtml = hasDesc ? esc(cur.desc).replace(/\n/g, '<br>') : '';
-      var cdescWrap = document.getElementById('cdesc-wrap-'+id);
-      var cdesc = document.getElementById('cdesc-'+id);
       
-      if(cdescWrap && cdesc){
-        cdesc.innerHTML = descHtml;
-        if(hasDesc){
-          cdescWrap.style.padding = '16px';
-          cdescWrap.style.minHeight = 'auto';
-          cdesc.style.opacity = '1';
-          cdesc.style.transform = 'translateY(0)';
-        } else {
-          cdescWrap.style.padding = '3px';
-          cdescWrap.style.minHeight = '6px';
-          cdesc.style.opacity = '0';
-          cdesc.style.transform = 'translateY(8px)';
-        }
-      }
+      var cdescText = document.getElementById('cdesc-text-'+id);
+      if(cdescText) cdescText.innerHTML = descHtml;
+      
+      if(bar) bar.style.display = hasDesc ? 'flex' : 'none';
       
       var co=document.getElementById('cco-'+id);if(co)co.textContent=(certSliders[id]+1)+'/'+len;
       card.style.opacity='1';
