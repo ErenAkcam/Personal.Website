@@ -418,7 +418,39 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
 .cd{width:6px;height:6px;border-radius:50%;background:var(--bm);cursor:pointer;transition:background .2s,transform .15s;border:none;padding:0}
 .cd.on{background:var(--gd);transform:scale(1.4)}
 
-/* ── PORTFOLIO ── */
+/* ── CERT DESC STRIP ── */
+.cert-desc-strip{
+  margin:0 10px 10px;border-radius:8px;
+  border:1px solid var(--bm);background:var(--bej);
+  overflow:hidden;cursor:pointer;
+  transition:border-color .2s;
+  user-select:none;
+}
+.cert-desc-strip:not(.cert-desc-empty):hover{border-color:var(--g);}
+.cert-desc-empty{
+  height:5px;background:var(--bm);border-radius:4px;
+  margin:0 10px 10px;cursor:default;border:none;
+}
+.cert-desc-strip:not(.cert-desc-empty){
+  display:flex;align-items:center;flex-wrap:wrap;
+  padding:8px 12px;gap:6px;
+  font-size:.62rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--tm);
+  min-height:34px;
+}
+.cert-desc-label{flex:1}
+.cert-desc-arrow{
+  width:14px;height:14px;flex-shrink:0;
+  fill:none;stroke:var(--mu);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;
+  transition:transform .25s;
+}
+.cert-desc-strip.open .cert-desc-arrow{transform:rotate(180deg);}
+.cert-desc-body{
+  display:none;width:100%;
+  font-size:.74rem;font-weight:400;letter-spacing:0;text-transform:none;
+  color:var(--txt);line-height:1.65;padding-top:6px;border-top:1px solid var(--bm);
+  white-space:pre-wrap;word-break:break-word;
+}
+.cert-desc-strip.open .cert-desc-body{display:block;} */
 .pgrd{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
 .cc{border-radius:14px;overflow:hidden;cursor:pointer;background:var(--bl);border:1.5px solid var(--bm);box-shadow:0 3px 14px rgba(0,0,0,.07);transition:transform .18s,box-shadow .18s}
 .cc:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(0,0,0,.11)}
@@ -2665,6 +2697,16 @@ function renderCerts(){
     if(idx>=items.length)idx=0;
     certSliders[cat.id]=idx;
     var cur=items[idx];
+    var descHtml='';
+    if(cur.desc){
+      descHtml='<div class="cert-desc-strip" id="cdesc-'+esc(cat.id)+'" onclick="toggleCertDesc(\''+esc(cat.id)+'\')">'+
+        '<span class="cert-desc-label">More details</span>'+
+        '<svg class="cert-desc-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>'+
+        '<div class="cert-desc-body" id="cdescbody-'+esc(cat.id)+'">'+esc(cur.desc)+'</div>'+
+      '</div>';
+    } else {
+      descHtml='<div class="cert-desc-strip cert-desc-empty"></div>';
+    }
     h+='<div class="cs">'+
       '<div class="csh">'+esc(cat.label)+'</div>'+
       '<div class="csv"><div class="cia" data-cid="'+esc(cat.id)+'">'+
@@ -2675,6 +2717,7 @@ function renderCerts(){
       '<div class="cnp"><span class="cna" id="cnm-'+esc(cat.id)+'">'+esc(cur.name)+'</span>'+
       '<span class="cco" id="cco-'+esc(cat.id)+'">'+(idx+1)+'/'+items.length+'</span></div>'+
       '<div class="cds" id="cdots-'+esc(cat.id)+'"></div>'+
+      descHtml+
     '</div>';
   });
   h+='</div>';
@@ -2714,6 +2757,28 @@ function slideCert(id,dir){
   var nm=document.getElementById('cnm-'+id);if(nm)nm.textContent=cur.name;
   var co=document.getElementById('cco-'+id);if(co)co.textContent=(certSliders[id]+1)+'/'+len;
   buildCertDots(id);
+  // desc şeridini güncelle
+  var ds=document.getElementById('cdesc-'+id);
+  var dsEmpty=document.querySelector('#cdesc-'+id+'.cert-desc-empty');
+  // hem desc hem de empty strip olabilir, parent .cs içinde bul
+  var cs=img?img.closest('.cs'):null;
+  if(cs){
+    var strip=cs.querySelector('.cert-desc-strip');
+    if(strip){
+      if(cur.desc){
+        strip.classList.remove('cert-desc-empty');
+        var lbl=strip.querySelector('.cert-desc-label');
+        var arr=strip.querySelector('.cert-desc-arrow');
+        var body=strip.querySelector('.cert-desc-body');
+        if(!lbl){strip.innerHTML='<span class="cert-desc-label">More details</span><svg class="cert-desc-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg><div class="cert-desc-body">'+esc(cur.desc)+'</div>';}
+        else if(body)body.textContent=cur.desc;
+        strip.classList.remove('open');
+      } else {
+        strip.className='cert-desc-strip cert-desc-empty';
+        strip.innerHTML='';
+      }
+    }
+  }
 }
 
 function preloadCertImages(){
@@ -2724,6 +2789,11 @@ function preloadCertImages(){
     });
   });
 }
+function toggleCertDesc(id){
+  var strip=document.getElementById('cdesc-'+id);
+  if(strip)strip.classList.toggle('open');
+}
+
 function buildCertDots(id){
   var el=document.getElementById('cdots-'+id);if(!el)return;el.innerHTML='';
   var cats=(SD.certs&&SD.certs.categories)||[];
