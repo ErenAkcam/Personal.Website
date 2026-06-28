@@ -2124,11 +2124,11 @@ var SK='erensite_data';
 /* ── Defaults — tüm içerik buraya gömülü ── */
 var DEF = {
   "name": "Eren Akçam",
-  "role": "Student · Designer",
+  "role": "Student · Designerss",
   "tag": "Design & Engineering",
   "herodesc": "This is the portfolio of a young professional who combines technical knowledge with creative design. I am currently a student of Computer-Aided Machine Drawing, and alongside my education, I been working as a freelance graphic designer since 2022. In addition to my technical drawing skills such as SolidWorks and AutoCAD, I have a strong interest in areas like game development and artificial intelligence. By browsing through my portfolio, you can discover how I apply my technical and digital skills!",
   "about": "Studying Computer-Aided Machine Drawing, combining technical precision with creative design.ss",
-  "bio": "A young professional combining technical knowledge with creative design. Freelance graphic designer since 2022.",
+  "bio": "A young professional combining technical knowledge with creative design. Freelance graphic designer since 2022.ss",
   "email": "eren.akcamm@gmail.com",
   "phone": "+90 551 628 62 62",
   "linkedin": "http://www.linkedin.com/in/erenakcam",
@@ -2393,7 +2393,7 @@ var DEF = {
         "company": "Computer-Aided Machine Drawing — 11th Grade",
         "location": "Türkiye — İzmir / Kemalpaşa",
         "date": "2023 — 2027",
-        "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNezqmfNH5qvumBVxo9EjAMeM28mDpz0G7FA&s",
+        "logo": "assets/kosbi-logo.png",
         "desc": "I am currently continuing my education in the Computer-Aided Machine Design department at Private KOSBİ Zülfü Mevlüt Çelik Vocational and Technical Anatolian High School, where I am building a solid foundation for my career in engineering and manufacturing. Throughout my education, I have acquired advanced skills in SolidWorks, AutoCAD, technical drawing, and CNC machines.\nIn addition to my academic development, I have taken on an active leadership role by serving as Vice President of the Student Council. This responsibility has provided me with the opportunity to develop my skills in event and project management, team coordination, and organizational planning. By combining my technical expertise with these social and managerial skills, I manage my projects with a holistic perspective throughout both the design and implementation phases."
       }
     ]
@@ -2667,13 +2667,16 @@ function renderCerts(){
     var cur=items[idx];
     h+='<div class="cs">'+
       '<div class="csh">'+esc(cat.label)+'</div>'+
-      '<div class="csv"><div class="cia" data-cid="'+esc(cat.id)+'">'+
+      '<div id="ccard-'+esc(cat.id)+'" style="transition: opacity 0.2s, transform 0.2s;">'+
+      '<div class="csv" style="margin-bottom:12px"><div class="cia" data-cid="'+esc(cat.id)+'">'+
         '<button class="ca pv" onclick="slideCert(\''+cat.id+'\',-1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>'+
         '<img id="cimg-'+esc(cat.id)+'" src="'+esc(cur.src)+'" alt="'+esc(cur.name)+'" onclick="openLb(this.src,\''+cat.id+'\')" style="cursor:zoom-in"/>'+
         '<button class="ca nx" onclick="slideCert(\''+cat.id+'\',1)"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>'+
       '</div></div>'+
-      '<div class="cnp"><span class="cna" id="cnm-'+esc(cat.id)+'">'+esc(cur.name)+'</span>'+
-      '<span class="cco" id="cco-'+esc(cat.id)+'">'+(idx+1)+'/'+items.length+'</span></div>'+
+      '<div class="cnp" style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;"><span class="cna" id="cnm-'+esc(cat.id)+'" style="font-weight:700;font-size:.9rem;color:var(--txt)">'+esc(cur.name)+'</span>'+
+      '<span class="cco" id="cco-'+esc(cat.id)+'" style="font-size:.65rem;color:var(--mu);flex-shrink:0">'+(idx+1)+'/'+items.length+'</span></div>'+
+      '<div class="cdesc" id="cdesc-'+esc(cat.id)+'" style="font-size:0.75rem;color:var(--mu);line-height:1.5">'+(cur.desc ? esc(cur.desc).replace(/\n/g, '<br>') : '')+'</div>'+
+      '</div>'+
       '<div class="cds" id="cdots-'+esc(cat.id)+'"></div>'+
     '</div>';
   });
@@ -2700,19 +2703,21 @@ function slideCert(id,dir){
   var items=cat.items||[];var len=items.length;if(!len)return;
   certSliders[id]=((certSliders[id]||0)+dir+len)%len;
   var cur=items[certSliders[id]];
-  var img=document.getElementById('cimg-'+id);
-  if(img){
-    img.style.opacity='0';
-    img.style.transition='opacity .15s';
+  
+  var card = document.getElementById('ccard-'+id);
+  if(card){
+    card.style.opacity='0';
+    card.style.transform='scale(0.98)';
     setTimeout(function(){
-      img.src=cur.src;
-      img.onload=function(){img.style.opacity='1';};
-      // if already cached, onload may not fire
-      if(img.complete)img.style.opacity='1';
-    },120);
+      var img=document.getElementById('cimg-'+id);
+      if(img) img.src=cur.src;
+      var nm=document.getElementById('cnm-'+id);if(nm)nm.textContent=cur.name;
+      var cdesc=document.getElementById('cdesc-'+id);if(cdesc)cdesc.innerHTML=cur.desc ? esc(cur.desc).replace(/\n/g, '<br>') : '';
+      var co=document.getElementById('cco-'+id);if(co)co.textContent=(certSliders[id]+1)+'/'+len;
+      card.style.opacity='1';
+      card.style.transform='scale(1)';
+    },200);
   }
-  var nm=document.getElementById('cnm-'+id);if(nm)nm.textContent=cur.name;
-  var co=document.getElementById('cco-'+id);if(co)co.textContent=(certSliders[id]+1)+'/'+len;
   buildCertDots(id);
 }
 
