@@ -131,6 +131,28 @@
       "referrers": [],
       "firstSeen": "2026-06-30T07:42:54.816Z",
       "lastSeen": "2026-06-30T07:43:55.706Z"
+    },
+    {
+      "key": "5.27.206.80",
+      "visitorId": "v_mr0cczk1_gty5cpv7",
+      "ip": "5.27.206.80",
+      "city": "Turgutlu",
+      "region": "Manisa",
+      "country": "Turkey",
+      "org": "Turkcell Iletisim Hizmetleri A.s.",
+      "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/29.0 Chrome/136.0.0.0 Mobile Safari/537.36",
+      "visitCount": 1,
+      "pages": [
+        {
+          "page": "pp",
+          "time": "2026-06-30T07:44:54.530Z"
+        }
+      ],
+      "messageSent": false,
+      "referenceSent": false,
+      "referrers": [],
+      "firstSeen": "2026-06-30T07:44:54.530Z",
+      "lastSeen": "2026-06-30T07:44:54.530Z"
     }
   ]
 }
