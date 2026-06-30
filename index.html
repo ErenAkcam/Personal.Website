@@ -2772,6 +2772,9 @@ document.addEventListener('click',function(e){
 /* ── PAGE NAVIGATION ── */
 var PAGES=['pp','mem','sk','cer','ref','con'];
 var pageHistory=[];
+// go() ile hash değiştirildiğinde, 'hashchange' dinleyicisinin showPage'i
+// İKİNCİ KEZ çalıştırmasını (ve pageview'i çift saymasını) önlemek için.
+var _internalNavFlag=false;
 
 function showPage(id){
   PAGES.forEach(function(pid){
@@ -2792,8 +2795,21 @@ function showPage(id){
 }
 
 function go(id){
-  // URL hash'i güncelle (sayfa yenilendiğinde kalıcı olması için)
-  window.location.hash = '#' + id;
+  // URL hash'i güncelle (sayfa yenilendiğinde kalıcı olması için).
+  // ÖNEMLİ (DÜZELTME — çift pageview bug'ı): hash değiştirmek aşağıdaki
+  // 'hashchange' dinleyicisini de tetikler ve o da showPage()'i çağırır.
+  // Bu fonksiyon AYRICA kendi içinde showPage(id)'i çağırdığı için, tek bir
+  // navigasyonda showPage (ve dolayısıyla trackEvent('pageview',...)) İKİ
+  // KEZ çalışıyordu. _internalNavFlag, hash değişiminin go() tarafından
+  // başlatıldığını işaretler; hashchange dinleyicisi bu durumda showPage'i
+  // tekrar çağırmadan sessizce geçer. Hash zaten aynıysa (örn. aktif
+  // sayfanın linkine tekrar tıklanırsa) hashchange HİÇ tetiklenmeyeceği
+  // için flag'i sadece hash gerçekten değişiyorsa true yapıyoruz — aksi
+  // halde flag askıda kalıp bir sonraki gerçek geri/ileri tuşunu yanlışlıkla
+  // yutardı.
+  var newHash = '#' + id;
+  if(window.location.hash !== newHash) _internalNavFlag = true;
+  window.location.hash = newHash;
   
   var cur=PAGES.find(function(p){var el=document.getElementById(p);return el&&el.classList.contains('on');});
   if(cur&&cur!==id)pageHistory.push(cur);
@@ -2818,7 +2834,7 @@ function animateBars(){
 /* ── VISITOR TRACKING (Google Apps Script) ──
    GAS_TRACK_URL admin panelinden ("Analytics" bölümü) görüntülenip
    düzenlenebilir ve doğrudan bu dosyaya deploy edilebilir. */
-var GAS_TRACK_URL = 'https://script.google.com/macros/s/AKfycbzWFs776oLYxa76laIvWGghwdpnsrc6webCSllv73re-EjepTdQGWU0xGi_1rDvaqAAzQ/exec';
+var GAS_TRACK_URL = 'https://script.google.com/macros/s/AKfycbz_LhGiMAleKvjbThG3DaqLyX-qCeaxg4TnFFl14nxOvTVRTwVl0tlYM34Sls90xcXM2Q/exec';
 var _trackVisitorId = null;
 var _trackGeoCache = null;
 
@@ -3791,6 +3807,10 @@ rpNameInitials();
 
 // Hash değişimini dinle (geri/ileri butonları için)
 window.addEventListener('hashchange',function(){
+  // go() zaten bu navigasyon için showPage()'i çağırdı — tekrar çağırırsak
+  // pageview çift sayılır. Sadece TARAYICI geri/ileri butonu veya hash'in
+  // doğrudan elle/dışarıdan değiştirildiği durumlarda showPage çalışsın.
+  if(_internalNavFlag){ _internalNavFlag=false; return; }
   var hash = window.location.hash.slice(1) || 'pp';
   showPage(hash);
 });
