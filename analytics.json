@@ -65,12 +65,25 @@
       "referrerSource": "LinkedIn",
       "firstSeen": "2026-06-30T14:50:55.302Z",
       "lastSeen": "2026-06-30T14:50:55.890Z"
+    },
+    {
+      "key": "v_mr0btc0n_bl8tjx2e",
+      "visitorId": "v_mr0btc0n_bl8tjx2e",
+      "ip": "78.177.222.179",
+      "city": "Bornova",
+      "region": "İzmir Province",
+      "country": "Türkiye",
+      "org": "Turk Telekom",
+      "userAgent": "",
+      "visitCount": 0,
+      "pages": [],
+      "messageSent": false,
+      "referenceSent": false,
+      "referrers": [],
+      "referrerSource": "",
+      "firstSeen": "2026-06-30T19:14:22.289Z",
+      "lastSeen": "2026-06-30T19:14:22.289Z"
     }
   ],
-  "messages": [],
-  "ipNames": {
-    "78.177.222.179": "PC - Eren Akçam",
-    "77.67.148.252": "Serhat Hoca",
-    "176.220.168.127": "Nuray Gowans"
-  }
+  "messages": []
 }
