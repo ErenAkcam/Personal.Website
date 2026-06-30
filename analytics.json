@@ -141,7 +141,7 @@
       "country": "Turkey",
       "org": "Turkcell Iletisim Hizmetleri A.s.",
       "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/29.0 Chrome/136.0.0.0 Mobile Safari/537.36",
-      "visitCount": 6,
+      "visitCount": 7,
       "pages": [
         {
           "page": "pp",
@@ -166,13 +166,17 @@
         {
           "page": "sk",
           "time": "2026-06-30T07:45:02.866Z"
+        },
+        {
+          "page": "cer",
+          "time": "2026-06-30T07:45:04.468Z"
         }
       ],
       "messageSent": false,
       "referenceSent": false,
       "referrers": [],
       "firstSeen": "2026-06-30T07:44:54.530Z",
-      "lastSeen": "2026-06-30T07:45:02.866Z"
+      "lastSeen": "2026-06-30T07:45:04.468Z"
     }
   ]
 }
