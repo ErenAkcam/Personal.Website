@@ -162,14 +162,20 @@
         {
           "page": "mem",
           "time": "2026-06-30T11:37:23.277Z"
+        },
+        {
+          "page": "pp",
+          "time": "2026-06-30T11:38:41.171Z"
         }
       ],
       "messageSent": false,
       "referenceSent": false,
-      "referrers": [],
+      "referrers": [
+        "android-app://com.linkedin.android/"
+      ],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-06-30T11:36:24.611Z",
-      "lastSeen": "2026-06-30T11:37:23.277Z"
+      "lastSeen": "2026-06-30T11:38:41.171Z"
     },
     {
       "key": "v_mr0btc0n_bl8tjx2e",
