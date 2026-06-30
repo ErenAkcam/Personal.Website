@@ -1,19 +1,4 @@
 {
   "visitors": [],
-  "messages": [
-    {
-      "id": "m_mr0dmwtp_dq2vni",
-      "visitorId": "v_mr0btc0n_bl8tjx2e",
-      "name": "sssssssssssssssssss",
-      "email": "sssssssssssssssssss",
-      "phone": "",
-      "subject": "ssssssssssssssssss",
-      "message": "sssssssssssssssssssssss",
-      "city": "",
-      "country": "",
-      "ip": "",
-      "time": "2026-06-30T08:20:33.288Z",
-      "read": false
-    }
-  ]
+  "messages": []
 }
