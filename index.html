@@ -2804,7 +2804,7 @@ function animateBars(){
 /* ── VISITOR TRACKING (Google Apps Script) ──
    GAS_TRACK_URL admin panelinden ("Analytics" bölümü) görüntülenip
    düzenlenebilir ve doğrudan bu dosyaya deploy edilebilir. */
-var GAS_TRACK_URL = 'https://script.google.com/macros/s/AKfycbzcqItUv5BRy-0JudIHRDu6ZuzR9JGri7vQ6C73xYlZW-uzGsm4a5zFX6E8WG5WWnzbnA/exec';
+var GAS_TRACK_URL = '';
 var _trackVisitorId = null;
 var _trackGeoCache = null;
 
@@ -2829,6 +2829,23 @@ function _trackGetGeo(callback){
     var cached = sessionStorage.getItem('_geo');
     if(cached){_trackGeoCache = JSON.parse(cached); callback(_trackGeoCache); return;}
   }catch(e){}
+
+  // ÖNEMLİ: ipapi.co bazen reklam engelleyiciler tarafından sessizce
+  // engelleniyor (fetch hiç reddetmiyor, sonsuza kadar askıda kalıyor)
+  // ya da yavaş yanıt veriyor. Bu, geo verisini bekleyen trackEvent'in
+  // (özellikle İLK sayfa girişinde) hiç gönderilmemesine sebep oluyordu —
+  // ziyaretçi "kaydolmuyormuş" gibi görünüyordu. Artık en fazla 2.5sn
+  // bekleniyor; süre dolarsa boş geo ile devam edilip olay yine de
+  // gönderiliyor.
+  var done = false;
+  var finish = function(geo){
+    if(done)return;
+    done = true;
+    callback(geo);
+  };
+
+  setTimeout(function(){ finish({ip:'',city:'',region:'',country:'',org:''}); }, 2500);
+
   fetch('https://ipapi.co/json/')
     .then(function(r){return r.json();})
     .then(function(d){
@@ -2841,9 +2858,9 @@ function _trackGetGeo(callback){
       };
       _trackGeoCache = geo;
       try{sessionStorage.setItem('_geo', JSON.stringify(geo));}catch(e){}
-      callback(geo);
+      finish(geo);
     })
-    .catch(function(){ callback({ip:'',city:'',region:'',country:'',org:''}); });
+    .catch(function(){ finish({ip:'',city:'',region:'',country:'',org:''}); });
 }
 
 // Yönlendirme kaynağını ("nereden geldi") okunabilir bir etikete çevirir.
@@ -3151,7 +3168,7 @@ function attachMailHandlers(){
 }
 
 /* ── REFERENCES ── */
-var GAS_REFS_URL = 'https://script.google.com/macros/s/AKfycbxSoVebFOO-8rQ25W9VdLyGaog_PL8bJqazr3Vu0C9snj-1kL3wadrA1YgvGpB0WCj0Tg/exec';
+var GAS_REFS_URL = 'https://script.google.com/macros/s/AKfycby2UlJGO3ZaNq5_jtwK-sI_tqnIXOYOk7baiEBifysONG0_QLd68JalSoFUU05rePoimg/exec';
 var _refsCache = null;
 var _refsCacheTime = 0;
 
