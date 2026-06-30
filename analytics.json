@@ -197,6 +197,28 @@
       "referrers": [],
       "firstSeen": "2026-06-30T07:44:54.530Z",
       "lastSeen": "2026-06-30T07:46:47.469Z"
+    },
+    {
+      "key": "31.142.106.197",
+      "visitorId": "v_mr0cczk1_gty5cpv7",
+      "ip": "31.142.106.197",
+      "city": "Izmir",
+      "region": "İzmir Province",
+      "country": "Türkiye",
+      "org": "Turkcell Iletisim Hizmetleri A.s.",
+      "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/29.0 Chrome/136.0.0.0 Mobile Safari/537.36",
+      "visitCount": 1,
+      "pages": [
+        {
+          "page": "pp",
+          "time": "2026-06-30T07:46:54.984Z"
+        }
+      ],
+      "messageSent": false,
+      "referenceSent": false,
+      "referrers": [],
+      "firstSeen": "2026-06-30T07:46:54.984Z",
+      "lastSeen": "2026-06-30T07:46:54.984Z"
     }
   ]
 }
