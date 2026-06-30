@@ -218,7 +218,7 @@
       "country": "Türkiye",
       "org": "Turk Telekom",
       "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
-      "visitCount": 2,
+      "visitCount": 1,
       "pages": [
         {
           "page": "pp",
@@ -267,30 +267,6 @@
         {
           "page": "cer",
           "time": "2026-06-30T11:38:14.847Z"
-        },
-        {
-          "page": "pp",
-          "time": "2026-06-30T11:43:27.511Z"
-        },
-        {
-          "page": "pp",
-          "time": "2026-06-30T11:43:29.695Z"
-        },
-        {
-          "page": "mem",
-          "time": "2026-06-30T11:43:35.417Z"
-        },
-        {
-          "page": "mem",
-          "time": "2026-06-30T11:43:35.376Z"
-        },
-        {
-          "page": "pp",
-          "time": "2026-06-30T11:43:36.812Z"
-        },
-        {
-          "page": "pp",
-          "time": "2026-06-30T11:43:36.818Z"
         }
       ],
       "messageSent": false,
@@ -298,7 +274,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-06-30T11:37:30.391Z",
-      "lastSeen": "2026-06-30T11:43:36.818Z"
+      "lastSeen": "2026-06-30T11:38:14.847Z"
     }
   ],
   "messages": []
