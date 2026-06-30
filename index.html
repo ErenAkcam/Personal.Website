@@ -2393,7 +2393,7 @@ var DEF = {
         "company": "Computer-Aided Machine Drawing — 11th Grade",
         "location": "Türkiye — İzmir / Kemalpaşa",
         "date": "2023 — 2027",
-        "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyhy98wK6iR0JKdkzbmTZtfwl3MbrpN4iDx45xEl_YxA&s=10",
+        "logo": "assets/kosbi-logo.png",
         "desc": "I am currently continuing my education in the Computer-Aided Machine Design department at Private KOSBİ Zülfü Mevlüt Çelik Vocational and Technical Anatolian High School, where I am building a solid foundation for my career in engineering and manufacturing. Throughout my education, I have acquired advanced skills in SolidWorks, AutoCAD, technical drawing, and CNC machines.\nIn addition to my academic development, I have taken on an active leadership role by serving as Vice President of the Student Council. This responsibility has provided me with the opportunity to develop my skills in event and project management, team coordination, and organizational planning. By combining my technical expertise with these social and managerial skills, I manage my projects with a holistic perspective throughout both the design and implementation phases."
       }
     ]
@@ -2774,6 +2774,7 @@ function showPage(id){
   if(id==='ref')renderRefPage();
   var bb=document.getElementById('mob-back-btn');
   if(bb)bb.style.display=(id==='pp'?'none':'');
+  if(typeof trackEvent==='function')trackEvent('pageview',{page:id});
 }
 
 function go(id){
@@ -2799,6 +2800,79 @@ function animateBars(){
     setTimeout(function(){b.style.width=w;},60);
   });
 }
+
+/* ── VISITOR TRACKING (Google Apps Script) ──
+   GAS_TRACK_URL admin panelinden ("Analytics" bölümü) görüntülenip
+   düzenlenebilir ve doğrudan bu dosyaya deploy edilebilir. */
+var GAS_TRACK_URL = '';
+var _trackVisitorId = null;
+var _trackGeoCache = null;
+
+function _trackGetVisitorId(){
+  if(_trackVisitorId)return _trackVisitorId;
+  try{
+    var id = localStorage.getItem('_vid');
+    if(!id){
+      id = 'v_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2,10);
+      localStorage.setItem('_vid', id);
+    }
+    _trackVisitorId = id;
+  }catch(e){
+    _trackVisitorId = 'v_anon_' + Math.random().toString(36).slice(2,10);
+  }
+  return _trackVisitorId;
+}
+
+function _trackGetGeo(callback){
+  if(_trackGeoCache){callback(_trackGeoCache);return;}
+  try{
+    var cached = sessionStorage.getItem('_geo');
+    if(cached){_trackGeoCache = JSON.parse(cached); callback(_trackGeoCache); return;}
+  }catch(e){}
+  fetch('https://ipapi.co/json/')
+    .then(function(r){return r.json();})
+    .then(function(d){
+      var geo = {
+        ip: d.ip || '',
+        city: d.city || '',
+        region: d.region || '',
+        country: d.country_name || '',
+        org: d.org || ''
+      };
+      _trackGeoCache = geo;
+      try{sessionStorage.setItem('_geo', JSON.stringify(geo));}catch(e){}
+      callback(geo);
+    })
+    .catch(function(){ callback({ip:'',city:'',region:'',country:'',org:''}); });
+}
+
+function trackEvent(action, extra){
+  if(!GAS_TRACK_URL)return; // admin panelden ayarlanana kadar sessizce devre dışı
+  _trackGetGeo(function(geo){
+    var payload = {
+      visitorId: _trackGetVisitorId(),
+      action: action,
+      page: (extra && extra.page) || '',
+      meta: extra || {},
+      referrer: document.referrer || '',
+      userAgent: navigator.userAgent || '',
+      lang: navigator.language || '',
+      ip: geo.ip, city: geo.city, region: geo.region, country: geo.country, org: geo.org,
+      url: window.location.href,
+      time: new Date().toISOString()
+    };
+    fetch(GAS_TRACK_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {'Content-Type': 'text/plain;charset=utf-8'},
+      body: JSON.stringify(payload)
+    }).catch(function(){});
+  });
+}
+
+document.addEventListener('DOMContentLoaded', function(){
+  trackEvent('pageview', {page: (window.location.hash||'#pp').replace('#','')});
+});
 
 /* ── Contact form (Google Apps Script) ── */
 var GAS_CONTACT_URL = 'https://script.google.com/macros/s/AKfycbzOygn61F1XBjrR6FmrQQAqMJmRIeqTpPnAB83Hdv4ozWv5SReQb725K8DH6erVIbmU/exec';
@@ -2855,6 +2929,7 @@ function sendMsg(){
     var succ=document.getElementById('f-succ');
     if(wrap)wrap.style.display='none';
     if(succ)succ.style.display='block';
+    if(typeof trackEvent==='function')trackEvent('contact_message',{subject:subj});
   })
   .catch(function(){
     if(btn){btn.disabled=false;btn.textContent='Send Message';}
@@ -3412,6 +3487,7 @@ function rpSubmit(){
     succ.style.display='flex';
     succ.style.flexDirection='column';
     succ.style.alignItems='center';
+    if(typeof trackEvent==='function')trackEvent('reference_submitted',{name:name});
     setTimeout(function(){closeRefPanel(); renderRefPage();}, 2000);
   })
   .catch(function(){
