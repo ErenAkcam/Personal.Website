@@ -267,6 +267,10 @@
         {
           "page": "ref",
           "time": "2026-06-30T08:50:06.016Z"
+        },
+        {
+          "page": "ref",
+          "time": "2026-06-30T08:50:06.263Z"
         }
       ],
       "messageSent": false,
@@ -274,7 +278,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-06-30T08:46:30.690Z",
-      "lastSeen": "2026-06-30T08:50:06.016Z"
+      "lastSeen": "2026-06-30T08:50:06.263Z"
     },
     {
       "key": "31.142.106.197",
