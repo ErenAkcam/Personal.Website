@@ -34,6 +34,10 @@
         {
           "page": "sk",
           "time": "2026-06-30T10:47:56.729Z"
+        },
+        {
+          "page": "cer",
+          "time": "2026-06-30T10:48:02.620Z"
         }
       ],
       "messageSent": false,
@@ -43,7 +47,7 @@
       ],
       "referrerSource": "LinkedIn",
       "firstSeen": "2026-06-30T10:47:43.789Z",
-      "lastSeen": "2026-06-30T10:47:56.729Z"
+      "lastSeen": "2026-06-30T10:48:02.620Z"
     }
   ],
   "messages": []
