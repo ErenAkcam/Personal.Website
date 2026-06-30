@@ -8,12 +8,16 @@
       "region": "İzmir Province",
       "country": "Türkiye",
       "org": "Turk Telekom",
-      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+      "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Mobile Safari/537.36",
       "visitCount": 1,
       "pages": [
         {
           "page": "pp",
           "time": "2026-06-30T10:54:49.300Z"
+        },
+        {
+          "page": "pp",
+          "time": "2026-06-30T11:06:01.219Z"
         }
       ],
       "messageSent": false,
@@ -21,7 +25,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-06-30T10:54:49.300Z",
-      "lastSeen": "2026-06-30T10:54:49.300Z"
+      "lastSeen": "2026-06-30T11:06:01.219Z"
     }
   ],
   "messages": []
