@@ -79,7 +79,7 @@
       "country": "",
       "org": "",
       "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Mobile Safari/537.36",
-      "visitCount": 6,
+      "visitCount": 7,
       "pages": [
         {
           "page": "pp",
@@ -104,13 +104,17 @@
         {
           "page": "cer",
           "time": "2026-06-30T07:43:24.285Z"
+        },
+        {
+          "page": "sk",
+          "time": "2026-06-30T07:43:25.465Z"
         }
       ],
       "messageSent": false,
       "referenceSent": false,
       "referrers": [],
       "firstSeen": "2026-06-30T07:42:54.816Z",
-      "lastSeen": "2026-06-30T07:43:24.285Z"
+      "lastSeen": "2026-06-30T07:43:25.465Z"
     }
   ]
 }
