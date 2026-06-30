@@ -541,6 +541,10 @@
         {
           "page": "pp",
           "time": "2026-06-30T10:00:48.827Z"
+        },
+        {
+          "page": "pp",
+          "time": "2026-06-30T10:01:01.538Z"
         }
       ],
       "messageSent": false,
@@ -548,7 +552,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-06-30T09:05:33.193Z",
-      "lastSeen": "2026-06-30T10:00:48.827Z"
+      "lastSeen": "2026-06-30T10:01:01.538Z"
     }
   ],
   "messages": [
