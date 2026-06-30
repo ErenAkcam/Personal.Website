@@ -38,6 +38,10 @@
         {
           "page": "cer",
           "time": "2026-06-30T10:48:02.620Z"
+        },
+        {
+          "page": "cer",
+          "time": "2026-06-30T10:48:02.662Z"
         }
       ],
       "messageSent": false,
@@ -47,7 +51,7 @@
       ],
       "referrerSource": "LinkedIn",
       "firstSeen": "2026-06-30T10:47:43.789Z",
-      "lastSeen": "2026-06-30T10:48:02.620Z"
+      "lastSeen": "2026-06-30T10:48:02.662Z"
     }
   ],
   "messages": []
