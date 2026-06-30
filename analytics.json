@@ -100,12 +100,30 @@
       "referrerSource": "",
       "firstSeen": "2026-06-30T19:10:18.333Z",
       "lastSeen": "2026-06-30T19:10:57.933Z"
+    },
+    {
+      "key": "v_mr0btc0n_bl8tjx2e",
+      "visitorId": "v_mr0btc0n_bl8tjx2e",
+      "ip": "",
+      "city": "",
+      "region": "",
+      "country": "",
+      "org": "",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+      "visitCount": 1,
+      "pages": [
+        {
+          "page": "pp",
+          "time": "2026-06-30T19:11:06.343Z"
+        }
+      ],
+      "messageSent": false,
+      "referenceSent": false,
+      "referrers": [],
+      "referrerSource": "Doğrudan",
+      "firstSeen": "2026-06-30T19:11:06.343Z",
+      "lastSeen": "2026-06-30T19:11:06.343Z"
     }
   ],
-  "messages": [],
-  "ipNames": {
-    "78.177.222.179": "Eren Akçam",
-    "77.67.148.252": "Serhat Hoca",
-    "176.220.168.127": "Nuray Gowans"
-  }
+  "messages": []
 }
