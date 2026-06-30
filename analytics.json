@@ -34,6 +34,10 @@
         {
           "page": "ref",
           "time": "2026-06-30T10:27:45.089Z"
+        },
+        {
+          "page": "ref",
+          "time": "2026-06-30T10:27:45.047Z"
         }
       ],
       "messageSent": false,
@@ -43,7 +47,7 @@
       ],
       "referrerSource": "LinkedIn",
       "firstSeen": "2026-06-30T10:26:36.233Z",
-      "lastSeen": "2026-06-30T10:27:45.089Z"
+      "lastSeen": "2026-06-30T10:27:45.047Z"
     }
   ],
   "messages": []
