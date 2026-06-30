@@ -74,6 +74,10 @@
         {
           "page": "sk",
           "time": "2026-06-30T11:36:45.322Z"
+        },
+        {
+          "page": "pp",
+          "time": "2026-06-30T11:36:47.542Z"
         }
       ],
       "messageSent": false,
@@ -81,7 +85,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-06-30T11:36:24.611Z",
-      "lastSeen": "2026-06-30T11:36:45.322Z"
+      "lastSeen": "2026-06-30T11:36:47.542Z"
     }
   ],
   "messages": []
