@@ -26,6 +26,10 @@
         {
           "page": "mem",
           "time": "2026-06-30T11:36:34.788Z"
+        },
+        {
+          "page": "mem",
+          "time": "2026-06-30T11:36:34.720Z"
         }
       ],
       "messageSent": false,
@@ -33,7 +37,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-06-30T11:36:24.611Z",
-      "lastSeen": "2026-06-30T11:36:34.788Z"
+      "lastSeen": "2026-06-30T11:36:34.720Z"
     }
   ],
   "messages": []
