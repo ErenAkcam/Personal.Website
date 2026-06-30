@@ -24,33 +24,6 @@
       "lastSeen": "2026-06-30T12:34:59.879Z"
     },
     {
-      "key": "v_mr0btc0n_bl8tjx2e",
-      "visitorId": "v_mr0btc0n_bl8tjx2e",
-      "ip": "78.177.222.179",
-      "city": "Bornova",
-      "region": "İzmir Province",
-      "country": "Türkiye",
-      "org": "Turk Telekom",
-      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
-      "visitCount": 2,
-      "pages": [
-        {
-          "page": "pp",
-          "time": "2026-06-30T13:25:29.062Z"
-        },
-        {
-          "page": "pp",
-          "time": "2026-06-30T13:51:55.255Z"
-        }
-      ],
-      "messageSent": false,
-      "referenceSent": false,
-      "referrers": [],
-      "referrerSource": "Doğrudan",
-      "firstSeen": "2026-06-30T13:25:29.062Z",
-      "lastSeen": "2026-06-30T13:51:55.897Z"
-    },
-    {
       "key": "v_mr0oy5m1_xpwgyfbj",
       "visitorId": "v_mr0oy5m1_xpwgyfbj",
       "ip": "176.220.168.127",
