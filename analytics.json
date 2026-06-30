@@ -76,6 +76,29 @@
       "referrerSource": "LinkedIn",
       "firstSeen": "2026-06-30T10:26:36.233Z",
       "lastSeen": "2026-06-30T10:29:22.628Z"
+    },
+    {
+      "key": "v_mr0i8ifb_1dmp9nxh",
+      "visitorId": "v_mr0i8ifb_1dmp9nxh",
+      "ip": "",
+      "city": "",
+      "region": "",
+      "country": "",
+      "org": "",
+      "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Mobile Safari/537.36 (compatible; Google-Read-Aloud; +https://support.google.com/webmasters/answer/1061943)",
+      "visitCount": 1,
+      "pages": [
+        {
+          "page": "mem",
+          "time": "2026-06-30T10:29:23.400Z"
+        }
+      ],
+      "messageSent": false,
+      "referenceSent": false,
+      "referrers": [],
+      "referrerSource": "Doğrudan",
+      "firstSeen": "2026-06-30T10:29:23.400Z",
+      "lastSeen": "2026-06-30T10:29:23.400Z"
     }
   ],
   "messages": []
