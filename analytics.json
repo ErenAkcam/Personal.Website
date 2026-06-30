@@ -412,11 +412,11 @@
         }
       ],
       "messageSent": false,
-      "referenceSent": false,
+      "referenceSent": true,
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-06-30T09:05:33.193Z",
-      "lastSeen": "2026-06-30T09:05:52.798Z"
+      "lastSeen": "2026-06-30T09:06:30.414Z"
     }
   ],
   "messages": [
