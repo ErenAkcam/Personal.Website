@@ -1,29 +1,6 @@
 {
   "visitors": [
     {
-      "key": "v_mr0mp45n_77eqd53t",
-      "visitorId": "v_mr0mp45n_77eqd53t",
-      "ip": "78.177.222.179",
-      "city": "Bornova",
-      "region": "İzmir Province",
-      "country": "Türkiye",
-      "org": "Turk Telekom",
-      "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Mobile Safari/537.36",
-      "visitCount": 0,
-      "pages": [
-        {
-          "page": "pp",
-          "time": "2026-06-30T12:34:16.538Z"
-        }
-      ],
-      "messageSent": false,
-      "referenceSent": false,
-      "referrers": [],
-      "referrerSource": "",
-      "firstSeen": "2026-06-30T12:34:17.253Z",
-      "lastSeen": "2026-06-30T12:34:16.538Z"
-    },
-    {
       "key": "v_mr0m9asq_1jwf6usn",
       "visitorId": "v_mr0m9asq_1jwf6usn",
       "ip": "",
