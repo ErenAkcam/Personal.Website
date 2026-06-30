@@ -92,11 +92,11 @@
     {
       "key": "v_mr0bqpl4_eyz19szl",
       "visitorId": "v_mr0bqpl4_eyz19szl",
-      "ip": "",
-      "city": "",
-      "region": "",
-      "country": "",
-      "org": "",
+      "ip": "78.177.222.179",
+      "city": "Bornova",
+      "region": "İzmir Province",
+      "country": "Türkiye",
+      "org": "Turk Telekom",
       "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Mobile Safari/537.36",
       "visitCount": 1,
       "pages": [
@@ -110,7 +110,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-06-30T19:35:51.184Z",
-      "lastSeen": "2026-06-30T19:35:51.184Z"
+      "lastSeen": "2026-06-30T19:35:51.837Z"
     }
   ],
   "messages": [],
