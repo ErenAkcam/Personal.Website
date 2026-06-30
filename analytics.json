@@ -22,57 +22,6 @@
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-06-30T11:30:56.968Z",
       "lastSeen": "2026-06-30T11:30:56.968Z"
-    },
-    {
-      "key": "v_mr0bqpl4_eyz19szl",
-      "visitorId": "v_mr0bqpl4_eyz19szl",
-      "ip": "78.177.222.179",
-      "city": "Bornova",
-      "region": "İzmir Province",
-      "country": "Türkiye",
-      "org": "Turk Telekom",
-      "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Mobile Safari/537.36",
-      "visitCount": 1,
-      "pages": [
-        {
-          "page": "pp",
-          "time": "2026-06-30T11:31:03.904Z"
-        },
-        {
-          "page": "sk",
-          "time": "2026-06-30T11:31:14.713Z"
-        },
-        {
-          "page": "sk",
-          "time": "2026-06-30T11:31:14.752Z"
-        },
-        {
-          "page": "ref",
-          "time": "2026-06-30T11:31:15.717Z"
-        },
-        {
-          "page": "ref",
-          "time": "2026-06-30T11:31:15.685Z"
-        },
-        {
-          "page": "mem",
-          "time": "2026-06-30T11:31:16.733Z"
-        },
-        {
-          "page": "mem",
-          "time": "2026-06-30T11:31:16.791Z"
-        },
-        {
-          "page": "ref",
-          "time": "2026-06-30T11:31:20.876Z"
-        }
-      ],
-      "messageSent": false,
-      "referenceSent": false,
-      "referrers": [],
-      "referrerSource": "Doğrudan",
-      "firstSeen": "2026-06-30T11:31:03.904Z",
-      "lastSeen": "2026-06-30T11:31:20.876Z"
     }
   ],
   "messages": []
