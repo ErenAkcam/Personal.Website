@@ -377,10 +377,10 @@
         }
       ],
       "messageSent": true,
-      "referenceSent": false,
+      "referenceSent": true,
       "referrers": [],
       "firstSeen": "2026-06-30T08:17:05.647Z",
-      "lastSeen": "2026-06-30T08:20:34.748Z"
+      "lastSeen": "2026-06-30T08:21:10.842Z"
     }
   ],
   "messages": [
