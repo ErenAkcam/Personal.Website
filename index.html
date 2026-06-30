@@ -2804,7 +2804,7 @@ function animateBars(){
 /* ── VISITOR TRACKING (Google Apps Script) ──
    GAS_TRACK_URL admin panelinden ("Analytics" bölümü) görüntülenip
    düzenlenebilir ve doğrudan bu dosyaya deploy edilebilir. */
-var GAS_TRACK_URL = 'https://script.google.com/macros/s/AKfycbyAM59alJFSOhXwaZtrkEn6FnbB022wSvkP0zhEGvnyD0-uOTeclgpKwBMFoQE6ZLTIoQ/exec';
+var GAS_TRACK_URL = '';
 var _trackVisitorId = null;
 var _trackGeoCache = null;
 
@@ -2846,6 +2846,25 @@ function _trackGetGeo(callback){
     .catch(function(){ callback({ip:'',city:'',region:'',country:'',org:''}); });
 }
 
+// Yönlendirme kaynağını ("nereden geldi") okunabilir bir etikete çevirir.
+function _trackGetReferrerSource(){
+  var ref = document.referrer || '';
+  if(!ref) return 'Doğrudan';
+  try{
+    var host = new URL(ref).hostname.replace(/^www\./,'').toLowerCase();
+    if(host.indexOf('linkedin.')>-1) return 'LinkedIn';
+    if(host.indexOf('google.')>-1) return 'Google';
+    if(host.indexOf('instagram.')>-1) return 'Instagram';
+    if(host.indexOf('twitter.')>-1||host==='x.com') return 'Twitter / X';
+    if(host.indexOf('facebook.')>-1) return 'Facebook';
+    if(host.indexOf('github.')>-1) return 'GitHub';
+    if(host===window.location.hostname) return 'Site içi';
+    return host;
+  }catch(e){
+    return 'Doğrudan';
+  }
+}
+
 function trackEvent(action, extra){
   if(!GAS_TRACK_URL)return; // admin panelden ayarlanana kadar sessizce devre dışı
   _trackGetGeo(function(geo){
@@ -2855,6 +2874,7 @@ function trackEvent(action, extra){
       page: (extra && extra.page) || '',
       meta: extra || {},
       referrer: document.referrer || '',
+      referrerSource: _trackGetReferrerSource(),
       userAgent: navigator.userAgent || '',
       lang: navigator.language || '',
       ip: geo.ip, city: geo.city, region: geo.region, country: geo.country, org: geo.org,
@@ -2870,9 +2890,11 @@ function trackEvent(action, extra){
   });
 }
 
-document.addEventListener('DOMContentLoaded', function(){
-  trackEvent('pageview', {page: (window.location.hash||'#pp').replace('#','')});
-});
+/* NOT: Sayfa ilk yüklendiğinde ayrı bir 'pageview' tetiklemiyoruz —
+   aşağıdaki INIT bloğunda çağrılan showPage() zaten her zaman
+   trackEvent('pageview', ...) tetikliyor (bkz. showPage fonksiyonu).
+   Burada ayrıca bir DOMContentLoaded dinleyicisi eklemek, ilk girişte
+   ziyaretin İKİ KEZ sayılmasına (çift pageview) sebep oluyordu. */
 
 /* ── Contact form (Google Apps Script) ── */
 var GAS_CONTACT_URL = 'https://script.google.com/macros/s/AKfycbzOygn61F1XBjrR6FmrQQAqMJmRIeqTpPnAB83Hdv4ozWv5SReQb725K8DH6erVIbmU/exec';
@@ -3129,7 +3151,7 @@ function attachMailHandlers(){
 }
 
 /* ── REFERENCES ── */
-var GAS_REFS_URL = 'https://script.google.com/macros/s/AKfycbyCuN2_JoRju7iNJlE_EN1EhC3b1yYa0TXxAb3znpZEN1uKJvKB2kTiIZJpTE-4pXe62A/exec';
+var GAS_REFS_URL = 'https://script.google.com/macros/s/AKfycby2UlJGO3ZaNq5_jtwK-sI_tqnIXOYOk7baiEBifysONG0_QLd68JalSoFUU05rePoimg/exec';
 var _refsCache = null;
 var _refsCacheTime = 0;
 
