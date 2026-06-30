@@ -67,11 +67,11 @@
     {
       "key": "v_mr0rkudf_l6shydo9",
       "visitorId": "v_mr0rkudf_l6shydo9",
-      "ip": "",
-      "city": "",
-      "region": "",
-      "country": "",
-      "org": "",
+      "ip": "77.67.148.252",
+      "city": "Izmir",
+      "region": "İzmir Province",
+      "country": "Türkiye",
+      "org": "Turkcell Iletisim Hizmetleri A.s.",
       "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 [LinkedInApp]/9.32.1834",
       "visitCount": 1,
       "pages": [
@@ -87,7 +87,7 @@
       ],
       "referrerSource": "LinkedIn",
       "firstSeen": "2026-06-30T14:50:55.302Z",
-      "lastSeen": "2026-06-30T14:50:55.302Z"
+      "lastSeen": "2026-06-30T14:50:55.890Z"
     }
   ],
   "messages": []
