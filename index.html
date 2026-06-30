@@ -2804,7 +2804,7 @@ function animateBars(){
 /* ── VISITOR TRACKING (Google Apps Script) ──
    GAS_TRACK_URL admin panelinden ("Analytics" bölümü) görüntülenip
    düzenlenebilir ve doğrudan bu dosyaya deploy edilebilir. */
-var GAS_TRACK_URL = 'https://script.google.com/macros/s/AKfycbw1xSq2czwlWqrIuXfb2xdZzP6DdU9YlmgeXzED5Ab8QtwwHDajSd7r5JYWJa8visMYFA/exec';
+var GAS_TRACK_URL = '';
 var _trackVisitorId = null;
 var _trackGeoCache = null;
 
@@ -2929,7 +2929,7 @@ function sendMsg(){
     var succ=document.getElementById('f-succ');
     if(wrap)wrap.style.display='none';
     if(succ)succ.style.display='block';
-    if(typeof trackEvent==='function')trackEvent('contact_message',{subject:subj});
+    if(typeof trackEvent==='function')trackEvent('contact_message',{name:name||'Anonim',email:email||'',phone:phone||'',subject:subj,message:msg});
   })
   .catch(function(){
     if(btn){btn.disabled=false;btn.textContent='Send Message';}
