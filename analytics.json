@@ -114,6 +114,10 @@
         {
           "page": "ref",
           "time": "2026-06-30T11:18:37.308Z"
+        },
+        {
+          "page": "con",
+          "time": "2026-06-30T11:18:38.446Z"
         }
       ],
       "messageSent": false,
@@ -121,7 +125,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-06-30T10:54:49.300Z",
-      "lastSeen": "2026-06-30T11:18:37.308Z"
+      "lastSeen": "2026-06-30T11:18:38.446Z"
     }
   ],
   "messages": []
