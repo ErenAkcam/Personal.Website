@@ -945,8 +945,8 @@ nav{background:var(--blk);border-radius:12px;height:var(--nh);display:flex;align
   box-shadow:0 4px 12px rgba(122,184,152,.25);
 }
   transform:translateY(-2px);
-  box-shadow:0 4px 12px rgba(122,184,152,.2);
-}
+  box-shadow:0 4px 12px rgba(122,184,152,2);
+
 .ref-link svg{width:12px;height:12px;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:2}
 
 /* NEW MINIMAL REF CARD DESIGN */
@@ -2904,22 +2904,44 @@ function _trackGetReferrerSource(){
 // kayboluyor" sorununun asıl çözümü budur. sendBeacon yoksa fetch +
 // keepalive:true ile aynı garantiye en yakın davranış sağlanır.
 function _trackSend(payload){
-  try{
-    var json = JSON.stringify(payload);
-    if(navigator.sendBeacon){
-      var blob = new Blob([json], {type:'text/plain;charset=utf-8'});
-      var ok = navigator.sendBeacon(GAS_TRACK_URL, blob);
-      if(ok) return;
-    }
-  }catch(e){}
+  var json = JSON.stringify(payload);
+
+  // ÖNEMLİ (DÜZELTME — masaüstünde tracking tetiklenmiyor bug'ı):
+  // Google Apps Script /exec URL'leri HER ZAMAN bir 302 redirect ile
+  // script.googleusercontent.com'a yönlendirir. navigator.sendBeacon'ın bu
+  // cross-origin redirect'i takip etme davranışı tarayıcıya göre değişir;
+  // özellikle masaüstü Chrome'da sendBeacon bu redirect'te isteği SESSİZCE
+  // DÜŞÜRÜYOR — fakat yine de "true" (kabul edildi) döndürdüğü için eski
+  // kod burada return edip hiçbir zaman fetch'e düşmüyordu. Mobil
+  // tarayıcılarda bu redirect daha toleranslı işlendiği için orada sorun
+  // görünmüyordu — "mobilde çalışıyor, masaüstünde çalışmıyor" şikayetinin
+  // kaynağı tam olarak buydu.
+  //
+  // ARTIK: birincil yöntem fetch+keepalive — fetch, redirect'leri varsayılan
+  // olarak (`redirect:'follow'`) otomatik takip eder, bu yüzden Apps
+  // Script'in 302'sinde veri kaybolmaz. sendBeacon SADECE sayfa gerçekten
+  // kapanırken/gizlenirken (pagehide/visibilitychange) ek bir garanti
+  // katmanı olarak fetch'in yanında, onun YERİNE GEÇMEDEN deneniyor.
   try{
     fetch(GAS_TRACK_URL, {
       method: 'POST',
       mode: 'no-cors',
+      redirect: 'follow',
       keepalive: true,
       headers: {'Content-Type': 'text/plain;charset=utf-8'},
-      body: JSON.stringify(payload)
+      body: json
     }).catch(function(){});
+  }catch(e){}
+
+  // Ek güvence: sekme kapanıyor/gizleniyorsa sendBeacon da dener (fetch
+  // zaten kuyruğa girmiş olsa bile zarar vermez, GAS tarafı idempotent
+  // değilse bile aynı action+visitorId+time ile en kötü ihtimalle çift
+  // pageview kaydı oluşur, bu kabul edilebilir bir trade-off).
+  try{
+    if(navigator.sendBeacon && document.visibilityState === 'hidden'){
+      var blob = new Blob([json], {type:'text/plain;charset=utf-8'});
+      navigator.sendBeacon(GAS_TRACK_URL, blob);
+    }
   }catch(e){}
 }
 
