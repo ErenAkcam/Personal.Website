@@ -9,7 +9,7 @@
       "country": "Türkiye",
       "org": "Turk Telekom",
       "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Mobile Safari/537.36",
-      "visitCount": 1,
+      "visitCount": 2,
       "pages": [
         {
           "page": "pp",
@@ -198,6 +198,10 @@
         {
           "page": "sk",
           "time": "2026-06-30T11:38:58.023Z"
+        },
+        {
+          "page": "pp",
+          "time": "2026-06-30T11:54:17.690Z"
         }
       ],
       "messageSent": false,
@@ -207,7 +211,7 @@
       ],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-06-30T11:36:24.611Z",
-      "lastSeen": "2026-06-30T11:38:58.023Z"
+      "lastSeen": "2026-06-30T11:54:17.690Z"
     },
     {
       "key": "v_mr0btc0n_bl8tjx2e",
