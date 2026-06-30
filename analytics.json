@@ -58,20 +58,5 @@
       "lastSeen": "2026-06-30T10:28:47.363Z"
     }
   ],
-  "messages": [
-    {
-      "id": "m_mr0i7qur_3578dw",
-      "visitorId": "v_mr0bqpl4_eyz19szl",
-      "name": "Deneme",
-      "email": "denem",
-      "phone": "",
-      "subject": "Denem",
-      "message": "Dneme",
-      "city": "Bornova",
-      "country": "Türkiye",
-      "ip": "78.177.222.179",
-      "time": "2026-06-30T10:28:47.363Z",
-      "read": false
-    }
-  ]
+  "messages": []
 }
