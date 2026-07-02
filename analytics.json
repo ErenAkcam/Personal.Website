@@ -96,11 +96,11 @@
     {
       "key": "v_mr0bqpl4_eyz19szl",
       "visitorId": "v_mr0bqpl4_eyz19szl",
-      "ip": "",
-      "city": "",
-      "region": "",
-      "country": "",
-      "org": "",
+      "ip": "2a02:6ea0:c041:2389::11",
+      "city": "Amsterdam",
+      "region": "North Holland",
+      "country": "The Netherlands",
+      "org": "Datacamp Limited",
       "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Mobile Safari/537.36",
       "visitCount": 1,
       "pages": [
@@ -118,7 +118,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-07-02T14:43:00.330Z",
-      "lastSeen": "2026-07-02T14:43:19.559Z"
+      "lastSeen": "2026-07-02T14:43:20.505Z"
     }
   ],
   "messages": [],
