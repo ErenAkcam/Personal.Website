@@ -138,15 +138,22 @@
       "region": "Istanbul",
       "country": "Turkey",
       "org": "Superonline Iletisim Hizmetleri A.S.",
-      "userAgent": "",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
       "visitCount": 0,
-      "pages": [],
+      "pages": [
+        {
+          "page": "pp",
+          "time": "2026-07-10T13:13:34.677Z"
+        }
+      ],
       "messageSent": false,
       "referenceSent": false,
-      "referrers": [],
+      "referrers": [
+        "https://www.linkedin.com/"
+      ],
       "referrerSource": "",
       "firstSeen": "2026-07-10T13:13:35.209Z",
-      "lastSeen": "2026-07-10T13:13:35.209Z"
+      "lastSeen": "2026-07-10T13:13:34.677Z"
     }
   ],
   "messages": [],
