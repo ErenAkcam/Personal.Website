@@ -196,7 +196,7 @@
       "country": "",
       "org": "",
       "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36",
-      "visitCount": 1,
+      "visitCount": 2,
       "pages": [
         {
           "page": "pp",
@@ -213,6 +213,10 @@
         {
           "page": "cer",
           "time": "2026-07-11T16:24:26.151Z"
+        },
+        {
+          "page": "pp",
+          "time": "2026-07-11T16:30:47.373Z"
         }
       ],
       "messageSent": false,
@@ -220,7 +224,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-07-11T16:23:55.161Z",
-      "lastSeen": "2026-07-11T16:24:26.151Z"
+      "lastSeen": "2026-07-11T16:30:47.373Z"
     }
   ],
   "messages": [],
