@@ -433,6 +433,10 @@
         {
           "page": "ref",
           "time": "2026-07-12T17:11:29.142Z"
+        },
+        {
+          "page": "con",
+          "time": "2026-07-12T17:11:30.122Z"
         }
       ],
       "messageSent": false,
@@ -440,7 +444,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-07-11T16:23:55.161Z",
-      "lastSeen": "2026-07-12T17:11:29.142Z"
+      "lastSeen": "2026-07-12T17:11:30.122Z"
     }
   ],
   "messages": [],
