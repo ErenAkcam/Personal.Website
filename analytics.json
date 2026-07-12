@@ -469,6 +469,10 @@
         {
           "page": "con",
           "time": "2026-07-12T17:18:17.677Z"
+        },
+        {
+          "page": "sk",
+          "time": "2026-07-12T17:18:19.365Z"
         }
       ],
       "messageSent": false,
@@ -476,7 +480,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-07-11T16:23:55.161Z",
-      "lastSeen": "2026-07-12T17:18:17.677Z"
+      "lastSeen": "2026-07-12T17:18:19.365Z"
     }
   ],
   "messages": [],
