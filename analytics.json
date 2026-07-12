@@ -565,6 +565,10 @@
         {
           "page": "pp",
           "time": "2026-07-12T17:51:00.037Z"
+        },
+        {
+          "page": "mem",
+          "time": "2026-07-12T17:53:29.804Z"
         }
       ],
       "messageSent": false,
@@ -572,7 +576,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-07-11T16:23:55.161Z",
-      "lastSeen": "2026-07-12T17:51:00.037Z"
+      "lastSeen": "2026-07-12T17:53:29.804Z"
     }
   ],
   "messages": [],
