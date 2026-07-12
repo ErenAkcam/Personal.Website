@@ -569,6 +569,10 @@
         {
           "page": "mem",
           "time": "2026-07-12T17:53:29.804Z"
+        },
+        {
+          "page": "sk",
+          "time": "2026-07-12T17:53:31.494Z"
         }
       ],
       "messageSent": false,
@@ -576,7 +580,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-07-11T16:23:55.161Z",
-      "lastSeen": "2026-07-12T17:53:29.804Z"
+      "lastSeen": "2026-07-12T17:53:31.494Z"
     }
   ],
   "messages": [],
