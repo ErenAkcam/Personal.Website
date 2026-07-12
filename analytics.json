@@ -200,6 +200,10 @@
         {
           "page": "pp",
           "time": "2026-07-12T18:24:04.026Z"
+        },
+        {
+          "page": "sk",
+          "time": "2026-07-12T18:24:13.233Z"
         }
       ],
       "messageSent": false,
@@ -207,7 +211,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-07-01T17:31:17.674Z",
-      "lastSeen": "2026-07-12T18:24:09.557Z"
+      "lastSeen": "2026-07-12T18:24:13.233Z"
     },
     {
       "key": "v_mr0bqpl4_eyz19szl",
