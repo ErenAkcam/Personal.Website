@@ -204,6 +204,10 @@
         {
           "page": "sk",
           "time": "2026-07-12T18:24:13.233Z"
+        },
+        {
+          "page": "mem",
+          "time": "2026-07-12T18:24:09.092Z"
         }
       ],
       "messageSent": false,
@@ -211,7 +215,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-07-01T17:31:17.674Z",
-      "lastSeen": "2026-07-12T18:24:13.803Z"
+      "lastSeen": "2026-07-12T18:24:09.092Z"
     },
     {
       "key": "v_mr0bqpl4_eyz19szl",
