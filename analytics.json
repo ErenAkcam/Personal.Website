@@ -300,6 +300,10 @@
         {
           "page": "mem",
           "time": "2026-07-15T17:29:09.572Z"
+        },
+        {
+          "page": "pp",
+          "time": "2026-07-15T17:29:56.978Z"
         }
       ],
       "messageSent": false,
@@ -307,7 +311,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-07-01T17:31:17.674Z",
-      "lastSeen": "2026-07-15T17:29:09.573Z"
+      "lastSeen": "2026-07-15T17:29:56.978Z"
     },
     {
       "key": "v_mr0bqpl4_eyz19szl",
