@@ -1,8 +1,14 @@
 {
-  "activeId": "th_gozdostu001",
+  "activeId": "th_siyahbeyaz001",
   "categories": [
-    { "id": "beyaz-agirlikli", "label": "Beyaz Ağırlıklı (Açık Temalar)" },
-    { "id": "beyaz-detay", "label": "Beyaz Detay (Koyu & Yoğun Temalar)" }
+    {
+      "id": "beyaz-agirlikli",
+      "label": "Beyaz Ağırlıklı (Açık Temalar)"
+    },
+    {
+      "id": "beyaz-detay",
+      "label": "Beyaz Detay (Koyu & Yoğun Temalar)"
+    }
   ],
   "themes": [
     {
@@ -12,7 +18,15 @@
       "createdAt": "2026-07-18T00:00:00.000Z",
       "data": {
         "fontTheme": "classic",
-        "fontCustom": { "headingFont": "", "bodyFont": "", "monoFont": "", "bodyColor": "", "headingColor": "", "bodySize": 100, "headingScale": "" },
+        "fontCustom": {
+          "headingFont": "",
+          "bodyFont": "",
+          "monoFont": "",
+          "bodyColor": "",
+          "headingColor": "",
+          "bodySize": 100,
+          "headingScale": ""
+        },
         "colorGreen": "#6fa384",
         "colorGreenDeep": "#2c5142",
         "colorGreenLight": "#9cbcad",
@@ -34,7 +48,15 @@
       "createdAt": "2026-07-18T00:05:00.000Z",
       "data": {
         "fontTheme": "modern",
-        "fontCustom": { "headingFont": "", "bodyFont": "", "monoFont": "", "bodyColor": "", "headingColor": "", "bodySize": 100, "headingScale": "" },
+        "fontCustom": {
+          "headingFont": "",
+          "bodyFont": "",
+          "monoFont": "",
+          "bodyColor": "",
+          "headingColor": "",
+          "bodySize": 100,
+          "headingScale": ""
+        },
         "colorGreen": "#7d7d7d",
         "colorGreenDeep": "#242424",
         "colorGreenLight": "#b0b0b0",
@@ -56,7 +78,15 @@
       "createdAt": "2026-07-18T00:10:00.000Z",
       "data": {
         "fontTheme": "classic",
-        "fontCustom": { "headingFont": "", "bodyFont": "", "monoFont": "", "bodyColor": "", "headingColor": "", "bodySize": 100, "headingScale": "" },
+        "fontCustom": {
+          "headingFont": "",
+          "bodyFont": "",
+          "monoFont": "",
+          "bodyColor": "",
+          "headingColor": "",
+          "bodySize": 100,
+          "headingScale": ""
+        },
         "colorGreen": "#3aa8b8",
         "colorGreenDeep": "#0f4c56",
         "colorGreenLight": "#8fd1dc",
@@ -78,7 +108,15 @@
       "createdAt": "2026-07-18T00:15:00.000Z",
       "data": {
         "fontTheme": "classic",
-        "fontCustom": { "headingFont": "", "bodyFont": "", "monoFont": "", "bodyColor": "", "headingColor": "", "bodySize": 100, "headingScale": "" },
+        "fontCustom": {
+          "headingFont": "",
+          "bodyFont": "",
+          "monoFont": "",
+          "bodyColor": "",
+          "headingColor": "",
+          "bodySize": 100,
+          "headingScale": ""
+        },
         "colorGreen": "#3f6fb0",
         "colorGreenDeep": "#173963",
         "colorGreenLight": "#9db8dd",
@@ -100,7 +138,15 @@
       "createdAt": "2026-07-18T00:20:00.000Z",
       "data": {
         "fontTheme": "elegant",
-        "fontCustom": { "headingFont": "", "bodyFont": "", "monoFont": "", "bodyColor": "", "headingColor": "", "bodySize": 100, "headingScale": "" },
+        "fontCustom": {
+          "headingFont": "",
+          "bodyFont": "",
+          "monoFont": "",
+          "bodyColor": "",
+          "headingColor": "",
+          "bodySize": 100,
+          "headingScale": ""
+        },
         "colorGreen": "#9c3b4a",
         "colorGreenDeep": "#4d1620",
         "colorGreenLight": "#d59aa3",
@@ -122,7 +168,15 @@
       "createdAt": "2026-07-18T00:30:00.000Z",
       "data": {
         "fontTheme": "classic",
-        "fontCustom": { "headingFont": "", "bodyFont": "", "monoFont": "", "bodyColor": "", "headingColor": "", "bodySize": 100, "headingScale": "" },
+        "fontCustom": {
+          "headingFont": "",
+          "bodyFont": "",
+          "monoFont": "",
+          "bodyColor": "",
+          "headingColor": "",
+          "bodySize": 100,
+          "headingScale": ""
+        },
         "colorGreen": "#4fd8a0",
         "colorGreenDeep": "#0f3d2c",
         "colorGreenLight": "#7ce0b8",
@@ -144,7 +198,15 @@
       "createdAt": "2026-07-18T00:35:00.000Z",
       "data": {
         "fontTheme": "modern",
-        "fontCustom": { "headingFont": "", "bodyFont": "", "monoFont": "", "bodyColor": "", "headingColor": "", "bodySize": 100, "headingScale": "" },
+        "fontCustom": {
+          "headingFont": "",
+          "bodyFont": "",
+          "monoFont": "",
+          "bodyColor": "",
+          "headingColor": "",
+          "bodySize": 100,
+          "headingScale": ""
+        },
         "colorGreen": "#e8e8e8",
         "colorGreenDeep": "#4a4a4a",
         "colorGreenLight": "#ffffff",
@@ -166,7 +228,15 @@
       "createdAt": "2026-07-18T00:40:00.000Z",
       "data": {
         "fontTheme": "classic",
-        "fontCustom": { "headingFont": "", "bodyFont": "", "monoFont": "", "bodyColor": "", "headingColor": "", "bodySize": 100, "headingScale": "" },
+        "fontCustom": {
+          "headingFont": "",
+          "bodyFont": "",
+          "monoFont": "",
+          "bodyColor": "",
+          "headingColor": "",
+          "bodySize": 100,
+          "headingScale": ""
+        },
         "colorGreen": "#22d3ee",
         "colorGreenDeep": "#063a42",
         "colorGreenLight": "#7fe3ee",
@@ -188,7 +258,15 @@
       "createdAt": "2026-07-18T00:45:00.000Z",
       "data": {
         "fontTheme": "classic",
-        "fontCustom": { "headingFont": "", "bodyFont": "", "monoFont": "", "bodyColor": "", "headingColor": "", "bodySize": 100, "headingScale": "" },
+        "fontCustom": {
+          "headingFont": "",
+          "bodyFont": "",
+          "monoFont": "",
+          "bodyColor": "",
+          "headingColor": "",
+          "bodySize": 100,
+          "headingScale": ""
+        },
         "colorGreen": "#4d8fe0",
         "colorGreenDeep": "#0b2545",
         "colorGreenLight": "#8bb8ea",
@@ -210,7 +288,15 @@
       "createdAt": "2026-07-18T00:50:00.000Z",
       "data": {
         "fontTheme": "elegant",
-        "fontCustom": { "headingFont": "", "bodyFont": "", "monoFont": "", "bodyColor": "", "headingColor": "", "bodySize": 100, "headingScale": "" },
+        "fontCustom": {
+          "headingFont": "",
+          "bodyFont": "",
+          "monoFont": "",
+          "bodyColor": "",
+          "headingColor": "",
+          "bodySize": 100,
+          "headingScale": ""
+        },
         "colorGreen": "#c0455a",
         "colorGreenDeep": "#3d0f18",
         "colorGreenLight": "#dd8a97",
