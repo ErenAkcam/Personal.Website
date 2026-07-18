@@ -385,6 +385,10 @@
         {
           "page": "mem",
           "time": "2026-07-18T16:57:09.555Z"
+        },
+        {
+          "page": "pp",
+          "time": "2026-07-18T16:57:10.589Z"
         }
       ],
       "messageSent": false,
@@ -392,7 +396,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-07-18T14:24:07.034Z",
-      "lastSeen": "2026-07-18T16:57:09.555Z"
+      "lastSeen": "2026-07-18T16:57:10.589Z"
     },
     {
       "key": "v_mrql159g_87sfuwkh",
