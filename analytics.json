@@ -305,11 +305,11 @@
     {
       "key": "v_mrql159g_87sfuwkh",
       "visitorId": "v_mrql159g_87sfuwkh",
-      "ip": "",
-      "city": "",
-      "region": "",
-      "country": "",
-      "org": "",
+      "ip": "78.177.205.182",
+      "city": "Bornova",
+      "region": "Izmir Province",
+      "country": "Turkey",
+      "org": "Turk Telekomunikasyon Anonim Sirketi",
       "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36",
       "visitCount": 1,
       "pages": [
@@ -323,7 +323,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-07-18T16:29:39.172Z",
-      "lastSeen": "2026-07-18T16:29:39.172Z"
+      "lastSeen": "2026-07-18T16:29:39.692Z"
     }
   ],
   "messages": [],
