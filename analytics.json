@@ -505,6 +505,10 @@
         {
           "page": "mem",
           "time": "2026-07-18T17:25:40.951Z"
+        },
+        {
+          "page": "pp",
+          "time": "2026-07-18T17:25:41.403Z"
         }
       ],
       "messageSent": false,
@@ -512,7 +516,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-07-18T14:24:07.034Z",
-      "lastSeen": "2026-07-18T17:25:41.404Z"
+      "lastSeen": "2026-07-18T17:25:41.403Z"
     },
     {
       "key": "v_mrql159g_87sfuwkh",
