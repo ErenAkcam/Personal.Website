@@ -75,7 +75,7 @@
       "country": "Turkey",
       "org": "Turk Telekomunikasyon Anonim Sirketi",
       "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Mobile Safari/537.36",
-      "visitCount": 5,
+      "visitCount": 4,
       "pages": [
         {
           "page": "pp",
@@ -156,18 +156,6 @@
         {
           "page": "con",
           "time": "2026-07-18T16:42:39.197Z"
-        },
-        {
-          "page": "pp",
-          "time": "2026-07-18T18:06:36.657Z"
-        },
-        {
-          "page": "mem",
-          "time": "2026-07-18T18:06:42.455Z"
-        },
-        {
-          "page": "sk",
-          "time": "2026-07-18T18:06:44.188Z"
         }
       ],
       "messageSent": false,
@@ -177,7 +165,7 @@
       ],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-07-04T13:27:25.518Z",
-      "lastSeen": "2026-07-18T18:06:44.188Z"
+      "lastSeen": "2026-07-18T16:42:39.200Z"
     },
     {
       "key": "v_mreyi6dx_nm5g8ffz",
@@ -425,42 +413,6 @@
         {
           "page": "pp",
           "time": "2026-07-18T17:11:48.918Z"
-        },
-        {
-          "page": "pp",
-          "time": "2026-07-18T17:33:24.579Z"
-        },
-        {
-          "page": "mem",
-          "time": "2026-07-18T17:33:29.736Z"
-        },
-        {
-          "page": "sk",
-          "time": "2026-07-18T17:33:30.956Z"
-        },
-        {
-          "page": "cer",
-          "time": "2026-07-18T17:33:33.300Z"
-        },
-        {
-          "page": "ref",
-          "time": "2026-07-18T17:33:34.453Z"
-        },
-        {
-          "page": "cer",
-          "time": "2026-07-18T17:33:36.670Z"
-        },
-        {
-          "page": "mem",
-          "time": "2026-07-18T17:33:37.669Z"
-        },
-        {
-          "page": "mem",
-          "time": "2026-07-18T17:33:38.281Z"
-        },
-        {
-          "page": "pp",
-          "time": "2026-07-18T17:33:39.222Z"
         }
       ],
       "messageSent": false,
@@ -468,7 +420,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-07-18T14:24:07.034Z",
-      "lastSeen": "2026-07-18T17:33:39.222Z"
+      "lastSeen": "2026-07-18T17:11:48.918Z"
     },
     {
       "key": "v_mrql159g_87sfuwkh",
