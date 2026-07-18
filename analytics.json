@@ -248,7 +248,7 @@
       "country": "Turkey",
       "org": "Turk Telekomunikasyon Anonim Sirketi",
       "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36",
-      "visitCount": 6,
+      "visitCount": 5,
       "pages": [
         {
           "page": "pp",
@@ -413,86 +413,6 @@
         {
           "page": "pp",
           "time": "2026-07-18T17:11:48.918Z"
-        },
-        {
-          "page": "pp",
-          "time": "2026-07-18T17:29:00.466Z"
-        },
-        {
-          "page": "pp",
-          "time": "2026-07-18T17:29:04.069Z"
-        },
-        {
-          "page": "mem",
-          "time": "2026-07-18T17:29:08.024Z"
-        },
-        {
-          "page": "mem",
-          "time": "2026-07-18T17:30:26.691Z"
-        },
-        {
-          "page": "mem",
-          "time": "2026-07-18T17:30:28.851Z"
-        },
-        {
-          "page": "mem",
-          "time": "2026-07-18T17:31:16.112Z"
-        },
-        {
-          "page": "mem",
-          "time": "2026-07-18T17:31:18.279Z"
-        },
-        {
-          "page": "mem",
-          "time": "2026-07-18T17:31:19.046Z"
-        },
-        {
-          "page": "mem",
-          "time": "2026-07-18T17:31:19.297Z"
-        },
-        {
-          "page": "mem",
-          "time": "2026-07-18T17:31:19.537Z"
-        },
-        {
-          "page": "pp",
-          "time": "2026-07-18T17:31:20.825Z"
-        },
-        {
-          "page": "mem",
-          "time": "2026-07-18T17:31:21.969Z"
-        },
-        {
-          "page": "cer",
-          "time": "2026-07-18T17:31:27.067Z"
-        },
-        {
-          "page": "cer",
-          "time": "2026-07-18T17:31:30.187Z"
-        },
-        {
-          "page": "ref",
-          "time": "2026-07-18T17:31:30.951Z"
-        },
-        {
-          "page": "con",
-          "time": "2026-07-18T17:31:41.042Z"
-        },
-        {
-          "page": "sk",
-          "time": "2026-07-18T17:31:42.888Z"
-        },
-        {
-          "page": "mem",
-          "time": "2026-07-18T17:31:44.365Z"
-        },
-        {
-          "page": "cer",
-          "time": "2026-07-18T17:31:45.845Z"
-        },
-        {
-          "page": "pp",
-          "time": "2026-07-18T17:31:52.675Z"
         }
       ],
       "messageSent": false,
@@ -500,7 +420,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-07-18T14:24:07.034Z",
-      "lastSeen": "2026-07-18T17:31:52.675Z"
+      "lastSeen": "2026-07-18T17:11:48.918Z"
     },
     {
       "key": "v_mrql159g_87sfuwkh",
