@@ -29,6 +29,122 @@
         "colorTextMid": "#4e6a5a",
         "colorTextMuted": "#5c6b5f"
       }
+    },
+    {
+      "id": "th_siyahbeyaz001",
+      "name": "Siyah Beyaz (Monokrom)",
+      "createdAt": "2026-07-18T00:05:00.000Z",
+      "data": {
+        "fontTheme": "modern",
+        "fontCustom": {
+          "headingFont": "",
+          "bodyFont": "",
+          "monoFont": "",
+          "bodyColor": "",
+          "headingColor": "",
+          "bodySize": 100,
+          "headingScale": ""
+        },
+        "colorGreen": "#7d7d7d",
+        "colorGreenDeep": "#242424",
+        "colorGreenLight": "#b0b0b0",
+        "colorGreenPale": "#e6e6e6",
+        "colorBej": "#f2f2f2",
+        "colorBejLight": "#ffffff",
+        "colorBejMid": "#d9d9d9",
+        "colorBejDark": "#8f8f8f",
+        "colorBlack": "#121212",
+        "colorText": "#1a1a1a",
+        "colorTextMid": "#4d4d4d",
+        "colorTextMuted": "#6b6b6b"
+      }
+    },
+    {
+      "id": "th_camgobegi001",
+      "name": "Camgöbeği (Cyan)",
+      "createdAt": "2026-07-18T00:10:00.000Z",
+      "data": {
+        "fontTheme": "classic",
+        "fontCustom": {
+          "headingFont": "",
+          "bodyFont": "",
+          "monoFont": "",
+          "bodyColor": "",
+          "headingColor": "",
+          "bodySize": 100,
+          "headingScale": ""
+        },
+        "colorGreen": "#3aa8b8",
+        "colorGreenDeep": "#0f4c56",
+        "colorGreenLight": "#8fd1dc",
+        "colorGreenPale": "#d7f0f3",
+        "colorBej": "#eef7f8",
+        "colorBejLight": "#f8fdfe",
+        "colorBejMid": "#c3dfe3",
+        "colorBejDark": "#7fb0b8",
+        "colorBlack": "#0b1f22",
+        "colorText": "#12282b",
+        "colorTextMid": "#3f6469",
+        "colorTextMuted": "#5f7d80"
+      }
+    },
+    {
+      "id": "th_lacivert001",
+      "name": "Lacivert (Navy)",
+      "createdAt": "2026-07-18T00:15:00.000Z",
+      "data": {
+        "fontTheme": "classic",
+        "fontCustom": {
+          "headingFont": "",
+          "bodyFont": "",
+          "monoFont": "",
+          "bodyColor": "",
+          "headingColor": "",
+          "bodySize": 100,
+          "headingScale": ""
+        },
+        "colorGreen": "#3f6fb0",
+        "colorGreenDeep": "#173963",
+        "colorGreenLight": "#9db8dd",
+        "colorGreenPale": "#dbe6f4",
+        "colorBej": "#eef2f8",
+        "colorBejLight": "#f8fafd",
+        "colorBejMid": "#cbd8ea",
+        "colorBejDark": "#7f9bc3",
+        "colorBlack": "#0d1b2e",
+        "colorText": "#14243a",
+        "colorTextMid": "#3d5470",
+        "colorTextMuted": "#5c7291"
+      }
+    },
+    {
+      "id": "th_bordo001",
+      "name": "Bordo (Şarap Kırmızısı)",
+      "createdAt": "2026-07-18T00:20:00.000Z",
+      "data": {
+        "fontTheme": "elegant",
+        "fontCustom": {
+          "headingFont": "",
+          "bodyFont": "",
+          "monoFont": "",
+          "bodyColor": "",
+          "headingColor": "",
+          "bodySize": 100,
+          "headingScale": ""
+        },
+        "colorGreen": "#9c3b4a",
+        "colorGreenDeep": "#4d1620",
+        "colorGreenLight": "#d59aa3",
+        "colorGreenPale": "#f0dade",
+        "colorBej": "#f7eeef",
+        "colorBejLight": "#fdf8f8",
+        "colorBejMid": "#e3cdd0",
+        "colorBejDark": "#b06f78",
+        "colorBlack": "#1f0d10",
+        "colorText": "#2b1416",
+        "colorTextMid": "#6b3941",
+        "colorTextMuted": "#83565d"
+      }
     }
   ]
 }
