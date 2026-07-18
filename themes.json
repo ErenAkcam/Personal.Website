@@ -1,4 +1,34 @@
 {
-  "activeId": null,
-  "themes": []
+  "activeId": "th_gozdostu001",
+  "themes": [
+    {
+      "id": "th_gozdostu001",
+      "name": "Göz Dostu (Yumuşak Yeşil)",
+      "createdAt": "2026-07-18T00:00:00.000Z",
+      "data": {
+        "fontTheme": "classic",
+        "fontCustom": {
+          "headingFont": "",
+          "bodyFont": "",
+          "monoFont": "",
+          "bodyColor": "",
+          "headingColor": "",
+          "bodySize": 100,
+          "headingScale": ""
+        },
+        "colorGreen": "#6fa384",
+        "colorGreenDeep": "#2c5142",
+        "colorGreenLight": "#9cbcad",
+        "colorGreenPale": "#ccd9d1",
+        "colorBej": "#d7ddd6",
+        "colorBejLight": "#e2e8e1",
+        "colorBejMid": "#c0ccc3",
+        "colorBejDark": "#92a89b",
+        "colorBlack": "#1c231f",
+        "colorText": "#26332c",
+        "colorTextMid": "#4e6a5a",
+        "colorTextMuted": "#5c6b5f"
+      }
+    }
+  ]
 }
