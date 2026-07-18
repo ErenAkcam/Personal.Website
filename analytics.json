@@ -397,6 +397,10 @@
         {
           "page": "pp",
           "time": "2026-07-18T16:57:15.891Z"
+        },
+        {
+          "page": "pp",
+          "time": "2026-07-18T17:11:46.489Z"
         }
       ],
       "messageSent": false,
@@ -404,7 +408,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-07-18T14:24:07.034Z",
-      "lastSeen": "2026-07-18T17:11:46.490Z"
+      "lastSeen": "2026-07-18T17:11:46.489Z"
     },
     {
       "key": "v_mrql159g_87sfuwkh",
