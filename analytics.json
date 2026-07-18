@@ -74,8 +74,8 @@
       "region": "Izmir Province",
       "country": "Turkey",
       "org": "Turk Telekom",
-      "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Mobile Safari/537.36",
-      "visitCount": 1,
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36",
+      "visitCount": 2,
       "pages": [
         {
           "page": "pp",
@@ -96,6 +96,10 @@
         {
           "page": "pp",
           "time": "2026-07-12T18:26:52.542Z"
+        },
+        {
+          "page": "pp",
+          "time": "2026-07-18T16:08:28.400Z"
         }
       ],
       "messageSent": false,
@@ -103,9 +107,9 @@
       "referrers": [
         "android-app://com.linkedin.android/"
       ],
-      "referrerSource": "LinkedIn",
+      "referrerSource": "Doğrudan",
       "firstSeen": "2026-07-04T13:27:25.518Z",
-      "lastSeen": "2026-07-12T18:26:52.922Z"
+      "lastSeen": "2026-07-18T16:08:28.400Z"
     },
     {
       "key": "v_mreyi6dx_nm5g8ffz",
