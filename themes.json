@@ -1,5 +1,5 @@
 {
-  "activeId": "th_siyahbeyaz001",
+  "activeId": "th_mrqn3qo8",
   "categories": [
     {
       "id": "beyaz-agirlikli",
@@ -309,6 +309,36 @@
         "colorText": "#f7ecec",
         "colorTextMid": "#cf9aa0",
         "colorTextMuted": "#8f5a61"
+      }
+    },
+    {
+      "id": "th_mrqn3qo8",
+      "name": "001",
+      "category": "beyaz-detay",
+      "createdAt": "2026-07-18T17:27:39.464Z",
+      "data": {
+        "fontTheme": "classic",
+        "fontCustom": {
+          "headingFont": "",
+          "bodyFont": "",
+          "monoFont": "",
+          "bodyColor": "",
+          "headingColor": "",
+          "bodySize": 100,
+          "headingScale": ""
+        },
+        "colorGreen": "#4fd8a0",
+        "colorGreenDeep": "#428f73",
+        "colorGreenLight": "#7ce0b8",
+        "colorGreenPale": "#eafaf2",
+        "colorBej": "#0b1410",
+        "colorBejLight": "#131f1a",
+        "colorBejMid": "#dff5ea",
+        "colorBejDark": "#2a3d34",
+        "colorBlack": "#060a08",
+        "colorText": "#eef7f2",
+        "colorTextMid": "#b9d6c7",
+        "colorTextMuted": "#9ea3a1"
       }
     }
   ]
