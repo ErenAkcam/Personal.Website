@@ -162,6 +162,10 @@
         {
           "page": "pp",
           "time": "2026-07-18T14:17:25.089Z"
+        },
+        {
+          "page": "cer",
+          "time": "2026-07-18T14:17:26.676Z"
         }
       ],
       "messageSent": false,
@@ -169,7 +173,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-07-18T14:17:25.089Z",
-      "lastSeen": "2026-07-18T14:17:25.089Z"
+      "lastSeen": "2026-07-18T14:17:26.676Z"
     }
   ],
   "messages": []
