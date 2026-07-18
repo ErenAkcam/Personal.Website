@@ -1,21 +1,18 @@
 {
   "activeId": "th_gozdostu001",
+  "categories": [
+    { "id": "beyaz-agirlikli", "label": "Beyaz Ağırlıklı (Açık Temalar)" },
+    { "id": "beyaz-detay", "label": "Beyaz Detay (Koyu & Yoğun Temalar)" }
+  ],
   "themes": [
     {
       "id": "th_gozdostu001",
-      "name": "Göz Dostu (Yumuşak Yeşil)",
+      "name": "Yeşil (Açık)",
+      "category": "beyaz-agirlikli",
       "createdAt": "2026-07-18T00:00:00.000Z",
       "data": {
         "fontTheme": "classic",
-        "fontCustom": {
-          "headingFont": "",
-          "bodyFont": "",
-          "monoFont": "",
-          "bodyColor": "",
-          "headingColor": "",
-          "bodySize": 100,
-          "headingScale": ""
-        },
+        "fontCustom": { "headingFont": "", "bodyFont": "", "monoFont": "", "bodyColor": "", "headingColor": "", "bodySize": 100, "headingScale": "" },
         "colorGreen": "#6fa384",
         "colorGreenDeep": "#2c5142",
         "colorGreenLight": "#9cbcad",
@@ -32,19 +29,12 @@
     },
     {
       "id": "th_siyahbeyaz001",
-      "name": "Siyah Beyaz (Monokrom)",
+      "name": "Siyah Beyaz (Açık)",
+      "category": "beyaz-agirlikli",
       "createdAt": "2026-07-18T00:05:00.000Z",
       "data": {
         "fontTheme": "modern",
-        "fontCustom": {
-          "headingFont": "",
-          "bodyFont": "",
-          "monoFont": "",
-          "bodyColor": "",
-          "headingColor": "",
-          "bodySize": 100,
-          "headingScale": ""
-        },
+        "fontCustom": { "headingFont": "", "bodyFont": "", "monoFont": "", "bodyColor": "", "headingColor": "", "bodySize": 100, "headingScale": "" },
         "colorGreen": "#7d7d7d",
         "colorGreenDeep": "#242424",
         "colorGreenLight": "#b0b0b0",
@@ -61,19 +51,12 @@
     },
     {
       "id": "th_camgobegi001",
-      "name": "Camgöbeği (Cyan)",
+      "name": "Camgöbeği (Açık)",
+      "category": "beyaz-agirlikli",
       "createdAt": "2026-07-18T00:10:00.000Z",
       "data": {
         "fontTheme": "classic",
-        "fontCustom": {
-          "headingFont": "",
-          "bodyFont": "",
-          "monoFont": "",
-          "bodyColor": "",
-          "headingColor": "",
-          "bodySize": 100,
-          "headingScale": ""
-        },
+        "fontCustom": { "headingFont": "", "bodyFont": "", "monoFont": "", "bodyColor": "", "headingColor": "", "bodySize": 100, "headingScale": "" },
         "colorGreen": "#3aa8b8",
         "colorGreenDeep": "#0f4c56",
         "colorGreenLight": "#8fd1dc",
@@ -90,19 +73,12 @@
     },
     {
       "id": "th_lacivert001",
-      "name": "Lacivert (Navy)",
+      "name": "Lacivert (Açık)",
+      "category": "beyaz-agirlikli",
       "createdAt": "2026-07-18T00:15:00.000Z",
       "data": {
         "fontTheme": "classic",
-        "fontCustom": {
-          "headingFont": "",
-          "bodyFont": "",
-          "monoFont": "",
-          "bodyColor": "",
-          "headingColor": "",
-          "bodySize": 100,
-          "headingScale": ""
-        },
+        "fontCustom": { "headingFont": "", "bodyFont": "", "monoFont": "", "bodyColor": "", "headingColor": "", "bodySize": 100, "headingScale": "" },
         "colorGreen": "#3f6fb0",
         "colorGreenDeep": "#173963",
         "colorGreenLight": "#9db8dd",
@@ -119,19 +95,12 @@
     },
     {
       "id": "th_bordo001",
-      "name": "Bordo (Şarap Kırmızısı)",
+      "name": "Bordo (Açık)",
+      "category": "beyaz-agirlikli",
       "createdAt": "2026-07-18T00:20:00.000Z",
       "data": {
         "fontTheme": "elegant",
-        "fontCustom": {
-          "headingFont": "",
-          "bodyFont": "",
-          "monoFont": "",
-          "bodyColor": "",
-          "headingColor": "",
-          "bodySize": 100,
-          "headingScale": ""
-        },
+        "fontCustom": { "headingFont": "", "bodyFont": "", "monoFont": "", "bodyColor": "", "headingColor": "", "bodySize": 100, "headingScale": "" },
         "colorGreen": "#9c3b4a",
         "colorGreenDeep": "#4d1620",
         "colorGreenLight": "#d59aa3",
@@ -144,6 +113,116 @@
         "colorText": "#2b1416",
         "colorTextMid": "#6b3941",
         "colorTextMuted": "#83565d"
+      }
+    },
+    {
+      "id": "th_yesilkoyu001",
+      "name": "Yeşil (Koyu)",
+      "category": "beyaz-detay",
+      "createdAt": "2026-07-18T00:30:00.000Z",
+      "data": {
+        "fontTheme": "classic",
+        "fontCustom": { "headingFont": "", "bodyFont": "", "monoFont": "", "bodyColor": "", "headingColor": "", "bodySize": 100, "headingScale": "" },
+        "colorGreen": "#4fd8a0",
+        "colorGreenDeep": "#0f3d2c",
+        "colorGreenLight": "#7ce0b8",
+        "colorGreenPale": "#eafaf2",
+        "colorBej": "#0b1410",
+        "colorBejLight": "#131f1a",
+        "colorBejMid": "#dff5ea",
+        "colorBejDark": "#2a3d34",
+        "colorBlack": "#060a08",
+        "colorText": "#eef7f2",
+        "colorTextMid": "#b9d6c7",
+        "colorTextMuted": "#7f9c8e"
+      }
+    },
+    {
+      "id": "th_siyahbeyazkoyu001",
+      "name": "Siyah Beyaz (Koyu)",
+      "category": "beyaz-detay",
+      "createdAt": "2026-07-18T00:35:00.000Z",
+      "data": {
+        "fontTheme": "modern",
+        "fontCustom": { "headingFont": "", "bodyFont": "", "monoFont": "", "bodyColor": "", "headingColor": "", "bodySize": 100, "headingScale": "" },
+        "colorGreen": "#e8e8e8",
+        "colorGreenDeep": "#4a4a4a",
+        "colorGreenLight": "#ffffff",
+        "colorGreenPale": "#f5f5f5",
+        "colorBej": "#0a0a0a",
+        "colorBejLight": "#141414",
+        "colorBejMid": "#6e6e6e",
+        "colorBejDark": "#2b2b2b",
+        "colorBlack": "#000000",
+        "colorText": "#f2f2f2",
+        "colorTextMid": "#b8b8b8",
+        "colorTextMuted": "#7d7d7d"
+      }
+    },
+    {
+      "id": "th_camgobegikoyu001",
+      "name": "Camgöbeği (Koyu)",
+      "category": "beyaz-detay",
+      "createdAt": "2026-07-18T00:40:00.000Z",
+      "data": {
+        "fontTheme": "classic",
+        "fontCustom": { "headingFont": "", "bodyFont": "", "monoFont": "", "bodyColor": "", "headingColor": "", "bodySize": 100, "headingScale": "" },
+        "colorGreen": "#22d3ee",
+        "colorGreenDeep": "#063a42",
+        "colorGreenLight": "#7fe3ee",
+        "colorGreenPale": "#e0fbff",
+        "colorBej": "#061516",
+        "colorBejLight": "#0d2226",
+        "colorBejMid": "#cdeef2",
+        "colorBejDark": "#163338",
+        "colorBlack": "#030d0e",
+        "colorText": "#eafcfd",
+        "colorTextMid": "#9fd3d8",
+        "colorTextMuted": "#5f8b90"
+      }
+    },
+    {
+      "id": "th_lacivertkoyu001",
+      "name": "Lacivert (Koyu)",
+      "category": "beyaz-detay",
+      "createdAt": "2026-07-18T00:45:00.000Z",
+      "data": {
+        "fontTheme": "classic",
+        "fontCustom": { "headingFont": "", "bodyFont": "", "monoFont": "", "bodyColor": "", "headingColor": "", "bodySize": 100, "headingScale": "" },
+        "colorGreen": "#4d8fe0",
+        "colorGreenDeep": "#0b2545",
+        "colorGreenLight": "#8bb8ea",
+        "colorGreenPale": "#e4edfa",
+        "colorBej": "#050d1a",
+        "colorBejLight": "#0c1a30",
+        "colorBejMid": "#c8d9f0",
+        "colorBejDark": "#1c3252",
+        "colorBlack": "#030815",
+        "colorText": "#eef3fb",
+        "colorTextMid": "#9db3d6",
+        "colorTextMuted": "#5f7396"
+      }
+    },
+    {
+      "id": "th_bordokoyu001",
+      "name": "Bordo (Koyu)",
+      "category": "beyaz-detay",
+      "createdAt": "2026-07-18T00:50:00.000Z",
+      "data": {
+        "fontTheme": "elegant",
+        "fontCustom": { "headingFont": "", "bodyFont": "", "monoFont": "", "bodyColor": "", "headingColor": "", "bodySize": 100, "headingScale": "" },
+        "colorGreen": "#c0455a",
+        "colorGreenDeep": "#3d0f18",
+        "colorGreenLight": "#dd8a97",
+        "colorGreenPale": "#f7e2e5",
+        "colorBej": "#1a070a",
+        "colorBejLight": "#240d11",
+        "colorBejMid": "#ecc9cd",
+        "colorBejDark": "#4a1b21",
+        "colorBlack": "#100405",
+        "colorText": "#f7ecec",
+        "colorTextMid": "#cf9aa0",
+        "colorTextMuted": "#8f5a61"
       }
     }
   ]
