@@ -16,9 +16,9 @@
   --g:#7ab898;
   --gd:#2d5a3d;
   --gl:#a8c9b8;
-  --gp:#d7e4dd;
-  --bej:#dde6e0;
-  --bl:#eaf0ec;
+  --gp:#dce8e0;
+  --bej:#e4ede8;
+  --bl:#f2f7f4;
   --bm:#c4d8cc;
   --bd:#9ab8a8;
   --blk:#18201c;
@@ -2134,11 +2134,11 @@ var DEF = {
   "linkedin": "http://www.linkedin.com/in/erenakcam",
   "freelance": "",
   "profilePhoto": "assets/profile.png",
-  "colorGreen": "#28b862",
-  "colorGreenDeep": "#2c5142",
-  "colorGreenLight": "#54a07e",
-  "colorBej": "#d7ddd6",
-  "colorBlack": "#1c231f",
+  "colorGreen": "#7ab898",
+  "colorGreenDeep": "#2d5a3d",
+  "colorGreenLight": "#a8c9b8",
+  "colorBej": "#e4ede8",
+  "colorBlack": "#18201c",
   "skills": {
     "categories": [
       {
@@ -2406,18 +2406,18 @@ var DEF = {
     "headingFont": "",
     "bodyFont": "",
     "monoFont": "",
-    "bodyColor": "",
-    "headingColor": "",
-    "bodySize": 100,
+    "bodyColor": "#2c2c1e",
+    "headingColor": "#f2efe3",
+    "bodySize": 0,
     "headingScale": ""
   },
-  "colorGreenPale": "#a7d7ba",
-  "colorBejLight": "#9cdea0",
-  "colorBejMid": "#c7c7c7",
-  "colorBejDark": "#92a89b",
-  "colorText": "#26332c",
-  "colorTextMid": "#4e6a5a",
-  "colorTextMuted": "#5c6b5f"
+  "colorGreenPale": "#dce8e0",
+  "colorBejLight": "#f2f7f4",
+  "colorBejMid": "#c4d8cc",
+  "colorBejDark": "#9ab8a8",
+  "colorText": "#1e2e28",
+  "colorTextMid": "#4a6a58",
+  "colorTextMuted": "#6b7a6e"
 };
 
 /* ── Helpers ── */
@@ -2434,11 +2434,7 @@ var SD=lSD(), certSliders={};
 /* ── Theme ── */
 function applyTheme(){
   try{
-    var m={
-      '--g':'colorGreen','--gd':'colorGreenDeep','--gl':'colorGreenLight','--gp':'colorGreenPale',
-      '--bej':'colorBej','--bl':'colorBejLight','--bm':'colorBejMid','--bd':'colorBejDark',
-      '--blk':'colorBlack','--txt':'colorText','--tm':'colorTextMid','--mu':'colorTextMuted'
-    };
+    var m={'--g':'colorGreen','--gd':'colorGreenDeep','--gl':'colorGreenLight','--bej':'colorBej','--blk':'colorBlack'};
     Object.keys(m).forEach(function(v){if(SD[m[v]])document.documentElement.style.setProperty(v,SD[m[v]]);});
     // Apply font theme
     applyFontTheme();
@@ -2497,14 +2493,14 @@ function applyFontTheme(){
     // Colors
     if(custom.bodyColor)document.documentElement.style.setProperty('--txt',custom.bodyColor);
     if(custom.headingColor)document.documentElement.style.setProperty('--heading-color',custom.headingColor||'var(--bl)');
-    // Sizes — bodySize artık genel bir yüzde ölçeği (örn. 100 = normal). html
-    // kökünde uygulanır ki sitedeki tüm rem tabanlı puntolar orantılı ölçeklensin.
-    var scalePct=custom.bodySize&&Number(custom.bodySize)>0?Number(custom.bodySize):100;
-    document.documentElement.style.fontSize=scalePct+'%';
+    // Sizes
+    if(custom.bodySize)document.documentElement.style.setProperty('--body-size',custom.bodySize+'px');
+    if(custom.headingScale)document.documentElement.style.setProperty('--heading-scale',custom.headingScale);
     // Apply heading font to all heading elements
     var hStyle=document.getElementById('dyn-font-style');
     if(!hStyle){hStyle=document.createElement('style');hStyle.id='dyn-font-style';document.head.appendChild(hStyle);}
     var hFont=custom.headingFont||theme.heading;
+    var bSize=custom.bodySize?custom.bodySize+'px':'';
     var hColor=custom.headingColor||'';
     hStyle.textContent=
       '.hn,.ash,.pd-title,.pb h1{font-family:'+hFont+' !important;'+(hColor?'color:'+hColor+' !important;':'')+'}'+
@@ -2513,7 +2509,8 @@ function applyFontTheme(){
       '.csh{font-family:'+hFont+' !important;color:var(--bl) !important}'+
       '.cft{font-family:'+hFont+' !important;color:#1a1a14 !important}'+
       '.citt{font-family:'+hFont+' !important;color:var(--bl) !important}'+
-      '.hpln,.tlt,.skn,.cna{font-family:'+(custom.monoFont||theme.mono)+' !important;}';
+      '.hpln,.tlt,.skn,.cna{font-family:'+(custom.monoFont||theme.mono)+' !important;}'+
+      (bSize?'body{font-size:'+bSize+' !important;}':'');
   }catch(e){}
 }
 
