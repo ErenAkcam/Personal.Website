@@ -156,38 +156,6 @@
         {
           "page": "con",
           "time": "2026-07-18T16:42:39.197Z"
-        },
-        {
-          "page": "sk",
-          "time": "2026-07-18T18:11:29.665Z"
-        },
-        {
-          "page": "pp",
-          "time": "2026-07-18T18:11:32.334Z"
-        },
-        {
-          "page": "mem",
-          "time": "2026-07-18T18:11:42.310Z"
-        },
-        {
-          "page": "sk",
-          "time": "2026-07-18T18:12:00.878Z"
-        },
-        {
-          "page": "cer",
-          "time": "2026-07-18T18:12:04.795Z"
-        },
-        {
-          "page": "ref",
-          "time": "2026-07-18T18:12:16.300Z"
-        },
-        {
-          "page": "con",
-          "time": "2026-07-18T18:12:27.033Z"
-        },
-        {
-          "page": "con",
-          "time": "2026-07-18T18:12:29.976Z"
         }
       ],
       "messageSent": false,
@@ -197,7 +165,7 @@
       ],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-07-04T13:27:25.518Z",
-      "lastSeen": "2026-07-18T18:12:29.976Z"
+      "lastSeen": "2026-07-18T16:42:39.200Z"
     },
     {
       "key": "v_mreyi6dx_nm5g8ffz",
@@ -445,38 +413,6 @@
         {
           "page": "pp",
           "time": "2026-07-18T17:11:48.918Z"
-        },
-        {
-          "page": "pp",
-          "time": "2026-07-18T18:14:43.036Z"
-        },
-        {
-          "page": "mem",
-          "time": "2026-07-18T18:14:44.712Z"
-        },
-        {
-          "page": "cer",
-          "time": "2026-07-18T18:15:54.904Z"
-        },
-        {
-          "page": "ref",
-          "time": "2026-07-18T18:15:55.349Z"
-        },
-        {
-          "page": "cer",
-          "time": "2026-07-18T18:15:56.884Z"
-        },
-        {
-          "page": "ref",
-          "time": "2026-07-18T18:15:57.887Z"
-        },
-        {
-          "page": "cer",
-          "time": "2026-07-18T18:15:58.894Z"
-        },
-        {
-          "page": "con",
-          "time": "2026-07-18T18:15:59.363Z"
         }
       ],
       "messageSent": false,
@@ -484,7 +420,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-07-18T14:24:07.034Z",
-      "lastSeen": "2026-07-18T18:15:59.363Z"
+      "lastSeen": "2026-07-18T17:11:48.918Z"
     },
     {
       "key": "v_mrql159g_87sfuwkh",
@@ -520,29 +456,6 @@
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-07-18T16:29:39.172Z",
       "lastSeen": "2026-07-18T16:29:45.185Z"
-    },
-    {
-      "key": "v_mrqopfu3_e2jq52w5",
-      "visitorId": "v_mrqopfu3_e2jq52w5",
-      "ip": "",
-      "city": "",
-      "region": "",
-      "country": "",
-      "org": "",
-      "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Mobile Safari/537.36 (compatible; Google-Read-Aloud; +https://support.google.com/webmasters/answer/1061943)",
-      "visitCount": 1,
-      "pages": [
-        {
-          "page": "con",
-          "time": "2026-07-18T18:12:31.468Z"
-        }
-      ],
-      "messageSent": false,
-      "referenceSent": false,
-      "referrers": [],
-      "referrerSource": "Doğrudan",
-      "firstSeen": "2026-07-18T18:12:31.468Z",
-      "lastSeen": "2026-07-18T18:12:31.468Z"
     }
   ],
   "messages": [],
