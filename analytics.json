@@ -248,7 +248,7 @@
       "country": "Turkey",
       "org": "Turk Telekomunikasyon Anonim Sirketi",
       "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36",
-      "visitCount": 6,
+      "visitCount": 5,
       "pages": [
         {
           "page": "pp",
@@ -413,102 +413,6 @@
         {
           "page": "pp",
           "time": "2026-07-18T17:11:48.918Z"
-        },
-        {
-          "page": "ref",
-          "time": "2026-07-18T17:23:25.743Z"
-        },
-        {
-          "page": "ref",
-          "time": "2026-07-18T17:23:40.212Z"
-        },
-        {
-          "page": "ref",
-          "time": "2026-07-18T17:23:40.868Z"
-        },
-        {
-          "page": "ref",
-          "time": "2026-07-18T17:23:41.521Z"
-        },
-        {
-          "page": "ref",
-          "time": "2026-07-18T17:23:41.220Z"
-        },
-        {
-          "page": "ref",
-          "time": "2026-07-18T17:23:41.894Z"
-        },
-        {
-          "page": "ref",
-          "time": "2026-07-18T17:23:42.157Z"
-        },
-        {
-          "page": "ref",
-          "time": "2026-07-18T17:23:43.688Z"
-        },
-        {
-          "page": "con",
-          "time": "2026-07-18T17:23:47.397Z"
-        },
-        {
-          "page": "pp",
-          "time": "2026-07-18T17:23:50.726Z"
-        },
-        {
-          "page": "ref",
-          "time": "2026-07-18T17:23:43.949Z"
-        },
-        {
-          "page": "sk",
-          "time": "2026-07-18T17:23:45.257Z"
-        },
-        {
-          "page": "pp",
-          "time": "2026-07-18T17:24:00.786Z"
-        },
-        {
-          "page": "pp",
-          "time": "2026-07-18T17:24:01.975Z"
-        },
-        {
-          "page": "pp",
-          "time": "2026-07-18T17:24:02.879Z"
-        },
-        {
-          "page": "pp",
-          "time": "2026-07-18T17:24:14.789Z"
-        },
-        {
-          "page": "pp",
-          "time": "2026-07-18T17:25:25.594Z"
-        },
-        {
-          "page": "mem",
-          "time": "2026-07-18T17:25:32.501Z"
-        },
-        {
-          "page": "cer",
-          "time": "2026-07-18T17:25:36.856Z"
-        },
-        {
-          "page": "sk",
-          "time": "2026-07-18T17:25:37.594Z"
-        },
-        {
-          "page": "ref",
-          "time": "2026-07-18T17:25:38.565Z"
-        },
-        {
-          "page": "con",
-          "time": "2026-07-18T17:25:39.679Z"
-        },
-        {
-          "page": "mem",
-          "time": "2026-07-18T17:25:40.951Z"
-        },
-        {
-          "page": "pp",
-          "time": "2026-07-18T17:25:41.403Z"
         }
       ],
       "messageSent": false,
@@ -516,7 +420,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-07-18T14:24:07.034Z",
-      "lastSeen": "2026-07-18T17:25:41.403Z"
+      "lastSeen": "2026-07-18T17:11:48.918Z"
     },
     {
       "key": "v_mrql159g_87sfuwkh",
