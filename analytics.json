@@ -217,7 +217,7 @@
       "country": "",
       "org": "",
       "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36",
-      "visitCount": 1,
+      "visitCount": 2,
       "pages": [
         {
           "page": "pp",
@@ -230,6 +230,10 @@
         {
           "page": "ref",
           "time": "2026-07-18T14:17:27.653Z"
+        },
+        {
+          "page": "pp",
+          "time": "2026-07-19T17:42:14.773Z"
         }
       ],
       "messageSent": false,
@@ -237,7 +241,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-07-18T14:17:25.089Z",
-      "lastSeen": "2026-07-18T14:17:27.653Z"
+      "lastSeen": "2026-07-19T17:42:14.773Z"
     },
     {
       "key": "v_mr0btc0n_bl8tjx2e",
