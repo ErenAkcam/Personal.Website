@@ -573,6 +573,10 @@
         {
           "page": "sk",
           "time": "2026-07-23T05:42:03.324Z"
+        },
+        {
+          "page": "cer",
+          "time": "2026-07-23T05:42:04.398Z"
         }
       ],
       "messageSent": false,
@@ -580,7 +584,7 @@
       "referrers": [],
       "referrerSource": "",
       "firstSeen": "2026-07-23T05:42:00.548Z",
-      "lastSeen": "2026-07-23T05:42:03.324Z"
+      "lastSeen": "2026-07-23T05:42:04.398Z"
     }
   ],
   "messages": [],
