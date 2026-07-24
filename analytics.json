@@ -560,7 +560,7 @@
       "country": "Turkey",
       "org": "Superonline Iletisim Hizmetleri A.S.",
       "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36",
-      "visitCount": 0,
+      "visitCount": 1,
       "pages": [
         {
           "page": "pp",
@@ -601,14 +601,18 @@
         {
           "page": "cer",
           "time": "2026-07-23T05:42:16.429Z"
+        },
+        {
+          "page": "pp",
+          "time": "2026-07-24T13:09:45.281Z"
         }
       ],
       "messageSent": false,
       "referenceSent": false,
       "referrers": [],
-      "referrerSource": "",
+      "referrerSource": "Doğrudan",
       "firstSeen": "2026-07-23T05:42:00.548Z",
-      "lastSeen": "2026-07-23T05:42:16.429Z"
+      "lastSeen": "2026-07-24T13:09:45.281Z"
     }
   ],
   "messages": [],
