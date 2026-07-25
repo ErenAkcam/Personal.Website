@@ -34,6 +34,10 @@
         {
           "page": "con",
           "time": "2026-07-25T18:34:10.659Z"
+        },
+        {
+          "page": "pp",
+          "time": "2026-07-25T18:34:13.877Z"
         }
       ],
       "messageSent": false,
@@ -41,7 +45,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-07-25T18:33:58.298Z",
-      "lastSeen": "2026-07-25T18:34:10.659Z"
+      "lastSeen": "2026-07-25T18:34:13.877Z"
     }
   ],
   "messages": [],
