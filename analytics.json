@@ -217,7 +217,7 @@
       "country": "",
       "org": "",
       "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36",
-      "visitCount": 2,
+      "visitCount": 3,
       "pages": [
         {
           "page": "pp",
@@ -242,6 +242,10 @@
         {
           "page": "sk",
           "time": "2026-07-19T17:42:16.197Z"
+        },
+        {
+          "page": "pp",
+          "time": "2026-07-25T17:05:55.054Z"
         }
       ],
       "messageSent": false,
@@ -249,7 +253,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-07-18T14:17:25.089Z",
-      "lastSeen": "2026-07-19T17:42:16.197Z"
+      "lastSeen": "2026-07-25T17:05:55.054Z"
     },
     {
       "key": "v_mr0btc0n_bl8tjx2e",
@@ -651,11 +655,5 @@
       "lastSeen": "2026-07-24T13:10:30.092Z"
     }
   ],
-  "messages": [],
-  "ipNames": {
-    "176.220.168.127": "Nuray Gowans",
-    "77.67.148.252": "Serhat Hoca",
-    "195.33.236.34": "Arnes Aytaç",
-    "78.177.205.182": "Eren Akçam"
-  }
+  "messages": []
 }
