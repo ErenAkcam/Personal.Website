@@ -9,7 +9,7 @@
       "country": "",
       "org": "",
       "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36",
-      "visitCount": 1,
+      "visitCount": 2,
       "pages": [
         {
           "page": "pp",
@@ -82,6 +82,10 @@
         {
           "page": "con",
           "time": "2026-07-25T18:36:44.525Z"
+        },
+        {
+          "page": "pp",
+          "time": "2026-07-25T18:48:30.822Z"
         }
       ],
       "messageSent": false,
@@ -89,7 +93,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-07-25T18:33:58.298Z",
-      "lastSeen": "2026-07-25T18:36:44.525Z"
+      "lastSeen": "2026-07-25T18:48:30.822Z"
     }
   ],
   "messages": [],
