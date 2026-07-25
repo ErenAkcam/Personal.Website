@@ -442,6 +442,10 @@
         {
           "page": "con",
           "time": "2026-07-25T18:20:25.748Z"
+        },
+        {
+          "page": "sk",
+          "time": "2026-07-25T18:20:26.963Z"
         }
       ],
       "messageSent": false,
@@ -449,7 +453,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-07-18T14:17:25.089Z",
-      "lastSeen": "2026-07-25T18:20:25.748Z"
+      "lastSeen": "2026-07-25T18:20:26.963Z"
     },
     {
       "key": "v_mr0btc0n_bl8tjx2e",
