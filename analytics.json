@@ -1813,6 +1813,29 @@
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-07-26T13:32:47.518Z",
       "lastSeen": "2026-07-26T13:32:47.518Z"
+    },
+    {
+      "key": "v_anon_ziqvj6gh",
+      "visitorId": "v_anon_ziqvj6gh",
+      "ip": "",
+      "city": "",
+      "region": "",
+      "country": "",
+      "org": "",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36",
+      "visitCount": 1,
+      "pages": [
+        {
+          "page": "pp",
+          "time": "2026-07-26T13:33:07.406Z"
+        }
+      ],
+      "messageSent": false,
+      "referenceSent": false,
+      "referrers": [],
+      "referrerSource": "Doğrudan",
+      "firstSeen": "2026-07-26T13:33:07.406Z",
+      "lastSeen": "2026-07-26T13:33:07.406Z"
     }
   ],
   "messages": [],
