@@ -1080,7 +1080,7 @@
       "country": "Turkey",
       "org": "Turk Telekomunikasyon Anonim Sirketi",
       "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36",
-      "visitCount": 16,
+      "visitCount": 17,
       "pages": [
         {
           "page": "pp",
@@ -1569,6 +1569,10 @@
         {
           "page": "con",
           "time": "2026-07-26T13:18:40.667Z"
+        },
+        {
+          "page": "pp",
+          "time": "2026-07-26T13:31:48.122Z"
         }
       ],
       "messageSent": false,
@@ -1576,9 +1580,9 @@
       "referrers": [
         "https://www.linkedin.com/"
       ],
-      "referrerSource": "LinkedIn",
+      "referrerSource": "Doğrudan",
       "firstSeen": "2026-07-18T14:24:07.034Z",
-      "lastSeen": "2026-07-26T13:18:40.668Z"
+      "lastSeen": "2026-07-26T13:31:48.122Z"
     },
     {
       "key": "v_mrql159g_87sfuwkh",
