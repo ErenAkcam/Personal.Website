@@ -2357,6 +2357,29 @@
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-07-26T13:43:37.246Z",
       "lastSeen": "2026-07-26T13:43:37.246Z"
+    },
+    {
+      "key": "v_anon_ra0llazr",
+      "visitorId": "v_anon_ra0llazr",
+      "ip": "",
+      "city": "",
+      "region": "",
+      "country": "",
+      "org": "",
+      "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1",
+      "visitCount": 1,
+      "pages": [
+        {
+          "page": "pp",
+          "time": "2026-07-26T13:43:41.448Z"
+        }
+      ],
+      "messageSent": false,
+      "referenceSent": false,
+      "referrers": [],
+      "referrerSource": "Doğrudan",
+      "firstSeen": "2026-07-26T13:43:41.448Z",
+      "lastSeen": "2026-07-26T13:43:41.448Z"
     }
   ],
   "messages": [],
