@@ -2714,6 +2714,29 @@
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-07-26T14:04:54.809Z",
       "lastSeen": "2026-07-26T14:04:54.809Z"
+    },
+    {
+      "key": "v_anon_368g22af",
+      "visitorId": "v_anon_368g22af",
+      "ip": "",
+      "city": "",
+      "region": "",
+      "country": "",
+      "org": "",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36",
+      "visitCount": 1,
+      "pages": [
+        {
+          "page": "pp",
+          "time": "2026-07-26T14:04:57.605Z"
+        }
+      ],
+      "messageSent": false,
+      "referenceSent": false,
+      "referrers": [],
+      "referrerSource": "Doğrudan",
+      "firstSeen": "2026-07-26T14:04:57.605Z",
+      "lastSeen": "2026-07-26T14:04:57.605Z"
     }
   ],
   "messages": [],
