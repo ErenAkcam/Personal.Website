@@ -510,6 +510,10 @@
         {
           "page": "sk",
           "time": "2026-07-26T07:04:26.533Z"
+        },
+        {
+          "page": "ref",
+          "time": "2026-07-26T07:04:28.100Z"
         }
       ],
       "messageSent": false,
@@ -517,7 +521,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-07-18T14:17:25.089Z",
-      "lastSeen": "2026-07-26T07:04:26.533Z"
+      "lastSeen": "2026-07-26T07:04:28.100Z"
     },
     {
       "key": "v_mr0btc0n_bl8tjx2e",
