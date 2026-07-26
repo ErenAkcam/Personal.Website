@@ -1858,6 +1858,10 @@
         {
           "page": "pp",
           "time": "2026-07-26T13:38:30.025Z"
+        },
+        {
+          "page": "pp",
+          "time": "2026-07-26T13:38:33.837Z"
         }
       ],
       "messageSent": false,
@@ -1865,7 +1869,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-07-26T13:32:07.636Z",
-      "lastSeen": "2026-07-26T13:38:30.026Z"
+      "lastSeen": "2026-07-26T13:38:33.837Z"
     },
     {
       "key": "v_anon_6dl76uy0",
