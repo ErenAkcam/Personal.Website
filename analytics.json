@@ -1449,6 +1449,10 @@
         {
           "page": "cer",
           "time": "2026-07-26T07:43:50.143Z"
+        },
+        {
+          "page": "pp",
+          "time": "2026-07-26T07:46:52.899Z"
         }
       ],
       "messageSent": false,
@@ -1458,7 +1462,7 @@
       ],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-07-18T14:24:07.034Z",
-      "lastSeen": "2026-07-26T07:43:50.143Z"
+      "lastSeen": "2026-07-26T07:46:52.899Z"
     },
     {
       "key": "v_mrql159g_87sfuwkh",
