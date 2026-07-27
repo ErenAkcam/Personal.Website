@@ -1801,6 +1801,10 @@
         {
           "page": "pp",
           "time": "2026-07-27T14:54:19.795Z"
+        },
+        {
+          "page": "mem",
+          "time": "2026-07-27T14:54:35.660Z"
         }
       ],
       "messageSent": false,
@@ -1808,7 +1812,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-07-23T05:42:00.548Z",
-      "lastSeen": "2026-07-27T14:54:19.795Z"
+      "lastSeen": "2026-07-27T14:54:35.660Z"
     },
     {
       "key": "v_ms1oundu_5mqk7jkq",
