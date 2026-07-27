@@ -1733,6 +1733,10 @@
         {
           "page": "pp",
           "time": "2026-07-27T07:26:01.357Z"
+        },
+        {
+          "page": "mem",
+          "time": "2026-07-27T07:26:03.256Z"
         }
       ],
       "messageSent": false,
@@ -1740,7 +1744,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-07-23T05:42:00.548Z",
-      "lastSeen": "2026-07-27T07:26:03.960Z"
+      "lastSeen": "2026-07-27T07:26:03.256Z"
     },
     {
       "key": "v_ms1oundu_5mqk7jkq",
