@@ -1771,7 +1771,7 @@
       "region": "Istanbul",
       "country": "Turkey",
       "org": "Superonline Iletisim Hizmetleri A.S.",
-      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36",
+      "userAgent": "Mozilla/5.0 (Linux; Android 15; Pixel 9) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Mobile Safari/537.36",
       "visitCount": 6,
       "pages": [
         {
@@ -2185,6 +2185,10 @@
         {
           "page": "mem",
           "time": "2026-07-28T12:11:46.018Z"
+        },
+        {
+          "page": "pp",
+          "time": "2026-07-28T12:11:57.496Z"
         }
       ],
       "messageSent": false,
@@ -2192,7 +2196,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-07-23T05:42:00.548Z",
-      "lastSeen": "2026-07-28T12:11:46.019Z"
+      "lastSeen": "2026-07-28T12:11:57.496Z"
     },
     {
       "key": "v_ms1oundu_5mqk7jkq",
