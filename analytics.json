@@ -265,12 +265,8 @@
       "country": "",
       "org": "",
       "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36",
-      "visitCount": 25,
+      "visitCount": 26,
       "pages": [
-        {
-          "page": "cer",
-          "time": "2026-07-26T10:35:39.401Z"
-        },
         {
           "page": "mem",
           "time": "2026-07-26T10:35:40.539Z"
@@ -1066,6 +1062,10 @@
         {
           "page": "pp",
           "time": "2026-07-28T10:38:50.398Z"
+        },
+        {
+          "page": "pp",
+          "time": "2026-07-28T10:45:36.410Z"
         }
       ],
       "messageSent": false,
@@ -1073,7 +1073,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-07-18T14:17:25.089Z",
-      "lastSeen": "2026-07-28T10:38:50.398Z"
+      "lastSeen": "2026-07-28T10:45:36.410Z"
     },
     {
       "key": "v_mr0btc0n_bl8tjx2e",
