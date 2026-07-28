@@ -1797,6 +1797,10 @@
         {
           "page": "ref",
           "time": "2026-07-28T20:12:17.961Z"
+        },
+        {
+          "page": "con",
+          "time": "2026-07-28T20:12:18.405Z"
         }
       ],
       "messageSent": false,
@@ -1806,7 +1810,7 @@
       ],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-07-18T14:24:07.034Z",
-      "lastSeen": "2026-07-28T20:12:17.962Z"
+      "lastSeen": "2026-07-28T20:12:18.405Z"
     },
     {
       "key": "v_mrql159g_87sfuwkh",
