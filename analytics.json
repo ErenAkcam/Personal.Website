@@ -1789,6 +1789,10 @@
         {
           "page": "pp",
           "time": "2026-07-28T20:12:09.030Z"
+        },
+        {
+          "page": "con",
+          "time": "2026-07-28T20:12:02.853Z"
         }
       ],
       "messageSent": false,
@@ -1798,7 +1802,7 @@
       ],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-07-18T14:24:07.034Z",
-      "lastSeen": "2026-07-28T20:12:09.030Z"
+      "lastSeen": "2026-07-28T20:12:02.853Z"
     },
     {
       "key": "v_mrql159g_87sfuwkh",
