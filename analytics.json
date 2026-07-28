@@ -1127,7 +1127,7 @@
       "region": "Istanbul",
       "country": "Turkey",
       "org": "Superonline Iletisim Hizmetleri A.S.",
-      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36",
+      "userAgent": "Mozilla/5.0 (Linux; Android 15; Pixel 9) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Mobile Safari/537.36",
       "visitCount": 23,
       "pages": [
         {
@@ -1709,6 +1709,10 @@
         {
           "page": "pp",
           "time": "2026-07-28T11:27:57.544Z"
+        },
+        {
+          "page": "mem",
+          "time": "2026-07-28T11:28:33.247Z"
         }
       ],
       "messageSent": false,
