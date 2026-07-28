@@ -1953,6 +1953,10 @@
         {
           "page": "mem",
           "time": "2026-07-28T08:21:07.372Z"
+        },
+        {
+          "page": "cer",
+          "time": "2026-07-28T08:21:11.783Z"
         }
       ],
       "messageSent": false,
@@ -1960,7 +1964,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-07-23T05:42:00.548Z",
-      "lastSeen": "2026-07-28T08:21:11.784Z"
+      "lastSeen": "2026-07-28T08:21:11.783Z"
     },
     {
       "key": "v_ms1oundu_5mqk7jkq",
