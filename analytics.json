@@ -2013,6 +2013,10 @@
         {
           "page": "mem",
           "time": "2026-07-28T08:39:01.744Z"
+        },
+        {
+          "page": "sk",
+          "time": "2026-07-28T08:39:02.283Z"
         }
       ],
       "messageSent": false,
@@ -2020,7 +2024,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-07-23T05:42:00.548Z",
-      "lastSeen": "2026-07-28T08:39:02.284Z"
+      "lastSeen": "2026-07-28T08:39:02.283Z"
     },
     {
       "key": "v_ms1oundu_5mqk7jkq",
