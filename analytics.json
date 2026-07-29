@@ -316,6 +316,10 @@
         {
           "page": "con",
           "time": "2026-07-29T03:41:48.287Z"
+        },
+        {
+          "page": "ref",
+          "time": "2026-07-29T03:42:04.870Z"
         }
       ],
       "messageSent": true,
@@ -325,7 +329,7 @@
       ],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-07-04T13:27:25.518Z",
-      "lastSeen": "2026-07-29T03:42:03.195Z"
+      "lastSeen": "2026-07-29T03:42:04.870Z"
     },
     {
       "key": "v_mreyi6dx_nm5g8ffz",
