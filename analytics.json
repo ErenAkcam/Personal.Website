@@ -3920,15 +3920,20 @@
       "region": "Istanbul",
       "country": "Turkey",
       "org": "Vodafone Telekomunikasyon A.S.",
-      "userAgent": "",
+      "userAgent": "Mozilla/5.0 (Linux; Android 13; 2209116AG) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Mobile Safari/537.36",
       "visitCount": 0,
-      "pages": [],
+      "pages": [
+        {
+          "page": "pp",
+          "time": "2026-07-31T07:34:41.471Z"
+        }
+      ],
       "messageSent": false,
       "referenceSent": false,
       "referrers": [],
       "referrerSource": "",
       "firstSeen": "2026-07-31T07:34:42.564Z",
-      "lastSeen": "2026-07-31T07:34:42.564Z"
+      "lastSeen": "2026-07-31T07:34:41.471Z"
     }
   ],
   "messages": [
