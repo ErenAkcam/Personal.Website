@@ -3911,6 +3911,24 @@
       "referrerSource": "LinkedIn",
       "firstSeen": "2026-07-31T07:34:35.166Z",
       "lastSeen": "2026-07-31T07:34:36.029Z"
+    },
+    {
+      "key": "v_ms8mn96m_ch7ym1s2",
+      "visitorId": "v_ms8mn96m_ch7ym1s2",
+      "ip": "185.11.15.132",
+      "city": "Sisli",
+      "region": "Istanbul",
+      "country": "Turkey",
+      "org": "Vodafone Telekomunikasyon A.S.",
+      "userAgent": "",
+      "visitCount": 0,
+      "pages": [],
+      "messageSent": false,
+      "referenceSent": false,
+      "referrers": [],
+      "referrerSource": "",
+      "firstSeen": "2026-07-31T07:34:42.564Z",
+      "lastSeen": "2026-07-31T07:34:42.564Z"
     }
   ],
   "messages": [
