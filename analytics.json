@@ -3960,6 +3960,29 @@
       "referrerSource": "",
       "firstSeen": "2026-07-31T07:39:08.346Z",
       "lastSeen": "2026-07-31T07:39:08.350Z"
+    },
+    {
+      "key": "v_ms8mt3bd_s58f1f6e",
+      "visitorId": "v_ms8mt3bd_s58f1f6e",
+      "ip": "",
+      "city": "",
+      "region": "",
+      "country": "",
+      "org": "",
+      "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Mobile Safari/537.36 (compatible; Google-Read-Aloud; +https://support.google.com/webmasters/answer/1061943)",
+      "visitCount": 1,
+      "pages": [
+        {
+          "page": "ref",
+          "time": "2026-07-31T07:39:13.802Z"
+        }
+      ],
+      "messageSent": false,
+      "referenceSent": false,
+      "referrers": [],
+      "referrerSource": "Doğrudan",
+      "firstSeen": "2026-07-31T07:39:13.802Z",
+      "lastSeen": "2026-07-31T07:39:13.802Z"
     }
   ],
   "messages": [
