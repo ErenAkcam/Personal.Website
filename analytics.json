@@ -155,7 +155,7 @@
       "country": "Turkey",
       "org": "Turk Telekomunikasyon Anonim Sirketi",
       "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36",
-      "visitCount": 0,
+      "visitCount": 1,
       "pages": [
         {
           "page": "pp",
@@ -176,14 +176,18 @@
         {
           "page": "ref",
           "time": "2026-08-01T20:06:22.655Z"
+        },
+        {
+          "page": "pp",
+          "time": "2026-08-01T20:14:33.765Z"
         }
       ],
       "messageSent": false,
       "referenceSent": true,
       "referrers": [],
-      "referrerSource": "",
+      "referrerSource": "Doğrudan",
       "firstSeen": "2026-08-01T20:06:11.222Z",
-      "lastSeen": "2026-08-01T20:06:39.062Z"
+      "lastSeen": "2026-08-01T20:14:33.765Z"
     },
     {
       "key": "anon_e90c9669-a56b-4d6a-963b-a9601ddf56f1",
