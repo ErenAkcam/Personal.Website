@@ -206,7 +206,7 @@
       "region": "Izmir Province",
       "country": "Turkey",
       "org": "Turk Telekomunikasyon Anonim Sirketi",
-      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36",
+      "userAgent": "Mozilla/5.0 (Linux; Android 15; Pixel 9) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Mobile Safari/537.36",
       "visitCount": 4,
       "pages": [
         {
@@ -324,6 +324,10 @@
         {
           "page": "con",
           "time": "2026-08-01T21:29:38.193Z"
+        },
+        {
+          "page": "pp",
+          "time": "2026-08-01T21:29:47.860Z"
         }
       ],
       "messageSent": false,
@@ -331,7 +335,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-08-01T20:06:11.222Z",
-      "lastSeen": "2026-08-01T21:29:47.861Z"
+      "lastSeen": "2026-08-01T21:29:47.860Z"
     },
     {
       "key": "anon_e90c9669-a56b-4d6a-963b-a9601ddf56f1",
