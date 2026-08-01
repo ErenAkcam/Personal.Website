@@ -346,8 +346,25 @@
       "referrerSource": "",
       "firstSeen": "2026-08-01T20:23:24.938Z",
       "lastSeen": "2026-08-01T20:23:24.940Z"
+    },
+    {
+      "key": "anon_40afc975-2003-445a-9442-b2b17ec9f554",
+      "visitorId": "",
+      "ip": "",
+      "city": "",
+      "region": "",
+      "country": "",
+      "org": "",
+      "userAgent": "",
+      "visitCount": 0,
+      "pages": [],
+      "messageSent": false,
+      "referenceSent": false,
+      "referrers": [],
+      "referrerSource": "",
+      "firstSeen": "2026-08-01T21:22:04.757Z",
+      "lastSeen": "2026-08-01T21:22:04.759Z"
     }
   ],
-  "messages": [],
-  "ipNames": {}
+  "messages": []
 }
