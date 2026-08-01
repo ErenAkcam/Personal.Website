@@ -402,6 +402,10 @@
         {
           "page": "cer",
           "time": "2026-08-01T21:07:28.810Z"
+        },
+        {
+          "page": "sk",
+          "time": "2026-08-01T21:07:31.868Z"
         }
       ],
       "messageSent": false,
@@ -409,7 +413,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-06-30T12:34:59.879Z",
-      "lastSeen": "2026-08-01T21:07:28.810Z"
+      "lastSeen": "2026-08-01T21:07:31.868Z"
     },
     {
       "key": "v_mr0oy5m1_xpwgyfbj",
