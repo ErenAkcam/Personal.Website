@@ -50,6 +50,10 @@
         {
           "page": "pp",
           "time": "2026-08-01T20:44:08.321Z"
+        },
+        {
+          "page": "mem",
+          "time": "2026-08-01T20:44:09.925Z"
         }
       ],
       "messageSent": false,
@@ -57,7 +61,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-06-30T12:34:59.879Z",
-      "lastSeen": "2026-08-01T20:44:08.321Z"
+      "lastSeen": "2026-08-01T20:44:09.925Z"
     },
     {
       "key": "v_mr0oy5m1_xpwgyfbj",
