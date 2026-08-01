@@ -130,6 +130,10 @@
         {
           "page": "sk",
           "time": "2026-08-01T20:53:52.814Z"
+        },
+        {
+          "page": "mem",
+          "time": "2026-08-01T20:53:54.016Z"
         }
       ],
       "messageSent": false,
@@ -137,7 +141,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-06-30T12:34:59.879Z",
-      "lastSeen": "2026-08-01T20:53:52.814Z"
+      "lastSeen": "2026-08-01T20:53:54.016Z"
     },
     {
       "key": "v_mr0oy5m1_xpwgyfbj",
