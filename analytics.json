@@ -316,6 +316,10 @@
         {
           "page": "ref",
           "time": "2026-08-01T21:29:04.780Z"
+        },
+        {
+          "page": "mem",
+          "time": "2026-08-01T21:29:33.147Z"
         }
       ],
       "messageSent": false,
@@ -323,7 +327,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-08-01T20:06:11.222Z",
-      "lastSeen": "2026-08-01T21:29:12.046Z"
+      "lastSeen": "2026-08-01T21:29:33.147Z"
     },
     {
       "key": "anon_e90c9669-a56b-4d6a-963b-a9601ddf56f1",
