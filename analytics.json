@@ -210,8 +210,25 @@
       "referrerSource": "",
       "firstSeen": "2026-08-01T20:06:40.829Z",
       "lastSeen": "2026-08-01T20:06:40.832Z"
+    },
+    {
+      "key": "anon_1e188aa0-15a3-49ca-aa8a-a1331017b813",
+      "visitorId": "",
+      "ip": "",
+      "city": "",
+      "region": "",
+      "country": "",
+      "org": "",
+      "userAgent": "",
+      "visitCount": 0,
+      "pages": [],
+      "messageSent": false,
+      "referenceSent": false,
+      "referrers": [],
+      "referrerSource": "",
+      "firstSeen": "2026-08-01T20:14:47.738Z",
+      "lastSeen": "2026-08-01T20:14:47.740Z"
     }
   ],
-  "messages": [],
-  "ipNames": {}
+  "messages": []
 }
