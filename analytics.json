@@ -92,11 +92,11 @@
     {
       "key": "v_mr0bqpl4_eyz19szl",
       "visitorId": "v_mr0bqpl4_eyz19szl",
-      "ip": "",
-      "city": "",
-      "region": "",
-      "country": "",
-      "org": "",
+      "ip": "78.177.205.182",
+      "city": "Bornova",
+      "region": "Izmir Province",
+      "country": "Turkey",
+      "org": "Turk Telekomunikasyon Anonim Sirketi",
       "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Mobile Safari/537.36",
       "visitCount": 1,
       "pages": [
@@ -112,7 +112,7 @@
       ],
       "referrerSource": "LinkedIn",
       "firstSeen": "2026-08-01T20:04:55.767Z",
-      "lastSeen": "2026-08-01T20:04:55.767Z"
+      "lastSeen": "2026-08-01T20:04:56.418Z"
     }
   ],
   "messages": [],
