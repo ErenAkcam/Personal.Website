@@ -753,11 +753,11 @@
         }
       ],
       "messageSent": false,
-      "referenceSent": false,
+      "referenceSent": true,
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-06-30T12:34:59.879Z",
-      "lastSeen": "2026-08-02T08:19:24.341Z"
+      "lastSeen": "2026-08-02T08:19:35.410Z"
     },
     {
       "key": "v_mr0oy5m1_xpwgyfbj",
