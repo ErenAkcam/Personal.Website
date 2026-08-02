@@ -1192,6 +1192,10 @@
         {
           "page": "ref",
           "time": "2026-08-02T08:24:04.050Z"
+        },
+        {
+          "page": "con",
+          "time": "2026-08-02T08:24:03.609Z"
         }
       ],
       "messageSent": false,
@@ -1199,7 +1203,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-08-01T20:06:11.222Z",
-      "lastSeen": "2026-08-02T08:24:04.051Z"
+      "lastSeen": "2026-08-02T08:24:03.609Z"
     },
     {
       "key": "anon_e90c9669-a56b-4d6a-963b-a9601ddf56f1",
