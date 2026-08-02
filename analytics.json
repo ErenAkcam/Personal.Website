@@ -622,6 +622,10 @@
         {
           "page": "ref",
           "time": "2026-08-02T08:05:44.456Z"
+        },
+        {
+          "page": "con",
+          "time": "2026-08-02T08:08:12.007Z"
         }
       ],
       "messageSent": false,
@@ -629,7 +633,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-06-30T12:34:59.879Z",
-      "lastSeen": "2026-08-02T08:05:44.456Z"
+      "lastSeen": "2026-08-02T08:08:12.007Z"
     },
     {
       "key": "v_mr0oy5m1_xpwgyfbj",
