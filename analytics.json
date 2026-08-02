@@ -164,6 +164,10 @@
         {
           "page": "ref",
           "time": "2026-08-02T13:12:36.705Z"
+        },
+        {
+          "page": "sk",
+          "time": "2026-08-02T13:12:30.119Z"
         }
       ],
       "messageSent": false,
@@ -171,7 +175,7 @@
       "referrers": [],
       "referrerSource": "",
       "firstSeen": "2026-08-02T13:10:08.219Z",
-      "lastSeen": "2026-08-02T13:12:36.705Z"
+      "lastSeen": "2026-08-02T13:12:30.119Z"
     }
   ],
   "messages": [],
