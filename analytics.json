@@ -894,7 +894,7 @@
       "country": "Turkey",
       "org": "Turk Telekomunikasyon Anonim Sirketi",
       "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Mobile Safari/537.36",
-      "visitCount": 10,
+      "visitCount": 9,
       "pages": [
         {
           "page": "pp",
@@ -1179,26 +1179,6 @@
         {
           "page": "con",
           "time": "2026-08-02T12:16:25.113Z"
-        },
-        {
-          "page": "pp",
-          "time": "2026-08-02T12:57:01.792Z"
-        },
-        {
-          "page": "mem",
-          "time": "2026-08-02T12:57:04.244Z"
-        },
-        {
-          "page": "mem",
-          "time": "2026-08-02T12:57:08.992Z"
-        },
-        {
-          "page": "ref",
-          "time": "2026-08-02T12:57:18.706Z"
-        },
-        {
-          "page": "mem",
-          "time": "2026-08-02T12:57:23.245Z"
         }
       ],
       "messageSent": false,
@@ -1206,9 +1186,9 @@
       "referrers": [
         "android-app://com.linkedin.android/"
       ],
-      "referrerSource": "Doğrudan",
+      "referrerSource": "LinkedIn",
       "firstSeen": "2026-08-01T20:04:55.767Z",
-      "lastSeen": "2026-08-02T12:57:23.245Z"
+      "lastSeen": "2026-08-02T12:16:25.113Z"
     },
     {
       "key": "v_mr0btc0n_bl8tjx2e",
@@ -1672,96 +1652,14 @@
         {
           "page": "ref",
           "time": "2026-08-02T12:51:02.603Z"
-        },
-        {
-          "page": "pp",
-          "time": "2026-08-02T12:55:32.120Z"
-        },
-        {
-          "page": "mem",
-          "time": "2026-08-02T12:55:33.834Z"
-        },
-        {
-          "page": "pp",
-          "time": "2026-08-02T12:55:42.581Z"
-        },
-        {
-          "page": "mem",
-          "time": "2026-08-02T12:55:43.855Z"
-        },
-        {
-          "page": "mem",
-          "time": "2026-08-02T12:55:47.603Z"
-        },
-        {
-          "page": "mem",
-          "time": "2026-08-02T12:55:55.921Z"
-        },
-        {
-          "page": "mem",
-          "time": "2026-08-02T12:55:57.072Z"
-        },
-        {
-          "page": "mem",
-          "time": "2026-08-02T12:55:56.804Z"
-        },
-        {
-          "page": "mem",
-          "time": "2026-08-02T12:55:57.370Z"
-        },
-        {
-          "page": "mem",
-          "time": "2026-08-02T12:55:57.629Z"
-        },
-        {
-          "page": "ref",
-          "time": "2026-08-02T12:56:24.390Z"
-        },
-        {
-          "page": "mem",
-          "time": "2026-08-02T12:57:44.576Z"
-        },
-        {
-          "page": "mem",
-          "time": "2026-08-02T12:57:46.935Z"
-        },
-        {
-          "page": "mem",
-          "time": "2026-08-02T12:57:49.247Z"
-        },
-        {
-          "page": "pp",
-          "time": "2026-08-02T12:58:04.497Z"
-        },
-        {
-          "page": "cer",
-          "time": "2026-08-02T12:58:05.494Z"
-        },
-        {
-          "page": "mem",
-          "time": "2026-08-02T12:58:07.276Z"
-        },
-        {
-          "page": "sk",
-          "time": "2026-08-02T12:58:07.911Z"
-        },
-        {
-          "page": "mem",
-          "time": "2026-08-02T12:58:08.537Z"
-        },
-        {
-          "page": "mem",
-          "time": "2026-08-02T12:58:13.483Z"
         }
       ],
       "messageSent": false,
       "referenceSent": true,
-      "referrers": [
-        "https://www.linkedin.com/"
-      ],
+      "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-08-01T20:06:11.222Z",
-      "lastSeen": "2026-08-02T12:58:08.537Z"
+      "lastSeen": "2026-08-02T12:51:02.604Z"
     },
     {
       "key": "anon_e90c9669-a56b-4d6a-963b-a9601ddf56f1",
