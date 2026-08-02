@@ -602,6 +602,10 @@
         {
           "page": "mem",
           "time": "2026-08-02T08:04:23.246Z"
+        },
+        {
+          "page": "pp",
+          "time": "2026-08-02T08:05:30.410Z"
         }
       ],
       "messageSent": false,
@@ -609,7 +613,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-06-30T12:34:59.879Z",
-      "lastSeen": "2026-08-02T08:04:23.246Z"
+      "lastSeen": "2026-08-02T08:05:30.410Z"
     },
     {
       "key": "v_mr0oy5m1_xpwgyfbj",
