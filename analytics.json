@@ -188,6 +188,10 @@
         {
           "page": "pp",
           "time": "2026-08-02T14:05:00.953Z"
+        },
+        {
+          "page": "mem",
+          "time": "2026-08-02T14:05:04.830Z"
         }
       ],
       "messageSent": false,
@@ -195,7 +199,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-08-02T13:10:08.219Z",
-      "lastSeen": "2026-08-02T14:05:01.419Z"
+      "lastSeen": "2026-08-02T14:05:04.830Z"
     }
   ],
   "messages": [],
