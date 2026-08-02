@@ -1191,6 +1191,10 @@
         {
           "page": "mem",
           "time": "2026-08-02T12:57:08.992Z"
+        },
+        {
+          "page": "ref",
+          "time": "2026-08-02T12:57:18.706Z"
         }
       ],
       "messageSent": false,
@@ -1200,7 +1204,7 @@
       ],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-08-01T20:04:55.767Z",
-      "lastSeen": "2026-08-02T12:57:18.707Z"
+      "lastSeen": "2026-08-02T12:57:18.706Z"
     },
     {
       "key": "v_mr0btc0n_bl8tjx2e",
