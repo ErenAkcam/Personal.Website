@@ -13,10 +13,6 @@
       "pages": [
         {
           "page": "pp",
-          "time": "2026-08-02T07:51:33.062Z"
-        },
-        {
-          "page": "pp",
           "time": "2026-08-02T07:51:49.285Z"
         },
         {
@@ -810,6 +806,10 @@
         {
           "page": "cer",
           "time": "2026-08-02T11:39:51.005Z"
+        },
+        {
+          "page": "ref",
+          "time": "2026-08-02T11:39:51.639Z"
         }
       ],
       "messageSent": false,
@@ -817,7 +817,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-06-30T12:34:59.879Z",
-      "lastSeen": "2026-08-02T11:39:51.005Z"
+      "lastSeen": "2026-08-02T11:39:51.639Z"
     },
     {
       "key": "v_mr0oy5m1_xpwgyfbj",
