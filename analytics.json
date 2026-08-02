@@ -802,6 +802,10 @@
         {
           "page": "ref",
           "time": "2026-08-02T08:27:20.582Z"
+        },
+        {
+          "page": "ref",
+          "time": "2026-08-02T08:27:26.646Z"
         }
       ],
       "messageSent": false,
@@ -809,7 +813,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-06-30T12:34:59.879Z",
-      "lastSeen": "2026-08-02T08:27:20.582Z"
+      "lastSeen": "2026-08-02T08:27:26.646Z"
     },
     {
       "key": "v_mr0oy5m1_xpwgyfbj",
