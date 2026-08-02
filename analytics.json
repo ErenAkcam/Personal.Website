@@ -340,6 +340,10 @@
         {
           "page": "ref",
           "time": "2026-08-02T14:09:11.394Z"
+        },
+        {
+          "page": "cer",
+          "time": "2026-08-02T14:09:12.958Z"
         }
       ],
       "messageSent": false,
@@ -347,7 +351,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-08-02T13:10:08.219Z",
-      "lastSeen": "2026-08-02T14:09:11.395Z"
+      "lastSeen": "2026-08-02T14:09:12.958Z"
     }
   ],
   "messages": [],
