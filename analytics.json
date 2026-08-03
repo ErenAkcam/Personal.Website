@@ -460,13 +460,13 @@
         }
       ],
       "messageSent": false,
-      "referenceSent": false,
+      "referenceSent": true,
       "referrers": [
         "https://www.linkedin.com/"
       ],
       "referrerSource": "LinkedIn",
       "firstSeen": "2026-08-03T09:39:46.908Z",
-      "lastSeen": "2026-08-03T09:40:16.223Z"
+      "lastSeen": "2026-08-03T09:42:11.982Z"
     }
   ],
   "messages": [],
