@@ -374,7 +374,7 @@
       "country": "Turkey",
       "org": "Turk Telekomunikasyon Anonim Sirketi",
       "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Mobile Safari/537.36",
-      "visitCount": 1,
+      "visitCount": 2,
       "pages": [
         {
           "page": "pp",
@@ -383,6 +383,10 @@
         {
           "page": "pp",
           "time": "2026-08-02T14:10:09.010Z"
+        },
+        {
+          "page": "pp",
+          "time": "2026-08-03T18:14:19.848Z"
         }
       ],
       "messageSent": false,
@@ -390,9 +394,9 @@
       "referrers": [
         "android-app://com.linkedin.android/"
       ],
-      "referrerSource": "LinkedIn",
+      "referrerSource": "Doğrudan",
       "firstSeen": "2026-08-02T14:09:56.856Z",
-      "lastSeen": "2026-08-02T14:10:09.010Z"
+      "lastSeen": "2026-08-03T18:14:19.848Z"
     },
     {
       "key": "v_msd1baae_wubfsdcq",
