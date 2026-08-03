@@ -563,6 +563,10 @@
         {
           "page": "ref",
           "time": "2026-08-03T20:20:22.462Z"
+        },
+        {
+          "page": "mem",
+          "time": "2026-08-03T20:20:44.598Z"
         }
       ],
       "messageSent": false,
@@ -572,7 +576,7 @@
       ],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-08-02T14:09:56.856Z",
-      "lastSeen": "2026-08-03T20:20:22.465Z"
+      "lastSeen": "2026-08-03T20:20:44.598Z"
     },
     {
       "key": "v_msd1baae_wubfsdcq",
