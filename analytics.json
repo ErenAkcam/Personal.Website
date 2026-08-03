@@ -388,6 +388,10 @@
         {
           "page": "sk",
           "time": "2026-08-03T19:17:49.381Z"
+        },
+        {
+          "page": "cer",
+          "time": "2026-08-03T19:17:50.006Z"
         }
       ],
       "messageSent": false,
@@ -395,7 +399,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-08-02T13:10:08.219Z",
-      "lastSeen": "2026-08-03T19:17:48.833Z"
+      "lastSeen": "2026-08-03T19:17:50.006Z"
     },
     {
       "key": "v_mr0bqpl4_eyz19szl",
