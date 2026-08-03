@@ -70,12 +70,12 @@
       "key": "v_mr0btc0n_bl8tjx2e",
       "visitorId": "v_mr0btc0n_bl8tjx2e",
       "ip": "78.177.205.182",
-      "city": "Bornova",
+      "city": "Izmir",
       "region": "Izmir Province",
       "country": "Turkey",
       "org": "Turk Telekomunikasyon Anonim Sirketi",
       "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36",
-      "visitCount": 6,
+      "visitCount": 5,
       "pages": [
         {
           "page": "ref",
@@ -420,34 +420,6 @@
         {
           "page": "pp",
           "time": "2026-08-03T19:17:56.760Z"
-        },
-        {
-          "page": "pp",
-          "time": "2026-08-03T19:27:25.478Z"
-        },
-        {
-          "page": "sk",
-          "time": "2026-08-03T19:27:32.081Z"
-        },
-        {
-          "page": "mem",
-          "time": "2026-08-03T19:27:31.520Z"
-        },
-        {
-          "page": "pp",
-          "time": "2026-08-03T19:27:34.247Z"
-        },
-        {
-          "page": "ref",
-          "time": "2026-08-03T19:27:41.474Z"
-        },
-        {
-          "page": "con",
-          "time": "2026-08-03T19:27:42.513Z"
-        },
-        {
-          "page": "ref",
-          "time": "2026-08-03T19:27:43.297Z"
         }
       ],
       "messageSent": false,
@@ -455,7 +427,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-08-02T13:10:08.219Z",
-      "lastSeen": "2026-08-03T19:27:43.297Z"
+      "lastSeen": "2026-08-03T19:17:59.427Z"
     },
     {
       "key": "v_mr0bqpl4_eyz19szl",
