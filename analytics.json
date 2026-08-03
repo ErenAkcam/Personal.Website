@@ -430,11 +430,11 @@
     {
       "key": "v_msd1foex_dr0tt1co",
       "visitorId": "v_msd1foex_dr0tt1co",
-      "ip": "",
-      "city": "",
-      "region": "",
-      "country": "",
-      "org": "",
+      "ip": "77.67.147.37",
+      "city": "Antalya",
+      "region": "Antalya",
+      "country": "Turkey",
+      "org": "TURKCELL ILETISIM HIZMETLERI A.S.",
       "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 [LinkedInApp]/9.32.2485",
       "visitCount": 1,
       "pages": [
@@ -450,7 +450,7 @@
       ],
       "referrerSource": "LinkedIn",
       "firstSeen": "2026-08-03T09:39:46.908Z",
-      "lastSeen": "2026-08-03T09:39:46.908Z"
+      "lastSeen": "2026-08-03T09:39:47.410Z"
     }
   ],
   "messages": [],
