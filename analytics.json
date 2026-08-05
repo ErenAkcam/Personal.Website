@@ -936,6 +936,29 @@
       "referrerSource": "LinkedIn",
       "firstSeen": "2026-08-05T18:16:05.529Z",
       "lastSeen": "2026-08-05T18:28:10.101Z"
+    },
+    {
+      "key": "v_msgfgp0r_xxjvbu7b",
+      "visitorId": "v_msgfgp0r_xxjvbu7b",
+      "ip": "",
+      "city": "",
+      "region": "",
+      "country": "",
+      "org": "",
+      "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Mobile Safari/537.36 (compatible; Google-Read-Aloud; +https://support.google.com/webmasters/answer/1061943)",
+      "visitCount": 1,
+      "pages": [
+        {
+          "page": "ref",
+          "time": "2026-08-05T18:35:47.500Z"
+        }
+      ],
+      "messageSent": false,
+      "referenceSent": false,
+      "referrers": [],
+      "referrerSource": "Doğrudan",
+      "firstSeen": "2026-08-05T18:35:47.500Z",
+      "lastSeen": "2026-08-05T18:35:47.500Z"
     }
   ],
   "messages": [],
