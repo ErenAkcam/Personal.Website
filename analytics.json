@@ -905,13 +905,13 @@
         }
       ],
       "messageSent": false,
-      "referenceSent": false,
+      "referenceSent": true,
       "referrers": [
         "https://www.linkedin.com/"
       ],
       "referrerSource": "",
       "firstSeen": "2026-08-05T18:16:05.529Z",
-      "lastSeen": "2026-08-05T18:16:09.399Z"
+      "lastSeen": "2026-08-05T18:20:41.424Z"
     }
   ],
   "messages": [],
