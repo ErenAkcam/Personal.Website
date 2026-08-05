@@ -879,6 +879,24 @@
       "referrerSource": "lnkd.in",
       "firstSeen": "2026-08-05T14:01:00.044Z",
       "lastSeen": "2026-08-05T14:01:11.541Z"
+    },
+    {
+      "key": "v_msgercqp_prdy6ugs",
+      "visitorId": "v_msgercqp_prdy6ugs",
+      "ip": "78.177.219.204",
+      "city": "Izmir",
+      "region": "Izmir Province",
+      "country": "Turkey",
+      "org": "Turk Telekomunikasyon Anonim Sirketi",
+      "userAgent": "",
+      "visitCount": 0,
+      "pages": [],
+      "messageSent": false,
+      "referenceSent": false,
+      "referrers": [],
+      "referrerSource": "",
+      "firstSeen": "2026-08-05T18:16:05.529Z",
+      "lastSeen": "2026-08-05T18:16:05.529Z"
     }
   ],
   "messages": [],
