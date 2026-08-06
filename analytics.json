@@ -1080,11 +1080,11 @@
     {
       "key": "v_mrx33ir7_f4fanwfs",
       "visitorId": "v_mrx33ir7_f4fanwfs",
-      "ip": "",
-      "city": "",
-      "region": "",
-      "country": "",
-      "org": "",
+      "ip": "195.33.236.34",
+      "city": "Istanbul",
+      "region": "Istanbul",
+      "country": "Turkey",
+      "org": "Superonline Iletisim Hizmetleri A.S.",
       "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36",
       "visitCount": 1,
       "pages": [
@@ -1098,7 +1098,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-08-06T14:50:14.188Z",
-      "lastSeen": "2026-08-06T14:50:14.188Z"
+      "lastSeen": "2026-08-06T14:50:14.622Z"
     }
   ],
   "messages": [],
