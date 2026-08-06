@@ -1042,11 +1042,11 @@
         }
       ],
       "messageSent": false,
-      "referenceSent": false,
+      "referenceSent": true,
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-08-06T11:04:22.172Z",
-      "lastSeen": "2026-08-06T11:12:19.286Z"
+      "lastSeen": "2026-08-06T11:12:19.285Z"
     }
   ],
   "messages": [],
