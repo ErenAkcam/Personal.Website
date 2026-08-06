@@ -1024,6 +1024,29 @@
       "referrerSource": "LinkedIn",
       "firstSeen": "2026-08-06T09:08:39.727Z",
       "lastSeen": "2026-08-06T09:08:39.727Z"
+    },
+    {
+      "key": "v_mshes0ik_rban6q79",
+      "visitorId": "v_mshes0ik_rban6q79",
+      "ip": "",
+      "city": "",
+      "region": "",
+      "country": "",
+      "org": "",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36",
+      "visitCount": 1,
+      "pages": [
+        {
+          "page": "ref",
+          "time": "2026-08-06T11:04:22.172Z"
+        }
+      ],
+      "messageSent": false,
+      "referenceSent": false,
+      "referrers": [],
+      "referrerSource": "Doğrudan",
+      "firstSeen": "2026-08-06T11:04:22.172Z",
+      "lastSeen": "2026-08-06T11:04:22.172Z"
     }
   ],
   "messages": [],
