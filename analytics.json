@@ -1028,11 +1028,11 @@
     {
       "key": "v_mshes0ik_rban6q79",
       "visitorId": "v_mshes0ik_rban6q79",
-      "ip": "",
-      "city": "",
-      "region": "",
-      "country": "",
-      "org": "",
+      "ip": "195.33.236.34",
+      "city": "Istanbul",
+      "region": "Istanbul",
+      "country": "Turkey",
+      "org": "Superonline Iletisim Hizmetleri A.S.",
       "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36",
       "visitCount": 1,
       "pages": [
@@ -1046,7 +1046,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-08-06T11:04:22.172Z",
-      "lastSeen": "2026-08-06T11:04:22.172Z"
+      "lastSeen": "2026-08-06T11:04:22.717Z"
     }
   ],
   "messages": [],
