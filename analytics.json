@@ -1051,11 +1051,11 @@
     {
       "key": "v_mshkyvtk_uuoirvqd",
       "visitorId": "v_mshkyvtk_uuoirvqd",
-      "ip": "",
-      "city": "",
-      "region": "",
-      "country": "",
-      "org": "",
+      "ip": "195.33.236.34",
+      "city": "Istanbul",
+      "region": "Istanbul",
+      "country": "Turkey",
+      "org": "Superonline Iletisim Hizmetleri A.S.",
       "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 [LinkedInApp]/9.32.2485",
       "visitCount": 1,
       "pages": [
@@ -1071,7 +1071,7 @@
       ],
       "referrerSource": "LinkedIn",
       "firstSeen": "2026-08-06T13:57:40.378Z",
-      "lastSeen": "2026-08-06T13:57:40.378Z"
+      "lastSeen": "2026-08-06T13:57:40.784Z"
     }
   ],
   "messages": [],
