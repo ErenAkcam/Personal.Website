@@ -75,7 +75,7 @@
       "country": "Turkey",
       "org": "Turk Telekomunikasyon Anonim Sirketi",
       "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36",
-      "visitCount": 9,
+      "visitCount": 8,
       "pages": [
         {
           "page": "ref",
@@ -564,34 +564,6 @@
         {
           "page": "pp",
           "time": "2026-08-04T09:14:15.936Z"
-        },
-        {
-          "page": "pp",
-          "time": "2026-08-06T21:36:42.755Z"
-        },
-        {
-          "page": "ref",
-          "time": "2026-08-06T21:36:45.942Z"
-        },
-        {
-          "page": "ref",
-          "time": "2026-08-06T21:36:57.351Z"
-        },
-        {
-          "page": "ref",
-          "time": "2026-08-06T21:36:58.395Z"
-        },
-        {
-          "page": "pp",
-          "time": "2026-08-06T21:39:24.737Z"
-        },
-        {
-          "page": "ref",
-          "time": "2026-08-06T21:39:26.413Z"
-        },
-        {
-          "page": "ref",
-          "time": "2026-08-06T21:40:39.392Z"
         }
       ],
       "messageSent": false,
@@ -599,20 +571,20 @@
       "referrers": [
         "https://www.linkedin.com/"
       ],
-      "referrerSource": "Doğrudan",
+      "referrerSource": "LinkedIn",
       "firstSeen": "2026-08-02T13:10:08.219Z",
-      "lastSeen": "2026-08-06T21:40:39.392Z"
+      "lastSeen": "2026-08-04T09:14:16.197Z"
     },
     {
       "key": "v_mr0bqpl4_eyz19szl",
       "visitorId": "v_mr0bqpl4_eyz19szl",
-      "ip": "78.177.205.182",
-      "city": "Izmir",
-      "region": "Izmir Province",
+      "ip": "195.33.236.34",
+      "city": "Istanbul",
+      "region": "Istanbul",
       "country": "Turkey",
-      "org": "Turk Telekomunikasyon Anonim Sirketi",
+      "org": "Superonline Iletisim Hizmetleri A.S.",
       "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Mobile Safari/537.36",
-      "visitCount": 8,
+      "visitCount": 7,
       "pages": [
         {
           "page": "pp",
@@ -713,14 +685,6 @@
         {
           "page": "ref",
           "time": "2026-08-06T10:22:43.855Z"
-        },
-        {
-          "page": "pp",
-          "time": "2026-08-06T21:37:29.274Z"
-        },
-        {
-          "page": "ref",
-          "time": "2026-08-06T21:37:33.019Z"
         }
       ],
       "messageSent": false,
@@ -728,9 +692,9 @@
       "referrers": [
         "android-app://com.linkedin.android/"
       ],
-      "referrerSource": "Doğrudan",
+      "referrerSource": "LinkedIn",
       "firstSeen": "2026-08-02T14:09:56.856Z",
-      "lastSeen": "2026-08-06T21:37:33.019Z"
+      "lastSeen": "2026-08-06T10:22:45.121Z"
     },
     {
       "key": "v_msd1baae_wubfsdcq",
