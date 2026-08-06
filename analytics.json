@@ -600,7 +600,7 @@
       "country": "Turkey",
       "org": "Superonline Iletisim Hizmetleri A.S.",
       "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Mobile Safari/537.36",
-      "visitCount": 7,
+      "visitCount": 8,
       "pages": [
         {
           "page": "pp",
@@ -701,6 +701,10 @@
         {
           "page": "ref",
           "time": "2026-08-06T10:22:43.855Z"
+        },
+        {
+          "page": "pp",
+          "time": "2026-08-06T21:37:29.274Z"
         }
       ],
       "messageSent": false,
@@ -708,9 +712,9 @@
       "referrers": [
         "android-app://com.linkedin.android/"
       ],
-      "referrerSource": "LinkedIn",
+      "referrerSource": "Doğrudan",
       "firstSeen": "2026-08-02T14:09:56.856Z",
-      "lastSeen": "2026-08-06T10:22:45.121Z"
+      "lastSeen": "2026-08-06T21:37:29.274Z"
     },
     {
       "key": "v_msd1baae_wubfsdcq",
