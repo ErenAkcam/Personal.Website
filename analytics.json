@@ -1215,14 +1215,20 @@
         {
           "page": "pp",
           "time": "2026-08-07T06:47:37.247Z"
+        },
+        {
+          "page": "pp",
+          "time": "2026-08-07T06:47:48.720Z"
         }
       ],
       "messageSent": false,
       "referenceSent": false,
-      "referrers": [],
+      "referrers": [
+        "https://erenakcam.github.io/Personal.Website/#pp"
+      ],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-08-07T06:47:37.247Z",
-      "lastSeen": "2026-08-07T06:47:37.247Z"
+      "lastSeen": "2026-08-07T06:47:48.720Z"
     }
   ],
   "messages": [],
