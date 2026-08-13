@@ -721,6 +721,10 @@
         {
           "page": "pp",
           "time": "2026-08-13T16:38:36.399Z"
+        },
+        {
+          "page": "mem",
+          "time": "2026-08-13T16:38:46.782Z"
         }
       ],
       "messageSent": false,
@@ -730,7 +734,7 @@
       ],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-08-02T14:09:56.856Z",
-      "lastSeen": "2026-08-13T16:38:37.240Z"
+      "lastSeen": "2026-08-13T16:38:46.782Z"
     },
     {
       "key": "v_msd1baae_wubfsdcq",
