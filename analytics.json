@@ -729,6 +729,10 @@
         {
           "page": "sk",
           "time": "2026-08-13T16:39:30.376Z"
+        },
+        {
+          "page": "cer",
+          "time": "2026-08-13T16:40:12.218Z"
         }
       ],
       "messageSent": false,
@@ -738,7 +742,7 @@
       ],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-08-02T14:09:56.856Z",
-      "lastSeen": "2026-08-13T16:40:12.220Z"
+      "lastSeen": "2026-08-13T16:40:12.218Z"
     },
     {
       "key": "v_msd1baae_wubfsdcq",
