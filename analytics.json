@@ -1342,6 +1342,29 @@
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-08-07T07:06:14.303Z",
       "lastSeen": "2026-08-07T07:06:29.208Z"
+    },
+    {
+      "key": "v_msvvfxot_l4mzvdqg",
+      "visitorId": "v_msvvfxot_l4mzvdqg",
+      "ip": "",
+      "city": "",
+      "region": "",
+      "country": "",
+      "org": "",
+      "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Mobile Safari/537.36 (compatible; Google-Read-Aloud; +https://support.google.com/webmasters/answer/1061943)",
+      "visitCount": 1,
+      "pages": [
+        {
+          "page": "ref",
+          "time": "2026-08-16T13:59:38.574Z"
+        }
+      ],
+      "messageSent": false,
+      "referenceSent": false,
+      "referrers": [],
+      "referrerSource": "Doğrudan",
+      "firstSeen": "2026-08-16T13:59:38.574Z",
+      "lastSeen": "2026-08-16T13:59:38.574Z"
     }
   ],
   "messages": [],
