@@ -1028,6 +1028,10 @@
         {
           "page": "pp",
           "time": "2026-08-20T20:43:41.946Z"
+        },
+        {
+          "page": "cer",
+          "time": "2026-08-20T20:43:44.958Z"
         }
       ],
       "messageSent": false,
@@ -1035,7 +1039,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-08-03T18:10:44.401Z",
-      "lastSeen": "2026-08-20T20:43:41.946Z"
+      "lastSeen": "2026-08-20T20:43:44.958Z"
     },
     {
       "key": "v_msfyi0l6_38nqj0ee",
