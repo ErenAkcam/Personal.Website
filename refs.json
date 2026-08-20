@@ -1,21 +1,6 @@
 {
   "refs": [
     {
-      "id": "1787256195625",
-      "name": "Eren Akçam",
-      "title": "Student",
-      "company": "",
-      "context": "Erasmus+ Internship, Arnes — High School Internship",
-      "period": "2025 – 5 Aug 2026",
-      "rating": 5,
-      "desc": "ssssssssssssssssssss",
-      "photo": "",
-      "email": "",
-      "phone": "",
-      "linkedin": "https://www.linkedin.com/in/erenakcam",
-      "date": "2026-08-20T20:03:15.625Z"
-    },
-    {
       "id": "1787256159592",
       "name": "Eren Akçam",
       "title": "Student",
@@ -112,7 +97,6 @@
     "1786014738069",
     "1785954786121",
     "1785927034103",
-    "1787256159592",
-    "1787256195625"
+    "1787256159592"
   ]
 }
