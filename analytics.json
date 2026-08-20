@@ -652,6 +652,10 @@
         {
           "page": "pp",
           "time": "2026-08-20T20:05:01.684Z"
+        },
+        {
+          "page": "pp",
+          "time": "2026-08-20T20:05:05.960Z"
         }
       ],
       "messageSent": false,
@@ -661,7 +665,7 @@
       ],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-08-02T13:10:08.219Z",
-      "lastSeen": "2026-08-20T20:05:01.684Z"
+      "lastSeen": "2026-08-20T20:05:05.960Z"
     },
     {
       "key": "v_mr0bqpl4_eyz19szl",
