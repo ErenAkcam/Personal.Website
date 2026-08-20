@@ -1013,6 +1013,10 @@
         {
           "page": "pp",
           "time": "2026-08-20T21:36:10.711Z"
+        },
+        {
+          "page": "pp",
+          "time": "2026-08-20T21:36:14.751Z"
         }
       ],
       "messageSent": true,
@@ -1022,7 +1026,7 @@
       ],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-08-02T14:09:56.856Z",
-      "lastSeen": "2026-08-20T21:36:14.753Z"
+      "lastSeen": "2026-08-20T21:36:14.751Z"
     },
     {
       "key": "v_msd1baae_wubfsdcq",
