@@ -1,21 +1,6 @@
 {
   "refs": [
     {
-      "id": "1787256159592",
-      "name": "Eren Akçam",
-      "title": "Student",
-      "company": "",
-      "context": "Erasmus+ Internship, Arnes — High School Internship, Private KOSBİ Zülfü-Mevlüt Çelik Vocational High School",
-      "period": "2023 – 2027",
-      "rating": 5,
-      "desc": "sssssssssss",
-      "photo": "",
-      "email": "",
-      "phone": "",
-      "linkedin": "https://www.linkedin.com/in/erenakcam",
-      "date": "2026-08-20T20:02:39.592Z"
-    },
-    {
       "id": "1786024939052",
       "name": "Özlem Altuntaş",
       "title": "Sales and Design Support Specialist",
@@ -96,7 +81,6 @@
     "1786024939052",
     "1786014738069",
     "1785954786121",
-    "1785927034103",
-    "1787256159592"
+    "1785927034103"
   ]
 }
