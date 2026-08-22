@@ -1065,6 +1065,10 @@
         {
           "page": "mem",
           "time": "2026-08-22T19:22:53.152Z"
+        },
+        {
+          "page": "sk",
+          "time": "2026-08-22T19:22:59.509Z"
         }
       ],
       "messageSent": true,
@@ -1074,7 +1078,7 @@
       ],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-08-02T14:09:56.856Z",
-      "lastSeen": "2026-08-22T19:22:59.512Z"
+      "lastSeen": "2026-08-22T19:22:59.509Z"
     },
     {
       "key": "v_msd1baae_wubfsdcq",
