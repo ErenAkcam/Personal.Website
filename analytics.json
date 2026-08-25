@@ -1709,11 +1709,11 @@
     {
       "key": "v_mt9aaufc_xocmxe57",
       "visitorId": "v_mt9aaufc_xocmxe57",
-      "ip": "",
-      "city": "",
-      "region": "",
-      "country": "",
-      "org": "",
+      "ip": "77.67.129.34",
+      "city": "Golmarmara",
+      "region": "Manisa",
+      "country": "Turkey",
+      "org": "TURKCELL ILETISIM HIZMETLERI A.S.",
       "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 [LinkedInApp]/9.32.2755",
       "visitCount": 1,
       "pages": [
@@ -1729,7 +1729,7 @@
       ],
       "referrerSource": "LinkedIn",
       "firstSeen": "2026-08-25T23:16:35.597Z",
-      "lastSeen": "2026-08-25T23:16:35.597Z"
+      "lastSeen": "2026-08-25T23:16:36.120Z"
     }
   ],
   "messages": [],
