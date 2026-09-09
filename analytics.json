@@ -804,6 +804,10 @@
         {
           "page": "ref",
           "time": "2026-09-09T17:10:22.899Z"
+        },
+        {
+          "page": "con",
+          "time": "2026-09-09T17:10:29.916Z"
         }
       ],
       "messageSent": false,
@@ -813,7 +817,7 @@
       ],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-08-02T13:10:08.219Z",
-      "lastSeen": "2026-09-09T17:10:22.899Z"
+      "lastSeen": "2026-09-09T17:10:29.916Z"
     },
     {
       "key": "v_mr0bqpl4_eyz19szl",
