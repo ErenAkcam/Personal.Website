@@ -1786,11 +1786,11 @@
     {
       "key": "v_mumd6aly_0yn386ke",
       "visitorId": "v_mumd6aly_0yn386ke",
-      "ip": "",
-      "city": "",
-      "region": "",
-      "country": "",
-      "org": "",
+      "ip": "195.175.204.190",
+      "city": "Bodrum",
+      "region": "Mugla",
+      "country": "Turkey",
+      "org": "Turk Telekomunikasyon Anonim Sirketi",
       "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36",
       "visitCount": 1,
       "pages": [
@@ -1806,7 +1806,7 @@
       ],
       "referrerSource": "LinkedIn",
       "firstSeen": "2026-09-29T07:37:44.759Z",
-      "lastSeen": "2026-09-29T07:37:44.759Z"
+      "lastSeen": "2026-09-29T07:37:45.151Z"
     }
   ],
   "messages": [],
