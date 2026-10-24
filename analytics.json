@@ -1133,6 +1133,10 @@
         {
           "page": "ref",
           "time": "2026-10-24T16:21:20.928Z"
+        },
+        {
+          "page": "pp",
+          "time": "2026-10-24T16:22:28.847Z"
         }
       ],
       "messageSent": true,
@@ -1142,7 +1146,7 @@
       ],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-08-02T14:09:56.856Z",
-      "lastSeen": "2026-10-24T16:21:54.970Z"
+      "lastSeen": "2026-10-24T16:22:28.847Z"
     },
     {
       "key": "v_msd1baae_wubfsdcq",
