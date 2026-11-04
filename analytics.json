@@ -1870,6 +1870,29 @@
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-09-29T07:37:51.486Z",
       "lastSeen": "2026-09-29T07:37:52.580Z"
+    },
+    {
+      "key": "v_mw1x4fft_n0ja7c6z",
+      "visitorId": "v_mw1x4fft_n0ja7c6z",
+      "ip": "",
+      "city": "",
+      "region": "",
+      "country": "",
+      "org": "",
+      "userAgent": "Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.8010.52 Mobile Safari/537.36 (compatible; GoogleOther)",
+      "visitCount": 1,
+      "pages": [
+        {
+          "page": "pp",
+          "time": "2026-11-04T09:32:25.002Z"
+        }
+      ],
+      "messageSent": false,
+      "referenceSent": false,
+      "referrers": [],
+      "referrerSource": "Doğrudan",
+      "firstSeen": "2026-11-04T09:32:25.002Z",
+      "lastSeen": "2026-11-04T09:32:25.002Z"
     }
   ],
   "messages": [],
