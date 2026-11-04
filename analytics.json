@@ -1874,11 +1874,11 @@
     {
       "key": "v_mw1x4fft_n0ja7c6z",
       "visitorId": "v_mw1x4fft_n0ja7c6z",
-      "ip": "",
-      "city": "",
-      "region": "",
-      "country": "",
-      "org": "",
+      "ip": "66.249.64.234",
+      "city": "Mountain View",
+      "region": "California",
+      "country": "United States",
+      "org": "Google LLC",
       "userAgent": "Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.8010.52 Mobile Safari/537.36 (compatible; GoogleOther)",
       "visitCount": 1,
       "pages": [
@@ -1892,7 +1892,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-11-04T09:32:25.002Z",
-      "lastSeen": "2026-11-04T09:32:25.002Z"
+      "lastSeen": "2026-11-04T09:32:25.010Z"
     }
   ],
   "messages": [],
