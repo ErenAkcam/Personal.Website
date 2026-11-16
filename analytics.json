@@ -1897,11 +1897,11 @@
     {
       "key": "v_mwj00940_94jypfiu",
       "visitorId": "v_mwj00940_94jypfiu",
-      "ip": "",
-      "city": "",
-      "region": "",
-      "country": "",
-      "org": "",
+      "ip": "78.177.203.214",
+      "city": "Izmir",
+      "region": "Izmir Province",
+      "country": "Turkey",
+      "org": "Turk Telekomunikasyon Anonim Sirketi",
       "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 26_7_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) GSA/445.5.1006576801 Mobile/15E148 Safari/604.1",
       "visitCount": 1,
       "pages": [
@@ -1923,7 +1923,7 @@
       "referrers": [],
       "referrerSource": "Doğrudan",
       "firstSeen": "2026-11-16T08:25:14.145Z",
-      "lastSeen": "2026-11-16T08:25:14.018Z"
+      "lastSeen": "2026-11-16T08:25:14.798Z"
     }
   ],
   "messages": [],
